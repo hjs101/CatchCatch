@@ -1,6 +1,7 @@
 import "../CSS/CharSpace.css";
 import { StartBtnOn } from "./StartPage";
 import { SaveData } from "../main.js";
+import { config } from "../game.js";
 
 var _CharSpace;
 
@@ -144,6 +145,15 @@ function BackStart() {
 function GameStart() {
   //app 자체를 false해야되나?
   if (ChoiceCat === -1) console.log("시작 불가");
+<<<<<<< HEAD
+=======
+  const StartPage = document.querySelector(".StartPage");
+  StartPage.style.display = "none";
+  var game = new Phaser.Game(config);
+  const gameContainer = document.querySelector("#game-container");
+  gameContainer.style.display = "block";
+
+>>>>>>> 82412a2 (#1 :sparkles: UI와 Game 합체 완료!)
   console.log(ChoiceCat);
   console.log(ChoiceLevel);
 }
