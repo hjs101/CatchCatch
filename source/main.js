@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 800,
+  width: 600,
+  height: 600,
   parent: "game-container",
   pixelArt: true,
   scene: { //scene 제어에 
@@ -15,49 +15,62 @@ const config = {
       debug: true
     }
   },
-  scale: {
-    zoom: 1
-  }
 };
 
 //player start
 var player;
-var turn;
-var stars;
-var bombs;
-var platforms;
+// 요정
+var now_fairy = 2;
+var fairys = [,,,,,];
+var fairy;
+
+// 공격 및 공격 딜레이 관련
+var control = false;
+var timer = 0;
+var magic;
+
 var cursors;
-var score = 0;
 var gameOver = false;
 var scoreText;
+// 마우스 포인터 관련
 var input;
+var mouse;
 //player end
 
 var map;
 var camera;
-var objectLayer;
+var backgroundLayer;
+var portalLayer;
+var wallLayer;
+var stage1Layer;
+var stage2Layer;
+var stage3Layer;
+var stage4Layer;
 
 var game = new Phaser.Game(config);
 let controls;
 
 function preload() {
   this.load.image("tiles", "./tiles.png");
+  this.load.image("tiles2", "./tiles2.png");
   this.load.tilemapTiledJSON("map", "resources.tmj");
 
   //player start
-  this.load.image('sky', 'assets/sky.png');
-  this.load.image('ground', 'assets/platform.png');
-  this.load.image('star', 'assets/star.png');
-  this.load.image('bomb', 'assets/bomb.png');
-  this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-  this.load.image('1', 'assets/1.png');
-  this.load.image('2', 'assets/2.png');
-  this.load.image('3', 'assets/3.png');
-  this.load.image('4', 'assets/4.png');
-  this.load.image('5', 'assets/5.png');
-  this.load.image('6', 'assets/6.png');
-  this.load.image('7', 'assets/7.png');
-  this.load.image('8', 'assets/8.png');
+    // 플레이어 스프라이트
+    this.load.spritesheet('dude', 'assets/cat1.png', { frameWidth: 96, frameHeight: 100 });
+
+    // 공격 스프라이트
+    this.load.spritesheet('magic1', 'assets/attack/16_sunburn_spritesheet.png', {frameWidth: 100, frameHeight: 100, endFrame: 61});
+    this.load.spritesheet('magic2', 'assets/attack/12_nebula_spritesheet.png', { frameWidth: 100, frameHeight: 100, endFrame: 61 });
+    this.load.spritesheet('magic3', 'assets/attack/18_midnight_spritesheet.png', { frameWidth: 100, frameHeight: 100, endFrame: 61 });
+    this.load.spritesheet('magic4', 'assets/attack/2_magic8_spritesheet.png', { frameWidth: 100, frameHeight: 100, endFrame: 61 });
+    this.load.spritesheet('magic5', 'assets/attack/20_magicbubbles_spritesheet.png', { frameWidth: 100, frameHeight: 100, endFrame: 61 });
+    // 요정 스프라이트
+    this.load.spritesheet('fairy1', 'assets/fairy1.png', { frameWidth: 150, frameHeight: 142 });
+    this.load.spritesheet('fairy2', 'assets/fairy2.png', { frameWidth: 230, frameHeight: 210 });
+    this.load.spritesheet('fairy3', 'assets/fairy3.png', { frameWidth: 134, frameHeight: 158 });
+    this.load.spritesheet('fairy4', 'assets/fairy4.png', { frameWidth: 136, frameHeight: 170 });
+    this.load.spritesheet('fairy5', 'assets/fairy5.png', { frameWidth: 160, frameHeight: 190 });
   //player end
 
   this.load.image('j1', 'j1.png');
@@ -69,74 +82,188 @@ function create() {
   this.cameras.main.setBounds(0, 0, 16000, 16000);
   this.physics.world.setBounds(0, 0, 16000, 16000);
   map = this.make.tilemap({ key: "map" }); //map을 키로 가지는 JSON 파일 가져와 적용하기
-  const tileset = map.addTilesetImage("tiles", "tiles"); //그릴떄 사용할 타일 이미지 적용하기
-  const worldLayer = map.createDynamicLayer("Tile Layer 1", tileset); //레이어 화면에 뿌려주기
-  const portalLayer = map.createDynamicLayer("Tile Layer 2", tileset); //레이어 화면에 뿌려주기
-  objectLayer = map.createDynamicLayer("Tile Layer 3", tileset); //레이어 화면에 뿌려주기
+  const tileset = map.addTilesetImage("Tiles", "tiles"); //그릴떄 사용할 타일 이미지 적용하기
+  const tileset2 = map.addTilesetImage("tiles2", "tiles2"); //그릴떄 사용할 타일 이미지 적용하기
+  backgroundLayer = map.createDynamicLayer("background", tileset); //레이어 화면에 뿌려주기
+  portalLayer = map.createDynamicLayer("portal", tileset2); //레이어 화면에 뿌려주기
+  wallLayer = map.createDynamicLayer("wall", tileset2);
+  stage1Layer = map.createDynamicLayer("stage1", tileset2);
+  stage2Layer = map.createDynamicLayer("stage2", tileset);
+  stage3Layer = map.createDynamicLayer("stage3", tileset2);
+  stage4Layer = map.createDynamicLayer("stage4", tileset2);
 
+  stage3Layer.setCollisionByProperty({ collides: true });
+  // const debugGraphics = this.add.graphics().setAlpha(0.7);
+  // stage3Layer.renderDebug(debugGraphics, {
+  //   tileColor: null,
+  // })
 
-  worldLayer.setCollisionByProperty({ collides: true });
-  const debugGraphics = this.add.graphics().setAlpha(0.7);
-  worldLayer.renderDebug(debugGraphics, {
-    tileColor: null,
-  })
-
-  camera = this.cameras.main;
 
   cursors = this.input.keyboard.addKeys({
-    up: Phaser.Input.Keyboard.KeyCodes.W,
-    down: Phaser.Input.Keyboard.KeyCodes.S,
-    left: Phaser.Input.Keyboard.KeyCodes.A,
-    right: Phaser.Input.Keyboard.KeyCodes.D
-  });
+    up:Phaser.Input.Keyboard.KeyCodes.W,
+    down:Phaser.Input.Keyboard.KeyCodes.S,
+    left:Phaser.Input.Keyboard.KeyCodes.A,
+    right: Phaser.Input.Keyboard.KeyCodes.D,
+    slot1: Phaser.Input.Keyboard.KeyCodes.ONE,
+    slot2: Phaser.Input.Keyboard.KeyCodes.TWO,
+    slot3: Phaser.Input.Keyboard.KeyCodes.THREE,
+    slot4: Phaser.Input.Keyboard.KeyCodes.FOUR,
+    slot5: Phaser.Input.Keyboard.KeyCodes.FIVE,
+});
 
   // // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
 
 
   //player start
-  turn = this.physics.add.sprite(80, 400, 'star');
-
-  turn.setScale(0.2);
-  //  The platforms group contains the ground and the 2 ledges we can jump on
-  platforms = this.physics.add.staticGroup();
+  camera = this.cameras.main;
   input = this.input;
+  mouse = input.mousePointer;
 
-  // The player and its settings
-  player = this.physics.add.sprite(100, 450, 'dude');
-
-  //  Player physics properties. Give the little guy a slight bounce.
-  player.setBounce(0.2);
-  player.setCollideWorldBounds(true);
-  //  Our player animations, turning, walking left and walking right.
-  this.anims.create({
-    key: 'left',
-    frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-    frameRate: 10,
-    repeat: -1
-  });
-
-  this.anims.create({
-    key: 'turn',
-    frames: [{ key: 'dude', frame: 4 }],
-    frameRate: 20
-  });
-
-  this.anims.create({
-    key: 'right',
-    frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-    frameRate: 10,
-    repeat: -1
-  });
-
-  //  Collide the player and the stars with the platforms
-  this.physics.add.collider(player, platforms);
+    // 플레이어, 요정 로딩
+    player = this.physics.add.sprite(100, 450, 'dude');
+    player.setBounce(0.2);
+    player.setCollideWorldBounds(true);
+    player.setScale(1);
+    fairys[0] = this.add.sprite(-100, -100, 'fairy1');
+    fairys[1] = this.add.sprite(-100, -100, 'fairy2');
+    fairys[2] = this.add.sprite(-100, -100, 'fairy3');
+    fairys[3] = this.add.sprite(-100, -100, 'fairy4');
+    fairys[4] = this.add.sprite(-100, -100, 'fairy5');
+    fairys[0].setScale(0.5);
+    fairys[1].setScale(0.5);
+    fairys[2].setScale(0.5);
+    fairys[3].setScale(0.5);
+    fairys[4].setScale(0.5);
+  
   //player end
+
+  // animation
+  this.anims.create({
+    key: 'fairy1_idle',
+    frames: this.anims.generateFrameNumbers('fairy1', { start: 12, end: 21 }),
+    frameRate: 6,
+    repeat: -1
+  });
+
+  this.anims.create({
+      key: 'fairy1_attack',
+      frames: this.anims.generateFrameNumbers('fairy1', { start: 6, end: 10 }),
+      frameRate: 10,
+      repeat: 0
+  });
+
+  this.anims.create({
+      key: 'fairy2_idle',
+      frames: this.anims.generateFrameNumbers('fairy2', { start: 10, end: 19 }),
+      frameRate: 6,
+      repeat: -1
+  });
+
+  this.anims.create({
+      key: 'fairy2_attack',
+      frames: this.anims.generateFrameNumbers('fairy2', { start: 0, end: 8 }),
+      frameRate: 12,
+      repeat: 0
+  });
+
+  this.anims.create({
+      key: 'fairy3_idle',
+      frames: this.anims.generateFrameNumbers('fairy3', { start: 11, end: 19 }),
+      frameRate: 6,
+      repeat: -1
+  });
+
+  this.anims.create({
+      key: 'fairy3_attack',
+      frames: this.anims.generateFrameNumbers('fairy3', { start: 0, end: 9 }),
+      frameRate: 12,
+      repeat: 0
+  });
+
+  this.anims.create({
+      key: 'fairy4_idle',
+      frames: this.anims.generateFrameNumbers('fairy4', { start: 7, end: 14 }),
+      frameRate: 6,
+      repeat: -1
+  });
+
+  this.anims.create({
+      key: 'fairy4_attack',
+      frames: this.anims.generateFrameNumbers('fairy4', { start: 0, end: 5 }),
+      frameRate: 8,
+      repeat: 0
+  });
+
+  this.anims.create({
+      key: 'fairy5_idle',
+      frames: this.anims.generateFrameNumbers('fairy5', { start: 15, end: 24 }),
+      frameRate: 6,
+      repeat: -1
+  });
+
+  this.anims.create({
+      key: 'fairy5_attack',
+      frames: this.anims.generateFrameNumbers('fairy5', { start: 0, end: 13 }),
+      frameRate: 15,
+      repeat: 0
+  });
+
+  this.anims.create({
+      key: 'turn',
+      frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 0 }),
+      frameRate: 10
+  });
+  this.anims.create({
+      key: 'left',
+      frames: this.anims.generateFrameNumbers('dude', {start: 1, end: 7}),
+      frameRate: 10,
+      repeat: -1
+  });
+  this.anims.create({
+      key: 'right',
+      frames: this.anims.generateFrameNumbers('dude', {start: 1, end: 7}),
+      frameRate: 10,
+      repeat: -1
+  });
+  // 공격 애니메이션
+  this.anims.create({
+      key: 'magic1',
+      frames: this.anims.generateFrameNumbers('magic1', {start: 0, end: 30, first: 0}),
+      frameRate: 200,
+      repeat: -1
+  });
+  this.anims.create({
+      key: 'magic2',
+      frames: this.anims.generateFrameNumbers('magic2', {start: 0, end: 30, first: 0}),
+      frameRate: 200,
+      repeat: -1
+  });
+  this.anims.create({
+      key: 'magic3',
+      frames: this.anims.generateFrameNumbers('magic3', {start: 0, end: 30, first: 0}),
+      frameRate: 200,
+      repeat: -1
+  });
+  this.anims.create({
+      key: 'magic4',
+      frames: this.anims.generateFrameNumbers('magic4', {start: 0, end: 30, first: 0}),
+      frameRate: 200,
+      repeat: -1
+  });
+  this.anims.create({
+      key: 'magic5',
+      frames: this.anims.generateFrameNumbers('magic5', {start: 0, end: 30, first: 0}),
+      frameRate: 200,
+      repeat: -1
+  });
+
+  fairys[now_fairy].play('fairy'+(now_fairy+1)+'_idle', true);
 
   var j1;
 
   for (var i = 0; i < 5; i++) {
-    var x = Phaser.Math.Between(10, 1000);
-    var y = Phaser.Math.Between(10, 1000);
+    var x = Phaser.Math.Between(400, 600);
+    var y = Phaser.Math.Between(400, 600);
 
     j1 = this.physics.add.sprite(x, y, 'j1');
     j1.body.immovable = true;
@@ -147,112 +274,134 @@ function create() {
   console.log(j1)
 
 
-  this.physics.add.overlap(player, portalLayer);
+  // this.physics.add.overlap(player, portalLayer);
 
-  player.setPosition(200, 100); //width, height
-  this.physics.add.collider(player, worldLayer);
+  player.setPosition(8000, 8000); //width, height
+  this.physics.add.collider(player, stage3Layer);
   camera.startFollow(player, true);
 }
 
 function update(time, delta) {
 
   //player start
-  rotation();
+  if (cursors.slot1.isDown && now_fairy !== 0 && /idle/.test(fairys[now_fairy].anims.currentAnim.key)) {
+    fairys[now_fairy].x = -100;
+    fairys[now_fairy].y = -100;
+    now_fairy = 0;
+    fairys[now_fairy].anims.play('fairy' + (now_fairy + 1) + '_idle', true);
+  }
+
+  if (cursors.slot2.isDown && now_fairy !== 1 && /idle/.test(fairys[now_fairy].anims.currentAnim.key)) {
+    fairys[now_fairy].x = -100;
+    fairys[now_fairy].y = -100;
+    now_fairy = 1;
+    fairys[now_fairy].anims.play('fairy' + (now_fairy + 1) + '_idle', true);
+  }
+
+  if (cursors.slot3.isDown && now_fairy !== 2 && /idle/.test(fairys[now_fairy].anims.currentAnim.key)) {
+    fairys[now_fairy].x = -100;
+    fairys[now_fairy].y = -100;
+    now_fairy = 2;
+    fairys[now_fairy].anims.play('fairy' + (now_fairy + 1) + '_idle', true);
+  }
+
+  if (cursors.slot4.isDown && now_fairy !== 3 && /idle/.test(fairys[now_fairy].anims.currentAnim.key)) {
+    fairys[now_fairy].x = -100;
+    fairys[now_fairy].y = -100;
+    now_fairy = 3;
+    fairys[now_fairy].anims.play('fairy' + (now_fairy + 1) + '_idle', true);
+  }
+
+  if (cursors.slot5.isDown && now_fairy !== 4 && /idle/.test(fairys[now_fairy].anims.currentAnim.key)) {
+    fairys[now_fairy].x = -100;
+    fairys[now_fairy].y = -100;
+    now_fairy = 4;
+    fairys[now_fairy].anims.play('fairy' + (now_fairy + 1) + '_idle', true);
+  }
+
+
+  if (!fairys[now_fairy].anims.isPlaying) {
+    fairys[now_fairy].anims.play('fairy' + (now_fairy + 1) + '_idle', true);
+  }
+
+  if (timer == 60) {
+    timer = 0;
+    control = false;
+  } else {
+    timer++;
+  }
+  // fairy.anims.playAfterRepeat('fairy1_idle');
+  //mouse clicked
+  if (mouse.isDown && !control) {
+    // 게임에서 외부 UI 연관 테스트
+    
+
+    //for fire again
+    magic = this.physics.add.sprite(fairys[now_fairy].x, fairys[now_fairy].y, 'magic' + (now_fairy + 1));
+    timer = 0;
+    fairys[now_fairy].anims.play('fairy' + (now_fairy + 1) + '_attack', true);
+    
+    let angle = Phaser.Math.Angle.Between(fairys[now_fairy].x, fairys[now_fairy].y, input.x, input.y);
+    angle = ((angle + Math.PI / 2) * 180 / Math.PI + 90);
+    console.log((angle - 180) / 60);
+    magic.rotation += (angle - 180) / 60 - 1.5;
+    magic.anims.play('magic' + (now_fairy + 1), true);
+
+    //move to mouse position
+    this.physics.moveTo(magic, input.x, input.y, 500);
+    control = true;
+
+    //player enda
+
+    // var tile = map.getTileAt(map.worldToTileX(player.x), map.worldToTileY(player.y));
+
+    // if (tile) {
+    //   console.log('' + JSON.stringify(tile.properties))
+    // }
+  }
   move();
-  //player enda
-
-  var tile = map.getTileAt(map.worldToTileX(player.x), map.worldToTileY(player.y));
-
-  if (tile) {
-    console.log('' + JSON.stringify(tile.properties))
-  }
 }
-
 //player start
-var rotation = function () {
-  let angle = Phaser.Math.Angle.Between(turn.x, turn.y, input.x, input.y);
-  //rotation cannon
-  // turn.setRotation(angle);
-  angle = ((angle + Math.PI / 2) * 180 / Math.PI + 90);
+var move = function(){
+  fairys[now_fairy].x = player.x - 30;
+  fairys[now_fairy].y = player.y - 70;
+  if (cursors.left.isDown)
+  {
+      player.setVelocityX(-160);
 
-  turn.x = player.x - 20;
-  turn.y = player.y - 50;
-
-  if (angle > 22.5 && angle <= 67.5) {
-    turn.setTexture("2");
-  } else if (angle > 67.5 && angle <= 112.5) {
-    turn.setTexture("3");
-  } else if (angle > 112.5 && angle <= 157.5) {
-    turn.setTexture("4");
-  } else if (angle > 157.5 && angle <= 202.5) {
-    turn.setTexture("5");
-  } else if (angle > 202.5 && angle <= 247.5) {
-    turn.setTexture("6");
-  } else if (angle > 247.5 && angle <= 292.5) {
-    turn.setTexture("7");
-  } else if (angle > 292.5 && angle <= 337.5) {
-    turn.setTexture("8");
+      player.anims.play('left', true);
+      player.flipX = true;
+  } else if (cursors.right.isDown) {
+      player.setVelocityX(160);
+      player.flipX = false;
+      player.anims.play('right', true);
   } else {
-    turn.setTexture("1");
-  }
-}
-
-var move = function () {
-  // console.log(player);
-
-  if (cursors.left.isDown) {
-    player.setVelocityX(-160);
-
-    player.anims.play('left', true);
-  }
-  else if (cursors.right.isDown) {
-    player.setVelocityX(160);
-
-    player.anims.play('right', true);
-  } else {
-    player.setVelocityX(0);
+      player.setVelocityX(0);
   }
 
   if (cursors.up.isDown) {
-    player.setVelocityY(-160);
+      player.setVelocityY(-160);
 
-    if (cursors.left.isDown) {
-      player.anims.play('left', true);
-    } else {
-      player.anims.play('right', true);
-    }
+      if (cursors.left.isDown) {
+          player.anims.play('left', true);
+      } else {
+          player.anims.play('right', true);
+      }
 
-  }
-  else if (cursors.down.isDown) {
-    player.setVelocityY(+160);
+  } else if (cursors.down.isDown) {
+      player.setVelocityY(+160);
 
-    if (cursors.left.isDown) {
-      player.anims.play('left', true);
-    } else {
-      player.anims.play('right', true);
-    }
+      if (cursors.left.isDown) {
+          player.anims.play('left', true);
+      } else {
+          player.anims.play('right', true);
+      }
 
-  }
-  else {
-    player.setVelocityY(0);
-    if (!cursors.left.isDown && !cursors.right.isDown) {
-      player.anims.play('turn', true);
-    }
+  } else {
+      player.setVelocityY(0);
+      if (!cursors.left.isDown && !cursors.right.isDown) {
+          player.anims.play('turn', true);
+      }
   }
 }
 //player end
-
-
-function randomizeRoom() {
-  // // Fill the floor of the room with random, weighted tiles
-  // objectLayer.weightedRandomize([
-  //   { index: -1, weight: 50 },
-  //   { index: 63, weight: 1 }, // Place an empty tile most of the tile
-  //   { index: 83, weight: 1 }, // Empty pot
-  //   { index: 103, weight: 1 }, // Full pot
-  // ], 1, 1, 1000, 1000);
-
-  console.log(objectLayer);
-
-
-}
