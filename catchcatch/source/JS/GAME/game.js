@@ -1,7 +1,7 @@
 import Fairy from './GameObj/Fairy';
 import Magic from './GameObj/Magic';
 import Player from './GameObj/Player';
-
+import Enemy from './GameObj/Enemy';
 export const config = {
   type: Phaser.AUTO,
   width: 600,
@@ -427,9 +427,14 @@ function create() {
   aliens = this.physics.add.group();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
     this.physics.add.overlap(player, aliens, hitplayer);
 
+=======
+  // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
+  this.physics.add.overlap(player, aliens, player.hitPlayer);
+>>>>>>> 34516b7 (#2 :sparkles: 몬스터 객체화)
 
     this.anims.create({
         key: 'swarm',
@@ -439,6 +444,7 @@ function create() {
         })
 
     // 공격 맞은 후 일시 무적에 사용
+<<<<<<< HEAD
     timer = this.time.addEvent({delay:2000, callback:()=>{invincible=false}, loop: true});
 
 =======
@@ -449,6 +455,9 @@ function create() {
 =======
   this.physics.add.overlap(player, alien, player.hitPlayer,null, this);
 >>>>>>> dd93dae (#3 :sparkles: 요정, 공격 객체화)
+=======
+    timer = this.time.addEvent({delay:2000, callback:()=>{player.invincible=false}, loop: true});    
+>>>>>>> 34516b7 (#2 :sparkles: 몬스터 객체화)
 
   //enemy end
 }
@@ -479,7 +488,7 @@ function update(time, delta) {
     for(let i=0;i<aliens.children.entries.length;i++){
         // console.log(this.physics.moveToObject(monsters[i], player, 100))
         // if ()
-        this.physics.moveToObject(aliens.children.entries[i], player, 100);
+        this.physics.moveToObject(aliens.children.entries[i], player, aliens.children.entries[i].velo);
         
     }
         
@@ -513,13 +522,12 @@ if (mon1_delay > 60){
     
 
         
-    alien = this.physics.add.sprite(mon1_x,mon1_y,'alien').setInteractive();
-    alien.hp = 3;
-    alien_count += 1
-    mon1_delay = 0
-    aliens.add(alien)
-    this.physics.add.collider(aliens, alien)
-    anime(alien)
+    alien = new Enemy(this, 10, 100, mon1_x, mon1_y, 'alien', 'swarm');
+    alien_count += 1;
+    mon1_delay = 0;
+    aliens.add(alien);
+    this.physics.add.collider(aliens, alien);
+    alien.anime(alien);
     }
 =======
   this.physics.add.overlap(player['sprite'], alien, hitplayer, null, this);
@@ -549,6 +557,7 @@ if (mon1_delay > 60){
 >>>>>>> dd93dae (#3 :sparkles: 요정, 공격 객체화)
 
   //enemy end
+  
 }
 
 //player start
@@ -702,17 +711,16 @@ function hitplayer(p, alien) {
 =======
 >>>>>>> dd93dae (#3 :sparkles: 요정, 공격 객체화)
 function attack(magic, alien) {
-  magic.destroy();
-  alien.hp -= 1
-  if (alien.hp == 0){
-  alien.destroy();}
-  alien_count -= 1;
+  // magic.destroy();
+    alien.health -= 1
+    alien.invincible = true;
+    if (alien.health == 0){
+      alien.destroy();
+      alien_count -= 1;
+    }
+
 }
 
-function anime(alien){
-  alien
-  .setTint(Phaser.Display.Color.RandomRGB().color)
-  .play('swarm');
-}
+
 
 //enemy end
