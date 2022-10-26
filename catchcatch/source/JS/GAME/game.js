@@ -122,6 +122,7 @@ let controls;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var aliens;
 =======
 export var aliens;
@@ -170,7 +171,24 @@ let randomLocation;
 let invincible = false;
 let timer;
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
+=======
+export var monsterSet;
+var monster;
+// 1번 몬스터: alien
+var alien;
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 
+// 2번 몬스터: worm
+var worm;
+
+var cursors;
+var monDelay = 0;
+var monX;
+var monY;
+global.monsterCount = 0;
+var randomLocation;
+var timer;
+var random_monster = 0;
 // 몬스터 이미지
 
 //enemy end
@@ -289,6 +307,7 @@ function preload() {
       endFrame: 61,
     }
   );
+
   this.load.spritesheet(
     "magic2",
     "images/attack/weapon/7_firespin_spritesheet.png",
@@ -297,6 +316,7 @@ function preload() {
       frameHeight: 100,
     }
   );
+
   this.load.spritesheet(
     "magic3",
     "images/attack/weapon/18_midnight_spritesheet.png",
@@ -306,6 +326,7 @@ function preload() {
       endFrame: 61,
     }
   );
+
   this.load.spritesheet(
     "magic4",
     "images/attack/weapon/2_magic8_spritesheet.png",
@@ -315,17 +336,20 @@ function preload() {
       endFrame: 61,
     }
   );
+
   this.load.spritesheet(
     "magic5",
     "images/attack/weapon/8_protectioncircle_spritesheet.png",
     { frameWidth: 100, frameHeight: 100, endFrame: 61 }
   );
+
   this.load.spritesheet(
     "magic5_1",
     "images/attack/weapon/13_vortex_spritesheet.png",
     { frameWidth: 100, frameHeight: 100, endFrame: 61 }
   );
 
+<<<<<<< HEAD
   // 스킬 스프라이트
   this.load.spritesheet(
     "skill1",
@@ -354,27 +378,34 @@ function preload() {
       endFrame: 61,
     }
   );
+=======
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
   // 요정 스프라이트
   this.load.spritesheet("fairy1", "images/fairy/fairy1.png", {
     frameWidth: 150,
     frameHeight: 142,
   });
+
   this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
     frameWidth: 230,
     frameHeight: 210,
   });
+
   this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
     frameWidth: 134,
     frameHeight: 158,
   });
+
   this.load.spritesheet("fairy4", "images/fairy/fairy4.png", {
     frameWidth: 136,
     frameHeight: 170,
   });
+
   this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
     frameWidth: 160,
     frameHeight: 190,
   });
+
   //player end
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
 
@@ -831,6 +862,7 @@ function create() {
     // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
     this.physics.add.overlap(player, aliens, hitplayer);
 
+<<<<<<< HEAD
 =======
   // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
   this.physics.add.overlap(player, aliens, player.hitPlayer);
@@ -849,8 +881,22 @@ function create() {
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
 =======
   alienSet = this.physics.add.group();
+=======
+    // this.physics.add.overlap(player, portalLayer);
+
+    player.setPosition(8000, 8000); //width, height
+    this.physics.add.collider(player, stage3Layer);
+    camera.startFollow(player, false);
+    //map end
+
+    //enemy start
+  
+  monsterSet = this.physics.add.group();
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
   magics = this.physics.add.group();
+
   // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
+<<<<<<< HEAD
   this.physics.add.collider(player, alienSet, player.hitPlayer);
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -929,13 +975,29 @@ function create() {
   this.cameras.main.centerOn(this.followPoint.x, this.followPoint.y);
   //map enderlap(magics, alienSet, attack);
 >>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
+=======
+  this.physics.add.collider(player, monsterSet, player.hitPlayer);
+  thisScene.physics.add.overlap(magics, monsterSet, attack);
+
+
+  // 플레이어가 공격 맞은 후 일시 무적에 사용
+      timer = this.time.addEvent({
+        delay: 2000, callback: () => {
+            player.invincible = false
+        }, loop: true
+    });
+
+    // ============== 몬스터 스프라이트 애니메이션 목록 ==================
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
     this.anims.create({
         key: 'swarm',
         frames: this.anims.generateFrameNumbers('alien', {start: 0, end: 1}),
         frameRate: 2,
         repeat: -1
     })
+  //enemy end
 
+<<<<<<< HEAD
     // 공격 맞은 후 일시 무적에 사용
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -961,6 +1023,8 @@ function create() {
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
 
     //enemy end
+=======
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 }
 
 function update(time, delta) {
@@ -1141,6 +1205,7 @@ function update(time, delta) {
   //mouse clicked
   if (mouse.leftButtonDown() && !control && fairySet[nowFairy].bombcount>0) {
     magic = new Magic(this, fairySet[nowFairy]);
+<<<<<<< HEAD
     magic.setDepth(2);
     this.physics.add.overlap(
       magic,
@@ -1149,6 +1214,9 @@ function update(time, delta) {
       null,
       this
     );
+=======
+    this.physics.add.overlap(magic, monsterSet, fairySet[nowFairy].attack, null, this);
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
     fairySet[nowFairy].normalAttack(magic);
   }
 
@@ -1250,7 +1318,17 @@ function update(time, delta) {
     }
   }
 
+<<<<<<< HEAD
   mon1Delay++;
+=======
+
+    // 몬스터가 유저 따라가게함
+    if (monsterCount !== 0) {
+        for (let i = 0; i < monsterSet.children.entries.length; i++) {
+            this.physics.moveToObject(monsterSet.children.entries[i], player, monsterSet.children.entries[i].velo);
+            // #홀에 따라가게 하는 코드 작성하기#
+        }
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 
   // 랜덤 위치에 몬스터 생성 (추후 player.x 및 y 좌표 기준 생성으로 변경)
   if (mon1Delay > 60) {
@@ -1266,35 +1344,64 @@ function update(time, delta) {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     mon1Delay++;
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
+=======
+    monDelay++;
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 
 
 <<<<<<< HEAD
 // 랜덤 위치에 몬스터 생성 (추후 player.x 및 y 좌표 기준 생성으로 변경)
+<<<<<<< HEAD
     if (mon1Delay > 60) {
         gameTimer++;
         console.log(gameTimer);
+=======
+    if (monDelay > 60) {
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
         randomLocation = Math.floor(Math.random() * 4) + 1
         if (randomLocation === 1) {
-            mon1X = Phaser.Math.Between(player.x - 2000, player.x + 2000);
-            mon1Y = Phaser.Math.Between(player.y + 2000, player.y + 2010);
+            monX = Phaser.Math.Between(player.x - 2000, player.x + 2000);
+            monY = Phaser.Math.Between(player.y + 2000, player.y + 2010);
         }
 
-        if (randomLocation === 2) {
-            mon1X = Phaser.Math.Between(player.x - 2000, player.x + 2000);
-            mon1Y = Phaser.Math.Between(player.y - 2000, player.y - 2010);
+        else if (randomLocation === 2) {
+            monX = Phaser.Math.Between(player.x - 2000, player.x + 2000);
+            monY = Phaser.Math.Between(player.y - 2000, player.y - 2010);
         }
 
-        if (randomLocation === 3) {
-            mon1X = Phaser.Math.Between(player.x - 2000, player.x - 2000);
-            mon1Y = Phaser.Math.Between(player.y - 2000, player.y + 2000);
+        else if (randomLocation === 3) {
+            monX = Phaser.Math.Between(player.x - 2000, player.x - 2000);
+            monY = Phaser.Math.Between(player.y - 2000, player.y + 2000);
         }
 
-        if (randomLocation === 4) {
-            mon1X = Phaser.Math.Between(player.x + 2000, player.x + 2000);
-            mon1Y = Phaser.Math.Between(player.y - 2000, player.y + 2000);
+        else if (randomLocation === 4) {
+            monX = Phaser.Math.Between(player.x + 2000, player.x + 2000);
+            monY = Phaser.Math.Between(player.y - 2000, player.y + 2000);}
+      
+        random_monster = Math.floor(Math.random() * 4) + 1;
+
+        switch (random_monster){
+          case 1:
+            // 몬스터이름, 애니메이션, 체력, 속도, x,y
+            addMonster(this, 'alien', 'swarm',10,100,monX,monY);
+            
+            break;
+
+          // case 2:
+          //   worm = new Enemy(this, 10, 100, monX,monY, 'worm', 'worm_anim');
+          //   monsterCount += 1;
+          //   monDelay = 0;
+          //   monsterSet.add(alien);
+          //   this.physics.add.collider(monsterSet, alien);
+          //   alien.anime(alien);
+          //   break;
+
+          // case 3:
         }
+<<<<<<< HEAD
 
 
         alien = new Enemy(this, 10, 100, mon1X, mon1Y, 'alien', 'swarm');
@@ -1329,6 +1436,10 @@ function update(time, delta) {
       aliens.add(alien)
       anime(alien)
       }
+=======
+    }
+
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
   for(let i = magics.length-1; i>=0;i--){
     magics[i].timer++;
     if(magics[i].timer == magics[i].lifetime){
@@ -1343,6 +1454,7 @@ function update(time, delta) {
         }
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
     }
+<<<<<<< HEAD
 =======
 >>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
 
@@ -1385,6 +1497,10 @@ if (mon1_delay > 60){
   
 =======
     //enemy end
+=======
+  }
+  //enemy end
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
 =======
@@ -1449,10 +1565,11 @@ var magicFire = function (game) {
   magics.push(magic);
   // console.log(magic);
   // console.log(magic.body);
-  game.physics.add.overlap(magic, alienSet, attack, null, this);
+  game.physics.add.overlap(magic, monsterSet, attack, null, this);
   // magic.body.setCircle(45);
 
   /*충돌관련 하드코딩 된 부분 나중에 수정 */
+<<<<<<< HEAD
   magic.body.width = 50;
   magic.body.height = 50;
   magic.body.offset.x = 25;
@@ -1469,6 +1586,13 @@ var magicFire = function (game) {
     input.y + camera.scrollY
   );
 >>>>>>> 457e4ef (#1 :sparkles: develop merge)
+=======
+    magic.body.width = 50;
+    magic.body.height = 50;
+    magic.body.offset.x = 25;
+    magic.body.offset.y = 25;
+    normalAttackTimer = 0;
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 
   // 각도 계산 공식
   angle = ((angle + Math.PI / 2) * 180) / Math.PI + 90;
@@ -1634,14 +1758,15 @@ function changeSlot(){
   }
 }
 
-function attack(magic, alien) {
-  if (!alien.invincible) {
+function attack(magic, monster) {
+  if (!monster.invincible) {
     if (magic.pierceCount > 0) {
       magic.pierceCount--;
     } else {
       magic.destroy();
     }
 
+<<<<<<< HEAD
     if (nowFairy === 2) {
       //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
       let num = Math.floor(Math.random() * 100 + 1);
@@ -1659,10 +1784,25 @@ function attack(magic, alien) {
       alien.destroy();
       player.levelUp();
       alienCount -= 1;
+=======
+    if (nowFairy === 2) { //  && fairys[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
+      let num = Math.floor(Math.random() * 100);
+      if (num <= 9) {
+        monster.destroy();
+      }
+    }
+
+    monster.health -= fairySet[nowFairy].dmg;
+    monster.invincible = true;
+    if (monster.health <= 0){
+      monster.destroy();
+      monsterCount -= 1;
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
     }
   }
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 //player end
@@ -1716,6 +1856,18 @@ function attack(magic, alien) {
 
 =======
 >>>>>>> 52852dc (#3 :bug: 오타 및 컨벤션 수정)
+=======
+
+
+function addMonster(scene,mon_name, mon_anime,hp,velo,x,y){
+  monster = new Enemy(scene, hp, velo, x, y, mon_name, mon_anime);
+  monsterCount += 1;
+  monDelay = 0;
+  monsterSet.add(monster);
+  scene.physics.add.collider(monsterSet, monster);
+  monster.anime();
+}
+>>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 //enemy end
 
 //map start
