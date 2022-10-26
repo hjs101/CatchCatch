@@ -1397,8 +1397,8 @@ function changeSlot() {
     nowFairy !== 0 &&
     /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
   ) {
-    fairySet[nowFairy].x = -100;
-    fairySet[nowFairy].y = -100;
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
     nowFairy = 0;
     player.changeFairy(fairySet[nowFairy]);
     normalAttackAS = fairySet[nowFairy].as;
@@ -1410,8 +1410,8 @@ function changeSlot() {
     nowFairy !== 1 &&
     /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
   ) {
-    fairySet[nowFairy].x = -100;
-    fairySet[nowFairy].y = -100;
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
     nowFairy = 1;
     player.changeFairy(fairySet[nowFairy]);
     normalAttackAS = fairySet[nowFairy].as;
@@ -1423,8 +1423,8 @@ function changeSlot() {
     nowFairy !== 2 &&
     /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
   ) {
-    fairySet[nowFairy].x = -100;
-    fairySet[nowFairy].y = -100;
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
     nowFairy = 2;
     player.changeFairy(fairySet[nowFairy]);
     normalAttackAS = fairySet[nowFairy].as;
@@ -1436,8 +1436,8 @@ function changeSlot() {
     nowFairy !== 3 &&
     /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
   ) {
-    fairySet[nowFairy].x = -100;
-    fairySet[nowFairy].y = -100;
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
     nowFairy = 3;
     player.changeFairy(fairySet[nowFairy]);
     normalAttackAS = fairySet[nowFairy].as;
@@ -1449,8 +1449,8 @@ function changeSlot() {
     nowFairy !== 4 &&
     /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
   ) {
-    fairySet[nowFairy].x = -100;
-    fairySet[nowFairy].y = -100;
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
     nowFairy = 4;
     player.changeFairy(fairySet[nowFairy]);
     normalAttackAS = fairySet[nowFairy].as;
