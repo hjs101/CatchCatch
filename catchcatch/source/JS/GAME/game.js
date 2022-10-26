@@ -60,6 +60,9 @@ let input;
 let mouse;
 //player end
 
+//gametimer
+var gameTimer = 0;
+
 //map start
 let map;
 export let mapSize = 16000;
@@ -298,6 +301,35 @@ function preload() {
     "images/attack/weapon/13_vortex_spritesheet.png",
     { frameWidth: 100, frameHeight: 100, endFrame: 61 }
   );
+
+  // 스킬 스프라이트
+  this.load.spritesheet(
+    "skill1",
+    "images/attack/weapon/17_felspell_spritesheet.png",
+    {
+      frameWidth: 100,
+      frameHeight: 100,
+      endFrame: 61,
+    }
+  );
+  this.load.spritesheet(
+    "skill2",
+    "images/attack/weapon/15_loading_spritesheet.png",
+    {
+      frameWidth: 100,
+      frameHeight: 100,
+      endFrame: 61,
+    }
+  );
+  this.load.spritesheet(
+    "skill4",
+    "images/attack/weapon/10_weaponhit_spritesheet.png",
+    {
+      frameWidth: 100,
+      frameHeight: 100,
+      endFrame: 61,
+    }
+  );
   // 요정 스프라이트
   this.load.spritesheet("fairy1", "images/fairy/fairy1.png", {
     frameWidth: 150,
@@ -355,6 +387,7 @@ function create() {
   thisScene = this;
   //map start
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.cameras.main.setBounds(0, 0, mapSize, mapSize);
   this.physics.world.setBounds(0, 0, mapSize, mapSize);
   map = this.make.tilemap({ key: "map" }); //map을 키로 가지는 JSON 파일 가져와 적용하기
@@ -370,6 +403,9 @@ function create() {
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
 =======
   this.chunkSize = 16;
+=======
+  this.chunkSize = 8;
+>>>>>>> f7fa4a4 (#3 :sparkles: 플레이어 스킬 구현1)
   this.tileSize = 1024;
   this.cameraSpeed = 10;
 >>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
@@ -469,6 +505,7 @@ function create() {
   fairySet[1] = new Fairy(this, 100, 10, 1, 1, 70, 10, 160, 2, player);
   fairySet[2] = new Fairy(this, 100, 0, 1, 3, 80, 10, 300, 3, player);
   fairySet[3] = new Fairy(this, 100, 10, 1, 4, 90, 10, 400, 4, player);
+  fairySet[3].initFairy3(0, 0);
   fairySet[4] = new Fairy(this, 100, 10, 1, 5, 100, 10, 500, 5, player);
   for (let i = 0; i < 5; i++) {
     fairySet[i].setDepth(1);
@@ -928,6 +965,7 @@ if (
 }
 
 function update(time, delta) {
+
   //map start
   if (
     this.cameras.main.worldView.x > -1000 &&
@@ -1020,6 +1058,20 @@ function update(time, delta) {
       this
     );
     fairySet[nowFairy].normalAttack(magic);
+  }
+
+  for (let i = 0; i < 5; i++){
+    if (fairySet[i].timer < fairySet[i].skillCD) {
+      fairySet[i].timer++;
+    } else {
+      fairySet[i].skillUse = false;
+    }
+  }
+
+  if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
+    console.log(fairySet[nowFairy].timer);
+    console.log(fairySet[nowFairy].skillCD);
+    fairySet[nowFairy].skillFire();
   }
 
   player.move();
@@ -1124,6 +1176,8 @@ function update(time, delta) {
 <<<<<<< HEAD
 // 랜덤 위치에 몬스터 생성 (추후 player.x 및 y 좌표 기준 생성으로 변경)
     if (mon1Delay > 60) {
+        gameTimer++;
+        console.log(gameTimer);
         randomLocation = Math.floor(Math.random() * 4) + 1
         if (randomLocation === 1) {
             mon1X = Phaser.Math.Between(player.x - 2000, player.x + 2000);
@@ -1260,6 +1314,7 @@ if (mon1_delay > 60){
 }
 
 //player start
+<<<<<<< HEAD
 
 // 플레이어 공격
 <<<<<<< HEAD
@@ -1334,6 +1389,8 @@ var magicFire = function (game) {
 };
 
 <<<<<<< HEAD
+=======
+>>>>>>> f7fa4a4 (#3 :sparkles: 플레이어 스킬 구현1)
 function changeSlot() {
   if (
     cursors.slot1.isDown &&
@@ -1482,7 +1539,6 @@ function changeSlot(){
 
 function attack(magic, alien) {
   if (!alien.invincible) {
-    console.log(1234);
     if (magic.pierceCount > 0) {
       magic.pierceCount--;
     } else {
@@ -1490,10 +1546,11 @@ function attack(magic, alien) {
     }
 
     if (nowFairy === 2) {
-      //  && fairys[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
-      let num = Math.floor(Math.random() * 100);
-      if (num <= 9) {
+      //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
+      let num = Math.floor((Math.random() * 100) + 1);
+      if (num <= fairySet[nowFairy].deathCount) {
         alien.destroy();
+        alienCount -= 1;
       }
     }
 
