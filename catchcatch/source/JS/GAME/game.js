@@ -2,6 +2,9 @@ import Fairy from "./GameObj/fairy.js";
 import Magic from "./GameObj/magic.js";
 import Player from "./GameObj/player.js";
 import Enemy from "./GameObj/enemy.js";
+import inGameUI, { updateExp } from "../UI/inGameUI.js";
+import levelup from "../UI/levelup.js";
+import initUpgrade, { closeUpgrade } from "../UI/upgrade.js";
 
 import { Chunk, Tile } from "./Entities.js";
 
@@ -330,6 +333,7 @@ function preload() {
 
 function create() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     //map start
     this.cameras.main.setBounds(0, 0, mapSize, mapSize);
@@ -345,6 +349,9 @@ function create() {
     stage3Layer = map.createDynamicLayer("stage3", tileset2);
     stage4Layer = map.createDynamicLayer("stage4", tileset2);
 =======
+=======
+  inGameUI();
+>>>>>>> 6fd22c6 (#1 :sparkles: merge 완료)
   thisScene = this;
   //map start
 <<<<<<< HEAD
@@ -402,8 +409,15 @@ function create() {
     skill: Phaser.Input.Keyboard.KeyCodes.SPACE,
   });
   // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
+<<<<<<< HEAD
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
 
+=======
+  global.$this = this.scene;
+  this.input.keyboard.on("keydown-" + "SHIFT", function (event) {
+    initUpgrade();
+  });
+>>>>>>> 6fd22c6 (#1 :sparkles: merge 완료)
   //map end
 
   //player start
@@ -1270,6 +1284,14 @@ let magicFire = function (game) {
 =======
 var magicFire = function (game) {
   // 게임에서 외부 UI 연관 테스트
+  exp++;
+  updateExp();
+  if (exp === 3) {
+    level++;
+    exp = 0;
+    levelup();
+    updateExp();
+  }
   //for fire again
   magic = new Magic(game, fairySet[nowFairy].range, fairySet[nowFairy]);
   magics.push(magic);
