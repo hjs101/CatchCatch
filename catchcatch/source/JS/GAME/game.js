@@ -3,12 +3,16 @@ import Magic from './GameObj/magic.js';
 import Player from './GameObj/player.js';
 import Enemy from './GameObj/enemy.js';
 
+import {Chunk, Tile} from './Entities.js';
+
 export const config = {
     type: Phaser.AUTO,
     width: 600,
     height: 600,
     parent: "game-container",
+    backgroundColor: "black",
     pixelArt: true,
+    roundPixels: true,
     scene: {
         //scene 제어에
         preload: preload,
@@ -18,11 +22,14 @@ export const config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: false,
+          fps: 60,
+            debug: true,
             fixedStep: false,
         },
     },
 };
+
+
 
 //player start
 // 고양이 json
@@ -88,8 +95,10 @@ var mouse;
 
 //map start
 var map;
+var chunks = [];
 export var mapSize = 16000;
 export var camera;
+<<<<<<< HEAD
 var backgroundLayer;
 var portalLayer;
 var wallLayer;
@@ -98,6 +107,8 @@ var stage2Layer;
 var stage3Layer;
 var stage4Layer;
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
+=======
+>>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
 let controls;
 //map end
 
@@ -162,12 +173,9 @@ let timer;
 
 function preload() {
     //map start
-    this.load.image("tiles", "images/map/tiles.png");
-    this.load.image("tiles2", "images/map/tiles2.png");
-    this.load.tilemapTiledJSON("map", "images/map/resources.tmj");
-    this.load.image("j1", "images/mine/j1.png");
-    this.load.image("j2", "images/mine/j2.png");
-    this.load.image("j3", "images/mine/j3.png");
+    this.load.image("sprWater", "images/map/sprWater.png");
+    this.load.image("sprSand", "images/map/sprSand.png");
+    this.load.image("sprGrass", "images/map/sprGrass.png");
     //map end
 
     //player start
@@ -341,6 +349,7 @@ function create() {
 =======
   thisScene = this;
   //map start
+<<<<<<< HEAD
   this.cameras.main.setBounds(0, 0, mapSize, mapSize);
   this.physics.world.setBounds(0, 0, mapSize, mapSize);
   map = this.make.tilemap({ key: "map" }); //map을 키로 가지는 JSON 파일 가져와 적용하기
@@ -354,12 +363,19 @@ function create() {
   stage3Layer = map.createDynamicLayer("stage3", tileset2);
   stage4Layer = map.createDynamicLayer("stage4", tileset2);
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
+=======
+  this.chunkSize = 16;
+  this.tileSize = 1024;
+  this.cameraSpeed = 10;
+>>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
 
-    stage3Layer.setCollisionByProperty({collides: true});
-    // const debugGraphics = this.add.graphics().setAlpha(0.7);
-    // stage3Layer.renderDebug(debugGraphics, {
-    //   tileColor: null,
-    // })
+  this.cameras.main.setZoom(1);
+  this.followPoint = new Phaser.Math.Vector2(
+    this.cameras.main.worldView.x + this.cameras.main.worldView.width * 0.5,
+    this.cameras.main.worldView.y + this.cameras.main.worldView.height * 0.5
+  );
+  // this.cameras.main.setBounds(0, 0, mapSize, mapSize);
+  // this.physics.world.setBounds(0, 0, mapSize, mapSize);
 
 <<<<<<< HEAD
     cursors = this.input.keyboard.addKeys({
@@ -398,6 +414,7 @@ function create() {
     console.log(cats);
     player = cats[catNumber];
     player = new Player(this, 1, 100, 100);
+    player.setDepth(1);
     console.log(player);
     console.log(player)
     camera = this.cameras.main;
@@ -441,6 +458,9 @@ function create() {
   fairySet[2] = new Fairy(this,100, 0, 1, 3, 80, 10, 300, 3, player);
   fairySet[3] = new Fairy(this,100, 10, 1, 4, 90, 10, 400, 4, player);
   fairySet[4] = new Fairy(this, 100, 10, 1, 5, 100, 10, 500, 5, player);
+  for(let i=0;i<5;i++){
+    fairySet[i].setDepth(1);
+  }
   player.changeFairy(fairySet[0]);
   normalAttackAS = fairySet[0].as;
   // animation
@@ -660,25 +680,7 @@ function create() {
     //player end
 
     //map start
-    let j1;
-
-    for (let i = 0; i < 5; i++) {
-        let x = Phaser.Math.Between(400, 600);
-        let y = Phaser.Math.Between(400, 600);
-
-        j1 = this.physics.add.sprite(x, y, "j1");
-        j1.body.immovable = true;
-
-        this.physics.add.collider(player, j1);
-    }
-
-    console.log(j1);
-
-    // this.physics.add.overlap(player, portalLayer);
-
-    player.setPosition(8000, 8000); //width, height
-    this.physics.add.collider(player, stage3Layer);
-    camera.startFollow(player, false);
+    
     //map end
 
     //enemy start
@@ -714,8 +716,78 @@ function create() {
   magics = this.physics.add.group();
   // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
   this.physics.add.collider(player, alienSet, player.hitPlayer);
+<<<<<<< HEAD
   thisScene.physics.add.overlap(magics, alienSet, attack);
 >>>>>>> 52852dc (#3 :bug: 오타 및 컨벤션 수정)
+=======
+  thisScene.physics.add.overlap(magics,alienSet,attack);
+  //map start
+  if (
+    this.cameras.main.worldView.x > -1000 &&
+    this.cameras.main.worldView.x < 1000 &&
+    this.cameras.main.worldView.y > -1000 &&
+    this.cameras.main.worldView.y < 1000
+  ) {
+    var snappedChunkX =
+      this.chunkSize *
+      this.tileSize *
+      Math.round(this.followPoint.x / (this.chunkSize * this.tileSize));
+    var snappedChunkY =
+      this.chunkSize *
+      this.tileSize *
+      Math.round(this.followPoint.y / (this.chunkSize * this.tileSize));
+
+    snappedChunkX = snappedChunkX / this.chunkSize / this.tileSize;
+    snappedChunkY = snappedChunkY / this.chunkSize / this.tileSize;
+
+    for (var x = snappedChunkX - 2; x < snappedChunkX + 2; x++) {
+      for (var y = snappedChunkY - 2; y < snappedChunkY + 2; y++) {
+        var existingChunk = getChunk(x, y);
+
+        if (existingChunk == null) {
+          var newChunk = new Chunk(this, x, y);
+          chunks.push(newChunk);
+        }
+      }
+    }
+    for (var i = 0; i < chunks.length; i++) {
+      var chunk = chunks[i];
+
+      if (
+        Phaser.Math.Distance.Between(
+          snappedChunkX,
+          snappedChunkY,
+          chunk.x,
+          chunk.y
+        ) < 3
+      ) {
+        if (chunk !== null) {
+          chunk.load();
+        }
+      } else {
+        if (chunk !== null) {
+          chunk.unload();
+        }
+      }
+    }
+  }
+    
+    if (cursors.up.isDown && this.cameras.main.worldView.y > -1000) {
+      this.followPoint.y -= this.cameraSpeed;
+    }
+    if (cursors.down.isDown && this.cameras.main.worldView.y < 1000) {
+      this.followPoint.y += this.cameraSpeed;
+    }
+    if (cursors.left.isDown && this.cameras.main.worldView.x > -1000) {
+      this.followPoint.x -= this.cameraSpeed;
+    }
+    if (cursors.right.isDown && this.cameras.main.worldView.x < 1000) {
+      this.followPoint.x += this.cameraSpeed;
+    }
+    
+  this.cameras.main.centerOn(this.followPoint.x, this.followPoint.y);
+  //map enderlap(magics, alienSet, attack);
+>>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
     this.anims.create({
         key: 'swarm',
         frames: this.anims.generateFrameNumbers('alien', {start: 0, end: 1}),
@@ -751,6 +823,74 @@ function create() {
 }
 
 function update(time, delta) {
+//map start
+if (
+  this.cameras.main.worldView.x > -1000 &&
+  this.cameras.main.worldView.x < 1000 &&
+  this.cameras.main.worldView.y > -1000 &&
+  this.cameras.main.worldView.y < 1000
+) {
+  var snappedChunkX =
+    this.chunkSize *
+    this.tileSize *
+    Math.round(this.followPoint.x / (this.chunkSize * this.tileSize));
+  var snappedChunkY =
+    this.chunkSize *
+    this.tileSize *
+    Math.round(this.followPoint.y / (this.chunkSize * this.tileSize));
+
+  snappedChunkX = snappedChunkX / this.chunkSize / this.tileSize;
+  snappedChunkY = snappedChunkY / this.chunkSize / this.tileSize;
+
+  for (var x = snappedChunkX - 2; x < snappedChunkX + 2; x++) {
+    for (var y = snappedChunkY - 2; y < snappedChunkY + 2; y++) {
+      var existingChunk = getChunk(x, y);
+
+      if (existingChunk == null) {
+        var newChunk = new Chunk(this, x, y);
+        chunks.push(newChunk);
+      }
+    }
+  }
+  for (var i = 0; i < chunks.length; i++) {
+    var chunk = chunks[i];
+
+    if (
+      Phaser.Math.Distance.Between(
+        snappedChunkX,
+        snappedChunkY,
+        chunk.x,
+        chunk.y
+      ) < 3
+    ) {
+      if (chunk !== null) {
+        chunk.load();
+      }
+    } else {
+      if (chunk !== null) {
+        chunk.unload();
+      }
+    }
+  }
+}
+  
+  if (cursors.up.isDown && this.cameras.main.worldView.y > -1000) {
+    this.followPoint.y -= this.cameraSpeed;
+  }
+  if (cursors.down.isDown && this.cameras.main.worldView.y < 1000) {
+    this.followPoint.y += this.cameraSpeed;
+  }
+  if (cursors.left.isDown && this.cameras.main.worldView.x > -1000) {
+    this.followPoint.x -= this.cameraSpeed;
+  }
+  if (cursors.right.isDown && this.cameras.main.worldView.x < 1000) {
+    this.followPoint.x += this.cameraSpeed;
+  }
+  
+this.cameras.main.startFollow(player, false);
+//map end
+
+
     //player start
     changeSlot();
 
@@ -775,6 +915,7 @@ function update(time, delta) {
   player.move();
   //player end
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   // fairy skill start
@@ -835,6 +976,9 @@ function update(time, delta) {
     // }
 
     //map end
+=======
+    
+>>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
 
     //enemy start
 
@@ -885,6 +1029,7 @@ function update(time, delta) {
         alien.anime(alien);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   this.physics.add.overlap(player['sprite'], alien, hitplayer, null, this);
 >>>>>>> 8aecbcf (#3 :sparkles: 플레이어 객체 설정)
@@ -916,6 +1061,8 @@ function update(time, delta) {
         }
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
     }
+=======
+>>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
 
 <<<<<<< HEAD
   this.physics.add.overlap(player, alien, player.hitPlayer, null, this);
@@ -1168,6 +1315,7 @@ function changeSlot(){
 
 function attack(magic, alien) {
   if (!alien.invincible) {
+    console.log(1234);
     if (magic.pierceCount > 0) {
       magic.pierceCount--;
     } else {
@@ -1244,3 +1392,16 @@ function attack(magic, alien) {
 =======
 >>>>>>> 52852dc (#3 :bug: 오타 및 컨벤션 수정)
 //enemy end
+
+
+//map start
+function getChunk(x, y) {
+  var chunk = null;
+  for (var i = 0; i < chunks.length; i++) {
+    if (chunks[i].x == x && chunks[i].y == y) {
+      chunk = chunks[i];
+    }
+  }
+  return chunk;
+}
+//map end
