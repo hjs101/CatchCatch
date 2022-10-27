@@ -42,7 +42,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene.add.existing(this);
     scene.physics.add.existing(this);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ab07ca (#3 :sparkles: 위치 폭탄)
     scene.anims.create({
       key: "turn",
       frames: this.anims.generateFrameNumbers(catname, { start: 0, end: 0 }),
@@ -60,6 +63,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       frameRate: 10,
       repeat: -1,
     });
+  }
+  levelUp() {
+    this.exp++;
+    updateExp();
+    console.log("levelup");
+    if (this.exp === this.maxExp) {
+      this.level++;
+      this.exp = 0;
+      levelup();
+      updateExp();
+      this.maxExp = this.maxExp + this.maxExpBonus;
+    }
+    
 
 =======
 >>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
@@ -140,5 +156,4 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
-  shootBeam() {}
 }

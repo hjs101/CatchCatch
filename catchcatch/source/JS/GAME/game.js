@@ -538,12 +538,13 @@ function create() {
     4,
     1,
     1,
-    60,
-    10,
+    140,
+    40,
     500,
     1,
     player
   );
+<<<<<<< HEAD
   fairySet[0].initFairy1(2, 2);
 <<<<<<< HEAD
   fairySet[1] = new Fairy(this, 100, 10, 1, 1, 70, 10, 160, 2, player);
@@ -552,6 +553,9 @@ function create() {
   fairySet[3].initFairy3(1, 10);
   fairySet[4] = new Fairy(this, 100, 10, 1, 5, 100, 10, 500, 5, player);
 =======
+=======
+  fairySet[0].initFairy1(0, 0);
+>>>>>>> 8ab07ca (#3 :sparkles: 위치 폭탄)
   global.reaper = fairySet[1] = new Fairy(
     this,
     100,
@@ -576,32 +580,37 @@ function create() {
     3,
     player
   );
+  fairySet[2].initFairy3(0, 10);
   global.slime = fairySet[3] = new Fairy(
     this,
-    100,
+    7200,
     10,
     1,
-    4,
+    3,
     90,
     10,
     400,
     4,
     player
   );
-  fairySet[3].initFairy3(0, 0);
+
   global.witch = fairySet[4] = new Fairy(
     this,
     100,
     10,
     1,
     5,
-    100,
+    40,
     10,
     500,
     5,
     player
   );
+<<<<<<< HEAD
 >>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
+=======
+  fairySet[4].initFairy5(1, 1)
+>>>>>>> 8ab07ca (#3 :sparkles: 위치 폭탄)
   for (let i = 0; i < 5; i++) {
     fairySet[i].setDepth(1);
   }
@@ -1113,12 +1122,16 @@ function update(time, delta) {
 
   //player start
   changeSlot();
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
   if (normalAttackTimer == normalAttackAS) {
     normalAttackTimer = 0;
 =======
+=======
+  normalAttackAS = fairySet[nowFairy].as;
+>>>>>>> 8ab07ca (#3 :sparkles: 위치 폭탄)
   if (normalAttackTimer > normalAttackAS) {
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
     control = false;
@@ -1126,8 +1139,9 @@ function update(time, delta) {
     normalAttackTimer++;
   }
   //mouse clicked
-  if (mouse.leftButtonDown() && !control) {
+  if (mouse.leftButtonDown() && !control && fairySet[nowFairy].bombcount>0) {
     magic = new Magic(this, fairySet[nowFairy]);
+    magic.setDepth(2);
     this.physics.add.overlap(
       magic,
       alienSet,
