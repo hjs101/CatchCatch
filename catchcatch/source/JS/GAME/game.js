@@ -251,6 +251,7 @@ global.towerAttacks = "";
 global.towerSkillAttacks = "";
 //tower end
 
+
 function preload() {
   //map start
   this.load.image("sprWater", "images/map/sprWater.png");
@@ -263,6 +264,10 @@ function preload() {
   this.load.image("can", "images/cattower/can.png");
   this.load.image("skill", "images/cattower/skill.png");
   //tower end
+
+  //hole start
+  this.load.image("hole", "images/hole/hole.png");
+  //hole end
 
   //player start
   // 플레이어 스프라이트
@@ -1244,7 +1249,11 @@ if (
   towerRD.scale_Circle();
   
   //tower end
+<<<<<<< HEAD
 >>>>>>> bfa9489 (#6 :sparkles: 포탑 생성)
+=======
+
+>>>>>>> 07be956 (#6 :bug: hole bye)
 }
 
 function update(time, delta) {
@@ -1314,6 +1323,11 @@ function update(time, delta) {
 
   this.cameras.main.startFollow(player, false);
   //map end
+
+  //navi start
+  // navi.rotation = Phaser.Math.Angle.Between(navi.x, navi.y, hole.x, hole.y);
+
+  //navi end
 
   //player start
   changeSlot();
