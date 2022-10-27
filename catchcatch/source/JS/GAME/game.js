@@ -34,7 +34,7 @@ export const config = {
     default: "arcade",
     arcade: {
       fps: 60,
-      debug: true,
+      debug: false,
       fixedStep: false,
     },
   },
@@ -210,8 +210,10 @@ var cursors;
 // 보스
 var slime_king;
 
+// 보스 패턴
+var pt;
 // 보스 활성 확인
-var slime_king_active;
+var boss_active;
 
 // 몬스터 생성주기
 var mon1Delay = 0;
@@ -965,6 +967,7 @@ function create() {
 
 
   this.physics.add.collider(player, bossSet, player.hitPlayer);
+  this.physics.add.collider(bossSet, monsterSet);
   thisScene.physics.add.overlap(magics, bossSet, attack);
 >>>>>>> 738219b (#2 :sparkles: : 몬스터 종류 구현 및 보스 초기 제작)
 
@@ -1190,6 +1193,17 @@ if (
   });
 
   //enemy end
+<<<<<<< HEAD
+=======
+
+    // ##보스 생성, 나중에 타이머 조건 넣고 업데이트에 넣기 ##
+    if  (!boss_active){
+      slime_king = new Boss(this,200,80,player.x+300,player.y+300,'slime_king','swarm',5,1,'boss')
+      slime_king.anime()
+      boss_active = true
+      bossSet.add(slime_king)
+    }
+>>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
 }
 
 function update(time, delta) {
@@ -1451,6 +1465,7 @@ function update(time, delta) {
 =======
     }
 
+<<<<<<< HEAD
     if (slime_king_active){
     this.physics.moveToObject(slime_king,player,80);
     if(slime_king.health <= 100){
@@ -1459,6 +1474,14 @@ function update(time, delta) {
     }
     }
 >>>>>>> 738219b (#2 :sparkles: : 몬스터 종류 구현 및 보스 초기 제작)
+=======
+    if (boss_active){
+      for (let i = 0; i < bossSet.children.entries.length; i ++){
+    this.physics.moveToObject(bossSet.children.entries[i],player,bossSet.children.entries[i].velo);
+    if (bossSet.children.entries[i].health <=0){
+    slime_pattern(this,bossSet.children.entries[i].pt,bossSet.children.entries[i].x,bossSet.children.entries[i].y)
+    bossSet.children.entries[i].destroy()}}}
+>>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
 
     mon1Delay++;
     mon2Delay++;
@@ -1931,7 +1954,11 @@ function attack(magic, monster) {
 
     monster.health -= fairySet[nowFairy].dmg;
     monster.invincible = true;
+<<<<<<< HEAD
     if (monster.health <= 0){
+=======
+    if (monster.health <= 0 && monster.type !='boss') {
+>>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
       monster.destroy();
       monsterCount -= 1;
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
@@ -2004,7 +2031,6 @@ function hithole(hole,monster){
   if (hole.hp <= 0){
     console.log('game over')
   }
-  
 }
 
 
@@ -2020,31 +2046,50 @@ function addMonster(scene,mon_name, mon_anime,hp,velo,x,y,type){
 =======
 
 
-
-
 function enemySpawn(scene){
   randomLocation = Math.floor(Math.random() * 4) + 1
   if (randomLocation === 1) {
-    monX = Phaser.Math.Between(player.x - 1000, player.x + 1000);
-    monY = Phaser.Math.Between(player.y + 1000, player.y + 1010);
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y + 500, player.y + 510);
   }
 
   else if (randomLocation === 2) {
-    monX = Phaser.Math.Between(player.x - 1000, player.x + 1000);
-    monY = Phaser.Math.Between(player.y - 1000, player.y - 1010);
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y - 510);
   }
 
   else if (randomLocation === 3) {
-    monX = Phaser.Math.Between(player.x - 1000, player.x - 1000);
-    monY = Phaser.Math.Between(player.y - 1000, player.y + 1000);
+    monX = Phaser.Math.Between(player.x - 500, player.x - 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
   }
 
   else if (randomLocation === 4) {
-    monX = Phaser.Math.Between(player.x + 1000, player.x + 1000);
-    monY = Phaser.Math.Between(player.y - 1000, player.y + 1000);}
+    monX = Phaser.Math.Between(player.x + 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);}
 }
 
+function slime_pattern(scene,pt,x,y){
+  if(pt != 16){
+      pt *= 2
+      console.log(pt)
+      for (let i = 0; i<pt; i++){
+        // 분열될 때마다 체력 감소 구현하기
+        if(pt < 4){
+          slime_king = new Boss(scene,100,100,x+i*100,y,'slime_king','swarm',2.5,pt,'boss')}
+        else if (pt < 8){
+          slime_king = new Boss(scene,50,100,x+i*50,y,'slime_king','swarm',1.25,pt,'boss')
+        }
+        else{
+          slime_king = new Boss(scene,25,100,x+i*25,y,'slime_king','swarm',0.5,pt,'boss')
+        }
+          slime_king.anime()
+          scene.physics.add.collider(bossSet, slime_king);
+          bossSet.add(slime_king)
+      }
+  }
+}
 
+<<<<<<< HEAD
 
 
 // slime_pattern(){
@@ -2059,6 +2104,8 @@ function enemySpawn(scene){
 //   }
 // }
 >>>>>>> 738219b (#2 :sparkles: : 몬스터 종류 구현 및 보스 초기 제작)
+=======
+>>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
 //enemy end
 
 //map start
