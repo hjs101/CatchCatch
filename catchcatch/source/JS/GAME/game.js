@@ -15,10 +15,14 @@ import Magic from './GameObj/magic.js';
 import Player from './GameObj/player.js';
 import Enemy from './GameObj/enemy.js';
 import Boss from './GameObj/boss.js';
+<<<<<<< HEAD
 >>>>>>> 738219b (#2 :sparkles: : 몬스터 종류 구현 및 보스 초기 제작)
 =======
 import CatTower from "./GameObj/cattower.js";
 >>>>>>> bfa9489 (#6 :sparkles: 포탑 생성)
+=======
+import Mine from "./GameObj/mine.js";
+>>>>>>> 643016e (#6 :sparkles: 인게임 coin 생성)
 
 export const config = {
   type: Phaser.AUTO,
@@ -132,6 +136,11 @@ let controls;
 //navi start
 var navi;
 //navi end
+
+//coin start
+global.coin = 0;
+global.cointext = "";
+//coin end
 
 //enemy start
 
@@ -255,6 +264,17 @@ global.towerAttacks = "";
 global.towerSkillAttacks = "";
 //tower end
 
+//mine start
+var mine;
+var minecount = 10;
+var StartMineRangeX = -1000; 
+var StartMineRangeY = -1000; 
+var EndMineRangeX = 1000; 
+var EndMineRangeY = 1000; 
+
+global.mines = "";
+//mine end
+
 
 function preload() {
   //map start
@@ -276,6 +296,10 @@ function preload() {
   //navi start
   this.load.image("navi", "images/navi/arrow.png");
   //navi end
+
+  //mine start
+  this.load.image("mine", "images/mine/mine.png")
+  //mine end
 
   //player start
   // 플레이어 스프라이트
@@ -628,8 +652,7 @@ function create() {
   player.setDepth(2);
 >>>>>>> 43845d2 (#6 :bug: 맵chunk 미생성 수정)
   inGameUI();
-  console.log(player);
-  console.log(player);
+
   camera = this.cameras.main;
   input = this.input;
   mouse = input.mousePointer;
@@ -948,9 +971,11 @@ function create() {
 
   //player end
 
-  //map start
-
-  //map end
+  //cointext start
+  cointext = this.add.text(500, 10, 'coin: 0', { font: '10px Arial Black', fill: '#000' }).setScrollFactor(0);
+  cointext.setStroke('#fff', 1);
+  cointext.setDepth(2);
+  //cointext end
 
   //enemy start
 
@@ -983,6 +1008,7 @@ function create() {
   magics = this.physics.add.group();
   towerAttacks = this.physics.add.group();
   towerSkillAttacks = this.physics.add.group();
+<<<<<<< HEAD
   // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
   this.physics.add.collider(player, aliens, player.hitPlayer);
   thisScene.physics.add.overlap(magics, aliens, attack);
@@ -1005,6 +1031,9 @@ function create() {
   magics = this.physics.add.group();
 =======
 
+=======
+  mines = this.physics.add.group();
+>>>>>>> 643016e (#6 :sparkles: 인게임 coin 생성)
 
     // 임시 구멍
     hole = this.physics.add.sprite(8000,8100,'fairy4')
@@ -1278,8 +1307,19 @@ towerRD.setDepth(1);
 =======
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 07be956 (#6 :bug: hole bye)
 =======
+=======
+  //mine start
+  for(let i = 0; i < minecount; i++){
+    mine = new Mine(this, Math.random() * (EndMineRangeX - StartMineRangeX) + StartMineRangeX, Math.random() * (EndMineRangeY - StartMineRangeY) + StartMineRangeY, "mine");
+    mine.scale_Circle();
+    mines.add(mine);
+  }
+  //mine end
+
+>>>>>>> 643016e (#6 :sparkles: 인게임 coin 생성)
     // ##보스 생성, 나중에 타이머 조건 넣고 업데이트에 넣기 ##
     if  (!slime_king_active){
       slime_king = new Boss(this,300,80,player.x+300,player.y+300,'slime_king','swarm',5,1)
@@ -1350,7 +1390,6 @@ function update(time, delta) {
   //navi start
   
   navi.rotation = Phaser.Math.Angle.Between( hole.x, hole.y, player.x, player.y);
-  console.log(navi.rotation)
 
   //navi end
 
@@ -1417,8 +1456,7 @@ function update(time, delta) {
   }
 
   if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
-    console.log(fairySet[nowFairy].timer);
-    console.log(fairySet[nowFairy].skillCD);
+
     fairySet[nowFairy].skillFire();
   }
 
