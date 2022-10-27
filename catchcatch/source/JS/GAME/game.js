@@ -36,7 +36,7 @@ export const config = {
 // 고양이 json
 let cats;
 // 플레이어 객체
-let player;
+global.player = "";
 // 캐릭터 선택 시 변경될 변수
 let catNumber = 0;
 // 요정
@@ -390,6 +390,7 @@ function preload() {
 function create() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     //map start
     this.cameras.main.setBounds(0, 0, mapSize, mapSize);
@@ -408,6 +409,8 @@ function create() {
 =======
   inGameUI();
 >>>>>>> 6fd22c6 (#1 :sparkles: merge 완료)
+=======
+>>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
   thisScene = this;
   //map start
 <<<<<<< HEAD
@@ -483,10 +486,15 @@ function create() {
   //player start
   cats = require("./jsons/cats.json");
   fairySet = require("./jsons/fairys.json");
+<<<<<<< HEAD
   console.log(ChoiceCat);
+=======
+
+>>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
   player = cats[catNumber];
   player = new Player(this, 1, 100, 100, "cat"+(ChoiceCat+1));
   player.setDepth(1);
+  inGameUI();
   console.log(player);
   console.log(player);
   camera = this.cameras.main;
@@ -524,13 +532,76 @@ function create() {
     });
 =======
   // 플레이어, 요정 로딩
-  fairySet[0] = new Fairy(this, 100, 4, 1, 1, 60, 10, 500, 1, player);
+  global.wizard = fairySet[0] = new Fairy(
+    this,
+    100,
+    4,
+    1,
+    1,
+    60,
+    10,
+    500,
+    1,
+    player
+  );
   fairySet[0].initFairy1(2, 2);
+<<<<<<< HEAD
   fairySet[1] = new Fairy(this, 100, 10, 1, 1, 70, 10, 160, 2, player);
   fairySet[2] = new Fairy(this, 100, 0, 1, 3, 80, 10, 300, 3, player);
   fairySet[3] = new Fairy(this, 100, 10, 1, 4, 90, 10, 400, 4, player);
   fairySet[3].initFairy3(1, 10);
   fairySet[4] = new Fairy(this, 100, 10, 1, 5, 100, 10, 500, 5, player);
+=======
+  global.reaper = fairySet[1] = new Fairy(
+    this,
+    100,
+    10,
+    1,
+    1,
+    70,
+    10,
+    160,
+    2,
+    player
+  );
+  global.ninja = fairySet[2] = new Fairy(
+    this,
+    100,
+    0,
+    1,
+    3,
+    80,
+    10,
+    300,
+    3,
+    player
+  );
+  global.slime = fairySet[3] = new Fairy(
+    this,
+    100,
+    10,
+    1,
+    4,
+    90,
+    10,
+    400,
+    4,
+    player
+  );
+  fairySet[3].initFairy3(0, 0);
+  global.witch = fairySet[4] = new Fairy(
+    this,
+    100,
+    10,
+    1,
+    5,
+    100,
+    10,
+    500,
+    5,
+    player
+  );
+>>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
   for (let i = 0; i < 5; i++) {
     fairySet[i].setDepth(1);
   }
@@ -1562,14 +1633,7 @@ function attack(magic, alien) {
       let num = Math.floor(Math.random() * 100 + 1);
       if (num <= fairySet[nowFairy].deathCount) {
         alien.destroy();
-        exp++;
-        updateExp();
-        if (exp === 3) {
-          level++;
-          exp = 0;
-          levelup();
-          updateExp();
-        }
+        player.levelUp();
 
         alienCount -= 1;
       }
@@ -1579,15 +1643,7 @@ function attack(magic, alien) {
     alien.invincible = true;
     if (alien.health <= 0) {
       alien.destroy();
-      exp++;
-      updateExp();
-      if (exp === 3) {
-        level++;
-        exp = 0;
-        levelup();
-        updateExp();
-      }
-
+      player.levelUp();
       alienCount -= 1;
     }
   }
