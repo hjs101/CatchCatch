@@ -2817,12 +2817,15 @@ function attack(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (nowFairy === 2) {
       //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
       let num = Math.floor(Math.random() * 100 + 1);
       if (num <= fairySet[nowFairy].deathCount) {
         alien.destroy();
 =======
+=======
+>>>>>>> cee2f61 (#2 :sparkles: 몬스터 기능 추가)
     if (nowFairy === 2 ) {
       //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
       let num = Math.floor(Math.random() * 100 + 1);
@@ -2831,6 +2834,7 @@ function attack(magic, monster) {
         monster.destroy();
 >>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
         player.levelUp();
+<<<<<<< HEAD
 =======
         if (nowFairy === 2) {
             //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
@@ -2883,11 +2887,14 @@ function attack(magic, monster) {
             if (num <= fairySet[nowFairy].deathCount) {
                 monster.destroy();
                 player.levelUp();
+=======
+>>>>>>> cee2f61 (#2 :sparkles: 몬스터 기능 추가)
 
                 monsterCount -= 1;
             }
         }
 
+<<<<<<< HEAD
         monster.health -= fairySet[nowFairy].dmg;
         monster.invincible = true;
         if (monster.health <= 0 && monster.type != 'boss') {
@@ -2899,6 +2906,15 @@ function attack(magic, monster) {
             player.levelUp();
             monsterCount -= 1;
         }
+=======
+    monster.health -= fairySet[nowFairy].dmg;
+    monster.invincible = true;
+    if (monster.health <= 0 && monster.type !='boss') {
+      monster.die_anim();
+      monster.destroy();
+      player.levelUp();
+      monsterCount -= 1;
+>>>>>>> cee2f61 (#2 :sparkles: 몬스터 기능 추가)
     }
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
 }
@@ -3020,10 +3036,10 @@ function slime_pattern(scene, pt, x, y) {
             } else {
                 slime_king = new Boss(scene, 25, 100, x + i * 25, y, 'slime_king', 'swarm', 0.5, pt, 'boss')
             }
-<<<<<<< HEAD
             slime_king.anime();
             scene.physics.add.collider(bossSet, slime_king);
             bossSet.add(slime_king);
+<<<<<<< HEAD
 =======
 
 function enemySpawn(scene){
@@ -3060,6 +3076,8 @@ function slime_pattern(scene,pt,x,y){
 >>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
 =======
 >>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
+=======
+>>>>>>> cee2f61 (#2 :sparkles: 몬스터 기능 추가)
         }
     }
 }
