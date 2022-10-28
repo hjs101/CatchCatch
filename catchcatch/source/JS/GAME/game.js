@@ -1917,6 +1917,7 @@ function update(time, delta) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     mon1Delay++;
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
 =======
@@ -1994,6 +1995,10 @@ function update(time, delta) {
             monX = Phaser.Math.Between(player.x + 2000, player.x + 2000);
             monY = Phaser.Math.Between(player.y - 2000, player.y + 2000);}
 =======
+=======
+    gameTimer++;
+
+>>>>>>> e63670c (#2 :sparkle: 코드 정리)
     // 플레이어 기준랜덤 위치에 몬스터 생성
     // 생성규칙: 몬스터이름, 애니메이션, 체력, 속도, x,y,타입,딜레이
 <<<<<<< HEAD
@@ -2173,7 +2178,6 @@ if (mon1_delay > 60){
     ;
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
 
-
     if ((gameTimer > 1200) && (gameTimer % 600 == 0)) {
         // 2번 worm
         enemySpawn(randomLocation)
@@ -2196,6 +2200,37 @@ if (mon1_delay > 60){
         addMonster(this, 'turtle', 'swarm', 100, 30, monX, monY, 'siege')
     }
     ;
+
+    // 몬스터 빅웨이브
+    if ((gameTimer > 600) && (gameTimer < 1200) && (gameTimer % 3 == 0)) {
+        // 1번 zombie
+        enemySpawn(randomLocation)
+
+        // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
+        addMonster(this, 'alien', 'swarm', 10, 100, monX, monY, 'follower')
+        // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
+    }
+
+    // 보스
+
+    // 슬라임
+    if (gameTimer == 1800) {
+        slime_king = new Boss(this, 200, 80, player.x + 300, player.y + 300, 'slime_king', 'swarm', 5, 1, 'boss')
+        slime_king.setDepth(2);
+        slime_king.anime()
+        boss_active = true
+        bossSet.add(slime_king)
+    }
+
+    if (boss_active) {
+        for (let i = 0; i < bossSet.children.entries.length; i++) {
+            this.physics.moveToObject(bossSet.children.entries[i], player, bossSet.children.entries[i].velo);
+            if (bossSet.children.entries[i].health <= 0) {
+                slime_pattern(this, bossSet.children.entries[i].pt, bossSet.children.entries[i].x, bossSet.children.entries[i].y)
+                bossSet.children.entries[i].destroy()
+            }
+        }
+    }
 
     for (let i = magics.length - 1; i >= 0; i--) {
         magics[i].timer++;
