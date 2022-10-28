@@ -80,8 +80,7 @@ export const config = {
       fixedStep: false,
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
     },
-  },
-};
+  }
 
 //player start
 // 고양이 json
@@ -1756,7 +1755,7 @@ function create() {
         chunks.push(newChunk);
       }
     }
-  }
+  
   for (var i = 0; i < chunks.length; i++) {
     var chunk = chunks[i];
 
@@ -1851,7 +1850,6 @@ function create() {
 =======
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 }
-
 function update(time, delta) {
 //map start
 if (
