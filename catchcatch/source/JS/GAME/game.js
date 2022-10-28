@@ -37,6 +37,7 @@ import Mine from "./GameObj/mine.js";
 
 export const config = {
 <<<<<<< HEAD
+<<<<<<< HEAD
     type: Phaser.AUTO,
     width: 600,
     height: 600,
@@ -81,6 +82,31 @@ export const config = {
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
     },
   }
+=======
+  type: Phaser.AUTO,
+  width: 600,
+  height: 600,
+  parent: "game-container",
+  backgroundColor: "black",
+  resolution: window.devicePixelRatio,
+  pixelArt: true,
+  roundPixels: true,
+  scene: {
+    //scene 제어에
+    preload: preload,
+    create: create,
+    update: update,
+  },
+  physics: {
+    default: "arcade",
+    arcade: {
+      fps: 60,
+      debug: false,
+      fixedStep: false,
+    },
+  },
+};
+>>>>>>> b038195 (#1 :bug: 버그 수정)
 
 //player start
 // 고양이 json
@@ -1536,7 +1562,13 @@ function create() {
     40,
     500,
     1,
+<<<<<<< HEAD
     player
+=======
+    player,
+    0.5,
+    1
+>>>>>>> b038195 (#1 :bug: 버그 수정)
   );
   fairySet[0].initFairy1(0, 0);
   global.reaper = fairySet[1] = new Fairy(
@@ -1549,7 +1581,13 @@ function create() {
     10,
     160,
     2,
+<<<<<<< HEAD
     player
+=======
+    player,
+    0.4,
+    2
+>>>>>>> b038195 (#1 :bug: 버그 수정)
   );
   global.ninja = fairySet[2] = new Fairy(
     this,
@@ -1561,7 +1599,13 @@ function create() {
     10,
     300,
     3,
+<<<<<<< HEAD
     player
+=======
+    player,
+    0.5,
+    1
+>>>>>>> b038195 (#1 :bug: 버그 수정)
   );
   fairySet[2].initFairy3(0, 10);
   global.slime = fairySet[3] = new Fairy(
@@ -1574,7 +1618,13 @@ function create() {
     10,
     400,
     4,
+<<<<<<< HEAD
     player
+=======
+    player,
+    0.5,
+    1
+>>>>>>> b038195 (#1 :bug: 버그 수정)
   );
 
   global.witch = fairySet[4] = new Fairy(
@@ -1603,12 +1653,44 @@ function create() {
     repeat: -1,
   });
 
+<<<<<<< HEAD
+=======
+  global.witch = fairySet[4] = new Fairy(
+    this,
+    100,
+    10,
+    1,
+    5,
+    40,
+    10,
+    500,
+    5,
+    player,
+    0.5,
+    1
+  );
+  fairySet[4].initFairy5(1, 1);
+  for (let i = 0; i < 5; i++) {
+    fairySet[i].setDepth(2);
+  }
+  player.changeFairy(fairySet[0]);
+  normalAttackAS = fairySet[0].as;
+  // animation
+  this.anims.create({
+    key: "fairy1_idle",
+    frames: this.anims.generateFrameNumbers("fairy1", { start: 12, end: 21 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+>>>>>>> b038195 (#1 :bug: 버그 수정)
   this.anims.create({
     key: "fairy1_attack",
     frames: this.anims.generateFrameNumbers("fairy1", { start: 6, end: 10 }),
     frameRate: 12,
     repeat: 0,
   });
+<<<<<<< HEAD
 
   this.anims.create({
     key: "fairy2_idle",
@@ -1861,6 +1943,208 @@ function create() {
       }
     }
   
+=======
+
+  this.anims.create({
+    key: "fairy2_idle",
+    frames: this.anims.generateFrameNumbers("fairy2", { start: 10, end: 19 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy2_attack",
+    frames: this.anims.generateFrameNumbers("fairy2", { start: 0, end: 8 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy3_idle",
+    frames: this.anims.generateFrameNumbers("fairy3", { start: 11, end: 19 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy3_attack",
+    frames: this.anims.generateFrameNumbers("fairy3", { start: 0, end: 9 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy4_idle",
+    frames: this.anims.generateFrameNumbers("fairy4", { start: 7, end: 14 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy4_attack",
+    frames: this.anims.generateFrameNumbers("fairy4", { start: 0, end: 5 }),
+    frameRate: 10,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy5_idle",
+    frames: this.anims.generateFrameNumbers("fairy5", { start: 15, end: 24 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy5_attack",
+    frames: this.anims.generateFrameNumbers("fairy5", { start: 0, end: 13 }),
+    frameRate: 17,
+    repeat: 0,
+  });
+
+  // 공격 애니메이션
+  this.anims.create({
+    key: "magic1",
+    frames: this.anims.generateFrameNumbers("magic1", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic2",
+    frames: this.anims.generateFrameNumbers("magic2", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic3",
+    frames: this.anims.generateFrameNumbers("magic3", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic4",
+    frames: this.anims.generateFrameNumbers("magic4", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic5",
+    frames: this.anims.generateFrameNumbers("magic5", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic5_1",
+    frames: this.anims.generateFrameNumbers("magic5_1", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  fairySet[nowFairy].play("fairy" + (nowFairy + 1) + "_idle", true);
+
+  //player end
+
+  //cointext start
+  // cointext = this.add.text(500, 20, 'coin: 0', {font: 'Bold 15px Arial', fill: '#fff', fontStyle: "strong"}).setScrollFactor(0);
+  // cointext.setStroke('#000', 2);
+  // cointext.setDepth(2);
+  //cointext end
+
+  //enemy start
+
+  monsterSet = this.physics.add.group();
+  magics = this.physics.add.group();
+  towerAttacks = this.physics.add.group();
+  towerSkillAttacks = this.physics.add.group();
+  mines = this.physics.add.group();
+
+  // 임시 구멍
+  hole = this.physics.add.sprite(0, 0, "fairy4");
+  hole.hp = 100;
+  hole.setDepth(1);
+
+  // 그룹셋
+  monsterSet = this.physics.add.group();
+  bossSet = this.physics.add.group();
+  magics = this.physics.add.group();
+
+  this.physics.add.collider(player, bossSet, player.hitPlayer);
+  this.physics.add.collider(bossSet, monsterSet);
+  thisScene.physics.add.overlap(magics, bossSet, attack);
+
+  // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
+  this.physics.add.collider(player, monsterSet, player.hitPlayer);
+  thisScene.physics.add.overlap(magics, monsterSet, attack);
+  // 만약 몬스터와 구멍이 닿았다면 (hithole 함수 실행)
+  thisScene.physics.add.overlap(hole, monsterSet, hithole);
+
+  //map start
+  var snappedChunkX =
+    this.chunkSize *
+    this.tileSize *
+    Math.round(this.followPoint.x / (this.chunkSize * this.tileSize));
+  var snappedChunkY =
+    this.chunkSize *
+    this.tileSize *
+    Math.round(this.followPoint.y / (this.chunkSize * this.tileSize));
+
+  snappedChunkX = snappedChunkX / this.chunkSize / this.tileSize;
+  snappedChunkY = snappedChunkY / this.chunkSize / this.tileSize;
+
+  for (var x = snappedChunkX - 2; x < snappedChunkX + 2; x++) {
+    for (var y = snappedChunkY - 2; y < snappedChunkY + 2; y++) {
+      var existingChunk = getChunk(x, y);
+
+      if (existingChunk == null) {
+        var newChunk = new Chunk(this, x, y);
+        chunks.push(newChunk);
+      }
+    }
+  }
+  for (var i = 0; i < chunks.length; i++) {
+    var chunk = chunks[i];
+
+    if (
+      Phaser.Math.Distance.Between(
+        snappedChunkX,
+        snappedChunkY,
+        chunk.x,
+        chunk.y
+      ) < 3
+    ) {
+      if (chunk !== null) {
+        chunk.load();
+      }
+    } else {
+      if (chunk !== null) {
+        chunk.unload();
+      }
+    }
+  }
+
+>>>>>>> b038195 (#1 :bug: 버그 수정)
   for (var i = 0; i < chunks.length; i++) {
     var chunk = chunks[i];
 
@@ -3301,13 +3585,17 @@ function changeSlot(){
 function attack(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
+=======
+>>>>>>> b038195 (#1 :bug: 버그 수정)
   if (!monster.invincible) {
     if (magic.pierceCount > 0) {
       magic.pierceCount--;
     } else {
       magic.destroy();
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     if (!monster.invincible) {
@@ -3320,9 +3608,18 @@ function attack(magic, monster) {
     if (nowFairy === 3){
       if(monsterSet.children.entries.length !== 0){
         if(magic.bounceCount <= 0){
+=======
+    }
+
+    if (nowFairy === 3) {
+      if (monsterSet.children.entries.length !== 0) {
+        if (magic.bounceCount <= 0) {
+>>>>>>> b038195 (#1 :bug: 버그 수정)
           magic.destroy();
-        }else{
-          let monNum = Math.floor(Math.random() * monsterSet.children.entries.length);
+        } else {
+          let monNum = Math.floor(
+            Math.random() * monsterSet.children.entries.length
+          );
 
           thisScene.physics.moveTo(
             magic,
@@ -3447,7 +3744,7 @@ function attack(magic, monster) {
     if (monster.health <= 0 && monster.type != "boss") {
       monster.die_anim();
       monster.destroy();
-      player.levelUp();
+      player.expUp();
       monsterCount -= 1;
 >>>>>>> cee2f61 (#2 :sparkles: 몬스터 기능 추가)
     }
