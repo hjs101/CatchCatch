@@ -647,6 +647,7 @@ function create() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     //map start
     this.cameras.main.setBounds(0, 0, mapSize, mapSize);
@@ -710,12 +711,17 @@ function create() {
 =======
 >>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
 =======
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   thisScene = this;
   //map start
   this.chunkSize = 8;
   this.tileSize = 300;
   this.cameraSpeed = 1;
+<<<<<<< HEAD
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 
   this.cameras.main.setZoom(1);
   this.followPoint = new Phaser.Math.Vector2(
@@ -725,6 +731,7 @@ function create() {
   // this.cameras.main.setBounds(0, 0, mapSize, mapSize);
   // this.physics.world.setBounds(0, 0, mapSize, mapSize);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -750,6 +757,8 @@ function create() {
 =======
 =======
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   cursors = this.input.keyboard.addKeys({
     up: Phaser.Input.Keyboard.KeyCodes.W,
     down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -765,15 +774,19 @@ function create() {
   // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
 
 =======
 =======
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   global.$this = this.scene;
   this.input.keyboard.on("keydown-" + "SHIFT", function (event) {
     initUpgrade();
   });
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 6fd22c6 (#1 :sparkles: merge 완료)
   //map end
@@ -815,34 +828,97 @@ function create() {
         initUpgrade();
     });
     //map end
+=======
+  //map end
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 
-    //player start
-    cats = require("./jsons/cats.json");
-    fairySet = require("./jsons/fairys.json");
+  //player start
+  cats = require("./jsons/cats.json");
+  fairySet = require("./jsons/fairys.json");
 
+<<<<<<< HEAD
     player = cats[catNumber];
     player = new Player(this, 1, 100, 100, "cat" + (ChoiceCat + 1));
     player.setDepth(2);
     inGameUI();
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
+=======
+  player = cats[catNumber];
+  player = new Player(this, 1, 100, 100, "cat" + (ChoiceCat + 1));
+  player.setDepth(2);
+  inGameUI();
 
-    camera = this.cameras.main;
-    input = this.input;
-    mouse = input.mousePointer;
-    this.input.on(
-        "pointermove",
-        function (pointer) {
-            let cursor = pointer;
-            let angle = Phaser.Math.Angle.Between(
-                player.x,
-                player.y,
-                cursor.x + this.cameras.main.scrollX,
-                cursor.y + this.cameras.main.scrollY
-            );
-        },
-        this
-    );
+  camera = this.cameras.main;
+  input = this.input;
+  mouse = input.mousePointer;
+  this.input.on(
+    "pointermove",
+    function (pointer) {
+      let cursor = pointer;
+      let angle = Phaser.Math.Angle.Between(
+        player.x,
+        player.y,
+        cursor.x + this.cameras.main.scrollX,
+        cursor.y + this.cameras.main.scrollY
+      );
+    },
+    this
+  );
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 
+  // 플레이어, 요정 로딩
+  global.wizard = fairySet[0] = new Fairy(
+    this,
+    100,
+    4,
+    1,
+    1,
+    140,
+    40,
+    500,
+    1,
+    player
+  );
+  fairySet[0].initFairy1(0, 0);
+  global.reaper = fairySet[1] = new Fairy(
+    this,
+    100,
+    10,
+    1,
+    1,
+    70,
+    10,
+    160,
+    2,
+    player
+  );
+  global.ninja = fairySet[2] = new Fairy(
+    this,
+    100,
+    0,
+    1,
+    3,
+    80,
+    10,
+    300,
+    3,
+    player
+  );
+  fairySet[2].initFairy3(0, 10);
+  global.slime = fairySet[3] = new Fairy(
+    this,
+    7200,
+    10,
+    1,
+    3,
+    90,
+    10,
+    400,
+    4,
+    player
+  );
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // 플레이어, 요정 로딩
@@ -924,6 +1000,8 @@ function create() {
     player
   );
 
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   global.witch = fairySet[4] = new Fairy(
     this,
     100,
@@ -938,6 +1016,7 @@ function create() {
   );
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
 =======
   fairySet[4].initFairy5(1, 1)
@@ -945,6 +1024,9 @@ function create() {
 =======
   fairySet[4].initFairy5(1, 1);
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
+=======
+  fairySet[4].initFairy5(1, 1);
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   for (let i = 0; i < 5; i++) {
     fairySet[i].setDepth(2);
   }
@@ -957,6 +1039,7 @@ function create() {
     frameRate: 8,
     repeat: -1,
   });
+<<<<<<< HEAD
 >>>>>>> daff650 (#3 :sparkles: 플레이어 일반공격 특성 추가)
 =======
     // 플레이어, 요정 로딩
@@ -1047,135 +1130,152 @@ function create() {
         repeat: -1,
     });
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
+=======
 
-    this.anims.create({
-        key: "fairy1_attack",
-        frames: this.anims.generateFrameNumbers("fairy1", {start: 6, end: 10}),
-        frameRate: 12,
-        repeat: 0,
-    });
+  this.anims.create({
+    key: "fairy1_attack",
+    frames: this.anims.generateFrameNumbers("fairy1", { start: 6, end: 10 }),
+    frameRate: 12,
+    repeat: 0,
+  });
 
-    this.anims.create({
-        key: "fairy2_idle",
-        frames: this.anims.generateFrameNumbers("fairy2", {start: 10, end: 19}),
-        frameRate: 8,
-        repeat: -1,
-    });
+  this.anims.create({
+    key: "fairy2_idle",
+    frames: this.anims.generateFrameNumbers("fairy2", { start: 10, end: 19 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 
-    this.anims.create({
-        key: "fairy2_attack",
-        frames: this.anims.generateFrameNumbers("fairy2", {start: 0, end: 8}),
-        frameRate: 14,
-        repeat: 0,
-    });
+  this.anims.create({
+    key: "fairy2_attack",
+    frames: this.anims.generateFrameNumbers("fairy2", { start: 0, end: 8 }),
+    frameRate: 14,
+    repeat: 0,
+  });
 
-    this.anims.create({
-        key: "fairy3_idle",
-        frames: this.anims.generateFrameNumbers("fairy3", {start: 11, end: 19}),
-        frameRate: 8,
-        repeat: -1,
-    });
+  this.anims.create({
+    key: "fairy3_idle",
+    frames: this.anims.generateFrameNumbers("fairy3", { start: 11, end: 19 }),
+    frameRate: 8,
+    repeat: -1,
+  });
 
-    this.anims.create({
-        key: "fairy3_attack",
-        frames: this.anims.generateFrameNumbers("fairy3", {start: 0, end: 9}),
-        frameRate: 14,
-        repeat: 0,
-    });
+  this.anims.create({
+    key: "fairy3_attack",
+    frames: this.anims.generateFrameNumbers("fairy3", { start: 0, end: 9 }),
+    frameRate: 14,
+    repeat: 0,
+  });
 
-    this.anims.create({
-        key: "fairy4_idle",
-        frames: this.anims.generateFrameNumbers("fairy4", {start: 7, end: 14}),
-        frameRate: 8,
-        repeat: -1,
-    });
+  this.anims.create({
+    key: "fairy4_idle",
+    frames: this.anims.generateFrameNumbers("fairy4", { start: 7, end: 14 }),
+    frameRate: 8,
+    repeat: -1,
+  });
 
-    this.anims.create({
-        key: "fairy4_attack",
-        frames: this.anims.generateFrameNumbers("fairy4", {start: 0, end: 5}),
-        frameRate: 10,
-        repeat: 0,
-    });
+  this.anims.create({
+    key: "fairy4_attack",
+    frames: this.anims.generateFrameNumbers("fairy4", { start: 0, end: 5 }),
+    frameRate: 10,
+    repeat: 0,
+  });
 
-    this.anims.create({
-        key: "fairy5_idle",
-        frames: this.anims.generateFrameNumbers("fairy5", {start: 15, end: 24}),
-        frameRate: 8,
-        repeat: -1,
-    });
+  this.anims.create({
+    key: "fairy5_idle",
+    frames: this.anims.generateFrameNumbers("fairy5", { start: 15, end: 24 }),
+    frameRate: 8,
+    repeat: -1,
+  });
 
-    this.anims.create({
-        key: "fairy5_attack",
-        frames: this.anims.generateFrameNumbers("fairy5", {start: 0, end: 13}),
-        frameRate: 17,
-        repeat: 0,
-    });
+  this.anims.create({
+    key: "fairy5_attack",
+    frames: this.anims.generateFrameNumbers("fairy5", { start: 0, end: 13 }),
+    frameRate: 17,
+    repeat: 0,
+  });
+
+  // 공격 애니메이션
+  this.anims.create({
+    key: "magic1",
+    frames: this.anims.generateFrameNumbers("magic1", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic2",
+    frames: this.anims.generateFrameNumbers("magic2", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic3",
+    frames: this.anims.generateFrameNumbers("magic3", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic4",
+    frames: this.anims.generateFrameNumbers("magic4", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic5",
+    frames: this.anims.generateFrameNumbers("magic5", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic5_1",
+    frames: this.anims.generateFrameNumbers("magic5_1", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+  fairySet[nowFairy].play("fairy" + (nowFairy + 1) + "_idle", true);
+
+  //player end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  //cointext start
+  cointext = this.add
+    .text(500, 10, "coin: 0", { font: "10px Arial Black", fill: "#000" })
+    .setScrollFactor(0);
+  cointext.setStroke("#fff", 1);
+  cointext.setDepth(2);
+  //cointext end
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 
-    // 공격 애니메이션
-    this.anims.create({
-        key: "magic1",
-        frames: this.anims.generateFrameNumbers("magic1", {
-            start: 0,
-            end: 60,
-            first: 0,
-        }),
-        frameRate: 200,
-        repeat: -1,
-    });
-    this.anims.create({
-        key: "magic2",
-        frames: this.anims.generateFrameNumbers("magic2", {
-            start: 0,
-            end: 60,
-            first: 0,
-        }),
-        frameRate: 200,
-        repeat: -1,
-    });
-    this.anims.create({
-        key: "magic3",
-        frames: this.anims.generateFrameNumbers("magic3", {
-            start: 0,
-            end: 60,
-            first: 0,
-        }),
-        frameRate: 200,
-        repeat: -1,
-    });
-    this.anims.create({
-        key: "magic4",
-        frames: this.anims.generateFrameNumbers("magic4", {
-            start: 0,
-            end: 60,
-            first: 0,
-        }),
-        frameRate: 200,
-        repeat: -1,
-    });
-    this.anims.create({
-        key: "magic5",
-        frames: this.anims.generateFrameNumbers("magic5", {
-            start: 0,
-            end: 60,
-            first: 0,
-        }),
-        frameRate: 200,
-        repeat: -1,
-    });
-    this.anims.create({
-        key: "magic5_1",
-        frames: this.anims.generateFrameNumbers("magic5_1", {
-            start: 0,
-            end: 60,
-            first: 0,
-        }),
-        frameRate: 200,
-        repeat: -1,
-    });
-    fairySet[nowFairy].play("fairy" + (nowFairy + 1) + "_idle", true);
+  //enemy start
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // 공격 애니메이션
@@ -1659,12 +1759,17 @@ function create() {
     towerSkillAttacks = this.physics.add.group();
     mines = this.physics.add.group();
 =======
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   monsterSet = this.physics.add.group();
   magics = this.physics.add.group();
   towerAttacks = this.physics.add.group();
   towerSkillAttacks = this.physics.add.group();
   mines = this.physics.add.group();
+<<<<<<< HEAD
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 
 <<<<<<< HEAD
     // 임시 구멍
@@ -2927,8 +3032,11 @@ if (mon1_delay > 60){
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   expbar.fillStyle(0xff0000);
   expbar.fillRect(
     0,
@@ -2938,6 +3046,7 @@ if (mon1_delay > 60){
   );
   //exp bar end
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b192aa3 (#6 :sparkles: exp bar 추가)
 =======
     expbar.fillStyle(0xff0000);
@@ -2946,6 +3055,8 @@ if (mon1_delay > 60){
 >>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
 =======
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 }
 
 //player start
@@ -3189,11 +3300,15 @@ function changeSlot(){
 
 function attack(magic, monster) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
   if (!monster.invincible) {
     if (magic.pierceCount > 0) {
       magic.pierceCount--;
     } else {
       magic.destroy();
+<<<<<<< HEAD
 =======
     if (!monster.invincible) {
         if (magic.pierceCount > 0) {
@@ -3241,6 +3356,13 @@ function attack(magic, monster) {
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
       //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
       let num = Math.floor(Math.random() * 100 + 1);
+=======
+    }
+
+    if (nowFairy === 2) {
+      //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
+      let num = Math.floor(Math.random() * 100 + 1);
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
       if (num <= fairySet[nowFairy].deathCount && monster.type != "boss") {
         monster.die_anim();
         monster.destroy();
@@ -3303,9 +3425,9 @@ function attack(magic, monster) {
 =======
 >>>>>>> cee2f61 (#2 :sparkles: 몬스터 기능 추가)
 
-                monsterCount -= 1;
-            }
-        }
+        monsterCount -= 1;
+      }
+    }
 
 <<<<<<< HEAD
         monster.health -= fairySet[nowFairy].dmg;
@@ -3322,7 +3444,7 @@ function attack(magic, monster) {
 =======
     monster.health -= fairySet[nowFairy].dmg;
     monster.invincible = true;
-    if (monster.health <= 0 && monster.type !='boss') {
+    if (monster.health <= 0 && monster.type != "boss") {
       monster.die_anim();
       monster.destroy();
       player.levelUp();
@@ -3394,6 +3516,7 @@ function attack(magic, alien) {
   }
 }
 
+<<<<<<< HEAD
 function attack(magic, monster) {
   if (!monster.invincible) {
     if (magic.pierceCount > 0) {
@@ -3432,6 +3555,8 @@ function attack(magic, monster) {
 }
 
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 // 임시 구멍 구현
 function hithole(hole, monster) {
   hole.hp -= 1;
@@ -3446,7 +3571,11 @@ function hithole(hole, monster) {
   }
 }
 
+<<<<<<< HEAD
 // 임시 구멍 구현
+=======
+// // 임시 구멍 구현
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
 // function hithole(hole, monster) {
 //   hole.hp -= 1;
 //   monster.destroy();
@@ -3488,6 +3617,7 @@ function enemySpawn(scene) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 function slime_pattern(scene, pt, x, y) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (pt != 16) {
         pt *= 2
@@ -3558,6 +3688,10 @@ function slime_pattern(scene,pt,x,y){
   if (pt != 16) {
     pt *= 2;
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+  if (pt != 16) {
+    pt *= 2;
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
     for (let i = 0; i < pt; i++) {
       // 분열될 때마다 체력 감소 구현하기
       if (pt < 4) {
@@ -3604,9 +3738,12 @@ function slime_pattern(scene,pt,x,y){
       scene.physics.add.collider(bossSet, slime_king);
       bossSet.add(slime_king);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
 =======
 >>>>>>> 7df4765 (#1 :bug: 버그 수 정)
+=======
+>>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
     }
   }
 }
