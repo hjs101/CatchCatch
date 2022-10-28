@@ -284,6 +284,7 @@ global.mines = "";
 //exp bar start
 var expbar;
 var expbarBG;
+
 //exp bar end
 
 
@@ -596,6 +597,7 @@ function create() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     //map start
     this.cameras.main.setBounds(0, 0, mapSize, mapSize);
@@ -647,12 +649,17 @@ function create() {
   this.cameraSpeed = 1;
 >>>>>>> 43845d2 (#6 :bug: 맵chunk 미생성 수정)
 =======
+=======
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
     thisScene = this;
     //map start
     this.chunkSize = 8;
     this.tileSize = 300;
     this.cameraSpeed = 1;
+<<<<<<< HEAD
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
+=======
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
 
     this.cameras.main.setZoom(1);
     this.followPoint = new Phaser.Math.Vector2(
@@ -664,8 +671,11 @@ function create() {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
+=======
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
     cursors = this.input.keyboard.addKeys({
         up: Phaser.Input.Keyboard.KeyCodes.W,
         down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -676,6 +686,7 @@ function create() {
         slot3: Phaser.Input.Keyboard.KeyCodes.THREE,
         slot4: Phaser.Input.Keyboard.KeyCodes.FOUR,
         slot5: Phaser.Input.Keyboard.KeyCodes.FIVE,
+<<<<<<< HEAD
 <<<<<<< HEAD
     });
     // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
@@ -1280,6 +1291,260 @@ function create() {
     hole = this.physics.add.sprite(8000,8100,'fairy4')
     hole.hp = 100;
 =======
+=======
+        skill: Phaser.Input.Keyboard.KeyCodes.SPACE,
+    });
+    // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
+    global.$this = this.scene;
+    this.input.keyboard.on("keydown-" + "SHIFT", function (event) {
+        initUpgrade();
+    });
+    //map end
+
+    //player start
+    cats = require("./jsons/cats.json");
+    fairySet = require("./jsons/fairys.json");
+
+
+    player = cats[catNumber];
+    player = new Player(this, 1, 100, 100, "cat" + (ChoiceCat + 1));
+    player.setDepth(2);
+    inGameUI();
+
+    camera = this.cameras.main;
+    input = this.input;
+    mouse = input.mousePointer;
+    this.input.on(
+        "pointermove",
+        function (pointer) {
+            let cursor = pointer;
+            let angle = Phaser.Math.Angle.Between(
+                player.x,
+                player.y,
+                cursor.x + this.cameras.main.scrollX,
+                cursor.y + this.cameras.main.scrollY
+            );
+        },
+        this
+    );
+
+    // 플레이어, 요정 로딩
+    global.wizard = fairySet[0] = new Fairy(
+        this,
+        100,
+        4,
+        1,
+        1,
+        140,
+        40,
+        500,
+        1,
+        player
+    );
+    fairySet[0].initFairy1(0, 0);
+    global.reaper = fairySet[1] = new Fairy(
+        this,
+        100,
+        10,
+        1,
+        1,
+        70,
+        10,
+        160,
+        2,
+        player
+    );
+    global.ninja = fairySet[2] = new Fairy(
+        this,
+        100,
+        0,
+        1,
+        3,
+        80,
+        10,
+        300,
+        3,
+        player
+    );
+    fairySet[2].initFairy3(0, 10);
+    global.slime = fairySet[3] = new Fairy(
+        this,
+        7200,
+        10,
+        1,
+        3,
+        90,
+        10,
+        400,
+        4,
+        player
+    );
+
+
+    global.witch = fairySet[4] = new Fairy(
+        this,
+        100,
+        10,
+        1,
+        5,
+        40,
+        10,
+        500,
+        5,
+        player
+    );
+    fairySet[4].initFairy5(1, 1)
+    for (let i = 0; i < 5; i++) {
+        fairySet[i].setDepth(2);
+    }
+    player.changeFairy(fairySet[0]);
+    normalAttackAS = fairySet[0].as;
+    // animation
+    this.anims.create({
+        key: "fairy1_idle",
+        frames: this.anims.generateFrameNumbers("fairy1", {start: 12, end: 21}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy1_attack",
+        frames: this.anims.generateFrameNumbers("fairy1", {start: 6, end: 10}),
+        frameRate: 12,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy2_idle",
+        frames: this.anims.generateFrameNumbers("fairy2", {start: 10, end: 19}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy2_attack",
+        frames: this.anims.generateFrameNumbers("fairy2", {start: 0, end: 8}),
+        frameRate: 14,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy3_idle",
+        frames: this.anims.generateFrameNumbers("fairy3", {start: 11, end: 19}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy3_attack",
+        frames: this.anims.generateFrameNumbers("fairy3", {start: 0, end: 9}),
+        frameRate: 14,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy4_idle",
+        frames: this.anims.generateFrameNumbers("fairy4", {start: 7, end: 14}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy4_attack",
+        frames: this.anims.generateFrameNumbers("fairy4", {start: 0, end: 5}),
+        frameRate: 10,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy5_idle",
+        frames: this.anims.generateFrameNumbers("fairy5", {start: 15, end: 24}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy5_attack",
+        frames: this.anims.generateFrameNumbers("fairy5", {start: 0, end: 13}),
+        frameRate: 17,
+        repeat: 0,
+    });
+
+
+    // 공격 애니메이션
+    this.anims.create({
+        key: "magic1",
+        frames: this.anims.generateFrameNumbers("magic1", {
+            start: 0,
+            end: 60,
+            first: 0,
+        }),
+        frameRate: 200,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic2",
+        frames: this.anims.generateFrameNumbers("magic2", {
+            start: 0,
+            end: 60,
+            first: 0,
+        }),
+        frameRate: 200,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic3",
+        frames: this.anims.generateFrameNumbers("magic3", {
+            start: 0,
+            end: 60,
+            first: 0,
+        }),
+        frameRate: 200,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic4",
+        frames: this.anims.generateFrameNumbers("magic4", {
+            start: 0,
+            end: 60,
+            first: 0,
+        }),
+        frameRate: 200,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic5",
+        frames: this.anims.generateFrameNumbers("magic5", {
+            start: 0,
+            end: 60,
+            first: 0,
+        }),
+        frameRate: 200,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic5_1",
+        frames: this.anims.generateFrameNumbers("magic5_1", {
+            start: 0,
+            end: 60,
+            first: 0,
+        }),
+        frameRate: 200,
+        repeat: -1,
+    });
+    fairySet[nowFairy].play("fairy" + (nowFairy + 1) + "_idle", true);
+
+    //player end
+
+    //cointext start
+    cointext = this.add.text(500, 10, 'coin: 0', {font: '10px Arial Black', fill: '#000'}).setScrollFactor(0);
+    cointext.setStroke('#fff', 1);
+    cointext.setDepth(2);
+    //cointext end
+
+    //enemy start
+
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
     monsterSet = this.physics.add.group();
     magics = this.physics.add.group();
     towerAttacks = this.physics.add.group();
@@ -2281,19 +2546,25 @@ if (mon1_delay > 60){
 >>>>>>> bfa9489 (#6 :sparkles: 포탑 생성)
 =======
 
-  //exp bar start
-  expbar.clear();
+    //exp bar start
+    expbar.clear();
 
-  //  BG
-  expbarBG.fillStyle(0x000000);
-  expbarBG.fillRect(0, 0, this.cameras.main.worldView.width, 16); // x y 가로길이, 세로길이
+    //  BG
+    expbarBG.fillStyle(0x000000);
+    expbarBG.fillRect(0, 0, this.cameras.main.worldView.width, 16); // x y 가로길이, 세로길이
 
-  //  Health
+    //  Health
 
+<<<<<<< HEAD
   expbar.fillStyle(0xff0000);
   expbar.fillRect(0, 0, this.cameras.main.worldView.width*(player.exp/player.maxExp), 16);
   //exp bar end
 >>>>>>> b192aa3 (#6 :sparkles: exp bar 추가)
+=======
+    expbar.fillStyle(0xff0000);
+    expbar.fillRect(0, 0, this.cameras.main.worldView.width * (player.exp / player.maxExp), 16);
+    //exp bar end
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
 }
 
 //player start
@@ -2545,6 +2816,7 @@ function attack(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (nowFairy === 2) {
       //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
       let num = Math.floor(Math.random() * 100 + 1);
@@ -2559,6 +2831,15 @@ function attack(magic, monster) {
         monster.destroy();
 >>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
         player.levelUp();
+=======
+        if (nowFairy === 2) {
+            //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
+            let num = Math.floor(Math.random() * 100 + 1);
+            if (num <= fairySet[nowFairy].deathCount && monster.type != 'boss') {
+                monster.die_anim();
+                monster.destroy();
+                player.levelUp();
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
 
         alienCount -= 1;
       }
@@ -2610,6 +2891,10 @@ function attack(magic, monster) {
         monster.health -= fairySet[nowFairy].dmg;
         monster.invincible = true;
         if (monster.health <= 0 && monster.type != 'boss') {
+<<<<<<< HEAD
+=======
+            monster.die_anim();
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
             monster.destroy();
             player.levelUp();
             monsterCount -= 1;
@@ -2674,7 +2959,7 @@ function attack(magic, alien) {
 =======
 
 
-// 임시 구멍 구현 
+// 임시 구멍 구현
 function hithole(hole, monster) {
     hole.hp -= 1
     monster.destroy()
@@ -2716,10 +3001,16 @@ function enemySpawn(scene) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function slime_pattern(scene, pt, x, y) {
     if (pt != 16) {
         pt *= 2
         console.log(pt)
+=======
+function slime_pattern(scene, pt, x, y) {
+    if (pt != 16) {
+        pt *= 2
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
         for (let i = 0; i < pt; i++) {
             // 분열될 때마다 체력 감소 구현하기
             if (pt < 4) {
@@ -2729,6 +3020,7 @@ function slime_pattern(scene, pt, x, y) {
             } else {
                 slime_king = new Boss(scene, 25, 100, x + i * 25, y, 'slime_king', 'swarm', 0.5, pt, 'boss')
             }
+<<<<<<< HEAD
             slime_king.anime();
             scene.physics.add.collider(bossSet, slime_king);
             bossSet.add(slime_king);
@@ -2766,6 +3058,8 @@ function slime_pattern(scene,pt,x,y){
         else if (pt < 8){
           slime_king = new Boss(scene,50,100,x+i*50,y,'slime_king','swarm',1.25,pt,'boss')
 >>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
+=======
+>>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
         }
     }
 }
