@@ -19,7 +19,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   maxExp = 3;
   exp = 0;
   level = 1;
-  maxExpBonus = 1;
+  maxExpBonus = 0;
   coin = 1000;
   // 캐릭터 특수능력 일단 보류
   ablity;
@@ -29,7 +29,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   invincible = false;
 <<<<<<< HEAD
   constructor(scene, dmgmul, maxHealth, health, catname) {
-
     super(scene, 0, 0, catname);
 =======
   constructor(scene, dmgmul, maxHealth, health) {
@@ -76,6 +75,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       updateExp();
       this.maxExp = this.maxExp + this.maxExpBonus;
     }
+<<<<<<< HEAD
     
 
 =======
@@ -95,6 +95,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
+=======
+  }
+
+>>>>>>> f5bd30f (#1 :sparkles: fairy5렙 9렙 구매 가능 및 레벨업에서 4, 8 안뜸)
   changeFairy(fairy) {
     this.fairy = fairy;
   }
@@ -142,6 +146,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   hitPlayer(player, alien) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (player.invincible == false) {
       player.invincible = true;
       alien.hp -= 1;
@@ -151,6 +156,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       player.invincible = true
       player.health-=1;
 >>>>>>> 738219b (#2 :sparkles: : 몬스터 종류 구현 및 보스 초기 제작)
+=======
+    if (player.invincible == false) {
+      player.invincible = true;
+      player.health -= 1;
+>>>>>>> f5bd30f (#1 :sparkles: fairy5렙 9렙 구매 가능 및 레벨업에서 4, 8 안뜸)
       console.log(player.invincible);
       console.log(player.health);
       // 피해 1 줌
@@ -160,5 +170,4 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       }
     }
   }
-
 }
