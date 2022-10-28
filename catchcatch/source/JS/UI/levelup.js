@@ -93,11 +93,15 @@ export default function levelup() {
       if (
         propertyArr[randomNum] !== "common" &&
         (property[propertyArr[randomNum]].fairy.level === 4 ||
-          property[propertyArr[randomNum]].fairy.level === 8)
+          property[propertyArr[randomNum]].fairy.level === 8 ||
+          property[propertyArr[randomNum]].fairy.level === 9)
       ) {
         i--;
+<<<<<<< HEAD
         console.log(i);
         console.log(123213, property[propertyArr[randomNum]].fairy.level);
+=======
+>>>>>>> da93aaa (#1 :sparkles: 무기 업그레이드 레벨 추가)
       } else {
         randomIndexArray.push(randomNum);
       }
