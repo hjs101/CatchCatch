@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 const propertyArr = ["common", "wizard", "reaper", "ninja", "slime", "witch", "common","common"];
+=======
+const propertyArr = [
+  "common",
+  "wizard",
+  "reaper",
+  "ninja",
+  "slime",
+  "witch",
+  "common",
+  "common",
+];
+>>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
 const commonArr = ["health", "dmgmul", "heal", "speed"];
 export default function levelup() {
   const property = {
@@ -122,13 +135,12 @@ export default function levelup() {
   levelupContainer.style.backgroundRepeat = "no-repeat";
   levelupContainer.style.backgroundSize = "cotain";
   levelupContainer.setAttribute("class", "levelupContainer");
-  const randomCommon = Math.floor(Math.random() * 4);
   for (let i = 0; i < 3; i++) {
+    const randomCommon = Math.floor(Math.random() * 4);
     const levelupContent = document.createElement("div");
     const levelupImg = document.createElement("div");
     const levelupText = document.createElement("div");
     levelupContent.setAttribute("class", "levelupContent");
-    levelupContent.setAttribute("id", `${propertyArr[randomIndexArray[i]]}`);
     levelupImg.setAttribute("class", "levelupImg");
     levelupText.setAttribute("class", "levelupText");
     const levelImgandNameBox = document.createElement("div");
@@ -137,6 +149,7 @@ export default function levelup() {
     levelupName.setAttribute("class", "levelupName");
 
     if (propertyArr[randomIndexArray[i]] !== "common") {
+      levelupContent.setAttribute("id", `${propertyArr[randomIndexArray[i]]}`);
       levelupText.innerText = `${
         property[propertyArr[randomIndexArray[i]]].text[
           property[propertyArr[randomIndexArray[i]]].fairy.level - 1
@@ -156,6 +169,7 @@ export default function levelup() {
         'url("../images/ui/levelup/commonupgrade_addName.png")';
 
       levelupText.innerText = property.common[commonArr[randomCommon]].text;
+      levelupContent.setAttribute("id", `${commonArr[randomCommon]}`);
       levelupName.innerHTML = `[공통] <br> Lv. ${
         property.common[commonArr[randomCommon]].level + 1
       }`;
@@ -201,9 +215,11 @@ export default function levelup() {
         witch.levelUp();
         console.log(witch);
       } else {
-        player[`${commonArr[randomCommon]}Level`] += 1;
+        player[`${contents[i].id}Level`] += 1;
       }
-
+      player.expUpdate();
+      console.log(player.exp, player.maxExp);
+      isLevelup = false;
       $this.resume();
       gameContainer.removeChild(removeContainer);
     });
