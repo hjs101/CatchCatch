@@ -281,6 +281,11 @@ global.mines = "";
 
 //mine end
 
+//exp bar start
+var expbar;
+var expbarBG;
+//exp bar end
+
 
 function preload() {
     //map start
@@ -703,8 +708,12 @@ function create() {
   cats = require("./jsons/cats.json");
   fairySet = require("./jsons/fairys.json");
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.log(ChoiceCat);
 =======
+=======
+  
+>>>>>>> b192aa3 (#6 :sparkles: exp bar 추가)
 
 >>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
   player = cats[catNumber];
@@ -834,6 +843,8 @@ function create() {
     player
   );
 
+  
+
   global.witch = fairySet[4] = new Fairy(
     this,
     100,
@@ -852,7 +863,7 @@ function create() {
   fairySet[4].initFairy5(1, 1)
 >>>>>>> 8ab07ca (#3 :sparkles: 위치 폭탄)
   for (let i = 0; i < 5; i++) {
-    fairySet[i].setDepth(1);
+    fairySet[i].setDepth(2);
   }
   player.changeFairy(fairySet[0]);
   normalAttackAS = fairySet[0].as;
@@ -1644,7 +1655,17 @@ towerRD.setDepth(1);
     navi = this.add.image(50, 50, 'navi').setScrollFactor(0).setScale(0.1);
     navi.setDepth(2)
     //navi end
+<<<<<<< HEAD
 >>>>>>> 43845d2 (#6 :bug: 맵chunk 미생성 수정)
+=======
+
+    //exp bar start
+    expbar = this.add.graphics().setScrollFactor(0);
+    expbarBG = this.add.graphics().setScrollFactor(0);
+    expbar.setDepth(3);
+    expbarBG.setDepth(2);
+    //exp bar end
+>>>>>>> b192aa3 (#6 :sparkles: exp bar 추가)
 }
 
 function update(time, delta) {
@@ -2211,6 +2232,7 @@ if (mon1_delay > 60){
         // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
     }
 
+<<<<<<< HEAD
     // 보스
 
     // 슬라임
@@ -2257,6 +2279,21 @@ if (mon1_delay > 60){
     //tower end
 
 >>>>>>> bfa9489 (#6 :sparkles: 포탑 생성)
+=======
+
+  //exp bar start
+  expbar.clear();
+
+  //  BG
+  expbarBG.fillStyle(0x000000);
+  expbarBG.fillRect(0, 0, this.cameras.main.worldView.width, 16); // x y 가로길이, 세로길이
+
+  //  Health
+
+  expbar.fillStyle(0xff0000);
+  expbar.fillRect(0, 0, this.cameras.main.worldView.width*(player.exp/player.maxExp), 16);
+  //exp bar end
+>>>>>>> b192aa3 (#6 :sparkles: exp bar 추가)
 }
 
 //player start
