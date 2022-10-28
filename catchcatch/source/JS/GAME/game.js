@@ -2507,11 +2507,20 @@ function attack(magic, monster) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (nowFairy === 2) {
       //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
       let num = Math.floor(Math.random() * 100 + 1);
       if (num <= fairySet[nowFairy].deathCount) {
         alien.destroy();
+=======
+    if (nowFairy === 2 ) {
+      //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
+      let num = Math.floor(Math.random() * 100 + 1);
+      if (num <= fairySet[nowFairy].deathCount && monster.type != 'boss') {
+        monster.die_anim();
+        monster.destroy();
+>>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
         player.levelUp();
 
         alienCount -= 1;
@@ -2538,7 +2547,11 @@ function attack(magic, monster) {
     if (monster.health <= 0){
 =======
     if (monster.health <= 0 && monster.type !='boss') {
+<<<<<<< HEAD
 >>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
+=======
+      monster.die_anim();
+>>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
       monster.destroy();
       monsterCount -= 1;
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
@@ -2665,6 +2678,7 @@ function enemySpawn(scene) {
     }
 }
 
+<<<<<<< HEAD
 function slime_pattern(scene, pt, x, y) {
     if (pt != 16) {
         pt *= 2
@@ -2681,6 +2695,40 @@ function slime_pattern(scene, pt, x, y) {
             slime_king.anime();
             scene.physics.add.collider(bossSet, slime_king);
             bossSet.add(slime_king);
+=======
+
+function enemySpawn(scene){
+  randomLocation = Math.floor(Math.random() * 4) + 1
+  if (randomLocation === 1) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y + 500, player.y + 510);
+  }
+
+  else if (randomLocation === 2) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y - 510);
+  }
+
+  else if (randomLocation === 3) {
+    monX = Phaser.Math.Between(player.x - 500, player.x - 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  }
+
+  else if (randomLocation === 4) {
+    monX = Phaser.Math.Between(player.x + 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);}
+}
+
+function slime_pattern(scene,pt,x,y){
+  if(pt != 16){
+      pt *= 2
+      for (let i = 0; i<pt; i++){
+        // 분열될 때마다 체력 감소 구현하기
+        if(pt < 4){
+          slime_king = new Boss(scene,100,100,x+i*100,y,'slime_king','swarm',2.5,pt,'boss')}
+        else if (pt < 8){
+          slime_king = new Boss(scene,50,100,x+i*50,y,'slime_king','swarm',1.25,pt,'boss')
+>>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
         }
     }
 }
