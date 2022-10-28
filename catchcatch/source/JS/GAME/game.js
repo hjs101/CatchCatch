@@ -1627,6 +1627,7 @@ function create() {
 >>>>>>> b038195 (#1 :bug: 버그 수정)
   );
 
+<<<<<<< HEAD
   global.witch = fairySet[4] = new Fairy(
     this,
     100,
@@ -1655,6 +1656,8 @@ function create() {
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 00d4ef8 (:bug: 사신 크기 버그 수정)
   global.witch = fairySet[4] = new Fairy(
     this,
     100,
@@ -2920,7 +2923,8 @@ function update(time, delta) {
     if (monsterCount !== 0) {
         for (let i = 0; i < monsterSet.children.entries.length; i++) {
             if (monsterSet.children.entries[i].type == 'follower') {
-                this.physics.moveToObject(monsterSet.children.entries[i], player, monsterSet.children.entries[i].velo);
+                if (monsterSet.children.entries[i].cc != 'slime'){
+                this.physics.moveToObject(monsterSet.children.entries[i], player, monsterSet.children.entries[i].velo)};
             }
             // #홀에 따라가게 하는 코드 작성하기#
             else if (monsterSet.children.entries[i].type == 'siege') {
@@ -3227,6 +3231,11 @@ if (mon1_delay > 60){
     if ((gameTimer > 1800) && (gameTimer % 900 == 0)) {
         enemySpawn(randomLocation)
         addMonster(this, 'turtle', 'swarm', 100, 30, monX, monY, 'siege')
+    }
+
+    if ((gameTimer > 0) && (gameTimer % 300 == 0)) {
+        enemySpawn(randomLocation)
+        addMonster(this, 'slime', 'swarm', 10, 75, monX, monY, 'follower')
     }
     ;
 
@@ -3642,6 +3651,7 @@ function attack(magic, monster) {
     if (nowFairy === 2) {
       //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
       let num = Math.floor(Math.random() * 100 + 1);
+<<<<<<< HEAD
       if (num <= fairySet[nowFairy].deathCount) {
         alien.destroy();
 =======
@@ -3661,11 +3671,16 @@ function attack(magic, monster) {
       let num = Math.floor(Math.random() * 100 + 1);
 >>>>>>> 02b1079 (#1 :poop: 누가 내 코드 건드렸어!!!)
       if (num <= fairySet[nowFairy].deathCount && monster.type != "boss") {
+=======
+      if (num <= fairySet[nowFairy].deathCount && monster.type != 'boss') {
+        if (monster.monSpiece != 'slime'){
+>>>>>>> e961a66 (#2 :sparkles: 몬스터 = 슬라임)
         monster.die_anim();
         monster.destroy();
 <<<<<<< HEAD
 >>>>>>> 344a1b1 (#2 :sparkles: 폭발 이펙트)
         player.levelUp();
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         if (nowFairy === 2) {
@@ -3694,6 +3709,18 @@ function attack(magic, monster) {
         monster.destroy();
       }
     }
+=======
+        monsterCount -= 1;}
+        else if (monster.monSpiece == 'slime'){
+            for (let i=0; i<2; i++){
+                console.log('동작')
+                addMonster(thisScene, 'baby_slime', 'swarm', 50, 125, monster.x+i*10, monster.y, 'follower')
+            }
+            monster.destroy()
+            monsterCount -= 1 }
+            }
+        }
+>>>>>>> e961a66 (#2 :sparkles: 몬스터 = 슬라임)
 
     monster.health -= fairySet[nowFairy].dmg;
     monster.invincible = true;
@@ -3701,6 +3728,7 @@ function attack(magic, monster) {
     if (monster.health <= 0){
 =======
     if (monster.health <= 0 && monster.type !='boss') {
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
 =======
@@ -3847,6 +3875,19 @@ function attack(magic, monster) {
       monster.destroy();
       player.expUp();
       monsterCount -= 1;
+=======
+        if (monster.monSpiece != 'slime'){
+            monster.die_anim();
+            monster.destroy();
+            player.levelUp();
+            monsterCount -= 1;}
+        else if (monster.monSpiece == 'slime'){
+                for (let i=0; i<2; i++){
+                    addMonster(thisScene, 'baby_slime', 'swarm', 50, 125, monster.x+i*20, monster.y, 'follower')
+                }
+                monster.destroy()
+                monsterCount -= 1 }
+>>>>>>> e961a66 (#2 :sparkles: 몬스터 = 슬라임)
     }
   }
 }
@@ -3883,12 +3924,22 @@ function hithole(hole, monster) {
 // }
 
 function addMonster(scene, mon_name, mon_anime, hp, velo, x, y, type) {
+<<<<<<< HEAD
   monster = new Enemy(scene, hp, velo, x, y, mon_name, mon_anime, type);
   monster.setDepth(2);
   monsterCount += 1;
   monsterSet.add(monster);
   scene.physics.add.collider(monsterSet, monster);
   monster.anime();
+=======
+    monster = new Enemy(scene, hp, velo, x, y, mon_name, mon_anime, type);
+    if (monster.monSpiece == 'baby_slime'){monster.scale=0.5}
+    monster.setDepth(2);
+    monsterCount += 1;
+    monsterSet.add(monster);
+    scene.physics.add.collider(monsterSet, monster);
+    monster.anime();
+>>>>>>> e961a66 (#2 :sparkles: 몬스터 = 슬라임)
 }
 <<<<<<< HEAD
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
