@@ -69,6 +69,11 @@ body {
   right: 10px;
 }
 
+.con {
+  display: flex;
+  flex-direction: column;
+}
+
 .towerType {
   position: relative;
   width: 30px;
