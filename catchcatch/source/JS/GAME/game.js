@@ -497,6 +497,15 @@ function preload() {
   );
 
   this.load.spritesheet(
+    "magic2_1",
+    "images/attack/weapon/19_freezing_spritesheet.png",
+    {
+      frameWidth: 100,
+      frameHeight: 100,
+    }
+  );
+
+  this.load.spritesheet(
     "magic3",
     "images/attack/weapon/18_midnight_spritesheet.png",
     {
@@ -1814,10 +1823,10 @@ function create() {
 >>>>>>> 00d4ef8 (:bug: 사신 크기 버그 수정)
   global.witch = fairySet[4] = new Fairy(
     this,
-    100,
+    720,
     10,
     1,
-    5,
+    3,
     40,
     10,
     500,
@@ -1826,6 +1835,7 @@ function create() {
     0.5,
     1
   );
+  global.bombs = this.physics.add.group();
   fairySet[4].initFairy5(1, 1);
   for (let i = 0; i < 5; i++) {
     fairySet[i].setDepth(2);
@@ -2179,6 +2189,18 @@ function create() {
     frameRate: 200,
     repeat: -1,
   });
+
+  this.anims.create({
+    key: "magic2_1",
+    frames: this.anims.generateFrameNumbers("magic2_1", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+
   this.anims.create({
     key: "magic3",
     frames: this.anims.generateFrameNumbers("magic3", {
@@ -2315,7 +2337,7 @@ function create() {
 
 >>>>>>> 3b1904d (#1 :sparkles: tower Ui)
   monsterSet = this.physics.add.group();
-  magics = this.physics.add.group();
+  magics = this.physics.add.group()
   towerAttacks = this.physics.add.group();
   towerSkillAttacks = this.physics.add.group();
   mines = this.physics.add.group();
@@ -3923,7 +3945,6 @@ function attack(magic, monster) {
           magic.destroy();
         } else {
 
-
           thisScene.physics.moveTo(
             magic,
             monsterSet.children.entries[monNum].x,
@@ -3932,7 +3953,12 @@ function attack(magic, monster) {
           );
           magic.bounceCount--;
         }
-        if (magic.isFirst) {
+
+        let copy = Math.floor(
+          Math.random() * 100+1
+        );
+
+        if (magic.isFirst && copy <= fairySet[3].copyCount) {
           // magic.isFirst = false;
           let copyMagic = new Magic(thisScene, fairySet[nowFairy]);
           copyMagic.isFirst = false;
@@ -3945,7 +3971,7 @@ function attack(magic, monster) {
             -monsterSet.children.entries[monNum].y,
             copyMagic.fairy.velo
           );
-          copyMagic.bounceCount = magic.bounceCountdd ;
+          copyMagic.bounceCount = magic.bounceCount;
         }
       }
 >>>>>>> da9ff4f (#3 :sparkles: 튕기는 부메랑)
@@ -4247,9 +4273,19 @@ function attack(magic, monster) {
 function hithole(hole, monster) {
   hole.hp -= 1;
   monster.destroy();
+<<<<<<< HEAD
   monsterCount -= 1;
   if (hole.lhp <= 0) {
     console.log("game over")
+=======
+
+  monster.health -= (fairySet[nowFairy].dmg*player.dmgmul);
+  monster.invincible = true;
+  if (monster.health <= 0 && monster.type != "boss") {
+    monster.destroy();
+    player.expUp();
+    monsterCount -= 1;
+>>>>>>> 01f5b01 (#3 :sparkles: 스킬 바꾸기)
   }
 }
 
