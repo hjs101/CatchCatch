@@ -4846,10 +4846,10 @@ function update(time, delta) {
     global.wizard = fairySet[0] = new Fairy(
         this,
         100,
-        4,
+        10,
         1,
         1,
-        140,
+        60,
         40,
         500,
         1,
@@ -4864,7 +4864,7 @@ function update(time, delta) {
         10,
         1,
         1,
-        70,
+        120,
         10,
         160,
         2,
@@ -4875,10 +4875,10 @@ function update(time, delta) {
     global.ninja = fairySet[2] = new Fairy(
         this,
         100,
-        0,
+        6,
         1,
         3,
-        80,
+        90,
         10,
         300,
         3,
@@ -4890,10 +4890,10 @@ function update(time, delta) {
     global.slime = fairySet[3] = new Fairy(
         this,
         7200,
-        10,
+        15,
         1,
         99999,
-        90,
+        80,
         10,
         400,
         4,
@@ -5746,49 +5746,49 @@ function update(time, delta) {
 
     // 플레이어 기준랜덤 위치에 몬스터 생성
     // 생성규칙: 몬스터이름, 애니메이션, 체력, 속도, x,y,타입,딜레이
-    if (gameTimer > 300 && gameTimer % 30 == 0) {
+    if (gameTimer > 300 && gameTimer % 300 == 0) {
         // 1번 zombie
         enemySpawn(randomLocation);
 
         // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
-        addMonster(this, "alien", "swarm", 10, 100, monX, monY, "follower");
+        addMonster(this, "alien", "swarm", 30, 50, monX, monY, "follower");
         // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
     }
-    if (gameTimer > 1200 && gameTimer % 600 == 0) {
+    if (gameTimer > 3000 && gameTimer % 600 == 0) {
         // 2번 worm
         enemySpawn(randomLocation);
-        addMonster(this, "worm", "swarm", 10, 70, monX, monY, "siege");
+        addMonster(this, "worm", "swarm", 30, 70, monX, monY, "siege");
 
         // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
         // addMonster(this, 'worm_plus', 'worm_plus_anim',20,100,monX,monY,'follower')
     }
-    if (gameTimer > 1500 && gameTimer % 300 == 0) {
+    if (gameTimer > 9000 && gameTimer % 300 == 0) {
         enemySpawn(randomLocation);
-        addMonster(this, "sonic", "swarm", 5, 200, monX, monY, "follower");
+        addMonster(this, "sonic", "swarm", 50, 80, monX, monY, "follower");
     }
-    if (gameTimer > 1800 && gameTimer % 900 == 0) {
+    if (gameTimer > 20000 && gameTimer % 900 == 0) {
         enemySpawn(randomLocation);
-        addMonster(this, "turtle", "swarm", 100, 30, monX, monY, "siege");
+        addMonster(this, "turtle", "swarm", 150, 30, monX, monY, "siege");
     }
 
-    if (gameTimer > 0 && gameTimer % 300 == 0) {
+    if (gameTimer > 15000 && gameTimer % 300 == 0) {
         enemySpawn(randomLocation);
-        addMonster(this, "slime", "swarm", 10, 75, monX, monY, "follower");
+        addMonster(this, "slime", "swarm", 60, 75, monX, monY, "follower");
     }
     // 몬스터 빅웨이브
-    if (gameTimer > 600 && gameTimer < 1200 && gameTimer % 3 == 0) {
-        // 1번 zombie
-        enemySpawn(randomLocation);
+    // if (gameTimer > 600 && gameTimer < 1200 && gameTimer % 3 == 0) {
+    //     // 1번 zombie
+    //     enemySpawn(randomLocation);
 
-        // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
-        addMonster(this, "alien", "swarm", 10, 100, monX, monY, "follower");
-        // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
-    }
+    //     // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
+    //     addMonster(this, "alien", "swarm", 10, 100, monX, monY, "follower");
+    //     // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
+    // }
 
     // 보스
 
     // 슬라임
-    if (gameTimer == 1800) {
+    if (gameTimer == 15000) {
         slime_king = new Boss(
             this,
             200,
@@ -5808,6 +5808,7 @@ function update(time, delta) {
     }
 
     // 골렘
+<<<<<<< HEAD
     if (gameTimer == 100) {
         golem = new Boss(
             this,
@@ -5899,6 +5900,9 @@ function update(time, delta) {
 
     // 골렘
     if (gameTimer == 3600) {
+=======
+    if (gameTimer == 30000) {
+>>>>>>> 6d4c0a5 (#2 #3 :sparkles: 밸런스 조정)
         golem = new Boss(
             this,
             500,
@@ -5918,14 +5922,14 @@ function update(time, delta) {
     }
 
     // 불거인
-    if (gameTimer == 5400) {
-        fire_giant_aura = new Boss(this, 500, 30, player.x - 600, player.y - 600, 'fire_giant_aura', 'swarm', 5, 10, 'boss')
+    if (gameTimer == 60000) {
+        fire_giant_aura = new Boss(this, 10000, 30, player.x - 600, player.y - 600, 'fire_giant_aura', 'swarm', 5, 10, 'boss')
         fire_giant_aura.setDepth(1);
         fire_giant_aura.anime();
         boss_fire_giant_active = true;
         bossMagicSet.add(fire_giant_aura);
     }
-    if (gameTimer == 5400) {
+    if (gameTimer == 60000) {
         fire_giant = new Boss(this, 500, 30, player.x - 600, player.y - 600, 'fire_giant', 'swarm', 1, 10, 'boss')
         fire_giant.setDepth(2);
         fire_giant.anime();
@@ -5966,11 +5970,13 @@ function update(time, delta) {
                     player,
                     bossSet.children.entries[i].velo
                 );
-                this.physics.moveToObject(
-                    bossMagicSet.children.entries[0],
-                    player,
-                    bossMagicSet.children.entries[0].velo
-                );
+                if(boss_fire_giant_active) {
+                    this.physics.moveToObject(
+                        bossMagicSet.children.entries[0],
+                        player,
+                        bossMagicSet.children.entries[0].velo
+                    );
+                }
             } else if (bossSet.children.entries[i].bossSpiece == "golem") {
                 this.physics.moveToObject(
                     bossSet.children.entries[i],
@@ -6639,8 +6645,8 @@ function attack(magic, monster) {
                             thisScene,
                             "baby_slime",
                             "swarm",
-                            50,
-                            125,
+                            25,
+                            100,
                             monster.x + i * 10,
                             monster.y,
                             "follower"
