@@ -316,6 +316,7 @@ export var monsterSet;
 var monster;
 
 export var bossSet;
+export var bossMagicSet;
 // 1번 몬스터: alien
 var alien;
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
@@ -340,10 +341,13 @@ var cursors;
 // 보스
 var slime_king;
 var golem;
+var fire_giant;
+var fire_giant_aura;
 // 보스 패턴
 var pt;
 // 보스 활성 확인
 var boss_active;
+var boss_fire_giant_active;
 
 var monX;
 var monY;
@@ -389,6 +393,7 @@ var expbarBG;
 //hp bar start
 var hpbar;
 var hpbarBG;
+
 //hp bar end
 
 function preload() {
@@ -708,6 +713,7 @@ function preload() {
 >>>>>>> ad327af (Update game.js)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
         frameWidth: 230,
         frameHeight: 210,
@@ -722,48 +728,62 @@ function preload() {
     frameWidth: 150,
     frameHeight: 142,
   });
+=======
+    this.load.spritesheet("fairy1_1", "images/fairy/fairy1_yellow.png", {
+        frameWidth: 150,
+        frameHeight: 142,
+    });
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
-  this.load.spritesheet("fairy1_2", "images/fairy/fairy1_red.png", {
-    frameWidth: 150,
-    frameHeight: 142,
-  });
+    this.load.spritesheet("fairy1_2", "images/fairy/fairy1_red.png", {
+        frameWidth: 150,
+        frameHeight: 142,
+    });
 
   this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
     frameWidth: 230,
     frameHeight: 210,
   });
 
-  this.load.spritesheet("fairy2_1", "images/fairy/fairy2_Red.png", {
-    frameWidth: 230,
-    frameHeight: 210,
-  });
+    this.load.spritesheet("fairy2_1", "images/fairy/fairy2_Red.png", {
+        frameWidth: 230,
+        frameHeight: 210,
+    });
 
-  this.load.spritesheet("fairy2_2", "images/fairy/fairy2_black.png", {
-    frameWidth: 230,
-    frameHeight: 210,
-  });
+    this.load.spritesheet("fairy2_2", "images/fairy/fairy2_black.png", {
+        frameWidth: 230,
+        frameHeight: 210,
+    });
 
-  this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
-    frameWidth: 140,
-    frameHeight: 140,
-  });
+    this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
+        frameWidth: 140,
+        frameHeight: 140,
+    });
 
-  this.load.spritesheet("fairy3_1", "images/fairy/fairy3_Red.png", {
-    frameWidth: 140,
-    frameHeight: 140,
-  });
+    this.load.spritesheet("fairy3_1", "images/fairy/fairy3_Red.png", {
+        frameWidth: 140,
+        frameHeight: 140,
+    });
 
+<<<<<<< HEAD
   this.load.spritesheet("fairy3_2", "images/fairy/fairy3_master.png", {
     frameWidth: 140,
     frameHeight: 140,
   });
 >>>>>>> 3e6dfa6 (#3 :sparkles: player 기능 구현)
+=======
+    this.load.spritesheet("fairy3_2", "images/fairy/fairy3_master.png", {
+        frameWidth: 140,
+        frameHeight: 140,
+    });
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
     this.load.spritesheet("fairy4", "images/fairy/fairy4.png", {
         frameWidth: 136,
         frameHeight: 170,
     });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
         frameWidth: 160,
@@ -779,26 +799,32 @@ function preload() {
     frameWidth: 136,
     frameHeight: 170,
   });
+=======
+    this.load.spritesheet("fairy4_1", "images/fairy/fairy4_blue.png", {
+        frameWidth: 136,
+        frameHeight: 170,
+    });
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
-  this.load.spritesheet("fairy4_2", "images/fairy/fairy4_green.png", {
-    frameWidth: 136,
-    frameHeight: 170,
-  });
+    this.load.spritesheet("fairy4_2", "images/fairy/fairy4_green.png", {
+        frameWidth: 136,
+        frameHeight: 170,
+    });
 
   this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
     frameWidth: 160,
     frameHeight: 190,
   });
 
-  this.load.spritesheet("fairy5_1", "images/fairy/fairy5_red.png", {
-    frameWidth: 160,
-    frameHeight: 190,
-  });
+    this.load.spritesheet("fairy5_1", "images/fairy/fairy5_red.png", {
+        frameWidth: 160,
+        frameHeight: 190,
+    });
 
-  this.load.spritesheet("fairy5_2", "images/fairy/fairy5_black.png", {
-    frameWidth: 160,
-    frameHeight: 190,
-  });
+    this.load.spritesheet("fairy5_2", "images/fairy/fairy5_black.png", {
+        frameWidth: 160,
+        frameHeight: 190,
+    });
 
 >>>>>>> 3e6dfa6 (#3 :sparkles: player 기능 구현)
   //player end
@@ -4630,6 +4656,7 @@ if (mon1_delay > 60){
     fairySet = require("./jsons/fairys.json");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     player = cats[catNumber];
     player = new Player(this, 1, 100, 100, "cat" + (ChoiceCat + 1));
     player.setDepth(2);
@@ -4661,6 +4688,16 @@ function update(time, delta) {
     this.tileSize *
     Math.round(this.followPoint.y / (this.chunkSize * this.tileSize));
 >>>>>>> 3e6dfa6 (#3 :sparkles: player 기능 구현)
+=======
+    player = cats[catNumber];
+    player = new Player(this, 1, 20, 20, "cat" + (ChoiceCat + 1));
+    player.setScale(0.7)
+    player.setDepth(2);
+    let hw = player.body.halfWidth;
+    let hh = player.body.halfHeight;
+
+    player.setCircle(hw, hh - hw, hh - hw);
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
     camera = this.cameras.main;
     input = this.input;
@@ -4901,6 +4938,37 @@ function update(time, delta) {
         repeat: 0,
     });
 
+<<<<<<< HEAD
+=======
+    this.anims.create({
+        key: "fairy1_1_idle",
+        frames: this.anims.generateFrameNumbers("fairy1_1", {start: 12, end: 21}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy1_1_attack",
+        frames: this.anims.generateFrameNumbers("fairy1_1", {start: 6, end: 10}),
+        frameRate: 12,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy1_2_idle",
+        frames: this.anims.generateFrameNumbers("fairy1_2", {start: 12, end: 21}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy1_2_attack",
+        frames: this.anims.generateFrameNumbers("fairy1_2", {start: 6, end: 10}),
+        frameRate: 12,
+        repeat: 0,
+    });
+
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     this.anims.create({
         key: "fairy2_idle",
         frames: this.anims.generateFrameNumbers("fairy2", {start: 10, end: 19}),
@@ -4916,11 +4984,82 @@ function update(time, delta) {
     });
 
     this.anims.create({
+<<<<<<< HEAD
         key: "fairy3_idle",
         frames: this.anims.generateFrameNumbers("fairy3", {start: 11, end: 19}),
         frameRate: 8,
         repeat: -1,
     });
+=======
+        key: "fairy2_1_idle",
+        frames: this.anims.generateFrameNumbers("fairy2_1", {start: 10, end: 19}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy2_1_attack",
+        frames: this.anims.generateFrameNumbers("fairy2_1", {start: 0, end: 8}),
+        frameRate: 14,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy2_2_idle",
+        frames: this.anims.generateFrameNumbers("fairy2_2", {start: 10, end: 19}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy2_2_attack",
+        frames: this.anims.generateFrameNumbers("fairy2_2", {start: 0, end: 8}),
+        frameRate: 14,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy3_idle",
+        frames: this.anims.generateFrameNumbers("fairy3", {start: 9, end: 18}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy3_attack",
+        frames: this.anims.generateFrameNumbers("fairy3", {start: 0, end: 7}),
+        frameRate: 14,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy3_1_idle",
+        frames: this.anims.generateFrameNumbers("fairy3_1", {start: 9, end: 18}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy3_1_attack",
+        frames: this.anims.generateFrameNumbers("fairy3_1", {start: 0, end: 7}),
+        frameRate: 14,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy3_2_idle",
+        frames: this.anims.generateFrameNumbers("fairy3_2", {start: 9, end: 18}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy3_2_attack",
+        frames: this.anims.generateFrameNumbers("fairy3_2", {start: 0, end: 7}),
+        frameRate: 14,
+        repeat: 0,
+    });
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
     this.anims.create({
         key: "fairy3_attack",
@@ -4944,6 +5083,37 @@ function update(time, delta) {
     });
 
     this.anims.create({
+<<<<<<< HEAD
+=======
+        key: "fairy4_1_idle",
+        frames: this.anims.generateFrameNumbers("fairy4_1", {start: 7, end: 14}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy4_1_attack",
+        frames: this.anims.generateFrameNumbers("fairy4_1", {start: 0, end: 5}),
+        frameRate: 10,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy4_2_idle",
+        frames: this.anims.generateFrameNumbers("fairy4_2", {start: 7, end: 14}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy4_2_attack",
+        frames: this.anims.generateFrameNumbers("fairy4_2", {start: 0, end: 5}),
+        frameRate: 10,
+        repeat: 0,
+    });
+
+    this.anims.create({
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
         key: "fairy5_idle",
         frames: this.anims.generateFrameNumbers("fairy5", {start: 15, end: 24}),
         frameRate: 8,
@@ -4957,6 +5127,37 @@ function update(time, delta) {
         repeat: 0,
     });
 
+<<<<<<< HEAD
+=======
+    this.anims.create({
+        key: "fairy5_1_idle",
+        frames: this.anims.generateFrameNumbers("fairy5_1", {start: 15, end: 24}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy5_1_attack",
+        frames: this.anims.generateFrameNumbers("fairy5_1", {start: 0, end: 13}),
+        frameRate: 17,
+        repeat: 0,
+    });
+
+    this.anims.create({
+        key: "fairy5_2_idle",
+        frames: this.anims.generateFrameNumbers("fairy5_2", {start: 15, end: 24}),
+        frameRate: 8,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "fairy5_2_attack",
+        frames: this.anims.generateFrameNumbers("fairy5_2", {start: 0, end: 13}),
+        frameRate: 17,
+        repeat: 0,
+    });
+
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     // 공격 애니메이션
     this.anims.create({
         key: "magic1",
@@ -5030,7 +5231,11 @@ function update(time, delta) {
         frameRate: 200,
         repeat: -1,
     });
+<<<<<<< HEAD
     fairySet[nowFairy].play("fairy" + (nowFairy + 1) + "_idle", true);
+=======
+    fairySet[nowFairy].play(fairySet[nowFairy].idleKey, true);
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
     //player end
 
@@ -5048,6 +5253,7 @@ function update(time, delta) {
     towerSkillAttacks = this.physics.add.group();
     mines = this.physics.add.group();
 
+<<<<<<< HEAD
 
     // 임시 구멍
     hole = this.physics.add.sprite(0, 0, "fairy4");
@@ -5057,11 +5263,28 @@ function update(time, delta) {
     // 그룹셋
     monsterSet = this.physics.add.group();
     bossSet = this.physics.add.group();
+=======
+    // 임시 구멍
+    hole = this.physics.add.sprite(0, 0, "magic1");
+    hole.setScale(2.3);
+    hw = hole.body.halfWidth;
+    hh = hole.body.halfHeight;
+    hole.setCircle(hw * 0.7, hh - hw * 0.7, hh - hw * 0.7);
+    hole.hp = 500;
+    hole.setDepth(1);
+    inGameUI();
+
+    // 그룹셋
+    monsterSet = this.physics.add.group();
+    bossSet = this.physics.add.group();
+    bossMagicSet = this.physics.add.group();
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     magics = this.physics.add.group();
 
     this.physics.add.collider(player, bossSet, player.hitPlayer);
     this.physics.add.collider(bossSet, monsterSet);
     thisScene.physics.add.overlap(magics, bossSet, attack);
+    thisScene.physics.add.overlap(bossMagicSet, player, player.hitPlayer);
 
     // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
     this.physics.add.collider(player, monsterSet, player.hitPlayer);
@@ -5287,6 +5510,11 @@ function update(time, delta) {
         delay: 2000,
         callback: () => {
             player.invincible = false;
+<<<<<<< HEAD
+=======
+            player.body.checkCollision.none = false
+            player.setVisible(true);
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
         },
         loop: true,
     });
@@ -5345,6 +5573,17 @@ function update(time, delta) {
     expbar.setDepth(3);
     expbarBG.setDepth(2);
     //exp bar end
+<<<<<<< HEAD
+=======
+
+    // hp bar start
+    hpbar = this.add.graphics();
+    hpbarBG = this.add.graphics();
+    hpbar.setDepth(5);
+    hpbarBG.setDepth(4);
+    // hp bar end
+
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 }
 
 function update(time, delta) {
@@ -5441,6 +5680,34 @@ function update(time, delta) {
     }
 
     player.move();
+<<<<<<< HEAD
+=======
+    player.healCount++;
+    if (player.healCount > player.maxHealCount) {
+        player.healCount = 0;
+        player.health += player.heal;
+        if (player.health > player.maxHealth) {
+            player.health = player.maxHealth;
+        }
+        console.log(player.health);
+    }
+
+    if (player.invincible) {
+        hitTimer++;
+        if (hitTimer >= 15) {
+            hitTimer = 0;
+
+            if (hitVisible) {
+                hitVisible = false;
+            } else {
+                hitVisible = true;
+            }
+
+            player.setVisible(hitVisible);
+        }
+    }
+
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     //player end
 
     //enemy start
@@ -5472,6 +5739,7 @@ function update(time, delta) {
         gameover();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     gameTimer++;
     Updatetimer();
@@ -5561,70 +5829,111 @@ function update(time, delta) {
 =======
   gameTimer++;
   Updatetimer();
+=======
+    gameTimer++;
+    Updatetimer();
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
-  // 플레이어 기준랜덤 위치에 몬스터 생성
-  // 생성규칙: 몬스터이름, 애니메이션, 체력, 속도, x,y,타입,딜레이
-  if (gameTimer > 300 && gameTimer % 30 == 0) {
-    // 1번 zombie
-    enemySpawn(randomLocation);
+    // 플레이어 기준랜덤 위치에 몬스터 생성
+    // 생성규칙: 몬스터이름, 애니메이션, 체력, 속도, x,y,타입,딜레이
+    if (gameTimer > 300 && gameTimer % 30 == 0) {
+        // 1번 zombie
+        enemySpawn(randomLocation);
 
-    // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
-    addMonster(this, "alien", "swarm", 10, 100, monX, monY, "follower");
-    // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
-  }
-  if (gameTimer > 1200 && gameTimer % 600 == 0) {
-    // 2번 worm
-    enemySpawn(randomLocation);
-    addMonster(this, "worm", "swarm", 10, 70, monX, monY, "siege");
+        // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
+        addMonster(this, "alien", "swarm", 10, 100, monX, monY, "follower");
+        // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
+    }
+    if (gameTimer > 1200 && gameTimer % 600 == 0) {
+        // 2번 worm
+        enemySpawn(randomLocation);
+        addMonster(this, "worm", "swarm", 10, 70, monX, monY, "siege");
 
-    // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
-    // addMonster(this, 'worm_plus', 'worm_plus_anim',20,100,monX,monY,'follower')
-  }
-  if (gameTimer > 1500 && gameTimer % 300 == 0) {
-    enemySpawn(randomLocation);
-    addMonster(this, "sonic", "swarm", 5, 200, monX, monY, "follower");
-  }
-  if (gameTimer > 1800 && gameTimer % 900 == 0) {
-    enemySpawn(randomLocation);
-    addMonster(this, "turtle", "swarm", 100, 30, monX, monY, "siege");
-  }
+        // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
+        // addMonster(this, 'worm_plus', 'worm_plus_anim',20,100,monX,monY,'follower')
+    }
+    if (gameTimer > 1500 && gameTimer % 300 == 0) {
+        enemySpawn(randomLocation);
+        addMonster(this, "sonic", "swarm", 5, 200, monX, monY, "follower");
+    }
+    if (gameTimer > 1800 && gameTimer % 900 == 0) {
+        enemySpawn(randomLocation);
+        addMonster(this, "turtle", "swarm", 100, 30, monX, monY, "siege");
+    }
 
-  if (gameTimer > 0 && gameTimer % 300 == 0) {
-    enemySpawn(randomLocation);
-    addMonster(this, "slime", "swarm", 10, 75, monX, monY, "follower");
-  }
-  // 몬스터 빅웨이브
-  if (gameTimer > 600 && gameTimer < 1200 && gameTimer % 3 == 0) {
-    // 1번 zombie
-    enemySpawn(randomLocation);
+    if (gameTimer > 0 && gameTimer % 300 == 0) {
+        enemySpawn(randomLocation);
+        addMonster(this, "slime", "swarm", 10, 75, monX, monY, "follower");
+    }
+    // 몬스터 빅웨이브
+    if (gameTimer > 600 && gameTimer < 1200 && gameTimer % 3 == 0) {
+        // 1번 zombie
+        enemySpawn(randomLocation);
 
-    // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
-    addMonster(this, "alien", "swarm", 10, 100, monX, monY, "follower");
-    // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
-  }
+        // #### if문으로 특정 시간 이후면 강화몹 소환으로 변경하기 ###
+        addMonster(this, "alien", "swarm", 10, 100, monX, monY, "follower");
+        // addMonster(this, 'alien_plus', 'alien_plus_anim',20,100,monX,monY,'follower')
+    }
 
-  // 보스
+    // 보스
 
-  // 슬라임
-  if (gameTimer == 1800) {
-    slime_king = new Boss(
-      this,
-      200,
-      80,
-      player.x + 300,
-      player.y + 300,
-      "slime_king",
-      "swarm",
-      5,
-      1,
-      "boss"
-    );
-    slime_king.setDepth(2);
-    slime_king.anime();
-    boss_active = true;
-    bossSet.add(slime_king);
-  }
+    // 슬라임
+    if (gameTimer == 1800) {
+        slime_king = new Boss(
+            this,
+            200,
+            80,
+            player.x + 300,
+            player.y + 300,
+            "slime_king",
+            "swarm",
+            5,
+            1,
+            "boss"
+        );
+        slime_king.setDepth(2);
+        slime_king.anime();
+        boss_active = true;
+        bossSet.add(slime_king);
+    }
 
+    // 골렘
+    if (gameTimer == 3600) {
+        golem = new Boss(
+            this,
+            500,
+            100,
+            player.x + 600,
+            player.y - 600,
+            "golem",
+            "swarm",
+            10,
+            10,
+            "boss"
+        );
+        golem.setDepth(2);
+        golem.anime();
+        boss_active = true;
+        bossSet.add(golem);
+    }
+
+    // 불거인
+    if (gameTimer == 5400) {
+        fire_giant_aura = new Boss(this, 500, 30, player.x - 600, player.y - 600, 'fire_giant_aura', 'swarm', 5, 10, 'boss')
+        fire_giant_aura.setDepth(1);
+        fire_giant_aura.anime();
+        boss_fire_giant_active = true;
+        bossMagicSet.add(fire_giant_aura);
+    }
+    if (gameTimer == 5400) {
+        fire_giant = new Boss(this, 500, 30, player.x - 600, player.y - 600, 'fire_giant', 'swarm', 1, 10, 'boss')
+        fire_giant.setDepth(2);
+        fire_giant.anime();
+        boss_active = true;
+        bossSet.add(fire_giant);
+    }
+
+<<<<<<< HEAD
   // 골렘
   if (gameTimer == 3600) {
     golem = new Boss(
@@ -5645,6 +5954,8 @@ function update(time, delta) {
     bossSet.add(golem);
   }
 >>>>>>> 39825fe (#2 :recycle: 머지 충돌 해결)
+=======
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
     // 보스 이동 및 사망 체크
     if (boss_active) {
@@ -5654,6 +5965,11 @@ function update(time, delta) {
                     bossSet.children.entries[i],
                     player,
                     bossSet.children.entries[i].velo
+                );
+                this.physics.moveToObject(
+                    bossMagicSet.children.entries[0],
+                    player,
+                    bossMagicSet.children.entries[0].velo
                 );
             } else if (bossSet.children.entries[i].bossSpiece == "golem") {
                 this.physics.moveToObject(
@@ -5687,6 +6003,10 @@ function update(time, delta) {
         }
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     //enemy end
 
     //tower start
@@ -5702,6 +6022,7 @@ function update(time, delta) {
     towerRD.towerSkillAttackTimer++;
     //tower end
 
+<<<<<<< HEAD
     //exp bar start
     expbar.clear();
 
@@ -5714,28 +6035,35 @@ function update(time, delta) {
 =======
   //  Health bar start
   hpbar.clear();
+=======
+    //  Health bar start
+    hpbar.clear();
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
-  hpbarBG.fillStyle(0xff0000);
-  hpbarBG.fillRect(0, 0, 60, 10);
+    hpbarBG.fillStyle(0xff0000);
+    hpbarBG.fillRect(0, 0, 60, 10);
 
-  hpbar.fillStyle(0x2ff40a);
-  hpbar.fillRect(0, 0, 60*(player.health / player.maxHealth), 10);
+    hpbar.fillStyle(0x2ff40a);
+    hpbar.fillRect(0, 0, 60 * (player.health / player.maxHealth), 10);
 
-  hpbar.setPosition(player.x-30, player.y + 40);
-  hpbarBG.setPosition(player.x-30, player.y + 40);
-  // Health bar end
+    hpbar.setPosition(player.x - 30, player.y + 40);
+    hpbarBG.setPosition(player.x - 30, player.y + 40);
+    // Health bar end
 
-  //exp bar start
-  expbar.clear();
+    //exp bar start
+    expbar.clear();
 
   //  BG
   expbarBG.fillStyle(0x000000);
   expbarBG.fillRect(0, 0, this.cameras.main.worldView.width, 16); // x y 가로길이, 세로길이
 
 
+<<<<<<< HEAD
 >>>>>>> 3e6dfa6 (#3 :sparkles: player 기능 구현)
 
 >>>>>>> ad327af (Update game.js)
+=======
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     expbar.fillStyle(0xff0000);
     expbar.fillRect(
         0,
@@ -5759,8 +6087,6 @@ function update(time, delta) {
 =======
 >>>>>>> ad327af (Update game.js)
 }
-
-
 
 
 //player start
@@ -5851,6 +6177,9 @@ var magicFire = function (game) {
 >>>>>>> f7fa4a4 (#3 :sparkles: 플레이어 스킬 구현1)
 function changeSlot() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     if (
         cursors.slot1.isDown &&
         nowFairy !== 0 &&
@@ -5861,6 +6190,7 @@ function changeSlot() {
         nowFairy = 0;
         player.changeFairy(fairySet[nowFairy]);
         normalAttackAS = fairySet[nowFairy].as;
+<<<<<<< HEAD
         fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
     }
 
@@ -5932,59 +6262,64 @@ function changeSlot() {
     normalAttackAS = fairySet[nowFairy].as;
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
+=======
+        fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+    }
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 
-  if (
-    cursors.slot2.isDown &&
-    nowFairy !== 1 &&
-    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-  ) {
-    fairySet[nowFairy].x = -10000;
-    fairySet[nowFairy].y = -10000;
-    nowFairy = 1;
-    player.changeFairy(fairySet[nowFairy]);
-    normalAttackAS = fairySet[nowFairy].as;
-    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
-  }
+    if (
+        cursors.slot2.isDown &&
+        nowFairy !== 1 &&
+        /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+    ) {
+        fairySet[nowFairy].x = -10000;
+        fairySet[nowFairy].y = -10000;
+        nowFairy = 1;
+        player.changeFairy(fairySet[nowFairy]);
+        normalAttackAS = fairySet[nowFairy].as;
+        fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+    }
 
-  if (
-    cursors.slot3.isDown &&
-    nowFairy !== 2 &&
-    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-  ) {
-    fairySet[nowFairy].x = -10000;
-    fairySet[nowFairy].y = -10000;
-    nowFairy = 2;
-    player.changeFairy(fairySet[nowFairy]);
-    normalAttackAS = fairySet[nowFairy].as;
-    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
-  }
+    if (
+        cursors.slot3.isDown &&
+        nowFairy !== 2 &&
+        /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+    ) {
+        fairySet[nowFairy].x = -10000;
+        fairySet[nowFairy].y = -10000;
+        nowFairy = 2;
+        player.changeFairy(fairySet[nowFairy]);
+        normalAttackAS = fairySet[nowFairy].as;
+        fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+    }
 
-  if (
-    cursors.slot4.isDown &&
-    nowFairy !== 3 &&
-    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-  ) {
-    fairySet[nowFairy].x = -10000;
-    fairySet[nowFairy].y = -10000;
-    nowFairy = 3;
-    player.changeFairy(fairySet[nowFairy]);
-    normalAttackAS = fairySet[nowFairy].as;
-    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
-  }
+    if (
+        cursors.slot4.isDown &&
+        nowFairy !== 3 &&
+        /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+    ) {
+        fairySet[nowFairy].x = -10000;
+        fairySet[nowFairy].y = -10000;
+        nowFairy = 3;
+        player.changeFairy(fairySet[nowFairy]);
+        normalAttackAS = fairySet[nowFairy].as;
+        fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+    }
 
-  if (
-    cursors.slot5.isDown &&
-    nowFairy !== 4 &&
-    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-  ) {
-    fairySet[nowFairy].x = -10000;
-    fairySet[nowFairy].y = -10000;
-    nowFairy = 4;
-    player.changeFairy(fairySet[nowFairy]);
-    normalAttackAS = fairySet[nowFairy].as;
-    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
-  }
+    if (
+        cursors.slot5.isDown &&
+        nowFairy !== 4 &&
+        /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+    ) {
+        fairySet[nowFairy].x = -10000;
+        fairySet[nowFairy].y = -10000;
+        nowFairy = 4;
+        player.changeFairy(fairySet[nowFairy]);
+        normalAttackAS = fairySet[nowFairy].as;
+        fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+    }
 
+<<<<<<< HEAD
   if (!fairySet[nowFairy].anims.isPlaying) {
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
@@ -6206,6 +6541,10 @@ function attack(magic, monster) {
 =======
     if (!fairySet[nowFairy].anims.isPlaying) {
         fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+=======
+    if (!fairySet[nowFairy].anims.isPlaying) {
+        fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     }
 }
 
@@ -6311,6 +6650,7 @@ function attack(magic, monster) {
                     monsterCount -= 1;
                 }
             }
+<<<<<<< HEAD
         }
 
         monster.health -= (fairySet[nowFairy].dmg * player.dmgmul);
@@ -6366,12 +6706,12 @@ function attack(magic, monster) {
           }
           monster.destroy();
           monsterCount -= 1;
+=======
+            if (magic.fairy.stun > 0) {
+                monster.cc = 'earth';
+            }
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
         }
-      }
-      if (magic.fairy.stun > 0) {
-        monster.cc = 'earth';
-      }
-    }
 
         monster.health -= (fairySet[nowFairy].dmg * player.dmgmul);
         monster.invincible = true;
@@ -6380,6 +6720,18 @@ function attack(magic, monster) {
                 monster.die_anim();
                 monster.destroy();
                 player.expUp();
+<<<<<<< HEAD
+=======
+                if (magic.fairy.fairyNum === 2) {
+                    let vampireNum = Math.floor(Math.random() * 100 + 1);
+                    if (vampireNum < 6) {
+                        player.health += magic.fairy.vampire;
+                        if (player.health > player.maxHealth) {
+                            player.health = player.maxHealth;
+                        }
+                    }
+                }
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
                 monsterCount -= 1;
             } else if (monster.monSpiece == "slime") {
                 for (let i = 0; i < 2; i++) {
@@ -6398,6 +6750,7 @@ function attack(magic, monster) {
                 monsterCount -= 1;
             }
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
       }
 >>>>>>> da9ff4f (#3 :sparkles: 튕기는 부메랑)
@@ -6713,11 +7066,12 @@ function attack(magic, monster) {
                 monster.destroy()
                 monsterCount -= 1 }
 >>>>>>> e961a66 (#2 :sparkles: 몬스터 = 슬라임)
+=======
+    } else if (monster.health > 0) {
+        hit_anime(monster)
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
     }
-    else if (monster.health > 0){
-      hit_anime(monster)
-    }
-  }
+}
 
 <<<<<<< HEAD
 =======
@@ -7118,10 +7472,17 @@ function slime_pattern(scene,pt,x,y){
 >>>>>>> ad327af (Update game.js)
     }
 }
-function hit_anime(monster){
-  monster
-  .setTint(0xff0000)
-  thisScene.time.addEvent({ delay : 150, callback: () => {if(monster.active == true){monster.anime()}}, loop: false});
+
+function hit_anime(monster) {
+    monster
+        .setTint(0xff0000)
+    thisScene.time.addEvent({
+        delay: 150, callback: () => {
+            if (monster.active == true) {
+                monster.anime()
+            }
+        }, loop: false
+    });
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7143,7 +7504,11 @@ function hit_anime(monster){
 >>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
 =======
 }
+<<<<<<< HEAD
 >>>>>>> 2425c48 (#2 :sparkle: 몬스터 피격 시 빨개짐)
+=======
+
+>>>>>>> 2f19786 (#2 :sparkle: 불거인)
 //enemy end
 
 //map start
