@@ -18,8 +18,11 @@ export default function inGameUI() {
   hp.innerText = hole.hp;
   holeHP.appendChild(hp);
   gameContainer.appendChild(holeHP);
+<<<<<<< HEAD
   const _catcoin = document.createElement("div");
 =======
+=======
+>>>>>>> 719d19d (#1 :bug: 체력 갱신)
 
   _catcoin = document.createElement("div");
 >>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
@@ -104,11 +107,9 @@ export function updateExp() {
 <<<<<<< HEAD
 export function updateHP() {
   // console.log(hole.hp);
-  if (hole.hp >= 0) {
-    const holeHP = document.querySelector(".holeHP");
-    const hp = document.querySelector(".hp");
-    hp.innerText = hole.hp;
-  }
+  const holeHP = document.querySelector(".holeHP");
+  const hp = document.querySelector(".hp");
+  hp.innerText = hole.hp;
 }
 
 export function gameover() {
