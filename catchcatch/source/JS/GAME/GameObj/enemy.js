@@ -50,7 +50,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   anime(){
     if (this.monSpiece == 'alien'){
       this
-      .setTint(0x000000)
+      .setTint(0xFFFA00)
     }
     else if (this.monSpiece == 'worm'){
       this
@@ -82,7 +82,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   die_anim(){
-    new Explosion(this.scene, this.x, this.y);
+    new Explosion(thisScene, this.x, this.y);
     // this.scene.m_explosionSound.play();  몬스터 폭발 사운드
   }
 }

@@ -9,8 +9,8 @@ export const Direction = Object.freeze({
 });
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
-  maxHealth = 100;
-  health = 100;
+  maxHealth = 20;
+  health = 20;
   healthLevel = 1;
   dmgmul = 1;
   dmgmulLevel = 1;
@@ -24,17 +24,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   // 캐릭터 특수능력 일단 보류
   ablity;
   heal = 0;
+  healCount = 0;
+  maxHealCount = 300;
   healLevel = 1;
   fairy;
   invincible = false;
 <<<<<<< HEAD
   constructor(scene, dmgmul, maxHealth, health, catname) {
     super(scene, 0, 0, catname);
+<<<<<<< HEAD
 =======
   constructor(scene, dmgmul, maxHealth, health) {
     super(scene, 0, 0, "cat1");
 >>>>>>> a774e3d (#1 :sparkles: levelup random 및 levelup시 수치 증가)
     this.scale = 0.7;
+=======
+>>>>>>> 3e6dfa6 (#3 :sparkles: player 기능 구현)
     this.alpha = 1;
     this.dmgmul = dmgmul;
     this.maxHealth = maxHealth;
@@ -139,6 +144,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   move(direction) {
     this.fairy.x = this.x - 20;
     this.fairy.y = this.y - 50;
+    
     if (cursors.left.isDown) {
       this.setVelocityX(-this.speed);
       this.anims.play("left", true);
@@ -173,6 +179,34 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.anims.play("turn", true);
       }
     }
+    let speedDiag = this.speed * (1 / 1.44);
+    if (cursors.left.isDown && cursors.up.isDown)
+    {
+        this.body.setVelocityX(-speedDiag);
+        this.body.setVelocityY(-speedDiag);
+    }
+    
+    // Up and right
+    if (cursors.right.isDown && cursors.up.isDown)
+    {
+        this.body.setVelocityX(speedDiag);
+        this.body.setVelocityY(-speedDiag);
+    }
+    
+    // Down and right
+    if (cursors.right.isDown && cursors.down.isDown)
+    {
+        this.body.setVelocityX(speedDiag);
+        this.body.setVelocityY(speedDiag);
+    }
+    
+    // Down and left
+    if (cursors.left.isDown && cursors.down.isDown)
+    {
+        this.body.setVelocityX(-speedDiag);
+        this.body.setVelocityY(speedDiag);
+    }
+
   }
 
   hitByEnemy(damage) {}
@@ -192,10 +226,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 =======
     if (player.invincible == false) {
       player.invincible = true;
+      player.body.checkCollision.none = true;
       player.health -= 1;
+<<<<<<< HEAD
 >>>>>>> f5bd30f (#1 :sparkles: fairy5렙 9렙 구매 가능 및 레벨업에서 4, 8 안뜸)
       console.log(player.invincible);
       console.log(player.health);
+=======
+>>>>>>> 3e6dfa6 (#3 :sparkles: player 기능 구현)
       // 피해 1 줌
       // stop_game -= 1;
       if (player.health <= 0) {
