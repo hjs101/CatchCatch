@@ -3909,13 +3909,20 @@ function attack(magic, monster) {
 
     if (nowFairy === 3) {
       if (monsterSet.children.entries.length !== 0) {
+<<<<<<< HEAD
         if (magic.bounceCount <= 0) {
 >>>>>>> b038195 (#1 :bug: 버그 수정)
           magic.destroy();
         } else {
+=======
+>>>>>>> ea7f1de (#3 :sparkles: 튕기는 부메랑 복사_1)
           let monNum = Math.floor(
             Math.random() * monsterSet.children.entries.length
           );
+        if (magic.bounceCount <= 0) {
+          magic.destroy();
+        } else {
+
 
           thisScene.physics.moveTo(
             magic,
@@ -3924,6 +3931,21 @@ function attack(magic, monster) {
             magic.fairy.velo
           );
           magic.bounceCount--;
+        }
+        if (magic.isFirst) {
+          // magic.isFirst = false;
+          let copyMagic = new Magic(thisScene, fairySet[nowFairy]);
+          copyMagic.isFirst = false;
+          magics.add(copyMagic)
+          copyMagic.setPosition(magic.x, magic.y);
+
+          thisScene.physics.moveTo(
+            copyMagic,
+            -monsterSet.children.entries[monNum].x,
+            -monsterSet.children.entries[monNum].y,
+            copyMagic.fairy.velo
+          );
+          copyMagic.bounceCount = magic.bounceCountdd ;
         }
       }
 >>>>>>> da9ff4f (#3 :sparkles: 튕기는 부메랑)
