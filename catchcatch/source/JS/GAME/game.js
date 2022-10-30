@@ -3085,7 +3085,7 @@ function update(time, delta) {
   }
 
   // 골렘
-  if (gameTimer == 100) {
+  if (gameTimer == 3600) {
     golem = new Boss(
       this,
       500,
@@ -3145,6 +3145,7 @@ function update(time, delta) {
     }
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3617,6 +3618,9 @@ if (mon1_delay > 60){
 >>>>>>> bfa9489 (#6 :sparkles: 포탑 생성)
 =======
 =======
+=======
+
+>>>>>>> 2425c48 (#2 :sparkle: 몬스터 피격 시 빨개짐)
   //enemy end
 
   //tower start
@@ -4316,7 +4320,11 @@ function attack(magic, monster) {
                 monsterCount -= 1 }
 >>>>>>> e961a66 (#2 :sparkles: 몬스터 = 슬라임)
     }
+    else if (monster.health > 0){
+      hit_anime(monster)
+    }
   }
+
 }
 
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
@@ -4354,6 +4362,7 @@ function hithole(hole, monster) {
   }
 }
 
+<<<<<<< HEAD
 >>>>>>> e000c8a (#1 :sparkles: 홀체력 및 게임 오버 구현)
 =======
     console.log("game over");
@@ -4376,6 +4385,8 @@ function hithole(hole, monster) {
 //     console.log("game over");
 //   }
 // }
+=======
+>>>>>>> 2425c48 (#2 :sparkle: 몬스터 피격 시 빨개짐)
 
 function addMonster(scene, mon_name, mon_anime, hp, velo, x, y, type) {
 <<<<<<< HEAD
@@ -4569,7 +4580,12 @@ function slime_pattern(scene,pt,x,y){
     }
   }
 }
+function hit_anime(monster){
+  monster
+  .setTint(0xff0000)
+  thisScene.time.addEvent({ delay : 150, callback: () => {if(monster.active == true){monster.anime()}}, loop: false});
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -4587,6 +4603,9 @@ function slime_pattern(scene,pt,x,y){
 >>>>>>> 738219b (#2 :sparkles: : 몬스터 종류 구현 및 보스 초기 제작)
 =======
 >>>>>>> 54e99e5 (#2 :sparkle: 슬라임 패턴 구현)
+=======
+}
+>>>>>>> 2425c48 (#2 :sparkle: 몬스터 피격 시 빨개짐)
 //enemy end
 
 //map start
