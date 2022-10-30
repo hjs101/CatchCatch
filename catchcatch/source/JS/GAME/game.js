@@ -4494,6 +4494,7 @@ function slime_pattern(scene,pt,x,y){
 =======
   if (pt != 16) {
     pt *= 2;
+<<<<<<< HEAD
     console.log(pt);
 =======
   if (pt != 16) {
@@ -4508,6 +4509,9 @@ function slime_pattern(scene,pt,x,y){
     pt *= 2;
 >>>>>>> 3b1904d (#1 :sparkles: tower Ui)
     for (let i = 0; i < pt; i++) {
+=======
+    for (let i = 0; i < 2; i++) {
+>>>>>>> 321a471 (#2 :bug: 슬라임 분열 수 감소)
       // 분열될 때마다 체력 감소 구현하기
       if (pt < 4) {
         slime_king = new Boss(
