@@ -35,6 +35,8 @@ import Boss from "./GameObj/boss.js";
 import Mine from "./GameObj/mine.js";
 >>>>>>> 643016e (#6 :sparkles: 인게임 coin 생성)
 
+import { Updatetimer } from "../UI/inGameUI.js";
+
 export const config = {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -182,7 +184,7 @@ var mouse;
 <<<<<<< HEAD
 =======
 //gametimer
-let gameTimer = 0;
+global.gameTimer = 0;
 
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
 //map start
@@ -3019,6 +3021,7 @@ function update(time, delta) {
   }
 
   gameTimer++;
+  Updatetimer();
 
   // 플레이어 기준랜덤 위치에 몬스터 생성
   // 생성규칙: 몬스터이름, 애니메이션, 체력, 속도, x,y,타입,딜레이
@@ -3947,6 +3950,7 @@ function attack(magic, monster) {
       if (monsterSet.children.entries.length !== 0) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (magic.bounceCount <= 0) {
 >>>>>>> b038195 (#1 :bug: 버그 수정)
           magic.destroy();
@@ -3961,6 +3965,11 @@ function attack(magic, monster) {
           Math.random() * monsterSet.children.entries.length
         );
 >>>>>>> e000c8a (#1 :sparkles: 홀체력 및 게임 오버 구현)
+=======
+        let monNum = Math.floor(
+          Math.random() * monsterSet.children.entries.length
+        );
+>>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
         if (magic.bounceCount <= 0) {
           magic.destroy();
         } else {
@@ -4260,10 +4269,14 @@ function attack(magic, monster) {
 >>>>>>> 3b1904d (#1 :sparkles: tower Ui)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     monster.health -= fairySet[nowFairy].dmg;
 =======
     monster.health -= fairySet[nowFairy].dmg * player.dmgmul;
 >>>>>>> e000c8a (#1 :sparkles: 홀체력 및 게임 오버 구현)
+=======
+    monster.health -= fairySet[nowFairy].dmg * player.dmgmul;
+>>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
     monster.invincible = true;
     if (monster.health <= 0 && monster.type != "boss") {
       monster.die_anim();
@@ -4299,6 +4312,7 @@ function hithole(hole, monster) {
   monsterCount -= 1;
   if (hole.lhp <= 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log("game over")
 =======
 
@@ -4322,6 +4336,12 @@ function hithole(hole, monster) {
 }
 
 >>>>>>> e000c8a (#1 :sparkles: 홀체력 및 게임 오버 구현)
+=======
+    console.log("game over");
+  }
+}
+
+>>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
 // 임시 구멍 구현
 =======
 // // 임시 구멍 구현

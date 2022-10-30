@@ -1,9 +1,16 @@
 import "../../CSS/UI/inGameUI.css";
 import { CharSpaceOn } from "./CharSpace.js";
 
+let Timertxt = document.createElement("div");
+let Minute = 0;
+let Second = 0;
+
+export let _catcoin;
+
 export default function inGameUI() {
   const gameContainer = document.querySelector("#game-container");
   // const progress = document.createElement("progress");
+<<<<<<< HEAD
   const holeHP = document.createElement("div");
   holeHP.setAttribute("class", "holeHP");
   const hp = document.createElement("div");
@@ -12,6 +19,10 @@ export default function inGameUI() {
   holeHP.appendChild(hp);
   gameContainer.appendChild(holeHP);
   const _catcoin = document.createElement("div");
+=======
+
+  _catcoin = document.createElement("div");
+>>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
   _catcoin.setAttribute("class", "catcoin");
   _catcoin.setAttribute("id", "catcoin");
   _catcoin.textContent = global.coin + " Coin";
@@ -25,6 +36,14 @@ export default function inGameUI() {
 
   const speed = document.createElement("div");
   const speedtxt = document.createElement("div");
+
+  Timertxt.setAttribute("class", "Timer");
+  gameContainer.appendChild(Timertxt);
+  Minute = 0;
+  Second = 0;
+
+  Timertxt.textContent = `${Minute}:${Second}`;
+
   // progress.setAttribute("id", "progress");
   // progress.setAttribute("value", player.exp);
   // progress.setAttribute("max", 100);
@@ -82,6 +101,7 @@ export function updateExp() {
   // progress.setAttribute("value", player.exp);
 }
 
+<<<<<<< HEAD
 export function updateHP() {
   // console.log(hole.hp);
   if (hole.hp >= 0) {
@@ -114,4 +134,59 @@ export function gameover() {
   gameoverContainer.appendChild(gameover);
   gameoverContainer.appendChild(again);
   gameContainer.appendChild(gameoverContainer);
+=======
+export function Updatetimer() {
+  if (global.gameTimer != 0 && global.gameTimer % 60 === 0) {
+    ++Second;
+    if (Second === 60) {
+      ++Minute;
+      Second = 0;
+    }
+  }
+  if (Second < 10) {
+    if (Minute < 10) Timertxt.textContent = `0${Minute}:0${Second}`;
+    else Timertxt.textContent = `${Minute}:0${Second}`;
+  } else if (Minute < 10) {
+    if (Second < 10) Timertxt.textContent = `0${Minute}:0${Second}`;
+    else Timertxt.textContent = `0${Minute}:${Second}`;
+  } else Timertxt.textContent = `w${Minute}:${Second}`;
+
+  if (Minute === 20) {
+    $this.pause();
+    GameClear();
+    //게임클리어
+  }
+}
+
+function GameClear() {
+  // 게임 중지
+  const gameContainer = document.querySelector("#game-container");
+
+  const GameClearSpace = document.createElement("div");
+  GameClearSpace.setAttribute("class", "GameClearSpace");
+
+  const ClearText = document.createElement("div");
+  ClearText.setAttribute("class", "ClearText");
+  ClearText.textContent = "GameClear!";
+
+  GameClearSpace.appendChild(ClearText);
+
+  const GoHomeBtn = document.createElement("button");
+  GoHomeBtn.setAttribute("class", "GoHomeBtn");
+  GoHomeBtn.textContent = "홈으로";
+
+  GoHomeBtn.addEventListener("click", GoHome);
+
+  GameClearSpace.appendChild(GoHomeBtn);
+
+  gameContainer.appendChild(GameClearSpace);
+}
+
+function GoHome() {
+  window.location.reload();
+}
+
+export function UpdateCatCoin() {
+  _catcoin.textContent = global.coin + " Coin";
+>>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
 }
