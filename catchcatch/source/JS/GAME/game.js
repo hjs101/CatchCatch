@@ -9,8 +9,9 @@ import inGameUI, { gameover, updateExp, updateHP } from "../UI/inGameUI.js";
 import inGameUI, {updateExp} from "../UI/inGameUI.js";
 >>>>>>> d0fc426 (#2 :sparkles: 불거인)
 import levelup from "../UI/levelup.js";
-import initUpgrade, {closeUpgrade} from "../UI/upgrade.js";
+import initUpgrade, { closeUpgrade } from "../UI/upgrade.js";
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -23,6 +24,9 @@ import Player from './GameObj/player.js';
 import Enemy from './GameObj/enemy.js';
 =======
 import {Chunk, Tile} from "./Entities.js";
+=======
+import { Chunk, Tile } from "./Entities.js";
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
 import CatTower from "./GameObj/cattower.js";
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
 import Boss from './GameObj/boss.js';
@@ -46,6 +50,7 @@ import Mine from "./GameObj/mine.js";
 import { Updatetimer } from "../UI/inGameUI.js";
 
 export const config = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -97,6 +102,8 @@ export const config = {
     },
   }
 =======
+=======
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
   type: Phaser.AUTO,
   width: 600,
   height: 600,
@@ -117,9 +124,13 @@ export const config = {
       fps: 60,
       debug: false,
       fixedStep: false,
+<<<<<<< HEAD
 =======
 >>>>>>> d0fc426 (#2 :sparkles: 불거인)
+=======
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
     },
+  },
 };
 >>>>>>> b038195 (#1 :bug: 버그 수정)
 
@@ -287,7 +298,6 @@ export var monsterSet;
 var monster;
 
 export var bossSet;
-export var bossMagicSet;
 // 1번 몬스터: alien
 var alien;
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
@@ -312,14 +322,10 @@ var cursors;
 // 보스
 var slime_king;
 var golem;
-var fire_giant;
-var fire_giant_aura;
-
 // 보스 패턴
 var pt;
 // 보스 활성 확인
 var boss_active;
-var boss_fire_giant_active;
 
 var monX;
 var monY;
@@ -593,6 +599,7 @@ function preload() {
       frameWidth: 100,
       frameHeight: 100,
       endFrame: 61,
+<<<<<<< HEAD
     }
   );
   this.load.spritesheet(
@@ -3508,7 +3515,61 @@ function update(time, delta) {
                 chunks.push(newChunk);
             }
         }
+=======
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
     }
+  );
+  this.load.spritesheet(
+    "skill4",
+    "images/attack/weapon/10_weaponhit_spritesheet.png",
+    {
+      frameWidth: 100,
+      frameHeight: 100,
+      endFrame: 61,
+    }
+  );
+  // 요정 스프라이트
+  this.load.spritesheet("fairy1", "images/fairy/fairy1.png", {
+    frameWidth: 150,
+    frameHeight: 142,
+  });
+
+  this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
+    frameWidth: 230,
+    frameHeight: 210,
+  });
+
+  this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
+    frameWidth: 134,
+    frameHeight: 158,
+  });
+
+  this.load.spritesheet("fairy4", "images/fairy/fairy4.png", {
+    frameWidth: 136,
+    frameHeight: 170,
+  });
+
+  this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
+    frameWidth: 160,
+    frameHeight: 190,
+  });
+
+  //player end
+
+  //enemy start
+
+  // 몬스터
+  this.load.spritesheet(
+    "alien",
+    "http://labs.phaser.io/assets/tests/invaders/invader1.png",
+    { frameWidth: 32, frameHeight: 32 }
+  );
+
+  // 보스
+
+  //enemy end
+}
+
     for (var i = 0; i < chunks.length; i++) {
         var chunk = chunks[i];
 
@@ -3529,28 +3590,11 @@ function update(time, delta) {
             }
         }
     }
+  }
+  for (var i = 0; i < chunks.length; i++) {
+    var chunk = chunks[i];
 
-    for (var i = 0; i < chunks.length; i++) {
-        var chunk = chunks[i];
-
-        if (
-            Phaser.Math.Distance.Between(
-                snappedChunkX,
-                snappedChunkY,
-                chunk.x,
-                chunk.y
-            ) < 3
-        ) {
-            if (chunk !== null) {
-                chunk.load();
-            }
-        } else {
-            if (chunk !== null) {
-                chunk.unload();
-            }
-        }
-    }
-
+<<<<<<< HEAD
     this.cameras.main.centerOn(this.followPoint.x, this.followPoint.y);
     //map enderlap(magics, monsterSet, attack);
     this.anims.create({
@@ -4175,20 +4219,224 @@ if (mon1_delay > 60){
     normalAttackAS = fairySet[nowFairy].as;
     if (normalAttackTimer > normalAttackAS) {
         control = false;
+=======
+    if (
+      Phaser.Math.Distance.Between(
+        snappedChunkX,
+        snappedChunkY,
+        chunk.x,
+        chunk.y
+      ) < 3
+    ) {
+      if (chunk !== null) {
+        chunk.load();
+      }
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
     } else {
-        normalAttackTimer++;
+      if (chunk !== null) {
+        chunk.unload();
+      }
     }
-    //mouse clicked
-    if (mouse.leftButtonDown() && !control && fairySet[nowFairy].bombcount > 0) {
-        magic = new Magic(this, fairySet[nowFairy]);
-        magic.setDepth(2);
-        this.physics.add.overlap(
-            magic,
-            monsterSet,
-            fairySet[nowFairy].attack,
-            null,
-            this
+  }
+
+  for (var i = 0; i < chunks.length; i++) {
+    var chunk = chunks[i];
+
+    if (
+      Phaser.Math.Distance.Between(
+        snappedChunkX,
+        snappedChunkY,
+        chunk.x,
+        chunk.y
+      ) < 3
+    ) {
+      if (chunk !== null) {
+        chunk.load();
+      }
+    } else {
+      if (chunk !== null) {
+        chunk.unload();
+      }
+    }
+  }
+
+  this.cameras.main.centerOn(this.followPoint.x, this.followPoint.y);
+  //map enderlap(magics, monsterSet, attack);
+  this.anims.create({
+    key: "swarm",
+    frames: this.anims.generateFrameNumbers("alien", { start: 0, end: 1 }),
+    frameRate: 2,
+    repeat: -1,
+  });
+
+  // 공격 맞은 후 일시 무적에 사용
+  timer = this.time.addEvent({
+    delay: 2000,
+    callback: () => {
+      player.invincible = false;
+    },
+    loop: true,
+  });
+
+  // ============== 몬스터 스프라이트 애니메이션 목록 ==================
+  this.anims.create({
+    key: "swarm",
+    frames: this.anims.generateFrameNumbers("alien", { start: 0, end: 1 }),
+    frameRate: 2,
+    repeat: -1,
+  });
+  //enemy end
+
+  //tower start
+
+  towerLU = new CatTower(this, -100, -100, "cat", "can", "skill");
+  towerRU = new CatTower(this, 100, -100, "cat", "can", "skill");
+  towerLD = new CatTower(this, -100, 100, "cat", "can", "skill");
+  towerRD = new CatTower(this, 100, 100, "cat", "can", "skill");
+  console.log(towerLU);
+  towerLU.scale_Circle();
+  towerRU.scale_Circle();
+  towerLD.scale_Circle();
+  towerRD.scale_Circle();
+  towerLU.setDepth(1);
+  towerRU.setDepth(1);
+  towerLD.setDepth(1);
+  towerRD.setDepth(1);
+
+  //tower end
+
+  //mine start
+  for (let i = 0; i < minecount; i++) {
+    mine = new Mine(
+      this,
+      Math.random() * (EndMineRangeX - StartMineRangeX) + StartMineRangeX,
+      Math.random() * (EndMineRangeY - StartMineRangeY) + StartMineRangeY,
+      "mine"
+    );
+    mine.scale_Circle();
+    mines.add(mine);
+  }
+  //mine end
+
+  // ##보스 생성, 나중에 타이머 조건 넣고 업데이트에 넣기 ##
+
+  //navi start
+  navi = this.add.image(50, 50, "navi").setScrollFactor(0).setScale(0.1);
+  navi.setDepth(2);
+  //navi end
+
+  //exp bar start
+  expbar = this.add.graphics().setScrollFactor(0);
+  expbarBG = this.add.graphics().setScrollFactor(0);
+  expbar.setDepth(3);
+  expbarBG.setDepth(2);
+  //exp bar end
+}
+function update(time, delta) {
+  var snappedChunkX =
+    this.chunkSize *
+    this.tileSize *
+    Math.round(this.followPoint.x / (this.chunkSize * this.tileSize));
+  var snappedChunkY =
+    this.chunkSize *
+    this.tileSize *
+    Math.round(this.followPoint.y / (this.chunkSize * this.tileSize));
+
+  snappedChunkX = snappedChunkX / this.chunkSize / this.tileSize;
+  snappedChunkY = snappedChunkY / this.chunkSize / this.tileSize;
+
+  for (var x = snappedChunkX - 2; x < snappedChunkX + 2; x++) {
+    for (var y = snappedChunkY - 2; y < snappedChunkY + 2; y++) {
+      var existingChunk = getChunk(x, y);
+
+      if (existingChunk == null) {
+        var newChunk = new Chunk(this, x, y);
+        chunks.push(newChunk);
+      }
+    }
+  }
+  for (var i = 0; i < chunks.length; i++) {
+    var chunk = chunks[i];
+
+    if (
+      Phaser.Math.Distance.Between(
+        snappedChunkX,
+        snappedChunkY,
+        chunk.x,
+        chunk.y
+      ) < 3
+    ) {
+      if (chunk !== null) {
+        chunk.load();
+      }
+    } else {
+      if (chunk !== null) {
+        chunk.unload();
+      }
+    }
+  }
+
+  this.followPoint.x = player.x;
+  this.followPoint.y = player.y;
+
+  this.cameras.main.startFollow(player, false);
+  //map end
+
+  //navi start
+
+  navi.rotation = Phaser.Math.Angle.Between(hole.x, hole.y, player.x, player.y);
+
+  //navi end
+
+  //player start
+  changeSlot();
+  normalAttackAS = fairySet[nowFairy].as;
+  if (normalAttackTimer > normalAttackAS) {
+    control = false;
+  } else {
+    normalAttackTimer++;
+  }
+  //mouse clicked
+  if (mouse.leftButtonDown() && !control && fairySet[nowFairy].bombcount > 0) {
+    magic = new Magic(this, fairySet[nowFairy]);
+    magic.setDepth(2);
+    this.physics.add.overlap(
+      magic,
+      monsterSet,
+      fairySet[nowFairy].attack,
+      null,
+      this
+    );
+    fairySet[nowFairy].normalAttack(magic);
+  }
+
+  for (let i = 0; i < 5; i++) {
+    if (fairySet[i].timer < fairySet[i].skillCD) {
+      fairySet[i].timer++;
+    } else {
+      fairySet[i].skillUse = false;
+    }
+  }
+
+  if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
+    fairySet[nowFairy].skillFire();
+  }
+
+  player.move();
+  //player end
+
+  //enemy start
+
+  // 몬스터가 유저 따라가게함
+  if (monsterCount !== 0) {
+    for (let i = 0; i < monsterSet.children.entries.length; i++) {
+      if (monsterSet.children.entries[i].type == "follower") {
+        this.physics.moveToObject(
+          monsterSet.children.entries[i],
+          player,
+          monsterSet.children.entries[i].velo
         );
+<<<<<<< HEAD
         fairySet[nowFairy].normalAttack(magic);
     }
 
@@ -4339,11 +4587,17 @@ if (mon1_delay > 60){
             5,
             1,
             "boss"
+=======
+      }
+      // 몬스터가 홀에 도달하게 함
+      else if (monsterSet.children.entries[i].type == "siege") {
+        this.physics.moveToObject(
+          monsterSet.children.entries[i],
+          hole,
+          monsterSet.children.entries[i].velo
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
         );
-        slime_king.setDepth(2);
-        slime_king.anime();
-        boss_active = true;
-        bossSet.add(slime_king);
+      }
     }
 
     // 골렘
@@ -4394,40 +4648,43 @@ if (mon1_delay > 60){
                 }
             }
         }
+      }
     }
+  }
 
-    for (let i = magics.length - 1; i >= 0; i--) {
-        magics[i].timer++;
-        if (magics[i].timer == magics[i].lifetime) {
-            magics[i].destroy();
-            magics.splice(i, 1);
-        }
+  for (let i = magics.length - 1; i >= 0; i--) {
+    magics[i].timer++;
+    if (magics[i].timer == magics[i].lifetime) {
+      magics[i].destroy();
+      magics.splice(i, 1);
     }
+  }
 
-    //enemy end
+  //enemy end
 
-    //tower start
+  //tower start
 
-    towerLU.towerAttackTimer++;
-    towerRU.towerAttackTimer++;
-    towerLD.towerAttackTimer++;
-    towerRD.towerAttackTimer++;
+  towerLU.towerAttackTimer++;
+  towerRU.towerAttackTimer++;
+  towerLD.towerAttackTimer++;
+  towerRD.towerAttackTimer++;
 
-    towerLU.towerSkillAttackTimer++;
-    towerRU.towerSkillAttackTimer++;
-    towerLD.towerSkillAttackTimer++;
-    towerRD.towerSkillAttackTimer++;
-    //tower end
+  towerLU.towerSkillAttackTimer++;
+  towerRU.towerSkillAttackTimer++;
+  towerLD.towerSkillAttackTimer++;
+  towerRD.towerSkillAttackTimer++;
+  //tower end
 
-    //exp bar start
-    expbar.clear();
+  //exp bar start
+  expbar.clear();
 
-    //  BG
-    expbarBG.fillStyle(0x000000);
-    expbarBG.fillRect(0, 0, this.cameras.main.worldView.width, 16); // x y 가로길이, 세로길이
+  //  BG
+  expbarBG.fillStyle(0x000000);
+  expbarBG.fillRect(0, 0, this.cameras.main.worldView.width, 16); // x y 가로길이, 세로길이
 
-    //  Health
+  //  Health
 
+<<<<<<< HEAD
     expbar.fillStyle(0xff0000);
     expbar.fillRect(
         0,
@@ -4437,6 +4694,16 @@ if (mon1_delay > 60){
     );
     //exp bar end
 >>>>>>> d0fc426 (#2 :sparkles: 불거인)
+=======
+  expbar.fillStyle(0xff0000);
+  expbar.fillRect(
+    0,
+    0,
+    this.cameras.main.worldView.width * (player.exp / player.maxExp),
+    16
+  );
+  //exp bar end
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
 }
 
 //player start
@@ -4526,43 +4793,82 @@ var magicFire = function (game) {
 =======
 >>>>>>> f7fa4a4 (#3 :sparkles: 플레이어 스킬 구현1)
 function changeSlot() {
-    if (
-        cursors.slot1.isDown &&
-        nowFairy !== 0 &&
-        /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-    ) {
-        fairySet[nowFairy].x = -10000;
-        fairySet[nowFairy].y = -10000;
-        nowFairy = 0;
-        player.changeFairy(fairySet[nowFairy]);
-        normalAttackAS = fairySet[nowFairy].as;
-        fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
-    }
+  if (
+    cursors.slot1.isDown &&
+    nowFairy !== 0 &&
+    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+  ) {
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
+    nowFairy = 0;
+    player.changeFairy(fairySet[nowFairy]);
+    normalAttackAS = fairySet[nowFairy].as;
+    fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+  }
 
-    if (
-        cursors.slot2.isDown &&
-        nowFairy !== 1 &&
-        /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-    ) {
-        fairySet[nowFairy].x = -10000;
-        fairySet[nowFairy].y = -10000;
-        nowFairy = 1;
-        player.changeFairy(fairySet[nowFairy]);
-        normalAttackAS = fairySet[nowFairy].as;
-        fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
-    }
+  if (
+    cursors.slot2.isDown &&
+    nowFairy !== 1 &&
+    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+  ) {
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
+    nowFairy = 1;
+    player.changeFairy(fairySet[nowFairy]);
+    normalAttackAS = fairySet[nowFairy].as;
+    fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+  }
 
-    if (
-        cursors.slot3.isDown &&
-        nowFairy !== 2 &&
-        /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-    ) {
-        fairySet[nowFairy].x = -10000;
-        fairySet[nowFairy].y = -10000;
-        nowFairy = 2;
-        player.changeFairy(fairySet[nowFairy]);
-        normalAttackAS = fairySet[nowFairy].as;
-        fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+  if (
+    cursors.slot3.isDown &&
+    nowFairy !== 2 &&
+    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+  ) {
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
+    nowFairy = 2;
+    player.changeFairy(fairySet[nowFairy]);
+    normalAttackAS = fairySet[nowFairy].as;
+    fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+  }
+
+  if (
+    cursors.slot4.isDown &&
+    nowFairy !== 3 &&
+    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+  ) {
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
+    nowFairy = 3;
+    player.changeFairy(fairySet[nowFairy]);
+    normalAttackAS = fairySet[nowFairy].as;
+    fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+  }
+
+  if (
+    cursors.slot5.isDown &&
+    nowFairy !== 4 &&
+    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
+  ) {
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
+    nowFairy = 4;
+    player.changeFairy(fairySet[nowFairy]);
+    normalAttackAS = fairySet[nowFairy].as;
+    fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+  }
+
+  if (!fairySet[nowFairy].anims.isPlaying) {
+    fairySet[nowFairy].anims.play("fairy" + (nowFairy + 1) + "_idle", true);
+  }
+}
+
+function attack(magic, monster) {
+  if (!monster.invincible) {
+    if (magic.pierceCount > 0) {
+      magic.pierceCount--;
+    } else {
+      magic.destroy();
     }
 
     if (
@@ -4822,34 +5128,36 @@ function attack(magic, monster) {
                 }
             }
         }
+      }
+    }
 
-        if (nowFairy === 2) {
-            //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
-            let num = Math.floor(Math.random() * 100 + 1);
-            if (num <= fairySet[nowFairy].deathCount && monster.type != "boss") {
-                if (monster.monSpiece != "slime") {
-                    monster.die_anim();
-                    monster.destroy();
-                    player.expUp();
-                    monsterCount -= 1;
-                } else if (monster.monSpiece == "slime") {
-                    for (let i = 0; i < 2; i++) {
-                        addMonster(
-                            thisScene,
-                            "baby_slime",
-                            "swarm",
-                            50,
-                            125,
-                            monster.x + i * 10,
-                            monster.y,
-                            "follower"
-                        );
-                    }
-                    monster.destroy();
-                    monsterCount -= 1;
-                }
-            }
+    if (nowFairy === 2) {
+      //  && fairySet[nowFairy].level === 9 (추후에 레벨업 생길 때 추가)
+      let num = Math.floor(Math.random() * 100 + 1);
+      if (num <= fairySet[nowFairy].deathCount && monster.type != "boss") {
+        if (monster.monSpiece != "slime") {
+          monster.die_anim();
+          monster.destroy();
+          player.expUp();
+          monsterCount -= 1;
+        } else if (monster.monSpiece == "slime") {
+          for (let i = 0; i < 2; i++) {
+            addMonster(
+              thisScene,
+              "baby_slime",
+              "swarm",
+              50,
+              125,
+              monster.x + i * 10,
+              monster.y,
+              "follower"
+            );
+          }
+          monster.destroy();
+          monsterCount -= 1;
         }
+      }
+    }
 
         monster.health -= (fairySet[nowFairy].dmg * player.dmgmul);
         monster.invincible = true;
@@ -5141,6 +5449,7 @@ function attack(magic, monster) {
           monster.destroy();
           monsterCount -= 1;
         }
+<<<<<<< HEAD
 >>>>>>> c931056 (#2 :sparkles: 골렘 패턴 추가)
       }
     }
@@ -5187,6 +5496,13 @@ function attack(magic, monster) {
 =======
     }
 >>>>>>> d0fc426 (#2 :sparkles: 불거인)
+=======
+        monster.destroy();
+        monsterCount -= 1;
+      }
+    }
+  }
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
 }
 
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
@@ -5265,12 +5581,20 @@ function hithole(hole, monster) {
 function addMonster(scene, mon_name, mon_anime, hp, velo, x, y, type) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   monster = new Enemy(scene, hp, velo, x, y, mon_name, mon_anime, type);
+=======
+  monster = new Enemy(scene, hp, velo, x, y, mon_name, mon_anime, type);
+  if (monster.monSpiece == "baby_slime") {
+    monster.scale = 0.5;
+  }
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
   monster.setDepth(2);
   monsterCount += 1;
   monsterSet.add(monster);
   scene.physics.add.collider(monsterSet, monster);
   monster.anime();
+<<<<<<< HEAD
 =======
     monster = new Enemy(scene, hp, velo, x, y, mon_name, mon_anime, type);
     if (monster.monSpiece == 'baby_slime'){monster.scale=0.5}
@@ -5289,6 +5613,8 @@ function addMonster(scene, mon_name, mon_anime, hp, velo, x, y, type) {
 >>>>>>> e961a66 (#2 :sparkles: 몬스터 = 슬라임)
 =======
 >>>>>>> d0fc426 (#2 :sparkles: 불거인)
+=======
+>>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
 }
 <<<<<<< HEAD
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
@@ -5311,20 +5637,20 @@ function destroyhole(hole, golem) {
 }
 
 function enemySpawn(scene) {
-    randomLocation = Math.floor(Math.random() * 4) + 1;
-    if (randomLocation === 1) {
-        monX = Phaser.Math.Between(player.x - 500, player.x + 500);
-        monY = Phaser.Math.Between(player.y + 500, player.y + 510);
-    } else if (randomLocation === 2) {
-        monX = Phaser.Math.Between(player.x - 500, player.x + 500);
-        monY = Phaser.Math.Between(player.y - 500, player.y - 510);
-    } else if (randomLocation === 3) {
-        monX = Phaser.Math.Between(player.x - 500, player.x - 500);
-        monY = Phaser.Math.Between(player.y - 500, player.y + 500);
-    } else if (randomLocation === 4) {
-        monX = Phaser.Math.Between(player.x + 500, player.x + 500);
-        monY = Phaser.Math.Between(player.y - 500, player.y + 500);
-    }
+  randomLocation = Math.floor(Math.random() * 4) + 1;
+  if (randomLocation === 1) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y + 500, player.y + 510);
+  } else if (randomLocation === 2) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y - 510);
+  } else if (randomLocation === 3) {
+    monX = Phaser.Math.Between(player.x - 500, player.x - 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  } else if (randomLocation === 4) {
+    monX = Phaser.Math.Between(player.x + 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  }
 }
 
 <<<<<<< HEAD
@@ -5520,6 +5846,7 @@ function slime_pattern(scene,pt,x,y){
         }
 >>>>>>> d0fc426 (#2 :sparkles: 불거인)
     }
+  }
 }
 function hit_anime(monster){
   monster
@@ -5551,13 +5878,13 @@ function hit_anime(monster){
 
 //map start
 function getChunk(x, y) {
-    var chunk = null;
-    for (var i = 0; i < chunks.length; i++) {
-        if (chunks[i].x == x && chunks[i].y == y) {
-            chunk = chunks[i];
-        }
+  var chunk = null;
+  for (var i = 0; i < chunks.length; i++) {
+    if (chunks[i].x == x && chunks[i].y == y) {
+      chunk = chunks[i];
     }
-    return chunk;
+  }
+  return chunk;
 }
 
 //map end
