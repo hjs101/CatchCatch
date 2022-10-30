@@ -2456,6 +2456,7 @@ function create() {
 <<<<<<< HEAD
     timer = this.time.addEvent({delay:2000, callback:()=>{invincible=false}, loop: true});
 
+<<<<<<< HEAD
 =======
   // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
 <<<<<<< HEAD
@@ -2474,6 +2475,21 @@ function create() {
         }, loop: true
     });
 >>>>>>> ec22f2e (#3 #2 :sparkles: 컨벤션 수정)
+=======
+  towerLU = new CatTower(this, -100, -100, "cat", "can", "skill");
+  towerRU = new CatTower(this, 100, -100, "cat", "can", "skill");
+  towerLD = new CatTower(this, -100, 100, "cat", "can", "skill");
+  towerRD = new CatTower(this, 100, 100, "cat", "can", "skill");
+  console.log(towerLU);
+  towerLU.scale_Circle();
+  towerRU.scale_Circle();
+  towerLD.scale_Circle();
+  towerRD.scale_Circle();
+  towerLU.setDepth(1);
+  towerRU.setDepth(1);
+  towerLD.setDepth(1);
+  towerRD.setDepth(1);
+>>>>>>> 62a9587 (#6 :bug: 총알 늘리기 수정)
 
     //enemy end
 =======
@@ -3037,8 +3053,8 @@ function update(time, delta) {
   }
 
   // 골렘
-  if (gameTimer == 100){
-    golem = new Boss(this, 500, 100, player.x + 600, player.y - 600, 'golem','swarm',10,10,'boss')
+  if (gameTimer == 100) {
+    golem = new Boss(this, 500, 100, player.x + 600, player.y - 600, 'golem', 'swarm', 10, 10, 'boss')
     golem.setDepth(2);
     golem.anime();
     boss_active = true;
@@ -3048,13 +3064,14 @@ function update(time, delta) {
   // 보스 이동 및 사망 체크
   if (boss_active) {
     for (let i = 0; i < bossSet.children.entries.length; i++) {
-      if (bossSet.children.entries[i].bossSpiece != 'golem'){
-      this.physics.moveToObject(
-        bossSet.children.entries[i],
-        player,
-        bossSet.children.entries[i].velo
-      )}
-      else if (bossSet.children.entries[i].bossSpiece == 'golem'){
+      if (bossSet.children.entries[i].bossSpiece != 'golem') {
+        this.physics.moveToObject(
+          bossSet.children.entries[i],
+          player,
+          bossSet.children.entries[i].velo
+        )
+      }
+      else if (bossSet.children.entries[i].bossSpiece == 'golem') {
         this.physics.moveToObject(
           bossSet.children.entries[i],
           hole,
@@ -3062,15 +3079,16 @@ function update(time, delta) {
         )
       };
       if (bossSet.children.entries[i].health <= 0) {
-        if (bossSet.children.entries[i].bossSpiece == 'slime_king'){
-        slime_pattern(
-          this,
-          bossSet.children.entries[i].pt,
-          bossSet.children.entries[i].x,
-          bossSet.children.entries[i].y
-        );}
+        if (bossSet.children.entries[i].bossSpiece == 'slime_king') {
+          slime_pattern(
+            this,
+            bossSet.children.entries[i].pt,
+            bossSet.children.entries[i].x,
+            bossSet.children.entries[i].y
+          );
+        }
         bossSet.children.entries[i].destroy();
-        if (bossSet.children.entries.length == 0){
+        if (bossSet.children.entries.length == 0) {
           boss_active = false
         }
       }
@@ -4208,10 +4226,10 @@ function hithole(hole, monster) {
   hole.hp -= 1;
   monster.destroy();
   monsterCount -= 1;
-  if (hole.lhp <= 0){
+  if (hole.lhp <= 0) {
     console.log("game over")
   }
-  }
+}
 
 
 
@@ -4255,11 +4273,12 @@ function addMonster(scene, mon_name, mon_anime, hp, velo, x, y, type) {
 >>>>>>> a428d38 (#2 :recycle: 변수명 변경 및 코드 가독성 위한  함수화)
 =======
 
-function destroyhole(hole,golem){
+function destroyhole(hole, golem) {
   console.log('작동')
-  if(golem.bossSpiece == 'golem'){
+  if (golem.bossSpiece == 'golem') {
     hole.hp -= 9999
-  golem.destroy()}
+    golem.destroy()
+  }
 }
 
 function enemySpawn(scene) {
