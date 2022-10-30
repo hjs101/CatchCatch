@@ -366,6 +366,7 @@ function preload() {
   //navi end
 
   //mine start
+  this.load.image("minearrow", "images/mine/boxarrow.png");
   this.load.image("mine", "images/mine/mine.png");
   //mine end
 
@@ -2343,6 +2344,7 @@ function create() {
   towerSkillAttacks = this.physics.add.group();
   mines = this.physics.add.group();
 
+
   // 임시 구멍
   hole = this.physics.add.sprite(0, 0, "fairy4");
   hole.hp = 5;
@@ -3952,6 +3954,7 @@ function attack(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (magic.bounceCount <= 0) {
 >>>>>>> b038195 (#1 :bug: 버그 수정)
           magic.destroy();
@@ -3971,6 +3974,11 @@ function attack(magic, monster) {
           Math.random() * monsterSet.children.entries.length
         );
 >>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
+=======
+        let monNum = Math.floor(
+          Math.random() * monsterSet.children.entries.length
+        );
+>>>>>>> 8e09cfa (#6 :bug: 상자 크기 수정)
         if (magic.bounceCount <= 0) {
           magic.destroy();
         } else {
@@ -3983,7 +3991,13 @@ function attack(magic, monster) {
           magic.bounceCount--;
         }
 
+<<<<<<< HEAD
         let copy = Math.floor(Math.random() * 100 + 1);
+=======
+        let copy = Math.floor(
+          Math.random() * 100 + 1
+        );
+>>>>>>> 8e09cfa (#6 :bug: 상자 크기 수정)
 
         if (magic.isFirst && copy <= fairySet[3].copyCount) {
           // magic.isFirst = false;
@@ -4271,6 +4285,7 @@ function attack(magic, monster) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     monster.health -= fairySet[nowFairy].dmg;
 =======
     monster.health -= fairySet[nowFairy].dmg * player.dmgmul;
@@ -4278,6 +4293,9 @@ function attack(magic, monster) {
 =======
     monster.health -= fairySet[nowFairy].dmg * player.dmgmul;
 >>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
+=======
+    monster.health -= (fairySet[nowFairy].dmg * player.dmgmul);
+>>>>>>> 8e09cfa (#6 :bug: 상자 크기 수정)
     monster.invincible = true;
     if (monster.health <= 0 && monster.type != "boss") {
       monster.die_anim();

@@ -10,6 +10,10 @@ export default class Mine extends Phaser.Physics.Arcade.Image {
 
     this.scene = scene;
     this.minesprite = minesprite;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e09cfa (#6 :bug: 상자 크기 수정)
 
     scene.add.existing(this);
     scene.physics.add.existing(this);
@@ -17,15 +21,27 @@ export default class Mine extends Phaser.Physics.Arcade.Image {
   }
 
   scale_Circle() {
-    this.setScale(0.1);
+    this.setScale(1);
     let hw = this.body.halfWidth;
     let hh = this.body.halfHeight;
     this.setCircle(hw * 1, hh - hw * 1, hh - hw * 1);
   }
 
   overlapopen(mine, player) {
+<<<<<<< HEAD
     var range = Phaser.Math.Distance.Between(mine.x, mine.y, 0, 0);
 
+=======
+    var range = Phaser.Math.Distance.Between(
+      mine.x,
+      mine.y,
+      0,
+      0
+    )
+
+
+
+>>>>>>> 8e09cfa (#6 :bug: 상자 크기 수정)
     if (0 <= range && range < 100) {
       coin += 1;
       // cointext.setText('coin: ' + coin);
