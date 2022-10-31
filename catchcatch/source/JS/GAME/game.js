@@ -4870,7 +4870,7 @@ function update(time, delta) {
         10,
         1,
         1,
-        120,
+        60,
         10,
         160,
         2,
@@ -4884,7 +4884,7 @@ function update(time, delta) {
         6,
         1,
         3,
-        90,
+        60,
         10,
         300,
         3,
@@ -4899,7 +4899,7 @@ function update(time, delta) {
         15,
         1,
         99999,
-        80,
+        60,
         10,
         400,
         4,
@@ -4911,7 +4911,7 @@ function update(time, delta) {
     global.witch = fairySet[4] = new Fairy(
         this,
         720,
-        10,
+        5,
         1,
         3,
         40,
@@ -5596,6 +5596,19 @@ function update(time, delta) {
 
     frameTime += delta
     player.move();
+
+    //  Health bar start
+    hpbar.clear();
+
+    hpbarBG.fillStyle(0xff0000);
+    hpbarBG.fillRect(0, 0, 60, 10);
+
+    hpbar.fillStyle(0x2ff40a);
+    hpbar.fillRect(0, 0, 60 * (player.health / player.maxHealth), 10);
+
+    hpbar.setPosition(player.x - 30, player.y + 40);
+    hpbarBG.setPosition(player.x - 30, player.y + 40);
+    // Health bar end
     if (frameTime > 16.5) {  
         frameTime = 0;
     
@@ -6079,6 +6092,7 @@ function update(time, delta) {
     //tower end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //exp bar start
     expbar.clear();
 
@@ -6095,16 +6109,9 @@ function update(time, delta) {
     //  Health bar start
     hpbar.clear();
 >>>>>>> 2f19786 (#2 :sparkle: 불거인)
+=======
+>>>>>>> ce245c6 (#3 :bug: 버그 수정)
 
-    hpbarBG.fillStyle(0xff0000);
-    hpbarBG.fillRect(0, 0, 60, 10);
-
-    hpbar.fillStyle(0x2ff40a);
-    hpbar.fillRect(0, 0, 60 * (player.health / player.maxHealth), 10);
-
-    hpbar.setPosition(player.x - 30, player.y + 40);
-    hpbarBG.setPosition(player.x - 30, player.y + 40);
-    // Health bar end
 
     //exp bar start
     expbar.clear();
@@ -6711,6 +6718,12 @@ function attack(magic, monster) {
                 }
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        }
+        if (magic.fairy.stun > 0) {
+            monster.cc = 'earth';
+>>>>>>> ce245c6 (#3 :bug: 버그 수정)
         }
 
 <<<<<<< HEAD
@@ -6789,7 +6802,7 @@ function attack(magic, monster) {
 =======
                 if (magic.fairy.fairyNum === 2) {
                     let vampireNum = Math.floor(Math.random() * 100 + 1);
-                    if (vampireNum < 6) {
+                    if (vampireNum < 20) {
                         player.health += magic.fairy.vampire;
                         if (player.health > player.maxHealth) {
                             player.health = player.maxHealth;
