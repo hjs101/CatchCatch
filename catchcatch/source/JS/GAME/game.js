@@ -84,6 +84,7 @@ export const config = {
     physics: {
         default: "arcade",
         arcade: {
+<<<<<<< HEAD
             fps: 60,
 <<<<<<< HEAD
             debug: true,
@@ -142,6 +143,9 @@ export const config = {
 =======
 >>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
 =======
+=======
+            fps: 20,
+>>>>>>> 6700b0c (#3 :sparkles: 요정 덜덜이 문제 해결)
             debug: false,
             fixedStep: false,
         },
@@ -5591,7 +5595,7 @@ function update(time, delta) {
 function update(time, delta) {
 
     frameTime += delta
-
+    player.move();
     if (frameTime > 16.5) {  
         frameTime = 0;
     
@@ -5688,9 +5692,12 @@ function update(time, delta) {
         fairySet[nowFairy].skillFire();
     }
 
+<<<<<<< HEAD
     player.move();
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 6700b0c (#3 :sparkles: 요정 덜덜이 문제 해결)
     player.healCount++;
     if (player.healCount > player.maxHealCount) {
         player.healCount = 0;
@@ -6701,7 +6708,12 @@ function attack(magic, monster) {
 <<<<<<< HEAD
         }
 
+<<<<<<< HEAD
         monster.health -= (magic.fairy.dmg * player.dmgmul);
+=======
+        monster.invincible = true;
+        monster.health -= (fairySet[nowFairy].dmg * player.dmgmul);
+>>>>>>> 1199532 (#2 :bug: 몬스터 무적 수정)
 
         if (monster.health <= 0 && monster.type != "boss") {
             if (monster.monSpiece != "slime") {
