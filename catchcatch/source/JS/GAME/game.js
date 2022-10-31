@@ -247,7 +247,7 @@ var stage4Layer;
 >>>>>>> dbb8db6 (#6 :sparkles: 맵 동적 생성)
 let controls;
 //map end
-
+let frameTime = 0;
 //navi start
 var navi;
 //navi end
@@ -5588,6 +5588,13 @@ function update(time, delta) {
 }
 
 function update(time, delta) {
+
+    frameTime += delta
+
+    if (frameTime > 16.5) {  
+        frameTime = 0;
+    
+
     var snappedChunkX =
         this.chunkSize *
         this.tileSize *
@@ -5936,7 +5943,7 @@ function update(time, delta) {
 
     // 불거인
     if (gameTimer == 28000) {
-        fire_giant_aura = new Boss(this, 10000, 30, player.x - 600, player.y - 600, 'fire_giant_aura', 'swarm', 5, 10, 'boss')
+        fire_giant_aura = new Boss(this, 10000, 100, player.x - 600, player.y - 600, 'fire_giant_aura', 'swarm', 5, 10, 'boss')
         fire_giant_aura.setDepth(1);
         fire_giant_aura.anime();
         boss_fire_giant_active = true;
@@ -5983,12 +5990,14 @@ function update(time, delta) {
                     player,
                     bossSet.children.entries[i].velo
                 );
-                if (boss_fire_giant_active) {
-                    this.physics.moveToObject(
-                        bossMagicSet.children.entries[0],
-                        player,
-                        bossMagicSet.children.entries[0].velo
-                    );
+                if (bossSet.children.entries[i].bossSpiece == "fire_giant") {
+                    if (boss_fire_giant_active) {
+                        this.physics.moveToObject(
+                            bossMagicSet.children.entries[0],
+                            bossSet.children.entries[i],
+                            bossMagicSet.children.entries[0].velo
+                        );
+                    }
                 }
             } else if (bossSet.children.entries[i].bossSpiece == "golem") {
                 this.physics.moveToObject(
@@ -6095,6 +6104,7 @@ function update(time, delta) {
         this.cameras.main.worldView.width * (player.exp / player.maxExp),
         16
     );
+<<<<<<< HEAD
     //exp bar end
 <<<<<<< HEAD
 >>>>>>> d0fc426 (#2 :sparkles: 불거인)
@@ -6110,6 +6120,9 @@ function update(time, delta) {
 >>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
 =======
 >>>>>>> ad327af (Update game.js)
+=======
+    }    //exp bar end
+>>>>>>> 6af9760 (:recycle: 60fps 기준 시간 고정)
 }
 
 
