@@ -5731,6 +5731,11 @@ function update(time, delta) {
     // 몬스터가 유저 따라가게함
     if (monsterCount !== 0) {
         for (let i = 0; i < monsterSet.children.entries.length; i++) {
+            if (monsterSet.children.entries[i].invincible){
+                monsterSet.children.entries[i]
+                .setTint(0xff0000)
+            }
+            else(monsterSet.children.entries[i].anime())
             if (monsterSet.children.entries[i].type == "follower" || monsterSet.children.entries[i].type == "wave") {
                 this.physics.moveToObject(
                     monsterSet.children.entries[i],
@@ -6812,8 +6817,11 @@ function attack(magic, monster) {
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       }
 >>>>>>> da9ff4f (#3 :sparkles: 튕기는 부메랑)
+=======
+>>>>>>> b1ee08a (#2 :recycle:  몬스터 피격 개선)
     }
 
 <<<<<<< HEAD
@@ -7543,6 +7551,7 @@ function slime_pattern(scene,pt,x,y){
     }
 }
 
+<<<<<<< HEAD
 function hit_anime(monster) {
     monster
         .setTint(0xff0000)
@@ -7556,6 +7565,8 @@ function hit_anime(monster) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> b1ee08a (#2 :recycle:  몬스터 피격 개선)
 
 
 // slime_pattern(){
