@@ -6678,10 +6678,14 @@ function attack(magic, monster) {
                 if (magic.isFirst && copy <= fairySet[3].copyCount) {
                     // magic.isFirst = false;
                     let copyMagic = new Magic(thisScene, fairySet[nowFairy]);
+<<<<<<< HEAD
                     copyMagic.isFirst = false;
 <<<<<<< HEAD
                     magics.add(copyMagic)
 =======
+=======
+                    // copyMagic.isFirst = false;
+>>>>>>> cb6e8bf (#3 :sparkles: 슬라임 버프)
                     magics.add(copyMagic);
 >>>>>>> ad327af (Update game.js)
                     copyMagic.setPosition(magic.x, magic.y);
