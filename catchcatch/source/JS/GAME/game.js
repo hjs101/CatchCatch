@@ -4870,7 +4870,7 @@ function update(time, delta) {
         10,
         1,
         1,
-        60,
+        100,
         10,
         160,
         2,
