@@ -53,11 +53,14 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
     this.setScale(circlesize);
 =======
     this.setScale(this.circlesize);
+<<<<<<< HEAD
 >>>>>>> 65318f5 (#6 :bug: 수정)
     console.log(this);
 =======
     this.setScale(0.1);
 >>>>>>> da9ff4f (#3 :sparkles: 튕기는 부메랑)
+=======
+>>>>>>> 4cde4e7 (#2 :bug: 불거인 오라 확대)
     let hw = this.body.halfWidth;
     let hh = this.body.halfHeight;
     this.setCircle(hw * 5, hh - hw * 5, hh - hw * 5);
@@ -78,8 +81,11 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
       mouse.type !== "boss" ||
       (mouse.type === "boss" && mouse.bossSpiece !== "golem")
     ) {
+<<<<<<< HEAD
       console.log(mouse);
 >>>>>>> c260c13 (#1 :sparkles: 타워 업그레이드 구현)
+=======
+>>>>>>> 4cde4e7 (#2 :bug: 불거인 오라 확대)
       if (this.isthree === false && this.istwo === false) {
 =======
       if (this.isthree === false) {
@@ -142,7 +148,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
       vyp =
         tower.y - d * Math.sin(((180 - (angle_mouse - 30)) * Math.PI) / 180);
     }
-    console.log(tower.istwo, tower.isthree);
     if (
       mouse.type !== "boss" ||
       (mouse.type === "boss" && mouse.bossSpiece !== "golem")
@@ -179,7 +184,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
         thtower.bulletLevel += 1;
       }
       thtower.level++;
-      console.log(thtower);
       tower();
     }
   }
