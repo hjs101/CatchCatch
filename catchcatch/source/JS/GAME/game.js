@@ -5503,13 +5503,6 @@ function update(time, delta) {
     }
 
     this.cameras.main.centerOn(this.followPoint.x, this.followPoint.y);
-    //map enderlap(magics, monsterSet, attack);
-    this.anims.create({
-        key: "swarm",
-        frames: this.anims.generateFrameNumbers("alien", {start: 0, end: 1}),
-        frameRate: 2,
-        repeat: -1,
-    });
 
     // 공격 맞은 후 일시 무적에 사용
     timer = this.time.addEvent({
@@ -5529,7 +5522,7 @@ function update(time, delta) {
     this.anims.create({
         key: "swarm",
         frames: this.anims.generateFrameNumbers("alien", {start: 0, end: 1}),
-        frameRate: 2,
+        frameRate: 30,
         repeat: -1,
     });
     //enemy end
@@ -5747,8 +5740,14 @@ function update(time, delta) {
             if (monsterSet.children.entries[i].invincible){
                 monsterSet.children.entries[i]
                 .setTint(0xff0000)
-            }
-            else(monsterSet.children.entries[i].anime())
+                this.time.addEvent({
+                    delay: 150,
+                    callback: () => {if (monsterSet.children.entries[i].active == true){
+                        monsterSet.children.entries[i].invincible = false;
+                        monsterSet.children.entries[i].anime()
+                    }}
+            })}
+
             if (monsterSet.children.entries[i].type == "follower" || monsterSet.children.entries[i].type == "wave") {
                 this.physics.moveToObject(
                     monsterSet.children.entries[i],
