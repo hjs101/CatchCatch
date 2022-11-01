@@ -6188,7 +6188,7 @@ function update(time, delta) {
             siegeSpawn(randomLocation);
             if (21000 <gameTimer && gameTimer <= 34000 ){addMonster(this, 'worm_plus', 'swarm',100,50,monX,monY,'siege')}
             else if (34000 < gameTimer){addMonster(this,'worm_plus', 'swarm', 160, 60, monX,monY, 'siege')}
-            else if (gameTimer <= 21000){addMonster(this, "worm", "swarm", 45, 40, monX, monY, "siege")};
+            else if (gameTimer <= 21000){addMonster(this, "worm", "swarm", 40, 40, monX, monY, "siege")};
 
         }
         if (gameTimer > 7200 && gameTimer % 300 == 0) {
@@ -7495,6 +7495,7 @@ function hithole(hole, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   hole.hp -= 1;
   updateHP();
   monster.destroy();
@@ -7535,6 +7536,9 @@ function hithole(hole, monster) {
 =======
     if (monster.type === 'wave' && monster.type === 'follower') {
 >>>>>>> d83d0dd (#2 :bug: 홀에는 시즈만 가능하게 수정)
+=======
+    if (monster.type === 'wave' || monster.type === 'follower') {
+>>>>>>> 061565a (#2 초기 생성 위치 변경)
         return
     }
 >>>>>>> 1a3c018 (#2 :bug: 몬스터 밸런스 2차 개선)
@@ -7666,17 +7670,17 @@ function destroyhole(hole, golem) {
 function siegeSpawn(){
     randomLocation = Math.floor(Math.random() * 4) + 1;
     if (randomLocation === 1) {
-        monX = Phaser.Math.Between(hole.x - 500, hole.x + 500);
-        monY = Phaser.Math.Between(hole.y + 500, hole.y + 510);
+        monX = Phaser.Math.Between(hole.x - 1500, hole.x + 1500);
+        monY = Phaser.Math.Between(hole.y + 1500, hole.y + 1510);
     } else if (randomLocation === 2) {
-        monX = Phaser.Math.Between(hole.x - 500, hole.x + 500);
-        monY = Phaser.Math.Between(hole.y - 500, hole.y - 510);
+        monX = Phaser.Math.Between(hole.x - 1500, hole.x + 1500);
+        monY = Phaser.Math.Between(hole.y - 1500, hole.y - 1510);
     } else if (randomLocation === 3) {
-        monX = Phaser.Math.Between(hole.x - 500, hole.x - 500);
-        monY = Phaser.Math.Between(hole.y - 500, hole.y + 500);
+        monX = Phaser.Math.Between(hole.x - 1500, hole.x - 1500);
+        monY = Phaser.Math.Between(hole.y - 1500, hole.y + 1500);
     } else if (randomLocation === 4) {
-        monX = Phaser.Math.Between(hole.x + 500, hole.x + 500);
-        monY = Phaser.Math.Between(hole.y - 500, hole.y + 500);
+        monX = Phaser.Math.Between(hole.x + 1500, hole.x + 1500);
+        monY = Phaser.Math.Between(hole.y - 1500, hole.y + 1500);
     }
 }
 
