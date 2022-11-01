@@ -4910,7 +4910,7 @@ function update(time, delta) {
 
     global.witch = fairySet[4] = new Fairy(
         this,
-        720,
+        600,
         5,
         1,
         3,
