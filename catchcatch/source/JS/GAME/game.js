@@ -7494,6 +7494,7 @@ function hithole(hole, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   hole.hp -= 1;
   updateHP();
   monster.destroy();
@@ -7531,6 +7532,9 @@ function hithole(hole, monster) {
 =======
     if (monster.type === 'wave') {
 >>>>>>> 4cde4e7 (#2 :bug: 불거인 오라 확대)
+=======
+    if (monster.type === 'wave' && monster.type === 'follower') {
+>>>>>>> d83d0dd (#2 :bug: 홀에는 시즈만 가능하게 수정)
         return
     }
 >>>>>>> 1a3c018 (#2 :bug: 몬스터 밸런스 2차 개선)
