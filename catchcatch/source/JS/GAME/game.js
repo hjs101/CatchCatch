@@ -85,9 +85,14 @@ export const config = {
         default: "arcade",
         arcade: {
 <<<<<<< HEAD
+<<<<<<< HEAD
             fps: 60,
 <<<<<<< HEAD
             debug: true,
+=======
+            fps: 20,
+            debug: false,
+>>>>>>> 9565c37 (#6 :bug: Depth 수정)
             fixedStep: false,
         },
 <<<<<<< HEAD
@@ -5568,14 +5573,14 @@ function update(time, delta) {
 
     //navi start
     navi = this.add.image(50, 50, "navi").setScrollFactor(0).setScale(0.1);
-    navi.setDepth(2);
+    navi.setDepth(4);
     //navi end
 
     //exp bar start
     expbar = this.add.graphics().setScrollFactor(0);
     expbarBG = this.add.graphics().setScrollFactor(0);
-    expbar.setDepth(3);
-    expbarBG.setDepth(2);
+    expbar.setDepth(4);
+    expbarBG.setDepth(3);
     //exp bar end
 <<<<<<< HEAD
 =======
