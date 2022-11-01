@@ -145,8 +145,12 @@ export const config = {
 =======
 =======
             fps: 20,
+<<<<<<< HEAD
 >>>>>>> 6700b0c (#3 :sparkles: 요정 덜덜이 문제 해결)
             debug: false,
+=======
+            debug: true,
+>>>>>>> 5998ce5 (#6 :sparkles: 타워 밸런스 수정)
             fixedStep: false,
         },
 >>>>>>> ad327af (Update game.js)
