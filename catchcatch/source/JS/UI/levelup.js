@@ -130,7 +130,7 @@ export default function levelup() {
   $this.pause();
   const levelupContainer = document.createElement("div");
   levelupContainer.style.backgroundImage =
-    'url("../images/ui/levelup/Base.png")';
+    'url("images/ui/levelup/Base.png")';
   levelupContainer.style.backgroundPosition = "center";
   levelupContainer.style.backgroundRepeat = "no-repeat";
   levelupContainer.style.backgroundSize = "cotain";
@@ -156,7 +156,7 @@ export default function levelup() {
         ]
       }`;
       levelupContent.style.backgroundImage =
-        'url("../images/ui/levelup/fairyupgrade_addName.png")';
+        'url("images/ui/levelup/fairyupgrade_addName.png")';
       // 설명인데..
       levelupName.innerHTML = `[${
         property[propertyArr[randomIndexArray[i]]].name
@@ -166,7 +166,7 @@ export default function levelup() {
       // levelupName.textContent += "Lv. 1";
     } else {
       levelupContent.style.backgroundImage =
-        'url("../images/ui/levelup/commonupgrade_addName.png")';
+        'url("images/ui/levelup/commonupgrade_addName.png")';
 
       levelupText.innerText = property.common[commonArr[randomCommon]].text;
       levelupContent.setAttribute("id", `${commonArr[randomCommon]}`);
@@ -180,7 +180,7 @@ export default function levelup() {
     levelupContent.style.backgroundSize = "contain";
 
     //스킬 아이콘
-    levelupImg.style.backgroundImage = 'url("../images/ui/Icon/sample.png")';
+    levelupImg.style.backgroundImage = 'url("images/ui/Icon/sample.png")';
 
     levelupImg.style.backgroundRepeat = "no-repeat";
     levelupImg.style.backgroundPosition = "center";
