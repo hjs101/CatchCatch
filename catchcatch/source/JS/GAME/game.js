@@ -7133,7 +7133,7 @@ function attack(magic, monster) {
 =======
                 if (magic.fairy.fairyNum === 2) {
                     let vampireNum = Math.floor(Math.random() * 100 + 1);
-                    if (vampireNum < 20) {
+                    if (vampireNum < 5) {
                         player.health += magic.fairy.vampire;
                         if (player.health > player.maxHealth) {
                             player.health = player.maxHealth;
