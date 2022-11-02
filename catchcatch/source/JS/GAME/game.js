@@ -287,8 +287,11 @@ let map;
 let chunks = [];
 export let mapSize = 16000;
 export let camera;
+<<<<<<< HEAD
 >>>>>>> aabc1ad (#3 :sparkles: 각종 코드 수정)
 let controls;
+=======
+>>>>>>> 0d9d680 (#1 #2 #3 :sparkles: 각종 코드 수정)
 //map end
 let frameTime = 0;
 //navi start

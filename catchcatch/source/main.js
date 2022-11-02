@@ -42,6 +42,19 @@ global.isLevelup = false;
 
 // 1. ws 모듈 취득
 // 2. WebSocket 서버 생성/구동
+<<<<<<< HEAD
+=======
+// const socket = new WebSocket("ws://k7c106.p.ssafy.io:8080");
+//
+// socket.addEventListener("open", function (event) {
+//   socket.send("Hello Server!");
+// });
+//
+// // 메시지 수신
+// socket.addEventListener("message", function (event) {
+//   console.log("Message from server ", event.data);
+// });
+>>>>>>> 0d9d680 (#1 #2 #3 :sparkles: 각종 코드 수정)
 
 function Init() {
   StartPageInit(); //스타트 페이지 init
