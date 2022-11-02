@@ -29,6 +29,7 @@ import Player from './GameObj/player.js';
 import Enemy from './GameObj/enemy.js';
 =======
 import {Chunk, Tile} from "./Entities.js";
+<<<<<<< HEAD
 =======
 import { Chunk, Tile } from "./Entities.js";
 >>>>>>> dcd6a42 (Revert "Merge branch 'develop_KGM' into 'develop'")
@@ -50,6 +51,9 @@ import {Chunk, Tile} from "./Entities.js";
 import {Chunk, Tile} from "./Entities.js";
 >>>>>>> ad327af (Update game.js)
 import CatTower from "./GameObj/cattower.js";
+=======
+import CatTower from "./GameObj/catTower.js";
+>>>>>>> 30550e6 (#6 :sparkles: 타워 코드 정리)
 import Boss from "./GameObj/boss.js";
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
 import Mine from "./GameObj/mine.js";
