@@ -101,6 +101,7 @@ export default function tower() {
       div.innerText = "그림";
     }
     div.addEventListener("click", () => {
+<<<<<<< HEAD
 <<<<<<< HEAD:catchcatch/source/JS/UI/tower-upgrade.js
       if (!towers[_towerNum].isTowerEvelop1) {
         towers[_towerNum].changeEvelop(i);
@@ -108,6 +109,10 @@ export default function tower() {
       if (!towers[towerNum].isTowerEvelop1) {
         towers[towerNum].changeEvelop(i, towers[towerNum]);
 >>>>>>> 4b975cf (#1 :sparkles: 타워 업그레이드 코인 소모):catchcatch/source/JS/UI/towerUpgrade.js
+=======
+      if (!towers[_towerNum].isTowerEvelop1) {
+        towers[_towerNum].changeEvelop(i, towers[_towerNum]);
+>>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
       }
     });
     towerIcons2.appendChild(div);
@@ -144,7 +149,7 @@ export default function tower() {
     }
     div.addEventListener("click", () => {
       if (!towers[_towerNum].isTowerEvelop2) {
-        towers[_towerNum].changeEvelop(i);
+        towers[_towerNum].changeEvelop(i, towers[_towerNum]);
       }
     });
     towerIcons4.appendChild(div);
