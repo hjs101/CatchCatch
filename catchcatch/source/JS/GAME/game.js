@@ -572,13 +572,30 @@ function preload() {
 <<<<<<< HEAD
     this.load.spritesheet(
         "magic2",
+<<<<<<< HEAD
         "images/attack/weapon/12_nebula_spritesheet.png",
+=======
+        "images/attack/weapon/7_firespin_spritesheet.png",
+>>>>>>> 1389b7c (#1 :aquarius: 오류 수정)
         {
             frameWidth: 100,
             frameHeight: 100,
             endFrame: 61,
         }
     );
+<<<<<<< HEAD
+=======
+
+    this.load.spritesheet(
+        "magic2_1",
+        "images/attack/weapon/19_freezing_spritesheet.png",
+        {
+            frameWidth: 100,
+            frameHeight: 100,
+        }
+    );
+
+>>>>>>> 1389b7c (#1 :aquarius: 오류 수정)
     this.load.spritesheet(
         "magic3",
         "images/attack/weapon/18_midnight_spritesheet.png",
