@@ -16,10 +16,14 @@ const _propertyArr = [
   "common",
 ];
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
 const commonArr = ["health", "dmgmul", "heal", "speed"];
 =======
 const _commonArr = ["health", "dmgmul", "heal", "speed"];
+=======
+const _commonArr = ["health", "dmgMul", "heal", "speed"];
+>>>>>>> 913d178 (#3 :sparkles: 공격력 코드 수정)
 
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 export default function levelup() {
