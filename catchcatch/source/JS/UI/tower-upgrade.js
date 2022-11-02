@@ -22,8 +22,13 @@ export default function tower() {
       click: () => {
         towers[_towerNum].rangeFunc(towers[_towerNum]);
       },
+<<<<<<< HEAD:catchcatch/source/JS/UI/tower-upgrade.js
       current: towers[_towerNum].circleSizeLevel,
       max: towers[_towerNum].circleSizeMax,
+=======
+      current: towers[towerNum].circleSizeLevel,
+      max: towers[towerNum].circleSizeMax,
+>>>>>>> 4b975cf (#1 :sparkles: 타워 업그레이드 코인 소모):catchcatch/source/JS/UI/towerUpgrade.js
     },
     {
       click: () => {
@@ -96,8 +101,13 @@ export default function tower() {
       div.innerText = "그림";
     }
     div.addEventListener("click", () => {
+<<<<<<< HEAD:catchcatch/source/JS/UI/tower-upgrade.js
       if (!towers[_towerNum].isTowerEvelop1) {
         towers[_towerNum].changeEvelop(i);
+=======
+      if (!towers[towerNum].isTowerEvelop1) {
+        towers[towerNum].changeEvelop(i, towers[towerNum]);
+>>>>>>> 4b975cf (#1 :sparkles: 타워 업그레이드 코인 소모):catchcatch/source/JS/UI/towerUpgrade.js
       }
     });
     towerIcons2.appendChild(div);
