@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const propertyArr = ["common", "wizard", "reaper", "ninja", "slime", "witch", "common","common"];
 =======
 const propertyArr = [
+=======
+const _propertyArr = [
+>>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
   "common",
   "wizard",
   "reaper",
@@ -11,14 +15,19 @@ const propertyArr = [
   "common",
   "common",
 ];
+<<<<<<< HEAD
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
 const commonArr = ["health", "dmgmul", "heal", "speed"];
+=======
+const _commonArr = ["health", "dmgmul", "heal", "speed"];
+
+>>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 export default function levelup() {
   const property = {
     common: {
       name: "공통",
       health: { level: player.healthLevel, text: "최대 체력 증가" },
-      dmgmul: { level: player.dmgmulLevel, text: "공격력 증가" },
+      dmgMul: { level: player.dmgMulLevel, text: "공격력 증가" },
       heal: { level: player.healLevel, text: "회복력 증가" },
       speed: { level: player.speedLevel, text: "이동속도 증가" },
     },
@@ -105,10 +114,10 @@ export default function levelup() {
     const randomNum = Math.floor(Math.random() * 8);
     if (randomIndexArray.indexOf(randomNum) === -1) {
       if (
-        propertyArr[randomNum] !== "common" &&
-        (property[propertyArr[randomNum]].fairy.level === 4 ||
-          property[propertyArr[randomNum]].fairy.level === 8 ||
-          property[propertyArr[randomNum]].fairy.level === 9)
+        _propertyArr[randomNum] !== "common" &&
+        (property[_propertyArr[randomNum]].fairy.level === 4 ||
+          property[_propertyArr[randomNum]].fairy.level === 8 ||
+          property[_propertyArr[randomNum]].fairy.level === 9)
       ) {
         i--;
 <<<<<<< HEAD
@@ -123,7 +132,6 @@ export default function levelup() {
       i--;
     }
   }
-  console.log(randomIndexArray);
   const gameContainer = document.querySelector("#game-container");
 
   // const levelupContainer = document.createElement("div");
@@ -153,30 +161,30 @@ export default function levelup() {
     const levelupName = document.createElement("div");
     levelupName.setAttribute("class", "levelupName");
 
-    if (propertyArr[randomIndexArray[i]] !== "common") {
-      levelupContent.setAttribute("id", `${propertyArr[randomIndexArray[i]]}`);
+    if (_propertyArr[randomIndexArray[i]] !== "common") {
+      levelupContent.setAttribute("id", `${_propertyArr[randomIndexArray[i]]}`);
       levelupText.innerText = `${
-        property[propertyArr[randomIndexArray[i]]].text[
-          property[propertyArr[randomIndexArray[i]]].fairy.level - 1
+        property[_propertyArr[randomIndexArray[i]]].text[
+          property[_propertyArr[randomIndexArray[i]]].fairy.level - 1
         ]
       }`;
       levelupContent.style.backgroundImage =
         'url("images/ui/levelup/fairyupgrade_addName.png")';
       // 설명인데..
       levelupName.innerHTML = `[${
-        property[propertyArr[randomIndexArray[i]]].name
+        property[_propertyArr[randomIndexArray[i]]].name
       }] <br> Lv. ${
-        property[propertyArr[randomIndexArray[i]]].fairy.level + 1
+        property[_propertyArr[randomIndexArray[i]]].fairy.level + 1
       }`;
       // levelupName.textContent += "Lv. 1";
     } else {
       levelupContent.style.backgroundImage =
         'url("images/ui/levelup/commonupgrade_addName.png")';
 
-      levelupText.innerText = property.common[commonArr[randomCommon]].text;
-      levelupContent.setAttribute("id", `${commonArr[randomCommon]}`);
+      levelupText.innerText = property.common[_commonArr[randomCommon]].text;
+      levelupContent.setAttribute("id", `${_commonArr[randomCommon]}`);
       levelupName.innerHTML = `[공통] <br> Lv. ${
-        property.common[commonArr[randomCommon]].level + 1
+        property.common[_commonArr[randomCommon]].level + 1
       }`;
       // levelupName.textContent += "Lv. 1";
     }
