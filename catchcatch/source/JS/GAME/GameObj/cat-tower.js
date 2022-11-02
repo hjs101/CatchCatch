@@ -86,8 +86,9 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
   magicFire(game, tower, mouse, speed) {
     let magic = new TowerMagic(game, tower);
 
-    let magicLeft = new TowerMagic(game, tower);
+    let magicLeft;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD:catchcatch/source/JS/GAME/GameObj/cattower.js
     let magicright = new TMagic(game, tower);
@@ -102,6 +103,9 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
 =======
     let magicRight = new TowerMagic(game, tower);
 >>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
+=======
+    let magicRight;
+>>>>>>> f620f3d (#6 :bug: 타워 카메라 ignore)
     if (
       mouse.type !== "boss" ||
       (mouse.type === "boss" && mouse.bossSpecie !== "golem")
@@ -125,9 +129,12 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
 >>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
         towerAttacks.add(magic);
       } else if (this.isThree === false && this.isTwo === true) {
+        magicLeft = new TowerMagic(game, tower);
         towerAttacks.add(magic);
         towerAttacks.add(magicLeft);
       } else {
+        magicLeft = new TowerMagic(game, tower);
+        magicRight = new TowerMagic(game, tower);
         towerAttacks.add(magic);
         towerAttacks.add(magicLeft);
         towerAttacks.add(magicRight);
@@ -269,7 +276,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
         thTower.towerASLevel < 10 &&
         player.coin >= thTower.towerASCost[thTower.towerASLevel]
       ) {
-        player.coin -= thTower.towerSCost[thTower.towerASLevel];
+        player.coin -= thTower.towerASCost[thTower.towerASLevel];
         thTower.towerASLevel += 1;
         thTower.level++;
       }
