@@ -652,7 +652,7 @@ function preload() {
 
     this.load.spritesheet(
         "magic2",
-        "images/attack/weapon/7Firespin_spritesheet.png",
+        "images/attack/weapon/7_firespin_spritesheet.png",
         {
             frameWidth: 100,
             frameHeight: 100,
@@ -661,7 +661,7 @@ function preload() {
 
     this.load.spritesheet(
         "magic2_1",
-        "images/attack/weapon/19Freezing_spritesheet.png",
+        "images/attack/weapon/19_freezing_spritesheet.png",
         {
             frameWidth: 100,
             frameHeight: 100,
@@ -785,7 +785,7 @@ function preload() {
     // 스킬 스프라이트
     this.load.spritesheet(
         "skill1",
-        "images/attack/weapon/17Felspell_spritesheet.png",
+        "images/attack/weapon/17_felspell_spritesheet.png",
         {
             frameWidth: 100,
             frameHeight: 100,
@@ -1098,6 +1098,7 @@ function create() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
 =======
 >>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
@@ -1161,6 +1162,9 @@ function create() {
 >>>>>>> 1d421fe (#5 #3 :sparkles: 카메라 줌 당기고 exp바 수정)
 =======
 >>>>>>> 2e09e3c (#3 :sparkles: camera zoom and exp bar patch)
+=======
+    UICam = this.cameras.add(player.x, player.y, this.cameras.main.worldView.width, this.cameras.main.worldView.height);
+>>>>>>> e875625 (:bug: 리팩토링 오류 수정)
     this.followPoint = new Phaser.Math.Vector2(
         this.cameras.main.worldView.x + this.cameras.main.worldView.width * 0.5,
         this.cameras.main.worldView.y + this.cameras.main.worldView.height * 0.5
@@ -6544,10 +6548,20 @@ function update(time, delta) {
 =======
 >>>>>>> 318c5d7 (#3 :bug: 마녀버그 수정)
     //exp bar start
+<<<<<<< HEAD
     expBar.clear();
+=======
+    expBar = this.add.graphics().setScrollFactor(0);
+    expBarBG = this.add.graphics().setScrollFactor(0);
+    expBar.setDepth(4);
+    expBarBG.setDepth(3);
+
+    this.cameras.main.ignore([expBar, expBarBG, navi]);
+>>>>>>> e875625 (:bug: 리팩토링 오류 수정)
 
 <<<<<<< HEAD
     //exp bar end
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -6555,6 +6569,8 @@ function update(time, delta) {
 =======
     console.log(UICam);
 >>>>>>> 2e09e3c (#3 :sparkles: camera zoom and exp bar patch)
+=======
+>>>>>>> e875625 (:bug: 리팩토링 오류 수정)
     // hp bar start
     hpBar = this.add.graphics();
     hpBarBG = this.add.graphics();
@@ -7450,6 +7466,7 @@ function update(time, delta) {
 >>>>>>> 4cde4e7 (#2 :bug: 불거인 오라 확대)
     }    //exp bar end
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 6af9760 (:recycle: 60fps 기준 시간 고정)
 =======
     console.log(chunks);
@@ -7465,6 +7482,9 @@ function update(time, delta) {
         chunks[7].tiles, chunks[8].tiles, chunks[9].tiles, chunks[10].tiles, chunks[11].tiles, chunks[12].tiles, chunks[13].tiles,
         chunks[14].tiles, chunks[15].tiles, mines, towerAttacks, towerSkillAttacks]);
 >>>>>>> aabc1ad (#3 :sparkles: 각종 코드 수정)
+=======
+    UICam.ignore([player, bossSet, fairySet, monsterSet, hpBar, hpBarBG, hole, towerLD, towerLU, towerRD, towerRU, magics, mines, towerAttacks, towerSkillAttacks]);
+>>>>>>> e875625 (:bug: 리팩토링 오류 수정)
 }
 
 
