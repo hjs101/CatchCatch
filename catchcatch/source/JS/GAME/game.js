@@ -398,15 +398,15 @@ let alien_plus;
 let worm_plus;
 
 // 보스
-let slime_king;
+let slimeKing;
 let golem;
-let fire_giant;
-let fire_giant_aura;
+let fireGiant;
+let fireGiantAura;
 // 보스 패턴
 let pt;
 // 보스 활성 확인
 let boss_active;
-let boss_fire_giant_active;
+let boss_fireGiant_active;
 
 let monX;
 let monY;
@@ -6217,7 +6217,7 @@ function update(time, delta) {
                         .setTint(0xff0000)
                 }
 
-                if (monsterSet.children.entries[i].type == "follower" || monsterSet.children.entries[i].type == "wave") {
+                if (monsterSet.children.entries[i].type === "follower" || monsterSet.children.entries[i].type === "wave") {
                     this.physics.moveToObject(
                         monsterSet.children.entries[i],
                         player,
@@ -6225,7 +6225,7 @@ function update(time, delta) {
                     );
                 }
                 // 몬스터가 홀에 도달하게 함
-                else if (monsterSet.children.entries[i].type == "siege") {
+                else if (monsterSet.children.entries[i].type === "siege") {
                     this.physics.moveToObject(
                         monsterSet.children.entries[i],
                         hole,
@@ -6247,7 +6247,7 @@ function update(time, delta) {
         // 플레이어 기준랜덤 위치에 몬스터 생성
         // 생성규칙: 몬스터이름, 애니메이션, 체력, 속도, x,y,타입,딜레이
         // monsterSpawn 초기값은 300
-        if (gameTimer > 300 && gameTimer % monsterSpawn == 0) {
+        if (gameTimer > 300 && gameTimer % monsterSpawn === 0) {
             // 1번 zombie
             enemySpawn(randomLocation);
             if (10800 < gameTimer && gameTimer <= 18000) {
@@ -6258,7 +6258,7 @@ function update(time, delta) {
                 addMonster(this, "alien", "swarm", 30, 50, monX, monY, "follower");
             }
         }
-        if (gameTimer > 3600 && gameTimer % 180 == 0) {
+        if (gameTimer > 3600 && gameTimer % 180 === 0) {
             // 2번 worm
             siegeSpawn(randomLocation);
             if (21000 < gameTimer && gameTimer <= 34000) {
@@ -6271,24 +6271,24 @@ function update(time, delta) {
             ;
 
         }
-        if (gameTimer > 7200 && gameTimer % 300 == 0) {
+        if (gameTimer > 7200 && gameTimer % 300 === 0) {
             enemySpawn(randomLocation);
             addMonster(this, "sonic", "swarm", 150, 80, monX, monY, "follower");
         }
-        if (gameTimer > 12000 && gameTimer % 600 == 0) {
+        if (gameTimer > 12000 && gameTimer % 600 === 0) {
             siegeSpawn(randomLocation);
             addMonster(this, "turtle", "swarm", 300, 30, monX, monY, "siege");
         }
 
-        if (gameTimer > 16000 && gameTimer % 400 == 0) {
+        if (gameTimer > 16000 && gameTimer % 400 === 0) {
             enemySpawn(randomLocation);
             addMonster(this, "slime", "swarm", 240, 75, monX, monY, "follower");
         }
         // 몬스터 빅 웨이브
-        if (gameTimer > 8000 && gameTimer < 8200 && gameTimer % 3 == 0) {
+        if (gameTimer > 8000 && gameTimer < 8200 && gameTimer % 3 === 0) {
             enemySpawn(randomLocation);
             addMonster(this, "fly", "swarm", 10, 50, monX, monY, "wave");
-        } else if (20000 < gameTimer && gameTimer < 21000 && gameTimer % 3 == 0) {
+        } else if (20000 < gameTimer && gameTimer < 21000 && gameTimer % 3 === 0) {
             enemySpawn(randomLocation);
             addMonster(this, "fly", "swarm", 100, 50, monX, monY, "wave");
         }
@@ -6315,27 +6315,27 @@ function update(time, delta) {
 >>>>>>> 4cde4e7 (#2 :bug: 불거인 오라 확대)
 
         // 슬라임
-        if (gameTimer == 10800) {
-            slime_king = new Boss(
+        if (gameTimer === 10800) {
+            slimeKing = new Boss(
                 this,
                 400,
                 80,
                 player.x + 300,
                 player.y + 300,
-                "slime_king",
+                "slimeKing",
                 "swarm",
                 5,
                 1,
                 "boss"
             );
-            slime_king.setDepth(2);
-            slime_king.anime();
+            slimeKing.setDepth(2);
+            slimeKing.anime();
             boss_active = true;
-            bossSet.add(slime_king);
+            bossSet.add(slimeKing);
         }
 
         // 골렘
-        if (gameTimer == 21000) {
+        if (gameTimer === 21000) {
             golem = new Boss(
                 this,
                 500,
@@ -6355,28 +6355,28 @@ function update(time, delta) {
         }
 
         // 불거인
-        if (gameTimer == 28000) {
-            fire_giant = new Boss(this, 500, 30, player.x - 60, player.y - 60, 'fire_giant', 'swarm', 1, 10, 'boss')
-            fire_giant.setDepth(6);
-            fire_giant.anime();
+        if (gameTimer === 28000) {
+            fireGiant = new Boss(this, 500, 30, player.x - 60, player.y - 60, 'fireGiant', 'swarm', 1, 10, 'boss')
+            fireGiant.setDepth(6);
+            fireGiant.anime();
             boss_active = true;
-            boss_fire_giant_active = true;
-            bossSet.add(fire_giant);
+            boss_fireGiant_active = true;
+            bossSet.add(fireGiant);
             fireGiantIndex = bossSet.children.entries.length - 1;
         }
 
-        if (gameTimer == 28000) {
-            fire_giant_aura = new Boss(this, 10000, 100, player.x - 60, player.y - 60, 'fire_giant_aura', 'swarm', 1, 10, 'boss')
-            fire_giant_aura.setDepth(5);
-            fire_giant_aura.anime();
-            bossMagicSet.add(fire_giant_aura);
+        if (gameTimer === 28000) {
+            fireGiantAura = new Boss(this, 10000, 100, player.x - 60, player.y - 60, 'fireGiantAura', 'swarm', 1, 10, 'boss')
+            fireGiantAura.setDepth(5);
+            fireGiantAura.anime();
+            bossMagicSet.add(fireGiantAura);
         }
 
-        if (boss_fire_giant_active) {
+        if (boss_fireGiant_active) {
             let x = bossSet.children.entries[fireGiantIndex].x;
             let y = bossSet.children.entries[fireGiantIndex].y;
 
-            let aura = new Boss(this, 10000, 100, x, y, 'fire_giant_aura', 'swarm', 1 + (28000 - gameTimer) / 600, 10, 'boss')
+            let aura = new Boss(this, 10000, 100, x, y, 'fireGiantAura', 'swarm', 1 + (28000 - gameTimer) / 600, 10, 'boss')
             bossMagicSet.children.entries[0].destroy();
             aura.setDepth(5);
             aura.anime();
@@ -6411,14 +6411,14 @@ function update(time, delta) {
                     bossSet.children.entries[i]
                         .setTint(0xff0000)
                 }
-                if (bossSet.children.entries[i].bossSpiece != "golem") {
+                if (bossSet.children.entries[i].bossSpecie !== "golem") {
                     this.physics.moveToObject(
                         bossSet.children.entries[i],
                         player,
                         bossSet.children.entries[i].velo
                     );
-                    if (bossSet.children.entries[i].bossSpiece == "fire_giant") {
-                        if (boss_fire_giant_active) {
+                    if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
+                        if (boss_fireGiant_active) {
                             this.physics.moveToObject(
                                 bossMagicSet.children.entries[0],
                                 bossSet.children.entries[i],
@@ -6426,7 +6426,7 @@ function update(time, delta) {
                             );
                         }
                     }
-                } else if (bossSet.children.entries[i].bossSpiece == "golem") {
+                } else if (bossSet.children.entries[i].bossSpecie === "golem") {
                     this.physics.moveToObject(
                         bossSet.children.entries[i],
                         hole,
@@ -6437,11 +6437,11 @@ function update(time, delta) {
                     for (let i = 0; i < 5; i++) {
                         player.expUp()
                     }
-                    if (bossSet.children.entries[i].bossSpiece != 'slime_king') {
+                    if (bossSet.children.entries[i].bossSpecie !== 'slimeKing') {
                         global.coin += 10
                     } else (global.coin += 2)
-                    if (bossSet.children.entries[i].bossSpiece == "slime_king") {
-                        slime_pattern(
+                    if (bossSet.children.entries[i].bossSpecie === "slimeKing") {
+                        slimePattern(
                             this,
                             bossSet.children.entries[i].pt,
                             bossSet.children.entries[i].x,
@@ -6449,9 +6449,9 @@ function update(time, delta) {
                         );
                     }
 
-                    if (bossSet.children.entries[i].bossSpiece == "fire_giant") {
+                    if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
                         bossMagicSet.children.entries[0].destroy();
-                        boss_fire_giant_active = false;
+                        boss_fireGiant_active = false;
                     }
 
 <<<<<<< HEAD
@@ -6492,7 +6492,7 @@ function update(time, delta) {
 =======
 =======
                     bossSet.children.entries[i].destroy();
-                    if (bossSet.children.entries.length == 0) {
+                    if (bossSet.children.entries.length === 0) {
                         boss_active = false;
                     }
                 }
@@ -6501,7 +6501,7 @@ function update(time, delta) {
 
         for (let i = magics.length - 1; i >= 0; i--) {
             magics[i].timer++;
-            if (magics[i].timer == magics[i].lifetime) {
+            if (magics[i].timer === magics[i].lifetime) {
                 magics[i].destroy();
                 magics.splice(i, 1);
             }
@@ -7776,8 +7776,12 @@ function destroyhole(hole, golem) {
     if (golem.bossSpiece == "golem") {
 =======
 function destroyHole(hole, golem) {
+<<<<<<< HEAD
     if (golem.bossSpiece === "golem") {
 >>>>>>> aabc1ad (#3 :sparkles: 각종 코드 수정)
+=======
+    if (golem.bossSpecie === "golem") {
+>>>>>>> 3f5551d (#2 :alien: game.js 수정)
         hole.hp -= 9999;
         golem.destroy();
     }
@@ -7821,6 +7825,7 @@ function enemySpawn(scene) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function slime_pattern(scene, pt, x, y) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7852,6 +7857,9 @@ function slime_pattern(scene, pt, x, y) {
 =======
     if (pt != 16) {
 =======
+=======
+function slimePattern(scene, pt, x, y) {
+>>>>>>> 3f5551d (#2 :alien: game.js 수정)
     if (pt !== 16) {
 >>>>>>> aabc1ad (#3 :sparkles: 각종 코드 수정)
         pt *= 2;
@@ -7859,39 +7867,39 @@ function slime_pattern(scene, pt, x, y) {
 >>>>>>> ad327af (Update game.js)
             // 분열될 때마다 체력 감소 구현하기
             if (pt < 4) {
-                slime_king = new Boss(
+                slimeKing = new Boss(
                     scene,
                     200,
                     100,
                     x + i * 100,
                     y,
-                    "slime_king",
+                    "slimeKing",
                     "swarm",
                     2.5,
                     pt,
                     "boss"
                 );
             } else if (pt < 8) {
-                slime_king = new Boss(
+                slimeKing = new Boss(
                     scene,
                     100,
                     100,
                     x + i * 50,
                     y,
-                    "slime_king",
+                    "slimeKing",
                     "swarm",
                     1.25,
                     pt,
                     "boss"
                 );
             } else {
-                slime_king = new Boss(
+                slimeKing = new Boss(
                     scene,
                     50,
                     100,
                     x + i * 25,
                     y,
-                    "slime_king",
+                    "slimeKing",
                     "swarm",
                     0.5,
                     pt,
@@ -7902,6 +7910,7 @@ function slime_pattern(scene, pt, x, y) {
 =======
 >>>>>>> ad327af (Update game.js)
             }
+<<<<<<< HEAD
             slime_king.anime();
             scene.physics.add.collider(bossSet, slime_king);
             bossSet.add(slime_king);
@@ -7946,6 +7955,11 @@ function slime_pattern(scene,pt,x,y){
 >>>>>>> 9ff3036 (#2 :sparkle: 코드 정리)
 =======
 >>>>>>> cee2f61 (#2 :sparkles: 몬스터 기능 추가)
+=======
+            slimeKing.anime();
+            scene.physics.add.collider(bossSet, slimeKing);
+            bossSet.add(slimeKing);
+>>>>>>> 3f5551d (#2 :alien: game.js 수정)
         }
 =======
   if (pt != 16) {
