@@ -997,6 +997,7 @@ function create() {
 =======
 >>>>>>> 3b1904d (#1 :sparkles: tower Ui)
 
+<<<<<<< HEAD
   this.cameras.main.setZoom(1);
   this.followPoint = new Phaser.Math.Vector2(
     this.cameras.main.worldView.x + this.cameras.main.worldView.width * 0.5,
@@ -1021,6 +1022,9 @@ function create() {
 
 >>>>>>> ad327af (Update game.js)
     this.cameras.main.setZoom(1);
+=======
+    this.cameras.main.setZoom(0.8);
+>>>>>>> 1d421fe (#5 #3 :sparkles: 카메라 줌 당기고 exp바 수정)
     this.followPoint = new Phaser.Math.Vector2(
         this.cameras.main.worldView.x + this.cameras.main.worldView.width * 0.5,
         this.cameras.main.worldView.y + this.cameras.main.worldView.height * 0.5
@@ -5577,8 +5581,8 @@ function update(time, delta) {
     //navi end
 
     //exp bar start
-    expbar = this.add.graphics().setScrollFactor(0);
-    expbarBG = this.add.graphics().setScrollFactor(0);
+    expbar = this.add.graphics();
+    expbarBG = this.add.graphics();
     expbar.setDepth(4);
     expbarBG.setDepth(3);
     //exp bar end
@@ -5609,8 +5613,10 @@ function update(time, delta) {
     hpbar.fillStyle(0x2ff40a);
     hpbar.fillRect(0, 0, 60 * (player.health / player.maxHealth), 10);
 
-    hpbar.setPosition(player.x - 30, player.y + 40);
-    hpbarBG.setPosition(player.x - 30, player.y + 40);
+    hpbar.setPosition(Math.floor(player.x) - 30, Math.floor(player.y) + 40);
+    hpbarBG.setPosition(Math.floor(player.x) - 30, Math.floor(player.y) + 40);
+    expbar.setPosition(Math.floor(player.x)-375, Math.floor(player.y) - 372);
+    expbarBG.setPosition(Math.floor(player.x)-375, Math.floor(player.y) - 372);
     // Health bar end
     if (frameTime > 16.5) {
         frameTime = 0;
