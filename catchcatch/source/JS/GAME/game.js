@@ -5,6 +5,7 @@ import Player from "./GameObj/player.js";
 import Enemy from "./GameObj/enemy.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import inGameUI, { gameover, updateExp, updateHP } from "../UI/inGameUI.js";
 =======
 import inGameUI, {updateExp} from "../UI/inGameUI.js";
@@ -12,6 +13,9 @@ import inGameUI, {updateExp} from "../UI/inGameUI.js";
 =======
 import inGameUI, {gameover, updateExp, updateHP} from "../UI/inGameUI.js";
 >>>>>>> ad327af (Update game.js)
+=======
+import inGameUI, {GameOver, updateExp, updateHP} from "../UI/inGameUI.js";
+>>>>>>> 84c8e4e (#1 :sparkles: 각종 코드 수정)
 import levelup from "../UI/levelup.js";
 import initUpgrade, {closeUpgrade} from "../UI/upgrade.js";
 
@@ -59,7 +63,7 @@ import Boss from "./GameObj/boss.js";
 import Mine from "./GameObj/mine.js";
 >>>>>>> 643016e (#6 :sparkles: 인게임 coin 생성)
 
-import {Updatetimer} from "../UI/inGameUI.js";
+import {UpdateTimer} from "../UI/inGameUI.js";
 
 export const config = {
 <<<<<<< HEAD
@@ -6194,11 +6198,11 @@ function update(time, delta) {
         if (hole.hp <= 0) {
             $this.pause();
             updateHP();
-            gameover();
+            GameOver();
         }
 
         gameTimer++;
-        Updatetimer();
+        UpdateTimer();
 
         // 플레이어 기준랜덤 위치에 몬스터 생성
         // 생성규칙: 몬스터이름, 애니메이션, 체력, 속도, x,y,타입,딜레이
@@ -7092,11 +7096,16 @@ function attack(magic, monster) {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         monster.health -= (magic.fairy.dmg * player.dmgmul);
 =======
         monster.invincible = true;
         monster.health -= (fairySet[nowFairy].dmg * player.dmgmul);
 >>>>>>> 1199532 (#2 :bug: 몬스터 무적 수정)
+=======
+        monster.invincible = true;
+        monster.health -= (magic.fairy.dmg * player.dmgMul);
+>>>>>>> 99ced01 (#3 :bug: 데미지 안들어가는 버그 수정)
 
         if (monster.health <= 0 && monster.type != "boss") {
             if (monster.monSpiece != "slime") {
