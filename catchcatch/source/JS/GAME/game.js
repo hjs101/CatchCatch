@@ -407,7 +407,7 @@ global.mines = "";
 //exp bar start
 var expbar;
 var expbarBG;
-
+var UICam;
 //exp bar end
 
 //hp bar start
@@ -1002,6 +1002,7 @@ function create() {
 >>>>>>> 3b1904d (#1 :sparkles: tower Ui)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.cameras.main.setZoom(1);
   this.followPoint = new Phaser.Math.Vector2(
     this.cameras.main.worldView.x + this.cameras.main.worldView.width * 0.5,
@@ -1029,6 +1030,8 @@ function create() {
 =======
     this.cameras.main.setZoom(0.8);
 >>>>>>> 1d421fe (#5 #3 :sparkles: 카메라 줌 당기고 exp바 수정)
+=======
+>>>>>>> 2e09e3c (#3 :sparkles: camera zoom and exp bar patch)
     this.followPoint = new Phaser.Math.Vector2(
         this.cameras.main.worldView.x + this.cameras.main.worldView.width * 0.5,
         this.cameras.main.worldView.y + this.cameras.main.worldView.height * 0.5
@@ -5580,19 +5583,26 @@ function update(time, delta) {
     // ##보스 생성, 나중에 타이머 조건 넣고 업데이트에 넣기 ##
 
     //navi start
-    navi = this.add.image(50, 50, "navi").setScrollFactor(0).setScale(0.1);
+    navi = this.add.image(60, 60, "navi").setScrollFactor(0).setScale(0.1);
     navi.setDepth(4);
     //navi end
 
     //exp bar start
-    expbar = this.add.graphics();
-    expbarBG = this.add.graphics();
+    expbar = this.add.graphics().setScrollFactor(0);
+    expbarBG = this.add.graphics().setScrollFactor(0);
     expbar.setDepth(4);
     expbarBG.setDepth(3);
+    UICam = this.cameras.add(player.x, player.y, this.cameras.main.worldView.width, this.cameras.main.worldView.height);
+    this.cameras.main.ignore([expbar, expbarBG, navi]);
+    
     //exp bar end
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
+=======
+    console.log(UICam);
+>>>>>>> 2e09e3c (#3 :sparkles: camera zoom and exp bar patch)
     // hp bar start
     hpbar = this.add.graphics();
     hpbarBG = this.add.graphics();
@@ -5600,7 +5610,12 @@ function update(time, delta) {
     hpbarBG.setDepth(4);
     // hp bar end
 
+<<<<<<< HEAD
 >>>>>>> 2f19786 (#2 :sparkle: 불거인)
+=======
+    this.cameras.main.setZoom(0.8);
+    UICam.setZoom(1);
+>>>>>>> 2e09e3c (#3 :sparkles: camera zoom and exp bar patch)
 }
 
 function update(time, delta) {
@@ -5619,8 +5634,8 @@ function update(time, delta) {
 
     hpbar.setPosition(Math.floor(player.x) - 30, Math.floor(player.y) + 40);
     hpbarBG.setPosition(Math.floor(player.x) - 30, Math.floor(player.y) + 40);
-    expbar.setPosition(Math.floor(player.x)-375, Math.floor(player.y) - 372);
-    expbarBG.setPosition(Math.floor(player.x)-375, Math.floor(player.y) - 372);
+    // expbar.setPosition(Math.floor(player.x)-375, Math.floor(player.y) - 372);
+    // expbarBG.setPosition(Math.floor(player.x)-375, Math.floor(player.y) - 372);
     // Health bar end
     if (frameTime > 16.5) {
         frameTime = 0;
@@ -6079,6 +6094,7 @@ function update(time, delta) {
         this.followPoint.y = player.y;
 
         this.cameras.main.startFollow(player, false);
+        UICam.startFollow(player,false);
         //map end
 
         //navi start
@@ -6469,19 +6485,27 @@ function update(time, delta) {
 
         //  BG
         expbarBG.fillStyle(0x000000);
-        expbarBG.fillRect(0, 0, this.cameras.main.worldView.width, 16); // x y 가로길이, 세로길이
+        expbarBG.fillRect(0, 0, UICam.worldView.width, 16); // x y 가로길이, 세로길이
 
 
         expbar.fillStyle(0xff0000);
         expbar.fillRect(
             0,
             0,
-            this.cameras.main.worldView.width * (player.exp / player.maxExp),
+            UICam.worldView.width * (player.exp / player.maxExp),
             16
         );
 >>>>>>> 4cde4e7 (#2 :bug: 불거인 오라 확대)
     }    //exp bar end
+<<<<<<< HEAD
 >>>>>>> 6af9760 (:recycle: 60fps 기준 시간 고정)
+=======
+    console.log(chunks);
+    UICam.ignore([player, bossSet, fairySet, monsterSet, hpbar, hpbarBG, hole, towerLD, towerLU, towerRD, towerRU, magics, 
+        chunks[0].tiles, chunks[1].tiles, chunks[2].tiles, chunks[3].tiles, chunks[4].tiles, chunks[5].tiles, chunks[6].tiles, 
+        chunks[7].tiles, chunks[8].tiles, chunks[9].tiles, chunks[10].tiles, chunks[11].tiles, chunks[12].tiles, chunks[13].tiles, 
+        chunks[14].tiles, chunks[15].tiles, mines, towerAttacks, towerSkillAttacks]);  
+>>>>>>> 2e09e3c (#3 :sparkles: camera zoom and exp bar patch)
 }
 
 
