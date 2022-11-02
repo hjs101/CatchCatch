@@ -411,7 +411,7 @@ global.mines = "";
 //exp bar start
 var expbar;
 var expbarBG;
-var UICam;
+global.UICam = "";
 //exp bar end
 
 //hp bar start
@@ -5587,7 +5587,7 @@ function update(time, delta) {
     // ##보스 생성, 나중에 타이머 조건 넣고 업데이트에 넣기 ##
 
     //navi start
-    navi = this.add.image(60, 60, "navi").setScrollFactor(0).setScale(0.1);
+    navi = this.add.image(64, 80, "navi").setScrollFactor(0).setScale(0.8);
     navi.setDepth(4);
     //navi end
 
