@@ -6,6 +6,7 @@ import Enemy from "./GameObj/enemy.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import inGameUI, { gameover, updateExp, updateHP } from "../UI/inGameUI.js";
 =======
 import inGameUI, {updateExp} from "../UI/inGameUI.js";
@@ -58,12 +59,20 @@ import CatTower from "./GameObj/cattower.js";
 =======
 import CatTower from "./GameObj/catTower.js";
 >>>>>>> 30550e6 (#6 :sparkles: 타워 코드 정리)
+=======
+import ingameUi, {GameOver, updateExp, updateHP} from "../UI/ingame-ui.js";
+import levelup from "../UI/levelup.js";
+import initUpgrade, {closeUpgrade} from "../UI/upgrade.js";
+
+import {Chunk, Tile} from "./entities.js";
+import CatTower from "./GameObj/cat-tower.js";
+>>>>>>> f42389c (#1 #2 #3 :sparkles: 각종 코드 수정)
 import Boss from "./GameObj/boss.js";
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
 import Mine from "./GameObj/mine.js";
 >>>>>>> 643016e (#6 :sparkles: 인게임 coin 생성)
 
-import {UpdateTimer} from "../UI/inGameUI.js";
+import {UpdateTimer} from "../UI/ingame-ui.js";
 
 export const config = {
 <<<<<<< HEAD
@@ -5303,7 +5312,7 @@ function update(time, delta) {
     hole.setCircle(hw * 0.7, hh - hw * 0.7, hh - hw * 0.7);
     hole.hp = 500;
     hole.setDepth(1);
-    inGameUI();
+    ingameUi();
 
     // 그룹셋
     monsterSet = this.physics.add.group();
