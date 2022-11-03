@@ -1440,11 +1440,15 @@ this.load.spritesheet(
 function create() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
 =======
 =======
   cursor: url("images/aimNone.png"), pointer;
 >>>>>>> f259795 (:sparkles: cursor)
+=======
+  this.input.setDefaultCursor("url(/images/cursor/aimNone.png), pointer")
+>>>>>>> 82799aa (hi)
   setSound.setBGM(1);
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
   thisScene = this;
@@ -10689,7 +10693,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
 }
 
 function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
-  monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime, type);
+  monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime, type).setInteractive({ cursor: 'url(images/cursor/aimHover.png), pointer' });
   if (monster.monSpecie === "babySlime") {
     monster.scale = 0.5;
   }
