@@ -67,6 +67,7 @@ body {
   border: 6px solid blue;
   top: 90px;
   right: 10px;
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .con {
@@ -81,6 +82,7 @@ body {
   border: 6px solid red;
   top: 100px;
   right: 10px;
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .towerIcons {
@@ -114,6 +116,7 @@ body {
 .weaponImg {
   width: 50px;
   height: 50px;
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .tower1234 {
@@ -200,24 +203,28 @@ body {
   width: 60px;
   height: 60px;
   border: 2px solid black;
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .tower2 {
   width: 60px;
   height: 60px;
   border: 2px solid black;
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .tower3 {
   width: 60px;
   height: 60px;
   border: 2px solid black;
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .tower4 {
   width: 60px;
   height: 60px;
   border: 2px solid black;
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .con {
@@ -230,10 +237,12 @@ body {
   width: 50px;
   height: 50px;
   /* border: 2px solid black; */
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
 
 .property {
   width: 50px;
   height: 50px;
   /* border: 2px solid black; */
+  cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
 }
