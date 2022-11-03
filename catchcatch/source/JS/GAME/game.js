@@ -1439,8 +1439,12 @@ this.load.spritesheet(
 
 function create() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
 =======
+=======
+  cursor: url("images/aimNone.png"), pointer;
+>>>>>>> f259795 (:sparkles: cursor)
   setSound.setBGM(1);
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
   thisScene = this;
