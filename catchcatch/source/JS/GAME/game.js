@@ -131,6 +131,7 @@ import Boss from "./GameObj/boss.js";
 import Mine from "./GameObj/mine.js";
 
 import { UpdateTimer } from "../UI/ingame-ui.js";
+import {setSound} from "../SOUND/sound.js";
 
 export const config = {
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
@@ -174,6 +175,9 @@ export const config = {
   resolution: window.devicePixelRatio,
   pixelArt: true,
   roundPixels: true,
+  audio: {
+    disableWebAudio: true
+  },
   scene: {
     //scene 제어에
     preload: preload,
@@ -1434,7 +1438,11 @@ this.load.spritesheet(
 }
 
 function create() {
+<<<<<<< HEAD
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
+=======
+  setSound.setBGM(1);
+>>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
   thisScene = this;
   //map start
   this.chunkSize = 8;
@@ -5266,6 +5274,7 @@ function update(time, delta) {
       !control &&
       fairySet[nowFairy].bombCount > 0
     ) {
+      setSound.playSE(1);
       magic = new Magic(this, fairySet[nowFairy]);
       magic.setDepth(2);
       this.physics.add.overlap(

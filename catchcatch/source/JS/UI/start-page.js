@@ -1,7 +1,13 @@
 import "../../CSS/UI/StartPage.css";
 import "./char-space.js";
+<<<<<<< HEAD
 import CharPageInit, { CharSpaceOn, CodeStart, GoStage } from "./char-space.js";
 import Stage from "./stage.js";
+=======
+import CharPageInit, {CharSpaceOn} from "./char-space.js";
+import {setSound} from "../SOUND/sound";
+
+>>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
 let _mode = true;
 const _StartPage = document.createElement("div");
 const _app = document.getElementById("app");
@@ -124,6 +130,12 @@ export const StartPageOff = () => {
 
 // 캐릭터 선택 버튼 클릭 이벤트 리스너
 function GoSelectChar() {
+<<<<<<< HEAD
   StartBtnOff();
   CharSpaceOn();
+=======
+    setSound.setBGM(0);
+    StartBtnOff();
+    CharSpaceOn();
+>>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
 }
