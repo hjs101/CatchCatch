@@ -516,7 +516,27 @@ function preload() {
   //map end
 
   //tower start
-  this.load.image("cat", "images/cattower/cat.png");
+  
+  this.load.spritesheet("catNone", "images/cattower/towerNone.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catThunder", "images/cattower/towerThunder.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catFire", "images/cattower/towerFire.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catWater", "images/cattower/towerWater.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catEarth", "images/cattower/towerEarth.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
   this.load.image("can", "images/cattower/can.png");
   this.load.image("skill", "images/cattower/skill.png");
   //tower end
@@ -4541,6 +4561,7 @@ function update(time, delta) {
   //tower start
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.anims.create({
         key: "fairy3_idle",
         frames: this.anims.generateFrameNumbers("fairy3", {start: 11, end: 19}),
@@ -4566,6 +4587,114 @@ function update(time, delta) {
   towerRU = new CatTower(this, 100, -100, "cat", "can", "skill");
   towerLD = new CatTower(this, -100, 100, "cat", "can", "skill");
   towerRD = new CatTower(this, 100, 100, "cat", "can", "skill");
+=======
+//cattower animation start
+this.anims.create({
+  key: "none_idle",
+  frames: this.anims.generateFrameNumbers("catNone", {
+    start: 0,
+    end: 2,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "none_attack",
+  frames: this.anims.generateFrameNumbers("catNone", {
+    start: 3,
+    end: 8,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "thunder_idle",
+  frames: this.anims.generateFrameNumbers("catThunder", {
+    start: 0,
+    end: 2,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "thunder_attack",
+  frames: this.anims.generateFrameNumbers("catThunder", {
+    start: 3,
+    end: 8,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "fire_idle",
+  frames: this.anims.generateFrameNumbers("catFire", {
+    start: 0,
+    end: 2,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "fire_attack",
+  frames: this.anims.generateFrameNumbers("catFire", {
+    start: 3,
+    end: 8,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "water_idle",
+  frames: this.anims.generateFrameNumbers("catWater", {
+    start: 0,
+    end: 2,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "water_attack",
+  frames: this.anims.generateFrameNumbers("catWater", {
+    start: 3,
+    end: 8,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "earth_idle",
+  frames: this.anims.generateFrameNumbers("catEarth", {
+    start: 0,
+    end: 2,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+
+this.anims.create({
+  key: "earth_attack",
+  frames: this.anims.generateFrameNumbers("catEarth", {
+    start: 3,
+    end: 8,
+  }),
+  frameRate: 8,
+  repeat: -1,
+});
+//cattower animation end
+
+  towerLU = new CatTower(this, -100, -100, "none_idle", "can", "skill");
+  towerRU = new CatTower(this, 100, -100, "none_idle", "can", "skill");
+  towerLD = new CatTower(this, -100, 100, "none_idle", "can", "skill");
+  towerRD = new CatTower(this, 100, 100, "none_idle", "can", "skill");
+>>>>>>> 2ed0a21 (:bug: cattower 이미지 수정중)
   towerLU.scale_Circle();
   towerRU.scale_Circle();
   towerLD.scale_Circle();
@@ -4574,6 +4703,8 @@ function update(time, delta) {
   towerRU.setDepth(1);
   towerLD.setDepth(1);
   towerRD.setDepth(1);
+
+  
 
   //tower end
 

@@ -5,7 +5,7 @@ import tower from "../../UI/tower-upgrade.js";
 import Player from "./player";
 import { UpdateCatCoin } from "../../UI/ingame-ui.js";
 
-export default class CatTower extends Phaser.Physics.Arcade.Image {
+export default class CatTower extends Phaser.Physics.Arcade.Sprite {
   weaponSprite;
   skillSprite;
   towerAttackTimer = 0;
@@ -34,7 +34,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
   towerEvelopCost = [200, 1000];
   isTowerEvelop1 = false;
   isTowerEvelop2 = false;
-  circleSize = 0.1;
+  circleSize = 1;
   circleSizeMax = 10;
   circleSizeLevel = 0;
   circleSizeCost = [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200];
@@ -48,6 +48,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
     this.weaponSprite = weaponSprite;
     this.skillSprite = skillSprite;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   scale_Circle() {
@@ -69,10 +70,15 @@ export default class CatTower extends Phaser.Physics.Arcade.Image {
     this.setScale(this.circleSize);
 >>>>>>> 30550e6 (#6 :sparkles: 타워 코드 정리):catchcatch/source/JS/GAME/GameObj/catTower.js
 =======
+=======
+    console.log(this)
+    
+>>>>>>> 2ed0a21 (:bug: cattower 이미지 수정중)
     scene.add.existing(this);
     scene.physics.add.existing(this);
     scene.physics.add.overlap(this, monsterSet, this.overlaphit);
     scene.physics.add.overlap(this, bossSet, this.overlaphit);
+    this.anims.play(towerSprite, true);
   }
 
   scale_Circle() {
