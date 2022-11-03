@@ -190,7 +190,7 @@ export const config = {
 <<<<<<< HEAD
 <<<<<<< HEAD
       fps: 60,
-      debug: true,
+      debug: false,
       fixedStep: false,
 <<<<<<< HEAD
 =======

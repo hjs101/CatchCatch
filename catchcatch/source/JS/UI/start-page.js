@@ -1,10 +1,14 @@
 import "../../CSS/UI/StartPage.css";
 import "./char-space.js";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CharPageInit, { CharSpaceOn, CodeStart, GoStage } from "./char-space.js";
 import Stage from "./stage.js";
 =======
 import CharPageInit, {CharSpaceOn} from "./char-space.js";
+=======
+import CharPageInit, {CharSpaceOn, CodeStart} from "./char-space.js";
+>>>>>>> 3e8e776 (#7 :bug: 코딩모드 병합과정에서의 버그 수정)
 import {setSound} from "../SOUND/sound";
 
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
