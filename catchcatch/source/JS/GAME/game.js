@@ -190,7 +190,7 @@ export const config = {
 <<<<<<< HEAD
 <<<<<<< HEAD
       fps: 60,
-      debug: false,
+      debug: true,
       fixedStep: false,
 <<<<<<< HEAD
 =======
@@ -10706,6 +10706,10 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
   }
   monster.setDepth(2);
   monsterCount += 1;
+  let mw = monster.body.halfWidth;
+  let mh = monster.body.halfHeight;
+
+  monster.setCircle(mw, mh - mw, mh - mw);
   monsterSet.add(monster);
   scene.physics.add.collider(monsterSet, monster);
   monster.anime();
@@ -10992,11 +10996,15 @@ function slime_pattern(scene,pt,x,y){
           y,
           "slimeKing",
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
           "swarm",
 =======
           "slime",
 >>>>>>> fa0b105 (#2 :sparkles:  몬스터 스프라이트 적용 1차)
+=======
+          "slimeKing",
+>>>>>>> 74c4598 (#2 :sparkle: 슬라임 변경 및 콜라이더 변경)
           2.5,
           pt,
           "boss"
@@ -11023,11 +11031,15 @@ function slime_pattern(scene,pt,x,y){
           y,
           "slimeKing",
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
           "swarm",
 =======
           "slime",
 >>>>>>> fa0b105 (#2 :sparkles:  몬스터 스프라이트 적용 1차)
+=======
+          "slimeKing",
+>>>>>>> 74c4598 (#2 :sparkle: 슬라임 변경 및 콜라이더 변경)
           1.25,
           pt,
           "boss"
@@ -11054,11 +11066,15 @@ function slime_pattern(scene,pt,x,y){
           y,
           "slimeKing",
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
           "swarm",
 =======
           "slime",
 >>>>>>> fa0b105 (#2 :sparkles:  몬스터 스프라이트 적용 1차)
+=======
+          "slimeKing",
+>>>>>>> 74c4598 (#2 :sparkle: 슬라임 변경 및 콜라이더 변경)
           0.5,
           pt,
           "boss"
