@@ -10,6 +10,7 @@ import Enemy from "./GameObj/enemy.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import inGameUI, { gameover, updateExp, updateHP } from "../UI/inGameUI.js";
 =======
 import inGameUI, {updateExp} from "../UI/inGameUI.js";
@@ -75,6 +76,15 @@ import ingameUi, {GameOver, updateExp, updateHP} from "../UI/ingame-ui.js";
 =======
 import ingameUi, { GameOver, updateExp, updateHP } from "../UI/ingame-ui.js";
 >>>>>>> 318c5d7 (#3 :bug: 마녀버그 수정)
+=======
+import ingameUi, {
+  GameOver,
+  updateExp,
+  updateHP,
+  useSkill,
+  canSkill,
+} from "../UI/ingame-ui.js";
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
 import levelup from "../UI/levelup.js";
 import initUpgrade, { closeUpgrade } from "../UI/upgrade.js";
 
@@ -138,8 +148,13 @@ import CatTower from "./GameObj/cat-tower.js";
 import Boss from "./GameObj/boss.js";
 import Mine from "./GameObj/mine.js";
 
+<<<<<<< HEAD
 import {UpdateTimer} from "../UI/ingame-ui.js";
 import {setSound} from "../SOUND/sound.js";
+=======
+import { UpdateTimer } from "../UI/ingame-ui.js";
+import { setSound } from "../SOUND/sound.js";
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
 
 export const config = {
 <<<<<<< HEAD
@@ -185,7 +200,7 @@ export const config = {
   pixelArt: true,
   roundPixels: true,
   audio: {
-    disableWebAudio: true
+    disableWebAudio: true,
   },
   scene: {
     //scene 제어에
@@ -557,7 +572,7 @@ function preload() {
   //map end
 
   //tower start
-  
+
   this.load.spritesheet("catNone", "images/cattower/towerNone.png", {
     frameWidth: 38,
     frameHeight: 64,
@@ -583,13 +598,10 @@ function preload() {
   //tower end
 
   //hole start
-  this.load.spritesheet(
-    "new_hole",
-    "images/hole/new_hole.png",
-    {
+  this.load.spritesheet("new_hole", "images/hole/new_hole.png", {
     frameWidth: 100,
-    frameHeight: 100
-})
+    frameHeight: 100,
+  });
   //hole end
 
   //navi start
@@ -1373,9 +1385,12 @@ function create() {
 
   // 몬스터
 
-  this.load.spritesheet('monster_die', 'images/monster/monster_die2.png',
-  {frameWidth: 64, frameHeight: 64});
+  this.load.spritesheet("monster_die", "images/monster/monster_die2.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
 
+<<<<<<< HEAD
   this.load.spritesheet(
     "alien",
     "images/monster/alien.png",
@@ -1435,43 +1450,65 @@ this.load.spritesheet(
     "alienPlus",
     "images/monster/alienPlus.png",
     {
+=======
+  this.load.spritesheet("alien", "images/monster/alien.png", {
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
     frameWidth: 20,
-    frameHeight: 20
-})
+    frameHeight: 20,
+  });
 
-  this.load.spritesheet(
-    "wormPlus",
-    "images/monster/wormPlus.png",
-    {
+  this.load.spritesheet("worm", "images/monster/worm.png", {
     frameWidth: 48,
-    frameHeight: 48
-})
+    frameHeight: 48,
+  });
 
-//   보스
-  this.load.spritesheet(
-    "slimeKing",
-    "images/boss/slimeKing.png",
-    {
+  this.load.spritesheet("sonic", "images/monster/sonic.png", {
+    frameWidth: 32,
+    frameHeight: 32,
+  });
+
+  this.load.spritesheet("turtle", "images/monster/turtle.png", {
+    frameWidth: 32,
+    frameHeight: 32,
+  });
+
+  this.load.spritesheet("slime", "images/monster/slime.png", {
+    frameWidth: 16,
+    frameHeight: 16,
+  });
+
+  this.load.spritesheet("fly", "images/monster/fly.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("alienPlus", "images/monster/alienPlus.png", {
+    frameWidth: 20,
+    frameHeight: 20,
+  });
+
+  this.load.spritesheet("wormPlus", "images/monster/wormPlus.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  //   보스
+  this.load.spritesheet("slimeKing", "images/boss/slimeKing.png", {
     frameWidth: 96,
-    frameHeight: 96
-})
+    frameHeight: 96,
+  });
 
-  this.load.spritesheet(
-    "golem",
-    "images/boss/golem.png",
-    {
+  this.load.spritesheet("golem", "images/boss/golem.png", {
     frameWidth: 96,
-    frameHeight: 96
-})
+    frameHeight: 96,
+  });
 
-  this.load.spritesheet(
-    "fireGiant",
-    "images/boss/fireGiant.png",
-    {
+  this.load.spritesheet("fireGiant", "images/boss/fireGiant.png", {
     frameWidth: 96,
-    frameHeight: 96
-})
+    frameHeight: 96,
+  });
 
+<<<<<<< HEAD
 
 this.load.spritesheet(
     "fireGiantAura",
@@ -1480,10 +1517,17 @@ this.load.spritesheet(
     frameWidth: 60,
     frameHeight: 60
 })
+=======
+  this.load.spritesheet("fireGiantAura", "images/boss/fireGiantAura.png", {
+    frameWidth: 96,
+    frameHeight: 96,
+  });
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
   //enemy end
 }
 
 function create() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1495,6 +1539,9 @@ function create() {
 =======
   this.input.setDefaultCursor("url(/images/cursor/aimNone.png), pointer")
 >>>>>>> 82799aa (hi)
+=======
+  this.input.setDefaultCursor("url(/images/cursor/aimNone.png), pointer");
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
   setSound.setBGM(1);
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
   thisScene = this;
@@ -4290,6 +4337,7 @@ function update(time, delta) {
   for (let i = 0; i < 5; i++) {
     fairySet[i].setDepth(2);
   }
+  console.log(witch);
   player.changeFairy(fairySet[0]);
   normalAttackAS = fairySet[0].as;
   // animation
@@ -4503,8 +4551,6 @@ function update(time, delta) {
     repeat: 0,
   });
 
-  
-
   // 공격 애니메이션
   this.anims.create({
     key: "magic1",
@@ -4582,7 +4628,6 @@ function update(time, delta) {
 
   //player end
 
-
   // 홀 애니메이션
 
   this.anims.create({
@@ -4597,7 +4642,7 @@ function update(time, delta) {
     frames: this.anims.generateFrameNumbers("new_hole", { start: 3, end: 7 }),
     frameRate: 12,
     repeat: 0,
-  })
+  });
 
   //cointext start
   // cointext = this.add.text(500, 20, 'coin: 0', {font: 'Bold 15px Arial', fill: '#fff', fontStyle: "strong"}).setScrollFactor(0);
@@ -4614,7 +4659,7 @@ function update(time, delta) {
   mines = this.physics.add.group();
 
   // 임시 구멍
-  hole = this.physics.add.sprite(0, 0, "new_hole").play('new_hole');
+  hole = this.physics.add.sprite(0, 0, "new_hole").play("new_hole");
   hole.setScale(2.3);
   hw = hole.body.halfWidth;
   hh = hole.body.halfHeight;
@@ -4733,9 +4778,7 @@ function update(time, delta) {
     frames: this.anims.generateFrameNumbers("alien", { start: 9, end: 14 }),
     frameRate: 3,
     repeat: -1, // -1은 무한 반복 의미
-    
   });
-
 
   this.anims.create({
     key: "worm",
@@ -4786,6 +4829,7 @@ function update(time, delta) {
     repeat: -1,
   });
 
+<<<<<<< HEAD
   this.anims.create({
     key: "flyPlus",
     frames: this.anims.generateFrameNumbers("flyPlus", { start: 0, end: 2 }),
@@ -4793,6 +4837,9 @@ function update(time, delta) {
     repeat: -1,
   });
 // boss
+=======
+  // boss
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
 
   this.anims.create({
     key: "slimeKing",
@@ -4817,14 +4864,24 @@ function update(time, delta) {
 
   this.anims.create({
     key: "monster_die",
-    frames: this.anims.generateFrameNumbers("monster_die", { start: 0, end: 5 }),
+    frames: this.anims.generateFrameNumbers("monster_die", {
+      start: 0,
+      end: 5,
+    }),
     frameRate: 12,
     repeat: -1,
   });
 
   this.anims.create({
     key: "fireGiantAura",
+<<<<<<< HEAD
     frames: this.anims.generateFrameNumbers("fireGiantAura", { start: 0, end: 5 }),
+=======
+    frames: this.anims.generateFrameNumbers("fireGiantAura", {
+      start: 0,
+      end: 7,
+    }),
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
     frameRate: 12,
     repeat: -1,
   });
@@ -4833,6 +4890,7 @@ function update(time, delta) {
 
   //tower start
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     this.anims.create({
@@ -4962,6 +5020,109 @@ this.anims.create({
   repeat: 0,
 });
 //cattower animation end
+=======
+  //cattower animation start
+  this.anims.create({
+    key: "0_idle",
+    frames: this.anims.generateFrameNumbers("catNone", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "0_attack",
+    frames: this.anims.generateFrameNumbers("catNone", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 16,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "1_idle",
+    frames: this.anims.generateFrameNumbers("catThunder", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "1_attack",
+    frames: this.anims.generateFrameNumbers("catThunder", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 16,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "2_idle",
+    frames: this.anims.generateFrameNumbers("catFire", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "2_attack",
+    frames: this.anims.generateFrameNumbers("catFire", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 16,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "3_idle",
+    frames: this.anims.generateFrameNumbers("catWater", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "3_attack",
+    frames: this.anims.generateFrameNumbers("catWater", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 16,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "4_idle",
+    frames: this.anims.generateFrameNumbers("catEarth", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "4_attack",
+    frames: this.anims.generateFrameNumbers("catEarth", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 16,
+    repeat: 0,
+  });
+  //cattower animation end
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -5003,8 +5164,6 @@ this.anims.create({
   towerRU.setDepth(1);
   towerLD.setDepth(1);
   towerRD.setDepth(1);
-
-  
 
   //tower end
 
@@ -8909,11 +9068,18 @@ function update(time, delta) {
     for (let i = 0; i < 5; i++) {
       if (fairySet[i].timer < fairySet[i].skillCD) {
         fairySet[i].timer++;
+        if (fairySet[i].skillUse === true) {
+          useSkill(i);
+        }
       } else {
-        fairySet[i].skillUse = false;
+        if (fairySet[i].skillUse === true) {
+          fairySet[i].skillUse = false;
+          canSkill(i);
+        }
       }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // 공격 맞은 후 일시 무적에 사용
     timer = this.time.addEvent({
@@ -8930,7 +9096,15 @@ function update(time, delta) {
     });
 =======
     if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
+=======
+    if (
+      cursors.skill.isDown &&
+      fairySet[nowFairy].isSkill &&
+      !fairySet[nowFairy].skillUse
+    ) {
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
       fairySet[nowFairy].skillFire();
+      // fairySet[nowFairy].skillUse = true;
     }
 
     player.healCount++;
@@ -9006,6 +9180,7 @@ function update(time, delta) {
       enemySpawn(randomLocation);
       if (10800 < gameTimer && gameTimer <= 18000) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         addMonster(this, "alien_plus", "swarm", 60, 60, monX, monY, "follower");
 =======
         addMonster(this, "alienPlus", "alienPlus", 70, 55, monX, monY, "follower");
@@ -9016,6 +9191,24 @@ function update(time, delta) {
           "alien_plus",
           "swarm",
           120,
+=======
+        addMonster(
+          this,
+          "alienPlus",
+          "alienPlus",
+          80,
+          60,
+          monX,
+          monY,
+          "follower"
+        );
+      } else if (18000 < gameTimer) {
+        addMonster(
+          this,
+          "alienPlus",
+          "alienPlus",
+          130,
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
           75,
           monX,
           monY,
@@ -10370,21 +10563,24 @@ function update(time, delta) {
     UICam.setZoom(1);
 =======
 
-if(gameTimer % 3600 === 0){
-  ++mineshowtime;
-  for (let i = 0; i < mineCount[mineshowtime]; i++) {
-    let x =
-      Math.random() *
-        (EndMineRangeX[mineshowtime] - StartMineRangeX[mineshowtime]) +
-      StartMineRangeX[mineshowtime];
-    let y =
-      Math.random() *
-        (EndMineRangeY[mineshowtime] - StartMineRangeY[mineshowtime]) +
-      StartMineRangeY[mineshowtime];
-    mine = new Mine(this, x, y, "mine", 0);
-    mine.scale_Circle();
-    mines.add(mine);
+  if (gameTimer % 3600 === 0) {
+    ++mineshowtime;
+    for (let i = 0; i < mineCount[mineshowtime]; i++) {
+      let x =
+        Math.random() *
+          (EndMineRangeX[mineshowtime] - StartMineRangeX[mineshowtime]) +
+        StartMineRangeX[mineshowtime];
+      let y =
+        Math.random() *
+          (EndMineRangeY[mineshowtime] - StartMineRangeY[mineshowtime]) +
+        StartMineRangeY[mineshowtime];
+      mine = new Mine(this, x, y, "mine", 0);
+      mine.scale_Circle();
+      mines.add(mine);
+    }
+    console.log(mines);
   }
+<<<<<<< HEAD
 }
 
 if (!towerLU.anims.isPlaying) {
@@ -10906,6 +11102,22 @@ function update(time, delta) {
         towerRD.anims.play(`${towerRD.stone}_idle`, true);
     }
 
+=======
+
+  if (!towerLU.anims.isPlaying) {
+    console.log(towerLU.stone);
+    towerLU.anims.play(`${towerLU.stone}_idle`, true);
+  }
+  if (!towerLD.anims.isPlaying) {
+    towerLD.anims.play(`${towerLD.stone}_idle`, true);
+  }
+  if (!towerRU.anims.isPlaying) {
+    towerRU.anims.play(`${towerRU.stone}_idle`, true);
+  }
+  if (!towerRD.anims.isPlaying) {
+    towerRD.anims.play(`${towerRD.stone}_idle`, true);
+  }
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
 }
 
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
@@ -12512,13 +12724,19 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
   updateHP();
   monster.destroy();
   monsterCount -= 1;
+<<<<<<< HEAD
   hole
   .play('hole_damage')
+=======
+  hole.play("hole_damage");
+  if (hole.lhp <= 0) {
+    console.log("game over");
+  }
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
   thisScene.time.addEvent({
     delay: 600,
     callback: () => {
-      hole
-      .play('new_hole')
+      hole.play("new_hole");
     },
     loop: false,
   });
@@ -12540,6 +12758,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
 }
 
 function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
+<<<<<<< HEAD
     monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime, type).setInteractive({cursor: 'url(images/cursor/aimHover.png), pointer'});
     if (monster.monSpecie === "babySlime") {
         monster.scale = 2;
@@ -12552,6 +12771,36 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
     monsterCount += 1;
     let mw = monster.body.halfWidth;
     let mh = monster.body.halfHeight;
+=======
+  monster = new Enemy(
+    scene,
+    hp,
+    velo,
+    x,
+    y,
+    mon_name,
+    monAnime,
+    type
+  ).setInteractive({ cursor: "url(images/cursor/aimHover.png), pointer" });
+  if (monster.monSpecie === "babySlime") {
+    monster.scale = 2;
+  } else if (
+    monster.monSpecie === "alien" ||
+    monster.monSpecie === "alienPlus"
+  ) {
+    monster.scale = 2.5;
+  } else if (
+    monster.monSpecie === "turtle" ||
+    monster.monSpecie === "sonic" ||
+    monster.monSpecie === "slime"
+  ) {
+    monster.scale = 3;
+  }
+  monster.setDepth(2);
+  monsterCount += 1;
+  let mw = monster.body.halfWidth;
+  let mh = monster.body.halfHeight;
+>>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
