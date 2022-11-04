@@ -10,9 +10,16 @@ import CharPageInit, {CharSpaceOn} from "./char-space.js";
 import CharPageInit, {CharSpaceOn, CodeStart} from "./char-space.js";
 >>>>>>> 3e8e776 (#7 :bug: 코딩모드 병합과정에서의 버그 수정)
 import {setSound} from "../SOUND/sound";
+import {attack} from "../GAME/code.js";
 
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
 let _mode = true;
+
+global.IsStarted = false;
+global.PinNumber = "";
+global.socket = "";
+global.IsRunning = false;
+
 const _StartPage = document.createElement("div");
 const _app = document.getElementById("app");
 _StartPage.className = "StartPage";
@@ -40,6 +47,40 @@ const StartPageInit = () => {
   _Logo.addEventListener("click", () => {
     _mode = !_mode;
     StartPageInit();
+    if(!_mode){
+      socket = new WebSocket("ws://k7c106.p.ssafy.io:8080");
+
+      socket.onopen = function () {
+        IsStarted = false;
+        PinNumber = null;
+    
+        var Data = {
+          action: "exeClientInit",
+        };
+        socket.send(JSON.stringify(Data));
+      };
+    
+      socket.onmessage = function (data) {
+        var msg = JSON.parse(data.data.toString());
+      
+        if (msg.action === "PinNumber") {
+          PinNumber = msg.pinnumber;
+          console.log(`당신의 Pin번호는 "${PinNumber}" 입니다.`);
+        }
+        // 게임 시작시 1초 마다 서버에게 데이터를 보내는걸 시작한다.
+        else if (msg.action === "StartGame") {
+          IsStarted = true;
+          IsRunning = false;
+          codeScene.scene.resume();
+        }
+        // 1번의 cycle이 끝나면 보낸다.
+        else if (msg.action === "codeData") {
+          //여기서 바뀐 정보를 전달 받는다.
+          attack(msg.attack,msg.angle,msg.type);
+          IsRunning = false;
+        }
+      };
+    }
   });
 
   _StartPage.appendChild(_Logo); // 로고 추가
