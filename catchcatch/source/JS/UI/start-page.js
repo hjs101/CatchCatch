@@ -197,6 +197,7 @@ function GoSelectChar() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   StartBtnOff();
   CharSpaceOn();
 =======
@@ -209,6 +210,8 @@ function GoSelectChar() {
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
 =======
   setSound.playSE(1);
+=======
+>>>>>>> 3891840 (#2 :bee: 몬스터 피격음)
   setSound.setBGM(0);
   StartBtnOff();
   CharSpaceOn();
