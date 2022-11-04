@@ -49,6 +49,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
     this.skillSprite = skillSprite;
     this.stone = stones;
 
+<<<<<<< HEAD
     console.log(this);
 
 <<<<<<< HEAD
@@ -80,6 +81,8 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
 >>>>>>> 2ed0a21 (:bug: cattower 이미지 수정중)
 =======
 >>>>>>> a3c8e71 (#6 :sparkles: tower animation 설정)
+=======
+>>>>>>> 4179948 (#2 :recycle:  코드 최적화)
     scene.add.existing(this);
     scene.physics.add.existing(this);
     scene.physics.add.overlap(this, monsterSet, this.overlaphit);
@@ -345,7 +348,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
       magic.destroy();
 
       alien.health -= magic.dmg;
-      //   console.log(alien.health);
 
       if (alien.health <= 0) {
         alien.destroy();
@@ -359,7 +361,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
     if (!alien.invincible) {
       if (skill.tower.towerEvelop1[0] === true) {
         if (Math.floor(Math.random() * (10 - 1) + 1) === 1) {
-          console.log("즉사");
           alien.health -= skill.dmg * 9999;
         } else {
           alien.health -= 0;
@@ -374,7 +375,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
 
       if (skill.tower.towerEvelop2[0] === true) {
         if (Math.floor(Math.random() * (10 - 1) + 1) === 1) {
-          console.log("즉사");
           alien.health -= skill.dmg * 9999;
         } else {
           alien.health -= 0;
@@ -409,7 +409,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
   }
 
   skillFire(game, tower, mouse, speed) {
-    // console.log(1234)
     if (
       mouse.type !== "boss" ||
       (mouse.type === "boss" && mouse.bossSpecie !== "golem")
@@ -430,7 +429,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
       }
 
       if (skill) {
-        console.log(skill);
         skill.body.checkCollision.none = true;
         let hw = skill.body.halfWidth;
         let hh = skill.body.halfHeight;
@@ -453,7 +451,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
       }
 
       if (skill2) {
-        console.log(skill2);
         skill2.body.checkCollision.none = true;
         let hw = skill2.body.halfWidth;
         let hh = skill2.body.halfHeight;

@@ -498,7 +498,14 @@ function create() {
 >>>>>>> 8674ac1 (#7 :sparkles: 코드모드 공격 기능 구현)
 =======
     
+<<<<<<< HEAD
 >>>>>>> 1d21851 (#7 :sparkles: 코드모드 업데이트)
+=======
+
+  this.cameras.main.setZoom(0.7);
+  this.cameras.main.startFollow(player, false);
+  
+>>>>>>> 4179948 (#2 :recycle:  코드 최적화)
 
 
 <<<<<<< HEAD
