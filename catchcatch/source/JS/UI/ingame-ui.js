@@ -38,6 +38,7 @@ let _catCoin;
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 
 export default function ingameUi() {
+  const fairy = [wizard, reaper, ninja, slime, witch];
   const gameContainer = document.querySelector("#game-container");
   // const progress = document.createElement("progress");
 
@@ -129,6 +130,11 @@ export default function ingameUi() {
   stats.appendChild(dmgMul);
   stats.appendChild(speed);
   // gameContainer.appendChild(progress);
+
+  // 쿨타임
+  const coolContainer = document.createElement("div");
+  coolContainer.setAttribute("class", "coolContainer");
+
   gameContainer.appendChild(stats);
 }
 
