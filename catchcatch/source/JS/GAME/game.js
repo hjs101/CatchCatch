@@ -256,7 +256,7 @@ export const config = {
         default: "arcade",
         arcade: {
             fps: 60,
-            debug: true,
+            debug: false,
             fixedStep: false,
         },
     },
@@ -5767,8 +5767,8 @@ function update(time, delta) {
         "fireGiantAura",
         "images/boss/fireGiantAura.png",
         {
-            frameWidth: 60,
-            frameHeight: 60
+            frameWidth: 64,
+            frameHeight: 64
         })
     //enemy end
 }
@@ -6239,6 +6239,7 @@ function create() {
     //enemy start
 
     bossSet = this.physics.add.group();
+    bossMagicSet = this.physics.add.group();
     monsterSet = this.physics.add.group();
     magics = this.physics.add.group();
     towerAttacks = this.physics.add.group();
@@ -6254,12 +6255,6 @@ function create() {
     hole.hp = 500;
     hole.setDepth(1);
     ingameUi();
-
-    // 그룹셋
-    monsterSet = this.physics.add.group();
-    bossSet = this.physics.add.group();
-    bossMagicSet = this.physics.add.group();
-    magics = this.physics.add.group();
 
     this.physics.add.collider(player, bossSet, player.hitPlayer);
     this.physics.add.collider(bossSet, monsterSet);
@@ -10454,7 +10449,7 @@ function update(time, delta) {
         }
 
         // 불거인
-        if (gameTimer === 120) {
+        if (gameTimer === 28000) {
             setSound.playSE(15);
 
             fireGiant = new Boss(
@@ -10480,45 +10475,51 @@ function update(time, delta) {
             fireGiantIndex = bossSet.children.entries.length - 1;
         }
 
-        // if (gameTimer === 12000) {
-        //     fireGiantAura = new Boss(
-        //         this,
-        //         10000,
-        //         1000,
-        //         player.x - 60,
-        //         player.y - 60,
-        //         "fireGiantAura",
-        //         "fireGiantAura",
-        //         1,
-        //         10,
-        //         "boss"
-        //     );
-        //     fireGiantAura.setDepth(5);
-        //     fireGiantAura.anime();
-        //     bossMagicSet.add(fireGiantAura);
-        // }
+        if (gameTimer === 28000) {
+            fireGiantAura = new Boss(
+                this,
+                10000,
+                1000,
+                player.x - 60,
+                player.y - 60,
+                "fireGiantAura",
+                "fireGiantAura",
+                1,
+                10,
+                "boss"
+            );
+            let mw = fireGiantAura.body.halfWidth;
+            let mh = fireGiantAura.body.halfHeight;
+            fireGiantAura.setCircle(mh / 2, mw - (mh / 2), mw);
+            fireGiantAura.setDepth(5);
+            fireGiantAura.anime();
+            bossMagicSet.add(fireGiantAura);
+        }
 
-        // if (bossFireGiantActive) {
-        //   let x = bossSet.children.entries[fireGiantIndex].x;
-        //   let y = bossSet.children.entries[fireGiantIndex].y;
-        //
-        //   let aura = new Boss(
-        //     this,
-        //     10000,
-        //     100,
-        //     x,
-        //     y,
-        //     "fireGiantAura",
-        //     "fireGiantAura",
-        //     1 + (28000 - gameTimer) / 600,
-        //     10,
-        //     "boss"
-        //   );
-        //   bossMagicSet.children.entries[0].destroy();
-        //   aura.setDepth(5);
-        //   aura.anime();
-        //   bossMagicSet.add(aura);
-        // }
+        if (bossFireGiantActive && (gameTimer % 120 == 0)) {
+            let x = bossSet.children.entries[fireGiantIndex].x;
+            let y = bossSet.children.entries[fireGiantIndex].y;
+
+            let aura = new Boss(
+                this,
+                10000,
+                100,
+                x,
+                y,
+                "fireGiantAura",
+                "fireGiantAura",
+                gameTimer / 120,
+                10,
+                "boss"
+            );
+            bossMagicSet.children.entries[0].destroy();
+            let mw = aura.body.halfWidth;
+            let mh = aura.body.halfHeight;
+            aura.setCircle(mh / 2, mw - (mh / 2), mw - (mh / 2));
+            aura.setDepth(5);
+            aura.anime();
+            bossMagicSet.add(aura);
+        }
 
         // 보스 이동 및 사망 체크
         if (bossActive) {
@@ -10532,15 +10533,15 @@ function update(time, delta) {
                         player,
                         bossSet.children.entries[i].velocity
                     );
-                    // if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
-                    //     if (bossFireGiantActive) {
-                    //         this.physics.moveToObject(
-                    //             bossMagicSet.children.entries[0],
-                    //             bossSet.children.entries[i],
-                    //             bossMagicSet.children.entries[0].velocity
-                    //         );
-                    //     }
-                    // }
+                    if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
+                        if (bossFireGiantActive) {
+                            this.physics.moveToObject(
+                                bossMagicSet.children.entries[0],
+                                bossSet.children.entries[i],
+                                bossMagicSet.children.entries[0].velocity
+                            );
+                        }
+                    }
                 } else if (bossSet.children.entries[i].bossSpecie === "golem") {
                     this.physics.moveToObject(
                         bossSet.children.entries[i],
@@ -10631,6 +10632,7 @@ function update(time, delta) {
         mines,
         towerAttacks,
         towerSkillAttacks,
+        bossMagicSet,
     ]);
 
     if (gameTimer % 3600 === 0) {
