@@ -5478,6 +5478,8 @@ function update(time, delta) {
 
     // 슬라임
     if (gameTimer === 10800) {
+      setSound.playSE(13);
+
       slimeKing = new Boss(
         this,
         400,
@@ -5498,6 +5500,8 @@ function update(time, delta) {
 
     // 골렘
     if (gameTimer === 21000) {
+      setSound.playSE(14);
+
       golem = new Boss(
         this,
         500,
@@ -5518,6 +5522,8 @@ function update(time, delta) {
 
     // 불거인
     if (gameTimer === 28000) {
+      setSound.playSE(15);
+
       fireGiant = new Boss(
         this,
         500,
