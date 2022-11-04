@@ -4,6 +4,7 @@ import "./char-space.js";
 <<<<<<< HEAD
 import CharPageInit, { CharSpaceOn, CodeStart, GoStage } from "./char-space.js";
 import Stage from "./stage.js";
+<<<<<<< HEAD
 =======
 import CharPageInit, {CharSpaceOn} from "./char-space.js";
 =======
@@ -11,15 +12,22 @@ import CharPageInit, {CharSpaceOn, CodeStart} from "./char-space.js";
 >>>>>>> 3e8e776 (#7 :bug: 코딩모드 병합과정에서의 버그 수정)
 import {setSound} from "../SOUND/sound";
 import {attack} from "../GAME/code.js";
+=======
+import { setSound } from "../SOUND/sound";
+>>>>>>> 5f102b8 (#1 :sparkles: UI 랭킹 시스템 구현)
 
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
 let _mode = true;
+<<<<<<< HEAD
 
 global.IsStarted = false;
 global.PinNumber = "";
 global.socket = "";
 global.IsRunning = false;
 
+=======
+let _RankingList;
+>>>>>>> 5f102b8 (#1 :sparkles: UI 랭킹 시스템 구현)
 const _StartPage = document.createElement("div");
 const _app = document.getElementById("app");
 _StartPage.className = "StartPage";
@@ -124,11 +132,20 @@ const StartPageInit = () => {
 
   // 랭킹 ============================================
   if (_mode === false) {
+    //랭킹 리스트 화면 생성 --------------------------------
+    _RankingList = document.createElement("div");
+    _RankingList.className = "RankingList";
+    _StartPage.appendChild(_RankingList);
+    _RankingList.style.display = "none";
+
+    //-----------------------------------------------
+
     const _Ranked = document.createElement("div");
     _Ranked.className = "RankedId";
     let Btn = document.createElement("button");
     Btn.className = "StartBtn";
     Btn.textContent = "Ranking";
+    Btn.addEventListener("click", RankingListOn);
     _Ranked.appendChild(Btn);
 
     _StartBtn.appendChild(_Ranked); //랭킹 버튼 추가;
@@ -177,6 +194,7 @@ export const StartPageOff = () => {
 function GoSelectChar() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   StartBtnOff();
   CharSpaceOn();
 =======
@@ -187,4 +205,18 @@ function GoSelectChar() {
     StartBtnOff();
     CharSpaceOn();
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
+=======
+  setSound.playSE(1);
+  setSound.setBGM(0);
+  StartBtnOff();
+  CharSpaceOn();
+}
+
+function RankingListOn() {
+  _RankingList.style.display = "flex";
+}
+
+function RankingListOff() {
+  _RankingList.style.display = "none";
+>>>>>>> 5f102b8 (#1 :sparkles: UI 랭킹 시스템 구현)
 }
