@@ -256,7 +256,7 @@ export const config = {
         default: "arcade",
         arcade: {
             fps: 60,
-            debug: false,
+            debug: true,
             fixedStep: false,
         },
     },
@@ -5503,26 +5503,75 @@ function update(time, delta) {
     // 공격 스프라이트
     this.load.spritesheet(
         "magic1",
-        "images/attack/weapon/16_sunburn_spritesheet.png",
+        "images/attack/weapon/magic1.png",
         {
+<<<<<<< HEAD
             frameWidth: 100,
             frameHeight: 100,
             endFrame: 61,
 >>>>>>> 8283fbf (#2 :bug: 슬라임킹 원형 처리)
+=======
+            frameWidth: 138,
+            frameHeight: 138,
+            endFrame: 4,
+        }
+    );
+
+    this.load.spritesheet(
+        "magic1_1",
+        "images/attack/weapon/magic1_1.png",
+        {
+            frameWidth: 362,
+            frameHeight: 362,
+            endFrame: 7,
+        }
+    );
+
+    this.load.spritesheet(
+        "magic1_2",
+        "images/attack/weapon/magic1_2.png",
+        {
+            frameWidth: 138,
+            frameHeight: 138,
+            endFrame: 4,
+>>>>>>> 65a0d49 (#3 :sparkles: vfx update)
         }
     );
 
     this.load.spritesheet(
         "magic2",
-        "images/attack/weapon/7_firespin_spritesheet.png",
+        "images/attack/weapon/magic2.png",
         {
-            frameWidth: 100,
-            frameHeight: 100,
+            frameWidth: 192,
+            frameHeight: 108,
         }
     );
-
     this.load.spritesheet(
         "magic2_1",
+        "images/attack/weapon/magic2_1.png",
+        {
+            frameWidth: 192,
+            frameHeight: 108,
+        }
+    );
+    this.load.spritesheet(
+        "magic2_2",
+        "images/attack/weapon/magic2_2.png",
+        {
+            frameWidth: 192,
+            frameHeight: 108,
+        }
+    );
+    this.load.spritesheet(
+        "magic2_1_1",
+        "images/attack/weapon/magic2_1_1.png",
+        {
+            frameWidth: 74,
+            frameHeight: 74,
+        }
+    );
+    this.load.spritesheet(
+        "magic2_2_1",
         "images/attack/weapon/19_freezing_spritesheet.png",
         {
             frameWidth: 100,
@@ -5542,11 +5591,31 @@ function update(time, delta) {
 
     this.load.spritesheet(
         "magic4",
-        "images/attack/weapon/2_magic8_spritesheet.png",
+        "images/attack/weapon/slime_attack1_48x48.png",
         {
-            frameWidth: 100,
-            frameHeight: 100,
-            endFrame: 61,
+            frameWidth: 48,
+            frameHeight: 48,
+            endFrame: 2,
+        }
+    );
+
+    this.load.spritesheet(
+        "magic4_1",
+        "images/attack/weapon/slime_attack1_48x48.png",
+        {
+            frameWidth: 48,
+            frameHeight: 48,
+            endFrame: 2,
+        }
+    );
+
+    this.load.spritesheet(
+        "magic4_2",
+        "images/attack/weapon/slime_attack2_48x48.png",
+        {
+            frameWidth: 48,
+            frameHeight: 48,
+            endFrame: 2,
         }
     );
 
@@ -5558,23 +5627,23 @@ function update(time, delta) {
 
     this.load.spritesheet(
         "magic5_1",
-        "images/attack/weapon/13_vortex_spritesheet.png",
-        {frameWidth: 100, frameHeight: 100, endFrame: 61}
+        "images/attack/weapon/magic5_1.png",
+        {frameWidth: 74, frameHeight: 74, endFrame: 8}
     );
-
+    this.load.spritesheet(
+        "magic5_2",
+        "images/attack/weapon/magic5_2.png",
+        {frameWidth: 74, frameHeight: 74, endFrame: 8}
+    );
+    this.load.spritesheet(
+        "magic5_3",
+        "images/attack/weapon/magic5_3.png",
+        {frameWidth: 74, frameHeight: 74, endFrame: 8}
+    );
     // 스킬 스프라이트
     this.load.spritesheet(
         "skill1",
         "images/attack/weapon/17_felspell_spritesheet.png",
-        {
-            frameWidth: 100,
-            frameHeight: 100,
-            endFrame: 61,
-        }
-    );
-    this.load.spritesheet(
-        "skill2",
-        "images/attack/weapon/15_loading_spritesheet.png",
         {
             frameWidth: 100,
             frameHeight: 100,
@@ -5713,6 +5782,7 @@ function update(time, delta) {
             frameHeight: 16
         })
 
+<<<<<<< HEAD
     this.load.spritesheet(
         "fly",
         "images/monster/fly.png",
@@ -5728,6 +5798,23 @@ function update(time, delta) {
             frameWidth: 20,
             frameHeight: 20
         })
+=======
+  this.load.spritesheet(
+    "fly",
+    "images/monster/fly.png",
+    {
+    frameWidth: 32,
+    frameHeight: 32
+})
+
+  this.load.spritesheet(
+    "alienPlus",
+    "images/monster/alienPlus.png",
+    {
+    frameWidth: 20,
+    frameHeight: 20
+})
+>>>>>>> 4e05805 (#2 :sparkles: 몬스터 디자인 수정 및 레벨 디자인 수정)
 
     this.load.spritesheet(
         "wormPlus",
@@ -5824,8 +5911,7 @@ function create() {
     let hw = player.body.halfWidth;
     let hh = player.body.halfHeight;
 
-    player.setCircle(hw, hh - hw, hh - hw);
-
+    player.setCircle(hw*0.6, hh - hw*0.6, hh - hw*0.6);
     camera = this.cameras.main;
     input = this.input;
     mouse = input.mousePointer;
@@ -5865,13 +5951,13 @@ function create() {
         10,
         1,
         1,
-        100,
+        80,
         20,
         160,
         2,
         player,
-        0.4,
-        2
+        0.5,
+        1
     );
     global.ninja = fairySet[2] = new Fairy(
         this,
@@ -5900,7 +5986,7 @@ function create() {
         4,
         player,
         0.5,
-        1
+        2
     );
 
     global.witch = fairySet[4] = new Fairy(
@@ -5918,7 +6004,7 @@ function create() {
         1
     );
     global.bombs = this.physics.add.group();
-    fairySet[4].initFairy5(1, 1);
+    fairySet[4].initFairy5(0.5, 1);
     for (let i = 0; i < 5; i++) {
         fairySet[i].setDepth(2);
     }
@@ -6141,26 +6227,75 @@ function create() {
         key: "magic1",
         frames: this.anims.generateFrameNumbers("magic1", {
             start: 0,
-            end: 60,
+            end: 3,
             first: 0,
         }),
-        frameRate: 200,
+        frameRate: 20,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic1_1",
+        frames: this.anims.generateFrameNumbers("magic1_1", {
+            start: 0,
+            end: 7,
+            first: 0,
+        }),
+        frameRate: 20,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic1_2",
+        frames: this.anims.generateFrameNumbers("magic1_2", {
+            start: 0,
+            end: 3,
+            first: 0,
+        }),
+        frameRate: 20,
         repeat: -1,
     });
     this.anims.create({
         key: "magic2",
         frames: this.anims.generateFrameNumbers("magic2", {
             start: 0,
-            end: 60,
-            first: 0,
+            end: 15,
         }),
-        frameRate: 200,
+        frameRate: 16,
         repeat: -1,
     });
 
     this.anims.create({
         key: "magic2_1",
         frames: this.anims.generateFrameNumbers("magic2_1", {
+            start: 0,
+            end: 15,
+        }),
+        frameRate: 16,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "magic2_1_1",
+        frames: this.anims.generateFrameNumbers("magic2_1_1", {
+            start: 0,
+            end: 15,
+        }),
+        frameRate: 16,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "magic2_2",
+        frames: this.anims.generateFrameNumbers("magic2_2", {
+            start: 0,
+            end: 15,
+        }),
+        frameRate: 16,
+        repeat: -1,
+    });
+
+    this.anims.create({
+        key: "magic2_2_1",
+        frames: this.anims.generateFrameNumbers("magic2_2_1", {
             start: 0,
             end: 60,
             first: 0,
@@ -6183,10 +6318,30 @@ function create() {
         key: "magic4",
         frames: this.anims.generateFrameNumbers("magic4", {
             start: 0,
-            end: 60,
+            end: 2,
             first: 0,
         }),
-        frameRate: 200,
+        frameRate: 10,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic4_1",
+        frames: this.anims.generateFrameNumbers("magic4_1", {
+            start: 0,
+            end: 2,
+            first: 0,
+        }),
+        frameRate: 10,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic4_2",
+        frames: this.anims.generateFrameNumbers("magic4_2", {
+            start: 0,
+            end: 2,
+            first: 0,
+        }),
+        frameRate: 10,
         repeat: -1,
     });
     this.anims.create({
@@ -6199,14 +6354,35 @@ function create() {
         frameRate: 200,
         repeat: -1,
     });
+
     this.anims.create({
         key: "magic5_1",
         frames: this.anims.generateFrameNumbers("magic5_1", {
             start: 0,
-            end: 60,
+            end: 7,
             first: 0,
         }),
-        frameRate: 200,
+        frameRate: 50,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic5_2",
+        frames: this.anims.generateFrameNumbers("magic5_2", {
+            start: 0,
+            end: 7,
+            first: 0,
+        }),
+        frameRate: 50,
+        repeat: -1,
+    });
+    this.anims.create({
+        key: "magic5_3",
+        frames: this.anims.generateFrameNumbers("magic5_3", {
+            start: 0,
+            end: 7,
+            first: 0,
+        }),
+        frameRate: 50,
         repeat: -1,
     });
     fairySet[nowFairy].play(fairySet[nowFairy].idleKey, true);
@@ -6406,7 +6582,10 @@ function create() {
         frameRate: 3,
         repeat: -1,
     });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e05805 (#2 :sparkles: 몬스터 디자인 수정 및 레벨 디자인 수정)
 // boss
 
     this.anims.create({
@@ -10335,7 +10514,7 @@ function update(time, delta) {
             GameOver();
         }
 
-        gameTimer++;
+        gameTimer+=1;
         UpdateTimer();
 
         // 플레이어 기준랜덤 위치에 몬스터 생성
@@ -10377,7 +10556,7 @@ function update(time, delta) {
             addMonster(this, "slime", "slime", 240, 75, monX, monY, "follower");
         }
         // 몬스터 빅 웨이브
-        if (gameTimer > 8000 && gameTimer < 8200 && gameTimer % 3 === 0) {
+        if (gameTimer > 8000 && gameTimer < 8300 && gameTimer % 3 === 0) {
             enemySpawn(randomLocation);
             addMonster(this, "fly", "fly", 10, 50, monX, monY, "wave");
         } else if (20000 < gameTimer && gameTimer < 21000 && gameTimer % 3 === 0) {
@@ -10386,14 +10565,14 @@ function update(time, delta) {
         }
 
         // 스폰 주기
-        if (gameTimer < 3600) {
+        if (gameTimer < 4200) {
             monsterSpawn = 90;
-        } else if (3600 <= gameTimer && gameTimer < 7200) {
-            monsterSpawn = 70;
-        } else if (7200 <= gameTimer && gameTimer < 10800) {
-            monsterSpawn = 50;
-        } else if (10800 <= gameTimer) {
+        } else if (4200 <= gameTimer && gameTimer < 11000) {
+            monsterSpawn = 60;
+        } else if (11000 <= gameTimer && gameTimer < 23000) {
             monsterSpawn = 30;
+        } else if (23000 <= gameTimer) {
+            monsterSpawn = 15;
         }
 
         // 보스
@@ -12298,7 +12477,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
     monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime, type).setInteractive({cursor: 'url(images/cursor/aimHover.png), pointer'});
     if (monster.monSpecie === "babySlime") {
         monster.scale = 2;
-    } else if (monster.monSpecie === 'alien' || monster.monSpecie === 'alienPlus') {
+    } else if (monster.monSpecie === 'alien' || monster.monSpecie === 'alienPlus' || monster.monSpecie === 'fly') {
         monster.scale = 2.5;
     } else if (monster.monSpecie === 'turtle' || monster.monSpecie === 'sonic' || monster.monSpecie === 'slime') {
         monster.scale = 3;
@@ -12309,7 +12488,11 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
     let mh = monster.body.halfHeight;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   monster.setCircle(mw, mh - mw, mh - mw);
+=======
+  monster.setCircle(mh / 2, mw - (mh / 2), mw);
+>>>>>>> 4e05805 (#2 :sparkles: 몬스터 디자인 수정 및 레벨 디자인 수정)
   monsterSet.add(monster);
   scene.physics.add.collider(monsterSet, monster);
 <<<<<<< HEAD
@@ -12512,12 +12695,17 @@ function slimePattern(scene, pt, x, y) {
                     100,
                     x + i * 25,
                     y,
+<<<<<<< HEAD
                     "slimeKing",
 <<<<<<< HEAD
                     "swarm",
 =======
                     "slimeKing",
 >>>>>>> 8283fbf (#2 :bug: 슬라임킹 원형 처리)
+=======
+                    "slimeKing_end",
+                    "slimeKing",
+>>>>>>> 4e05805 (#2 :sparkles: 몬스터 디자인 수정 및 레벨 디자인 수정)
                     0.5,
                     pt,
                     "boss"
