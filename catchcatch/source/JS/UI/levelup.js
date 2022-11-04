@@ -1,9 +1,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const propertyArr = ["common", "wizard", "reaper", "ninja", "slime", "witch", "common","common"];
 =======
 const propertyArr = [
 =======
+=======
+import {setSound} from "../SOUND/sound";
+
+>>>>>>> 8283fbf (#2 :bug: 슬라임킹 원형 처리)
 const _propertyArr = [
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
   "common",
@@ -27,6 +32,8 @@ const _commonArr = ["health", "dmgMul", "heal", "speed"];
 
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 export default function levelup() {
+  setSound.playSE(19);
+
   const property = {
     common: {
       name: "공통",
