@@ -6237,7 +6237,7 @@ function create() {
         key: "magic1_1",
         frames: this.anims.generateFrameNumbers("magic1_1", {
             start: 0,
-            end: 7,
+            end: 6,
             first: 0,
         }),
         frameRate: 20,
@@ -10514,7 +10514,7 @@ function update(time, delta) {
             GameOver();
         }
 
-        gameTimer+=1;
+        gameTimer+=3;
         UpdateTimer();
 
         // 플레이어 기준랜덤 위치에 몬스터 생성
