@@ -1542,9 +1542,18 @@ function create() {
 >>>>>>> 82799aa (hi)
 =======
   this.input.setDefaultCursor("url(/images/cursor/aimNone.png), pointer");
+<<<<<<< HEAD
 >>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
   setSound.setBGM(1);
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
+=======
+  if(ChoiceCat === 4){
+    setSound.setBGM(5);
+  } else{
+    setSound.setBGM(1);
+  }
+
+>>>>>>> bc08332 (#3 :cat2: 무냥 진냥)
   thisScene = this;
   //map start
   this.chunkSize = 8;
