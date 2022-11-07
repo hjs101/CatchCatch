@@ -73,12 +73,6 @@ const StartPageInit = () => {
   LogoImg.height = 300;
   _Logo.appendChild(LogoImg);
   _Logo.addEventListener("click", () => {
-    // BGM
-    if(_mode){
-      setSound.setBGM(4);
-    } else{
-      setSound.setBGM(0);
-    }
     _mode = !_mode;
     StartPageInit();
     if (!_mode) {
@@ -148,6 +142,7 @@ const StartPageInit = () => {
     Btn.addEventListener("click", () => {
       console.log("코딩모드 시작");
       //   CodeStart();
+      setSound.setBGM(4);
       GoStage();
       Stage();
     });
@@ -310,6 +305,7 @@ function GoSelectChar() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   StartBtnOff();
   CharSpaceOn();
 =======
@@ -324,6 +320,9 @@ function GoSelectChar() {
   setSound.playSE(1);
 =======
 >>>>>>> 3891840 (#2 :bee: 몬스터 피격음)
+=======
+  // BGM
+>>>>>>> e555d6e (#2 :cow2: BGM 세부 조정)
   setSound.setBGM(0);
   StartBtnOff();
   CharSpaceOn();
