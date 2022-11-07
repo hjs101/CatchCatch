@@ -123,7 +123,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   coin = 100000;
   // 캐릭터 특수능력 일단 보류
   ability = 0;
-  heal = 0;
+  heal = 10;
   healCount = 0;
   maxHealCount = 600;
   healLevel = 1;
@@ -385,7 +385,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   hitByEnemy(damage) {}
 
   hitPlayer(player) {
-    setSound.playSE(11);
+    if (ChoiceCat === 5) {
+      let rand = Math.floor(Math.random() * 20);
+      setSound.playSE(rand);
+    } else {
+      setSound.playSE(11);
+    }
     if (player.invincible === false) {
       player.invincible = true;
       player.body.checkCollision.none = true;
