@@ -83,6 +83,7 @@ import ingameUi, {
   updateHP,
   useSkill,
   canSkill,
+  messageBoss,
 } from "../UI/ingame-ui.js";
 >>>>>>> aaa2437 (#1 :sparkles: 쿨타임 보이는거 구현 ㅎㅎ)
 import levelup from "../UI/levelup.js";
@@ -9292,7 +9293,18 @@ function update(time, delta) {
       addMonster(this, "slime", "swarm", 240, 75, monX, monY, "follower");
     }
     // 몬스터 빅 웨이브
+<<<<<<< HEAD
     if (gameTimer > 8000 && gameTimer < 8200 && gameTimer % 3 == 0) {
+=======
+    if (gameTimer === 7700) {
+      messageBoss("빅 웨이브");
+    }
+    if (gameTimer === 19700) {
+      messageBoss("빅 웨이브");
+    }
+
+    if (gameTimer > 8000 && gameTimer < 8300 && gameTimer % 3 === 0) {
+>>>>>>> c2d4c9c (#1 :sparkles: 몬스터 알림 구현)
       enemySpawn(randomLocation);
       addMonster(this, "fly", "swarm", 10, 50, monX, monY, "wave");
     } else if (20000 < gameTimer && gameTimer < 21000 && gameTimer % 3 == 0) {
@@ -9318,8 +9330,18 @@ function update(time, delta) {
     // 보스
 
     // 슬라임
+<<<<<<< HEAD
     if (gameTimer == 10800) {
       slime_king = new Boss(
+=======
+    if (gameTimer === 17400) {
+      messageBoss("슬라임 킹");
+    }
+
+    if (gameTimer === 18000) {
+      setSound.playSE(13);
+      slimeKing = new Boss(
+>>>>>>> c2d4c9c (#1 :sparkles: 몬스터 알림 구현)
         this,
 <<<<<<< HEAD
         400,
@@ -9359,7 +9381,15 @@ function update(time, delta) {
     }
 
     // 골렘
+<<<<<<< HEAD
     if (gameTimer == 21000) {
+=======
+    if (gameTimer === 20400) {
+      messageBoss("골렘");
+    }
+    if (gameTimer === 21000) {
+      setSound.playSE(14);
+>>>>>>> c2d4c9c (#1 :sparkles: 몬스터 알림 구현)
       golem = new Boss(
         this,
         550,
@@ -9389,8 +9419,18 @@ function update(time, delta) {
     }
 
     // 불거인
+<<<<<<< HEAD
     if (gameTimer == 28000) {
       fire_giant = new Boss(
+=======
+    if (gameTimer === 27400) {
+      messageBoss("불거인");
+    }
+    if (gameTimer === 28000) {
+      setSound.playSE(15);
+
+      fireGiant = new Boss(
+>>>>>>> c2d4c9c (#1 :sparkles: 몬스터 알림 구현)
         this,
         500,
 <<<<<<< HEAD
