@@ -378,6 +378,11 @@ export const config = {
 };
 >>>>>>> b038195 (#1 :bug: 버그 수정)
 
+// 난이도
+let difficulty_spawn = 0;
+let difficulty_vel = 0;
+let difficulty_hp = 0;
+
 //player start
 // 고양이 json
 let cats;
@@ -13863,7 +13868,7 @@ function create() {
   hw = hole.body.halfWidth;
   hh = hole.body.halfHeight;
   hole.setCircle(hw * 0.7, hh - hw * 0.7, hh - hw * 0.7);
-  hole.hp = 500;
+  hole.hp = 10;
   hole.setDepth(1);
   ingameUi();
 
@@ -14221,6 +14226,20 @@ function create() {
 
   this.cameras.main.setZoom(0.8);
   UICam.setZoom(1);
+
+
+  // 난이도
+  if (global.ChoiceLevel === 1){
+    difficulty_hp = 10;
+    difficulty_spawn = 10;
+    difficulty_vel = 10;
+  }
+
+  if (global.ChoiceLevel === 2){
+    difficulty_hp = 20;
+    difficulty_spawn = 20;
+    difficulty_vel = 20;
+  }
 }
 
 function update(time, delta) {
@@ -14987,7 +15006,7 @@ function update(time, delta) {
           this.physics.moveToObject(
             monsterSet.children.entries[i],
             player,
-            monsterSet.children.entries[i].velocity
+            monsterSet.children.entries[i].velocity + difficulty_vel
           );
         }
         // 몬스터가 홀에 도달하게 함
@@ -14995,7 +15014,7 @@ function update(time, delta) {
           this.physics.moveToObject(
             monsterSet.children.entries[i],
             hole,
-            monsterSet.children.entries[i].velocity
+            monsterSet.children.entries[i].velocity + difficulty_vel
           );
         }
       }
@@ -15021,7 +15040,7 @@ function update(time, delta) {
           this,
           "alienPlus",
           "alienPlus",
-          70,
+          70 + difficulty_hp,
           55,
           monX,
           monY,
@@ -15032,39 +15051,39 @@ function update(time, delta) {
           this,
           "alienPlus",
           "alienPlus",
-          130,
+          130 + difficulty_hp,
           75,
           monX,
           monY,
           "follower"
         );
       } else {
-        addMonster(this, "alien", "alien", 30, 45, monX, monY, "follower");
+        addMonster(this, "alien", "alien", 30 + difficulty_hp, 45, monX, monY, "follower");
       }
     }
     if (gameTimer > 6000 && gameTimer % 240 === 0) {
       // 2번 worm
       siegeSpawn(randomLocation);
       if (12000 < gameTimer && gameTimer <= 18000) {
-        addMonster(this, "wormPlus", "wormPlus", 100, 50, monX, monY, "siege");
+        addMonster(this, "wormPlus", "wormPlus", 100 + difficulty_hp, 50, monX, monY, "siege");
       } else if (18000 < gameTimer) {
-        addMonster(this, "wormPlus", "wormPlus", 160, 60, monX, monY, "siege");
+        addMonster(this, "wormPlus", "wormPlus", 160 + difficulty_hp, 60, monX, monY, "siege");
       } else if (gameTimer <= 12000) {
-        addMonster(this, "worm", "worm", 40, 40, monX, monY, "siege");
+        addMonster(this, "worm", "worm", 40 + difficulty_hp, 40, monX, monY, "siege");
       }
     }
     if (gameTimer > 12000 && gameTimer % 300 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "sonic", "sonic", 150, 80, monX, monY, "follower");
+      addMonster(this, "sonic", "sonic", 150 + difficulty_hp, 80, monX, monY, "follower");
     }
     if (gameTimer > 21000 && gameTimer % 600 === 0) {
       siegeSpawn(randomLocation);
-      addMonster(this, "turtle", "turtle", 300, 50, monX, monY, "siege");
+      addMonster(this, "turtle", "turtle", 300 + difficulty_hp, 50, monX, monY, "siege");
     }
 
     if (gameTimer > 18000 && gameTimer % 200 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "slime", "slime", 240, 75, monX, monY, "follower");
+      addMonster(this, "slime", "slime", 240 + difficulty_hp, 75, monX, monY, "follower");
     }
     // 몬스터 빅 웨이브
     if (gameTimer === 7700) {
@@ -15076,21 +15095,21 @@ function update(time, delta) {
 
     if (gameTimer > 8000 && gameTimer < 8300 && gameTimer % 3 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "fly", "fly", 10, 50, monX, monY, "wave");
+      addMonster(this, "fly", "fly", 10 + difficulty_hp, 50, monX, monY, "wave");
     } else if (20000 < gameTimer && gameTimer < 21000 && gameTimer % 3 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "fly", "fly", 100, 50, monX, monY, "wave");
+      addMonster(this, "fly", "fly", 100 + difficulty_hp, 50, monX, monY, "wave");
     }
 
     // 스폰 주기
     if (gameTimer < 4200) {
-      monsterSpawn = 90;
+      monsterSpawn = 90 - difficulty_spawn;
     } else if (4200 <= gameTimer && gameTimer < 11000) {
-      monsterSpawn = 60;
+      monsterSpawn = 60 - difficulty_spawn;
     } else if (11000 <= gameTimer && gameTimer < 23000) {
-      monsterSpawn = 30;
+      monsterSpawn = 30 - difficulty_spawn;
     } else if (23000 <= gameTimer) {
-      monsterSpawn = 15;
+      monsterSpawn = 15 - difficulty_spawn;
     }
 
     // 보스
@@ -15109,8 +15128,8 @@ function update(time, delta) {
       }
       slimeKing = new Boss(
         this,
-        300,
-        70,
+        300 + difficulty_hp,
+        70 + difficulty_vel,
         player.x + 500,
         player.y + 500,
         "slimeKing",
@@ -15142,8 +15161,8 @@ function update(time, delta) {
       }
       golem = new Boss(
         this,
-        500,
-        30,
+        500 + difficulty_hp,
+        30 + difficulty_vel,
         hole.x + 2000,
         hole.y - 2000,
         "golem",
@@ -15174,10 +15193,17 @@ function update(time, delta) {
       }
       fireGiant = new Boss(
         this,
+<<<<<<< HEAD
         500,
         10,
         player.x - 600,
         player.y - 600,
+=======
+        500 + difficulty_hp,
+        50 + difficulty_vel,
+        player.x - 60,
+        player.y - 60,
+>>>>>>> 0471dc6 (#1 :sparkles:  난이도 시스템 - 몬스터 구현)
         "fireGiant",
         "fireGiant",
         3,
@@ -17861,7 +17887,7 @@ function hithole(hole, monster) {
               thisScene,
               "babySlime",
               "slime",
-              150,
+              150 + difficulty_hp,
               125,
               monster.x + i * 10,
               monster.y,
@@ -17901,7 +17927,7 @@ function hithole(hole, monster) {
             thisScene,
             "babySlime",
             "slime",
-            150,
+            150 + difficulty_hp,
             125,
             monster.x + i * 20,
             monster.y,
@@ -18885,7 +18911,7 @@ function slimePattern(scene, pt, x, y) {
       if (pt < 4) {
         slimeKing = new Boss(
           scene,
-          200,
+          200 + difficulty_hp,
           100,
           x + i * 100,
           y,
@@ -18898,7 +18924,7 @@ function slimePattern(scene, pt, x, y) {
       } else if (pt < 8) {
         slimeKing = new Boss(
           scene,
-          100,
+          100 + difficulty_hp,
           100,
           x + i * 50,
           y,
@@ -18911,7 +18937,7 @@ function slimePattern(scene, pt, x, y) {
       } else {
         slimeKing = new Boss(
           scene,
-          50,
+          50 + difficulty_hp,
           100,
           x + i * 25,
           y,
