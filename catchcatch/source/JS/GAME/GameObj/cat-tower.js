@@ -22,20 +22,27 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
   isTwo = false; //2연발
   isThree = false; //3연발
   bulletLevel = 0;
-  towerEvelop1 ="none";
+  towerEvelop = "none";
   circleSize = 1.5;
   circleSizeLevel = 0;
   level = 0;
-  stone = 0;
   timedEvent;
 
-  constructor(scene, towerX, towerY, towerSprite, weaponSprite, skillSprite, stones) {
+  constructor(
+    scene,
+    stone,
+    towerX,
+    towerY,
+    towerSprite,
+    weaponSprite,
+    skillSprite
+  ) {
     super(scene, towerX, towerY, towerSprite);
 
     this.scene = scene;
     this.weaponSprite = weaponSprite;
     this.skillSprite = skillSprite;
-    this.stone = stones;
+    this.stone = stone;
 
 <<<<<<< HEAD
     console.log(this);
@@ -75,7 +82,20 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
     scene.physics.add.overlap(this, monsterSet, this.overlaphit);
     scene.physics.add.overlap(this, bossSet, this.overlaphit);
+
     this.anims.play(towerSprite, true);
+
+    scene.events.on("update", () => {
+      this.update();
+    });
+  }
+
+  update() {
+    if (player.body.velocity.x > 0) {
+      this.flipX = true;
+    } else {
+      this.flipX = false;
+    }
   }
 
   scale_Circle() {
@@ -86,6 +106,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
     this.setCircle(hw * 5, hh - hw * 5, hh - hw * 5);
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   magicFire(game, tower, mouse, speed) {
     let magic = new TowerMagic(game, tower);
@@ -468,4 +489,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
   }
 =======
 >>>>>>> b73dc87 (#6 :sparkles: 타워 삭제)
+=======
+  overlaphit() {}
+>>>>>>> b8f5732 (#6 :sparkles: pet 추가)
 }
