@@ -257,7 +257,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         levelup();
       }
     }
+<<<<<<< HEAD
 >>>>>>> a37e11d (#1 :sparkles: levelup 개편)
+=======
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
   }
 
 <<<<<<< HEAD

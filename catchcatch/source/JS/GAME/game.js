@@ -685,6 +685,7 @@ function preload() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   //tower start
 
@@ -5663,6 +5664,11 @@ function update(time, delta) {
   this.load.image("sprSand", "images/map/sprSand.png");
   this.load.image("sprGrass", "images/map/sprGrass.png");
 >>>>>>> a37e11d (#1 :sparkles: levelup 개편)
+=======
+  this.load.image("sprWater", "images/map/sprWater.png");
+  this.load.image("sprSand", "images/map/sprSand.png");
+  this.load.image("sprGrass", "images/map/sprGrass.png");
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
 
   //tower start
 
@@ -5689,13 +5695,6 @@ function update(time, delta) {
   this.load.image("can", "images/cattower/can.png");
   this.load.image("skill", "images/cattower/skill.png");
   //tower end
-
-  //hole start
-  this.load.spritesheet("new_hole", "images/hole/new_hole.png", {
-    frameWidth: 100,
-    frameHeight: 100,
-  });
-  //hole end
 
   //navi start
   this.load.image("navi", "images/navi/arrow.png");
@@ -13811,22 +13810,6 @@ function create() {
 
   //player end
 
-  // 홀 애니메이션
-
-  this.anims.create({
-    key: "new_hole",
-    frames: this.anims.generateFrameNumbers("new_hole", { start: 0, end: 2 }),
-    frameRate: 6,
-    repeat: -1,
-  });
-
-  this.anims.create({
-    key: "hole_damage",
-    frames: this.anims.generateFrameNumbers("new_hole", { start: 3, end: 7 }),
-    frameRate: 12,
-    repeat: 0,
-  });
-
   //cointext start
   // cointext = this.add.text(500, 20, 'coin: 0', {font: 'Bold 15px Arial', fill: '#fff', fontStyle: "strong"}).setScrollFactor(0);
   // cointext.setStroke('#000', 2);
@@ -13843,14 +13826,6 @@ function create() {
   towerSkillAttacks = this.physics.add.group();
   mines = this.physics.add.group();
 
-  // 임시 구멍
-  hole = this.physics.add.sprite(0, 0, "new_hole").play("new_hole");
-  hole.setScale(2.3);
-  hw = hole.body.halfWidth;
-  hh = hole.body.halfHeight;
-  hole.setCircle(hw * 0.7, hh - hw * 0.7, hh - hw * 0.7);
-  hole.hp = 10;
-  hole.setDepth(1);
   ingameUi();
 
   this.physics.add.collider(player, bossSet, player.hitPlayer);
@@ -13861,9 +13836,7 @@ function create() {
   // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
   this.physics.add.collider(player, monsterSet, player.hitPlayer);
   thisScene.physics.add.overlap(magics, monsterSet, attack);
-  // 만약 몬스터와 구멍이 닿았다면 (hitHole 함수 실행)
-  thisScene.physics.add.overlap(hole, monsterSet, hitHole);
-  thisScene.physics.add.overlap(hole, bossSet, destroyHole);
+
   //map start
   let snappedChunkX =
     this.chunkSize *
@@ -14317,10 +14290,13 @@ function update(time, delta) {
     UICam.startFollow(player, false);
     //map end
 
+<<<<<<< HEAD
     //navi start
 
     //navi end
 
+=======
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
     //player start
     changeSlot();
     normalAttackAS = fairySet[nowFairy].as;
@@ -14393,6 +14369,7 @@ function update(time, delta) {
         if (monsterSet.children.entries[i].invincible) {
           monsterSet.children.entries[i].setTint(0xff0000);
         }
+<<<<<<< HEAD
 
 >>>>>>> a37e11d (#1 :sparkles: levelup 개편)
         if (
@@ -14418,13 +14395,14 @@ function update(time, delta) {
             monsterSet.children.entries[i].velocity
           );
         }
+=======
+        this.physics.moveToObject(
+          monsterSet.children.entries[i],
+          player,
+          monsterSet.children.entries[i].velocity
+        );
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
       }
-    }
-
-    if (hole.hp <= 0) {
-      $this.pause();
-      updateHP();
-      GameOver();
     }
 
     gameTimer++;
@@ -14437,54 +14415,36 @@ function update(time, delta) {
       // 1번 zombie
       enemySpawn(randomLocation);
       if (10800 < gameTimer && gameTimer <= 18000) {
-        addMonster(
-          this,
-          "alienPlus",
-          "alienPlus",
-          70,
-          55,
-          monX,
-          monY,
-          "follower"
-        );
+        addMonster(this, "alienPlus", "alienPlus", 70, 55, monX, monY);
       } else if (18000 < gameTimer) {
-        addMonster(
-          this,
-          "alienPlus",
-          "alienPlus",
-          130,
-          75,
-          monX,
-          monY,
-          "follower"
-        );
+        addMonster(this, "alienPlus", "alienPlus", 130, 75, monX, monY);
       } else {
-        addMonster(this, "alien", "alien", 30, 45, monX, monY, "follower");
+        addMonster(this, "alien", "alien", 30, 45, monX, monY);
       }
     }
     if (gameTimer > 6000 && gameTimer % 240 === 0) {
       // 2번 worm
       siegeSpawn(randomLocation);
       if (12000 < gameTimer && gameTimer <= 18000) {
-        addMonster(this, "wormPlus", "wormPlus", 100, 50, monX, monY, "siege");
+        addMonster(this, "wormPlus", "wormPlus", 100, 50, monX, monY);
       } else if (18000 < gameTimer) {
-        addMonster(this, "wormPlus", "wormPlus", 160, 60, monX, monY, "siege");
+        addMonster(this, "wormPlus", "wormPlus", 160, 60, monX, monY);
       } else if (gameTimer <= 12000) {
-        addMonster(this, "worm", "worm", 40, 40, monX, monY, "siege");
+        addMonster(this, "worm", "worm", 40, 40, monX, monY);
       }
     }
     if (gameTimer > 12000 && gameTimer % 300 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "sonic", "sonic", 150, 80, monX, monY, "follower");
+      addMonster(this, "sonic", "sonic", 150, 80, monX, monY);
     }
     if (gameTimer > 21000 && gameTimer % 600 === 0) {
       siegeSpawn(randomLocation);
-      addMonster(this, "turtle", "turtle", 300, 50, monX, monY, "siege");
+      addMonster(this, "turtle", "turtle", 300, 50, monX, monY);
     }
 
     if (gameTimer > 18000 && gameTimer % 200 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "slime", "slime", 240, 75, monX, monY, "follower");
+      addMonster(this, "slime", "slime", 240, 75, monX, monY);
     }
     // 몬스터 빅 웨이브
     if (gameTimer === 7700) {
@@ -14496,10 +14456,10 @@ function update(time, delta) {
 
     if (gameTimer > 8000 && gameTimer < 8300 && gameTimer % 3 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "fly", "fly", 10, 50, monX, monY, "wave");
+      addMonster(this, "fly", "fly", 10, 50, monX, monY);
     } else if (20000 < gameTimer && gameTimer < 21000 && gameTimer % 3 === 0) {
       enemySpawn(randomLocation);
-      addMonster(this, "fly", "fly", 100, 50, monX, monY, "wave");
+      addMonster(this, "fly", "fly", 100, 50, monX, monY);
     }
 
     // 스폰 주기
@@ -14845,8 +14805,8 @@ function update(time, delta) {
         this,
         500,
         30,
-        hole.x + 2000,
-        hole.y - 2000,
+        player.x + 1500,
+        player.y + 1500,
         "golem",
         "golem",
         3,
@@ -15336,27 +15296,20 @@ function update(time, delta) {
         if (bossSet.children.entries[i].invincible) {
           bossSet.children.entries[i].setTint(0xff0000);
         }
-        if (bossSet.children.entries[i].bossSpecie !== "golem") {
-          this.physics.moveToObject(
-            bossSet.children.entries[i],
-            player,
-            bossSet.children.entries[i].velocity
-          );
-          if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
-            if (bossFireGiantActive) {
-              this.physics.moveToObject(
-                bossMagicSet.children.entries[0],
-                bossSet.children.entries[i],
-                bossMagicSet.children.entries[0].velocity
-              );
-            }
+        this.physics.moveToObject(
+          bossSet.children.entries[i],
+          player,
+          bossSet.children.entries[i].velocity
+        );
+
+        if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
+          if (bossFireGiantActive) {
+            this.physics.moveToObject(
+              bossMagicSet.children.entries[0],
+              bossSet.children.entries[i],
+              bossMagicSet.children.entries[0].velocity
+            );
           }
-        } else if (bossSet.children.entries[i].bossSpecie === "golem") {
-          this.physics.moveToObject(
-            bossSet.children.entries[i],
-            hole,
-            bossSet.children.entries[i].velocity
-          );
         }
         if (bossSet.children.entries[i].health <= 0) {
           for (let i = 0; i < 5; i++) {
@@ -15514,11 +15467,14 @@ function update(time, delta) {
     monsterSet,
     hpBar,
     hpBarBG,
+<<<<<<< HEAD
     hole,
     towerLD,
     towerLU,
     towerRD,
     towerRU,
+=======
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
     magics,
     mines,
     towerAttacks,
@@ -17944,8 +17900,7 @@ function hithole(hole, monster) {
               150 + difficulty_hp,
               125,
               monster.x + i * 10,
-              monster.y,
-              "follower"
+              monster.y
             );
           }
           monster.destroy();
@@ -17984,8 +17939,7 @@ function hithole(hole, monster) {
             150 + difficulty_hp,
             125,
             monster.x + i * 20,
-            monster.y,
-            "follower"
+            monster.y
           );
         }
         monster.destroy();
@@ -17996,6 +17950,7 @@ function hithole(hole, monster) {
 >>>>>>> b36e339 (#7 codemode collider 처리)
 }
 
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -18314,6 +18269,12 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
     monAnime,
     type
   ).setInteractive({ cursor: "url(images/cursor/aimHover.png), pointer" });
+=======
+function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
+  monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime).setInteractive(
+    { cursor: "url(images/cursor/aimHover.png), pointer" }
+  );
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
   if (monster.monSpecie === "babySlime") {
     monster.scale = 2;
   } else if (
@@ -18382,6 +18343,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y, type) {
 }
 >>>>>>> ab7abba (#1 :fire: 불거인 수정)
 
+<<<<<<< HEAD
     monster.setCircle(mh / 2, mw - mh / 2, mw);
     monsterSet.add(monster);
     scene.physics.add.collider(monsterSet, monster);
@@ -18490,6 +18452,8 @@ function siegeSpawn() {
   }
 }
 
+=======
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
 function enemySpawn(scene) {
 <<<<<<< HEAD
 <<<<<<< HEAD

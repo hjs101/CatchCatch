@@ -3,6 +3,7 @@ import { setSound } from "../../SOUND/sound";
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default class Mine extends Phaser.Physics.Arcade.Sprite {
     mine = 0;
     coinTime;
@@ -18,6 +19,12 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
   coinTime;
   mineSprite;
 >>>>>>> a37e11d (#1 :sparkles: levelup 개편)
+=======
+export default class Mine extends Phaser.Physics.Arcade.Sprite {
+  mine = 0;
+  coinTime;
+  mineSprite;
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
 
   constructor(scene, mineX, mineY, minesprite, cointimes) {
     super(scene, mineX, mineY, minesprite, cointimes);
@@ -173,7 +180,12 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
     this.setCircle(hw * 1, hh - hw * 1, hh - hw * 1);
   }
 
+  set_anime() {
+    this.play(this.mineSprite);
+  }
+
   overlapOpen(mine, player) {
+    console.log(mine);
     var range = Phaser.Math.Distance.Between(mine.x, mine.y, 0, 0);
 
     if (gameTimer % 7200 === 0) {
@@ -185,6 +197,7 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
       player.coin += 2 + mine.coinTime;
     } else {
       player.coin += 3 + mine.coinTime;
+<<<<<<< HEAD
 >>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 =======
     if (ChoiceCat === 5) {
@@ -196,6 +209,16 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
     }
     mine.destroy();
 
+=======
+    }
+    if (ChoiceCat === 5) {
+      let rand = Math.floor(Math.random() * 20);
+      setSound.playSE(rand);
+    } else {
+      setSound.playSE(17);
+    }
+    mine.destroy();
+>>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
     setSound.playSE(17);
     mine.destroy();
   }
