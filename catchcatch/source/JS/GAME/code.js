@@ -205,6 +205,8 @@ function preload() {
 function create() {
   // resource load start
   IncodeUI();
+  monCount = 0;
+  chunks = [];
   this.anims.create({
     key: "tower1_idle",
     frames: this.anims.generateFrameNumbers("tower1", { start: 0, end: 2 }),
@@ -439,7 +441,6 @@ function create() {
 
   snappedChunkX = snappedChunkX / this.chunkSize / this.tileSize;
   snappedChunkY = snappedChunkY / this.chunkSize / this.tileSize;
-
   for (var x = snappedChunkX - 2; x < snappedChunkX + 2; x++) {
     for (var y = snappedChunkY - 2; y < snappedChunkY + 2; y++) {
       var existingChunk = getChunk(x, y);
@@ -691,6 +692,7 @@ this.scene.pause();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.scene.pause();
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 =======
@@ -705,6 +707,9 @@ this.scene.pause();
 =======
   this.scene.pause();
 >>>>>>> edba596 (#7 :sparkles: 코딩모드 난이도 조절중)
+=======
+  // this.scene.pause();
+>>>>>>> cbafe55 (#1 :sparkles: 다시하기, 뒤로가기 구현)
 }
 
 function update(time, delta) {
