@@ -129,7 +129,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   healLevel = 1;
   fairy;
   invincible = false;
+<<<<<<< HEAD
 >>>>>>> 9ea8632 (#3 :sparkles: 밸런스패치)
+=======
+  type = "player";
+>>>>>>> c428dc5 (#2 :sparkles: 폭탄 몹 추가)
 
   constructor(scene, dmgMul, maxHealth, health, catName) {
     super(scene, 0, 0, catName);
