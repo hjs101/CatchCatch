@@ -464,7 +464,7 @@ let magic;
 global.magics = "";
 let hitTimer = 0;
 let hitVisible = true;
-
+global.bombDead = "";
 export let cursors;
 let gameOver = false;
 let scoreText;
@@ -589,6 +589,7 @@ let monsterSpawn = 300;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // 1번 몬스터: alien
 <<<<<<< HEAD
 var alien;
@@ -621,6 +622,8 @@ let wormPlus;
 >>>>>>> c428dc5 (#2 :sparkles: 폭탄 몹 추가)
 =======
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
 // 보스
 let slimeKing;
 let golem;
@@ -13203,6 +13206,11 @@ function update(time, delta) {
     frameHeight: 64,
   });
 
+  this.load.spritesheet("monster_boom", "images/monster/monster_die.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
   this.load.spritesheet("alien", "images/monster/alien.png", {
     frameWidth: 20,
     frameHeight: 20,
@@ -13853,6 +13861,7 @@ function create() {
 
   bossSet = this.physics.add.group();
   bossMagicSet = this.physics.add.group();
+  bombDead = this.physics.add.group();
   monsterSet = this.physics.add.group();
   magics = this.physics.add.group();
   towerAttacks = this.physics.add.group();
@@ -13869,6 +13878,8 @@ function create() {
   // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
   this.physics.add.collider(player, monsterSet, player.hitPlayer);
   thisScene.physics.add.overlap(magics, monsterSet, attack);
+  thisScene.physics.add.overlap(bombDead, monsterSet, bomb);
+  thisScene.physics.add.overlap(bombDead, player, bomb);
 
   //map start
   let snappedChunkX =
@@ -14034,6 +14045,16 @@ function create() {
     }),
     frameRate: 12,
     repeat: -1,
+  });
+
+  this.anims.create({
+    key: "monster_boom",
+    frames: this.anims.generateFrameNumbers("monster_boom", {
+      start: 0,
+      end: 7,
+    }),
+    frameRate: 12,
+    repeat: 0,
   });
 
   this.anims.create({
@@ -15388,6 +15409,7 @@ function create() {
       if (10800 < gameTimer && gameTimer <= 18000) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         addMonster(
           this,
           "alienPlus",
@@ -15419,14 +15441,20 @@ function create() {
       } else if (18000 < gameTimer) {
         addMonster(this, "alienPlus", "alienPlus", 130, 75, monX, monY);
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+        addMonster(this, "alien", "alienPlus", 100, 55, monX, monY);
+      } else if (18000 < gameTimer) {
+        addMonster(this, "alien", "alienPlus", 150, 75, monX, monY);
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
       } else {
         addMonster(this, "alien", "alien", 30 + difficulty_hp, 45, monX, monY, "follower");
       }
     }
-    if (gameTimer > 6000 && gameTimer % 240 === 0) {
+    if (gameTimer > 100) {
       // 2번 worm
       siegeSpawn(randomLocation);
       if (12000 < gameTimer && gameTimer <= 18000) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         addMonster(this, "wormPlus", "wormPlus", 100 + difficulty_hp, 50, monX, monY, "siege");
@@ -15439,19 +15467,27 @@ function create() {
 =======
         addMonster(this, "wormPlus", "wormPlus", 100, 50, monX, monY);
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+        addMonster(this, "worm", "wormPlus", 150, 50, monX, monY);
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
       } else if (18000 < gameTimer) {
-        addMonster(this, "wormPlus", "wormPlus", 160, 60, monX, monY);
+        addMonster(this, "worm", "wormPlus", 200, 60, monX, monY);
       } else if (gameTimer <= 12000) {
+<<<<<<< HEAD
 <<<<<<< HEAD
         addMonster(this, "worm", "worm", 10, 40, monX, monY);
 >>>>>>> c428dc5 (#2 :sparkles: 폭탄 몹 추가)
 =======
         addMonster(this, "worm", "worm", 40, 40, monX, monY);
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+        addMonster(this, "worm", "worm", 10, 40, monX, monY);
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
       }
     }
-    if (gameTimer > 12000 && gameTimer % 300 === 0) {
+    if (gameTimer > 15000 && gameTimer % 300 === 0) {
       enemySpawn(randomLocation);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       addMonster(this, "sonic", "sonic", 150 + difficulty_hp, 80, monX, monY, "follower");
@@ -15473,22 +15509,30 @@ function create() {
       enemySpawn(randomLocation);
       addMonster(this, "turtle", "turtle", 300, 50, monX, monY);
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+      addMonster(this, "sonic", "sonic", 150, 100, monX, monY);
+    }
+    if (gameTimer > 21000 && gameTimer % 600 === 0) {
+      enemySpawn(randomLocation);
+      addMonster(this, "turtle", "turtle", 400, 50, monX, monY);
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
     }
 
-    if (gameTimer > 18000 && gameTimer % 200 === 0) {
+    if (gameTimer > 9000 && gameTimer % 200 === 0) {
       enemySpawn(randomLocation);
       addMonster(this, "slime", "slime", 240 + difficulty_hp, 75, monX, monY, "follower");
     }
     // 몬스터 빅 웨이브
     if (gameTimer === 7700) {
-      messageBoss("빅 웨이브");
+      messageBoss("몬스터 웨이브가 몰려옵니다!");
     }
     if (gameTimer === 19700) {
-      messageBoss("빅 웨이브");
+      messageBoss("몬스터 웨이브가 몰려옵니다!");
     }
 
     if (gameTimer > 8000 && gameTimer < 8300 && gameTimer % 3 === 0) {
       enemySpawn(randomLocation);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       addMonster(this, "fly", "fly", 10 + difficulty_hp, 50, monX, monY, "wave");
@@ -15507,10 +15551,17 @@ function create() {
       enemySpawn(randomLocation);
       addMonster(this, "fly", "fly", 100, 50, monX, monY);
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+      addMonster(this, "fly", "fly", 30, 50, monX, monY);
+    } else if (20000 < gameTimer && gameTimer < 21000 && gameTimer % 3 === 0) {
+      enemySpawn(randomLocation);
+      addMonster(this, "fly", "fly", 150, 50, monX, monY);
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
     }
 
     // 스폰 주기
     if (gameTimer < 4200) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       monsterSpawn = 90 - difficulty_spawn;
@@ -15527,6 +15578,14 @@ function create() {
       monsterSpawn = 60;
     } else if (11000 <= gameTimer && gameTimer < 23000) {
 <<<<<<< HEAD
+=======
+      monsterSpawn = 60;
+    } else if (4200 <= gameTimer && gameTimer < 11000) {
+      monsterSpawn = 30;
+    } else if (11000 <= gameTimer && gameTimer < 23000) {
+      monsterSpawn = 15;
+    } else if (23000 <= gameTimer) {
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
       monsterSpawn = 15;
 >>>>>>> c428dc5 (#2 :sparkles: 폭탄 몹 추가)
 =======
@@ -15539,11 +15598,11 @@ function create() {
     // 보스
 
     // 슬라임
-    if (gameTimer === 17400) {
-      messageBoss("슬라임 킹");
+    if (gameTimer === 9000) {
+      messageBoss("슬라임 킹이 등장했습니다!");
     }
 
-    if (gameTimer === 18000) {
+    if (gameTimer === 9000) {
       if (ChoiceCat === 5) {
         let rand = Math.floor(Math.random() * 20);
         setSound.playSE(rand);
@@ -15573,10 +15632,10 @@ function create() {
     }
 
     // 골렘
-    if (gameTimer === 20400) {
-      messageBoss("골렘");
+    if (gameTimer === 18000) {
+      messageBoss("골렘이 등장했습니다!");
     }
-    if (gameTimer === 21000) {
+    if (gameTimer === 18000) {
       if (ChoiceCat === 5) {
         let rand = Math.floor(Math.random() * 20);
         setSound.playSE(rand);
@@ -15585,6 +15644,7 @@ function create() {
       }
       golem = new Boss(
         this,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         500 + difficulty_hp,
@@ -15598,6 +15658,10 @@ function create() {
         500,
         30,
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+        800,
+        100,
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
         player.x + 1500,
         player.y + 1500,
 >>>>>>> c428dc5 (#2 :sparkles: 폭탄 몹 추가)
@@ -15617,10 +15681,10 @@ function create() {
     }
 
     // 불거인
-    if (gameTimer === 27400) {
-      messageBoss("불거인");
+    if (gameTimer === 27000) {
+      messageBoss("불거인이 등장했습니다!");
     }
-    if (gameTimer === 28000) {
+    if (gameTimer === 27000) {
       if (ChoiceCat === 5) {
         let rand = Math.floor(Math.random() * 20);
         setSound.playSE(rand);
@@ -15632,6 +15696,7 @@ function create() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         500,
 =======
         1200,
@@ -15639,6 +15704,9 @@ function create() {
 =======
         500,
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+        1200,
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
         10,
         player.x - 600,
         player.y - 600,
@@ -18972,6 +19040,7 @@ function attack(magic, monster) {
         if (monster.monSpecie !== "slime") {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           monster.die_anim();
           monster.destroy();
           player.expUp();
@@ -19654,16 +19723,21 @@ function hithole(hole, monster) {
         if (monster.monSpecie !== "slime") {
           monster.dieAnim();
 =======
+=======
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
           if (monster.monSpecie === "worm") {
             monster.boomAnim();
           } else {
             monster.dieAnim();
           }
 
+<<<<<<< HEAD
 >>>>>>> c428dc5 (#2 :sparkles: 폭탄 몹 추가)
 =======
           monster.dieAnim();
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
+=======
+>>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
           monster.destroy();
           player.expUp();
           monsterCount -= 1;
@@ -19693,7 +19767,11 @@ function hithole(hole, monster) {
 
     if (monster.health <= 0 && monster.type !== "boss") {
       if (monster.monSpecie !== "slime") {
-        monster.dieAnim();
+        if (monster.monSpecie === "worm") {
+          monster.boomAnim();
+        } else {
+          monster.dieAnim();
+        }
         monster.destroy();
         player.expUp();
         if (magic.fairy.fairyNum === 2) {
@@ -20778,6 +20856,48 @@ function slimePattern(scene, pt, x, y) {
   } else if (randomLocation === 4) {
     monX = Phaser.Math.Between(player.x + 500, player.x + 500);
     monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  }
+}
+
+function bomb(bomb, target) {
+  if (!target.invincible) {
+    if (target.type !== "player") {
+      target.health -= 50;
+    } else {
+      target.health -= 5;
+    }
+    target.invincible = true;
+  }
+
+  if (
+    (target.health <= 0 && target.type !== "boss") ||
+    (target.health <= 0 && target.type !== "player")
+  ) {
+    if (target.monSpecie !== "slime") {
+      if (target.monSpecie === "worm") {
+        target.boomAnim();
+      } else {
+        target.dieAnim();
+      }
+      target.destroy();
+      player.expUp();
+      monsterCount -= 1;
+    } else if (target.monSpecie === "slime") {
+      for (let i = 0; i < 2; i++) {
+        addMonster(
+          thisScene,
+          "babySlime",
+          "slime",
+          150 + difficulty_hp,
+          125,
+          target.x + i * 20,
+          target.y
+        );
+      }
+      target.destroy();
+      monsterCount -= 1;
+    }
+  } else if (target.health <= 0 && target.type === "player") {
   }
 }
 
