@@ -81,7 +81,6 @@ import ingameUi, { GameOver, updateExp, updateHP } from "../UI/ingame-ui.js";
 =======
 import ingameUi, {
   GameOver,
-  updateExp,
   useSkill,
   canSkill,
   messageBoss,
@@ -497,7 +496,6 @@ let controls;
 //map end
 let frameTime = 0;
 //navi start
-let navi;
 //navi end
 
 //coin start
@@ -684,6 +682,7 @@ function preload() {
   this.load.image("sprSand", "images/map/sprSand.png");
   this.load.image("sprGrass", "images/map/sprGrass.png");
   //map end
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -5659,6 +5658,11 @@ function update(time, delta) {
     //map end
 =======
 >>>>>>> 2d18cb4 (#3 #7 :sparkles: 코딩모드 및 아케이드모드 업데이트)
+=======
+  this.load.image("sprWater", "images/map/sprWater.png");
+  this.load.image("sprSand", "images/map/sprSand.png");
+  this.load.image("sprGrass", "images/map/sprGrass.png");
+>>>>>>> a37e11d (#1 :sparkles: levelup 개편)
 
   //tower start
 
@@ -12917,7 +12921,6 @@ function update(time, delta) {
   //hole end
 
   //navi start
-  this.load.image("navi", "images/navi/arrow.png");
   //navi end
 
   //mine start
@@ -14182,8 +14185,6 @@ function create() {
   // ##보스 생성, 나중에 타이머 조건 넣고 업데이트에 넣기 ##
 
   //navi start
-  navi = this.add.image(58, 80, "navi").setScrollFactor(0).setScale(1);
-  navi.setDepth(4);
   //navi end
 
   //exp bar start
@@ -14192,7 +14193,7 @@ function create() {
   expBar.setDepth(4);
   expBarBG.setDepth(3);
 
-  this.cameras.main.ignore([expBar, expBarBG, navi]);
+  this.cameras.main.ignore([expBar, expBarBG]);
 
   //exp bar end
   // hp bar start
@@ -14310,6 +14311,90 @@ function update(time, delta) {
     this.followPoint.y = player.y;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    this.cameras.main.startFollow(player, false);
+    UICam.startFollow(player, false);
+    //map end
+
+    //navi start
+
+    //navi end
+
+    //player start
+    changeSlot();
+    normalAttackAS = fairySet[nowFairy].as;
+    if (normalAttackTimer > normalAttackAS) {
+      control = false;
+    } else {
+      normalAttackTimer++;
+    }
+    //mouse clicked
+    if (
+      mouse.leftButtonDown() &&
+      !control &&
+      fairySet[nowFairy].bombCount > 0
+    ) {
+      magic = new Magic(this, fairySet[nowFairy]);
+      magic.setDepth(2);
+      this.physics.add.overlap(
+        magic,
+        monsterSet,
+        fairySet[nowFairy].attack,
+        null,
+        this
+      );
+      fairySet[nowFairy].normalAttack(magic);
+    }
+
+    for (let i = 0; i < 5; i++) {
+      if (fairySet[i].timer < fairySet[i].skillCD) {
+        fairySet[i].timer++;
+      } else {
+        fairySet[i].skillUse = false;
+      }
+    }
+
+    if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
+      fairySet[nowFairy].skillFire();
+    }
+
+    player.healCount++;
+    if (player.healCount > player.maxHealCount) {
+      player.healCount = 0;
+      player.health += player.heal;
+      if (player.health > player.maxHealth) {
+        player.health = player.maxHealth;
+      }
+    }
+
+    if (player.invincible) {
+      hitTimer++;
+      if (hitTimer >= 15) {
+        hitTimer = 0;
+
+        if (hitVisible) {
+          hitVisible = false;
+        } else {
+          hitVisible = true;
+        }
+
+        player.setVisible(hitVisible);
+      }
+    }
+
+    //player end
+
+    //enemy start
+
+    // 몬스터가 유저 따라가게함
+    if (monsterCount !== 0) {
+      for (let i = 0; i < monsterSet.children.entries.length; i++) {
+        if (monsterSet.children.entries[i].invincible) {
+          monsterSet.children.entries[i].setTint(0xff0000);
+        }
+
+>>>>>>> a37e11d (#1 :sparkles: levelup 개편)
         if (
             Phaser.Math.Distance.Between(
                 snappedChunkX,

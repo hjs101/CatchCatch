@@ -1,12 +1,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const propertyArr = ["common", "wizard", "reaper", "ninja", "slime", "witch", "common","common"];
 =======
 const propertyArr = [
 =======
 =======
 import {setSound} from "../SOUND/sound";
+=======
+import { setSound } from "../SOUND/sound";
+>>>>>>> a37e11d (#1 :sparkles: levelup 개편)
 
 >>>>>>> 8283fbf (#2 :bug: 슬라임킹 원형 처리)
 const _propertyArr = [
@@ -35,9 +39,9 @@ export default function levelup() {
   if (ChoiceCat === 5) {
     let rand = Math.floor(Math.random() * 20);
     setSound.playSE(rand);
-  } else if(ChoiceCat === 2){
+  } else if (ChoiceCat === 2) {
     setSound.playSE(21);
-  } else{
+  } else {
     setSound.playSE(19);
   }
 
@@ -57,12 +61,12 @@ export default function levelup() {
         "불마법 개수 증가",
         "공격 속도 증가",
         "관통 효과 적용",
-        "",
+        "마법사 1차 강화",
 
         "불마법 개수 증가",
         "공격 속도 증가",
         "관통 개수 증가",
-        "",
+        "마법사 2차 강화",
       ],
     },
     reaper: {
@@ -72,12 +76,12 @@ export default function levelup() {
         "공격 범위 증가",
         "공격 속도 증가",
         "흡혈 효과 적용",
-        "",
+        "사신 1차 강화",
 
         "공격 범위 증가",
         "공격 속도 증가",
         "흡혈 효과 증가",
-        "",
+        "사신 2차 강화",
       ],
     },
     ninja: {
@@ -87,12 +91,12 @@ export default function levelup() {
         "사거리 증가",
         "공격 속도 증가",
         "기절 효과 적용",
-        "",
+        "닌자 1차 강화",
 
         "사거리 증가",
         "공격 속도 증가",
         "기절 효과 증가",
-        "",
+        "닌자 2차 강화",
       ],
     },
     slime: {
@@ -102,12 +106,12 @@ export default function levelup() {
         "공격 속도 증가",
         "튕기는 횟수 증가",
         "복사 효과 적용",
-        "",
+        "슬라임 1차 강화",
 
         "공격 속도 증가",
         "튕기는 횟수 증가",
         "복사 효과 증가",
-        "",
+        "슬라임 2차 강화",
       ],
     },
     witch: {
@@ -117,12 +121,12 @@ export default function levelup() {
         "설치 개수 증가Ⅰ",
         "폭팔 반경 증가",
         "설치 개수 증가Ⅱ",
-        "",
+        "마녀 1차 강화",
 
         "설치 개수 증가Ⅲ",
         "폭팔 반경 증가",
         "설치 개수 증가Ⅳ",
-        "",
+        "마녀 2차 강화",
       ],
     },
   };
@@ -133,9 +137,7 @@ export default function levelup() {
     if (randomIndexArray.indexOf(randomNum) === -1) {
       if (
         _propertyArr[randomNum] !== "common" &&
-        (property[_propertyArr[randomNum]].fairy.level === 4 ||
-          property[_propertyArr[randomNum]].fairy.level === 8 ||
-          property[_propertyArr[randomNum]].fairy.level === 9)
+        property[_propertyArr[randomNum]].fairy.level === 9
       ) {
         i--;
 <<<<<<< HEAD
@@ -156,8 +158,7 @@ export default function levelup() {
   // levelupContainer.setAttribute("class", "levelupContainer");
   $this.pause();
   const levelupContainer = document.createElement("div");
-  levelupContainer.style.backgroundImage =
-    'url("images/ui/levelup/Base.png")';
+  levelupContainer.style.backgroundImage = 'url("images/ui/levelup/Base.png")';
   levelupContainer.style.backgroundPosition = "center";
   levelupContainer.style.backgroundRepeat = "no-repeat";
   levelupContainer.style.backgroundSize = "cotain";
