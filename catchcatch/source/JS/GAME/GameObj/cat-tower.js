@@ -10,15 +10,11 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
   skillSprite;
   towerAttackTimer = 0;
   towerSkillAttackTimer = 0;
-  towerAS = [50, 47, 44, 41, 38, 35, 32, 29, 26, 23, 20]; //연사속도
-  towerASCost = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300];
+  towerAS = 50; //연사속도
   towerASLevel = 0; //연사속도
-  towerASMax = 10;
   towerSkillAS = 50; //연사속도
-  towerDmg = [13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 43]; //기본 대미지
-  towerDmgCost = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  towerDmg = 13; //기본 대미지
   towerDmgLevel = 0;
-  towerDmgMax = 10;
   towerSkillDmg = 6; //스킬 기본 대미지
   towerWeaponSpeed = 500; //발사속도
   towerSkillSpeed = 500; //발사속도
@@ -26,21 +22,13 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
   isTwo = false; //2연발
   isThree = false; //3연발
   bulletLevel = 0;
-  bulletMax = 2;
-  bulletCost = [0, 50, 100];
-  towerEvelop1 = [false, false, false, false]; //전기, 불, 물, 땅
-  towerEvelop2 = [false, false, false, false]; //전기, 불, 물, 땅
-  towerEvelopCost = [200, 1000];
-  isTowerEvelop1 = false;
-  isTowerEvelop2 = false;
+  towerEvelop1 ="none";
   circleSize = 1.5;
-  circleSizeMax = 10;
   circleSizeLevel = 0;
-  circleSizeCost = [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200];
   level = 0;
   stone = 0;
-
   timedEvent;
+
   constructor(scene, towerX, towerY, towerSprite, weaponSprite, skillSprite, stones) {
     super(scene, towerX, towerY, towerSprite);
 
@@ -98,6 +86,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
     this.setCircle(hw * 5, hh - hw * 5, hh - hw * 5);
   }
 
+<<<<<<< HEAD
   magicFire(game, tower, mouse, speed) {
     let magic = new TowerMagic(game, tower);
 
@@ -477,4 +466,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
 
     }
   }
+=======
+>>>>>>> b73dc87 (#6 :sparkles: 타워 삭제)
 }

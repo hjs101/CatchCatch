@@ -389,10 +389,7 @@ let cats;
 // 플레이어 객체
 global.player = "";
 // 타워
-global.towerLU = "";
-global.towerRU = "";
-global.towerLD = "";
-global.towerRD = "";
+
 // 캐릭터 선택 시 변경될 변수
 let catNumber = 0;
 // 요정
@@ -626,10 +623,6 @@ global.hole = "";
 //enemy end
 
 //tower start
-// let towerLU;
-// let towerRU;
-// let towerLD;
-// let towerRD;
 global.towerAttacks = "";
 global.towerSkillAttacks = "";
 //tower end
@@ -11065,24 +11058,7 @@ function create() {
 //cattower animation end
 >>>>>>> 5cde85b (:sparkles: coin 수정)
 
-    towerLU = new CatTower(this, -140, -140, "0_idle", "can", "skill", 0);
-    towerRU = new CatTower(this, 140, -140, "0_idle", "can", "skill", 0);
-    towerLD = new CatTower(this, -140, 140, "0_idle", "can", "skill", 0);
-    towerRD = new CatTower(this, 140, 140, "0_idle", "can", "skill", 0);
-    towerLU.scale_Circle();
-    towerRU.scale_Circle();
-    towerLD.scale_Circle();
-    towerRD.scale_Circle();
 
-    towerLU.scale = 2;
-    towerRU.scale = 2;
-    towerLD.scale = 2;
-    towerRD.scale = 2;
-
-    towerLU.setDepth(1);
-    towerRU.setDepth(1);
-    towerLD.setDepth(1);
-    towerRD.setDepth(1);
 
     //tower end
 
@@ -15971,15 +15947,7 @@ function update(time, delta) {
 
         //tower start
 
-        towerLU.towerAttackTimer++;
-        towerRU.towerAttackTimer++;
-        towerLD.towerAttackTimer++;
-        towerRD.towerAttackTimer++;
 
-        towerLU.towerSkillAttackTimer++;
-        towerRU.towerSkillAttackTimer++;
-        towerLD.towerSkillAttackTimer++;
-        towerRD.towerSkillAttackTimer++;
         //tower end
 
         //exp bar start
@@ -16005,10 +15973,6 @@ function update(time, delta) {
         hpBar,
         hpBarBG,
         hole,
-        towerLD,
-        towerLU,
-        towerRD,
-        towerRU,
         magics,
         mines,
         towerAttacks,
@@ -16033,6 +15997,7 @@ function update(time, delta) {
         }
         console.log(mines);
     }
+<<<<<<< HEAD
 
     if (!towerLU.anims.isPlaying) {
         console.log(towerLU.stone);
@@ -16077,6 +16042,8 @@ function update(time, delta) {
     towerRD.anims.play(`${towerRD.stone}_idle`, true);
   }
 >>>>>>> b36e339 (#7 codemode collider 처리)
+=======
+>>>>>>> b73dc87 (#6 :sparkles: 타워 삭제)
 }
 
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
