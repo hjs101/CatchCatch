@@ -81,22 +81,6 @@ function preload() {
     frameWidth: 38,
     frameHeight: 64,
   });
-  this.load.spritesheet("tower2", "images/cattower/earth_tower_38x64.png", {
-    frameWidth: 38,
-    frameHeight: 64,
-  });
-  this.load.spritesheet("tower3", "images/cattower/fire_tower_38x64.png", {
-    frameWidth: 38,
-    frameHeight: 64,
-  });
-  this.load.spritesheet("tower4", "images/cattower/thunder_tower_38x64.png", {
-    frameWidth: 38,
-    frameHeight: 64,
-  });
-  this.load.spritesheet("tower5", "images/cattower/water_tower_38x64.png", {
-    frameWidth: 38,
-    frameHeight: 64,
-  });
   // player end
 
   //attack sprite start
@@ -216,54 +200,6 @@ function create() {
   this.anims.create({
     key: "tower1_attack",
     frames: this.anims.generateFrameNumbers("tower1", { start: 3, end: 8 }),
-    frameRate: 16,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower2_idle",
-    frames: this.anims.generateFrameNumbers("tower2", { start: 0, end: 2 }),
-    frameRate: 8,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower2_attack",
-    frames: this.anims.generateFrameNumbers("tower2", { start: 3, end: 8 }),
-    frameRate: 16,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower3_idle",
-    frames: this.anims.generateFrameNumbers("tower3", { start: 0, end: 2 }),
-    frameRate: 8,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower3_attack",
-    frames: this.anims.generateFrameNumbers("tower3", { start: 3, end: 8 }),
-    frameRate: 16,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower4_idle",
-    frames: this.anims.generateFrameNumbers("tower4", { start: 0, end: 2 }),
-    frameRate: 8,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower4_attack",
-    frames: this.anims.generateFrameNumbers("tower4", { start: 3, end: 8 }),
-    frameRate: 16,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower5_idle",
-    frames: this.anims.generateFrameNumbers("tower5", { start: 0, end: 2 }),
-    frameRate: 8,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "tower5_attack",
-    frames: this.anims.generateFrameNumbers("tower5", { start: 3, end: 8 }),
     frameRate: 16,
     repeat: -1,
   });
@@ -728,6 +664,7 @@ this.scene.pause();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.scene.pause();
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 =======
@@ -748,6 +685,9 @@ this.scene.pause();
 =======
   this.scene.pause();
 >>>>>>> 4e4dea8 (#7 :sparkles: 코딩모드 업데이트)
+=======
+  // this.scene.pause();
+>>>>>>> 2817eee (#3 :sparkles: 사신, 슬라임 스킬 변경)
 }
 
 function update(time, delta) {
@@ -1026,6 +966,7 @@ export function attack(isAttack, angle, element) {
     magicSet.add(magic);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     codeScene.physics.moveTo(
       magic,
       x,
@@ -1039,6 +980,9 @@ export function attack(isAttack, angle, element) {
 =======
     codeScene.physics.moveTo(magic, x, y, 300);
 >>>>>>> 2d18cb4 (#3 #7 :sparkles: 코딩모드 및 아케이드모드 업데이트)
+=======
+    codeScene.physics.moveTo(magic, x, y, 3000);
+>>>>>>> 2817eee (#3 :sparkles: 사신, 슬라임 스킬 변경)
   }
 }
 

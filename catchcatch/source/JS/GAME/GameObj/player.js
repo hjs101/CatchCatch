@@ -27,7 +27,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 >>>>>>> 9ea8632 (#3 :sparkles: 밸런스패치)
   speed = 100;
   speedLevel = 1;
-  maxExp = 3;
+  maxExp = 3000000;
   exp = 0;
   level = 1;
 <<<<<<< HEAD
@@ -123,7 +123,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   coin = 100000;
   // 캐릭터 특수능력 일단 보류
   ability = 0;
-  heal = 10;
+  heal = 0;
   healCount = 0;
   maxHealCount = 600;
   healLevel = 1;
