@@ -693,6 +693,7 @@ this.scene.pause();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.scene.pause();
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 =======
@@ -710,6 +711,9 @@ this.scene.pause();
 =======
   // this.scene.pause();
 >>>>>>> cbafe55 (#1 :sparkles: 다시하기, 뒤로가기 구현)
+=======
+  this.scene.pause();
+>>>>>>> 4e4dea8 (#7 :sparkles: 코딩모드 업데이트)
 }
 
 function update(time, delta) {

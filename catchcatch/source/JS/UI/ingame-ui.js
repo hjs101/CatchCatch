@@ -145,7 +145,6 @@ export default function ingameUi() {
       ChangeWeapon();
     }, 6000);
   }
-
   gameContainer.appendChild(coolContainer);
 }
 
