@@ -7,6 +7,7 @@ let _second = 0;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export let _catcoin;
 
 export default function inGameUI() {
@@ -37,6 +38,8 @@ let catCoin;
 let _catCoin;
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 
+=======
+>>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 export default function ingameUi() {
   const fairy = [wizard, reaper, ninja, slime, witch];
   const fairyName = ["wizard", "reaper", "ninja", "slime", "witch"];
@@ -57,6 +60,7 @@ export default function ingameUi() {
   const gameContainer = document.querySelector("#game-container");
   // const progress = document.createElement("progress");
 
+<<<<<<< HEAD
   const holeHp = document.createElement("div");
   holeHp.setAttribute("class", "holeHp");
   const hp = document.createElement("div");
@@ -95,56 +99,14 @@ export default function ingameUi() {
   const speed = document.createElement("div");
   const speedTxt = document.createElement("div");
 
+=======
+>>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
   _timerTxt.setAttribute("class", "Timer");
   gameContainer.appendChild(_timerTxt);
   _minute = 0;
   _second = 0;
 
   _timerTxt.textContent = `${_minute}:${_second}`;
-
-  // progress.setAttribute("id", "progress");
-  // progress.setAttribute("value", player.exp);
-  // progress.setAttribute("max", 100);
-  stats.setAttribute("class", "stats");
-  heal.setAttribute("class", "stat");
-  healTxt.setAttribute("class", "healTxt");
-
-  dmgMul.setAttribute("class", "stat");
-  dmgMulTxt.setAttribute("class", "dmgMulTxt");
-
-  speed.setAttribute("class", "stat");
-  speedTxt.setAttribute("class", "speedTxt");
-
-  heal.setAttribute("id", "heal");
-  heal.style.backgroundImage = "url('images/ui/Icon/sample.png')";
-  heal.style.backgroundPosition = "center";
-  heal.style.backgroundRepeat = "no-repeat";
-  heal.style.backgroundSize = "contain";
-
-  dmgMul.setAttribute("id", "dmgMul");
-  dmgMul.style.backgroundImage = "url('images/ui/Icon/sample.png')";
-  dmgMul.style.backgroundPosition = "center";
-  dmgMul.style.backgroundRepeat = "no-repeat";
-  dmgMul.style.backgroundSize = "contain";
-
-  speed.setAttribute("id", "speed");
-  speed.style.backgroundImage = "url('images/ui/Icon/sample.png')";
-  speed.style.backgroundPosition = "center";
-  speed.style.backgroundRepeat = "no-repeat";
-  speed.style.backgroundSize = "contain";
-
-  healTxt.innerText = `Lv.${player.healLevel}`;
-  heal.appendChild(healTxt);
-  dmgMulTxt.innerText = `Lv.${player.dmgMulLevel}`;
-  dmgMul.appendChild(dmgMulTxt);
-  speedTxt.innerText = `Lv.${player.speedLevel}`;
-  speed.appendChild(speedTxt);
-
-  stats.appendChild(_catCoin);
-  stats.appendChild(heal);
-  stats.appendChild(dmgMul);
-  stats.appendChild(speed);
-  // gameContainer.appendChild(progress);
 
   // 쿨타임
   const coolContainer = document.createElement("div");
@@ -200,6 +162,7 @@ export function updateExp() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export function updateHP() {
   // console.log(hole.hp);
   const holeHp = document.querySelector(".holeHp");
@@ -239,6 +202,8 @@ export function Updatetimer() {
       ++Minute;
       Second = 0;
 =======
+=======
+>>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 export function GameOver() {
   const gameContainer = document.querySelector("#game-container");
   const gameOverContainer = document.createElement("div");
@@ -325,6 +290,7 @@ function GoHome() {
   window.location.reload();
 }
 
+<<<<<<< HEAD
 export function UpdateCatCoin() {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -342,6 +308,8 @@ export function UpdateCatCoin() {
 >>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
 }
 
+=======
+>>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 export function useSkill(num) {
   const fairy = [wizard, reaper, ninja, slime, witch];
   const fairyName = ["wizard", "reaper", "ninja", "slime", "witch"];

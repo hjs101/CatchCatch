@@ -1,14 +1,21 @@
-import {mines} from "../game";
-import {UpdateCatCoin} from "../../UI/ingame-ui";
-import {setSound} from "../../SOUND/sound";
+import { mines } from "../game";
+import { setSound } from "../../SOUND/sound";
 
+<<<<<<< HEAD
 export default class Mine extends Phaser.Physics.Arcade.Sprite {
     mine = 0;
     coinTime;
+=======
+export default class Mine extends Phaser.Physics.Arcade.Image {
+  mineSprite;
+  mine = 0;
+  coinTime;
+>>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 
-    constructor(scene, mineX, mineY, minesprite, cointimes) {
-        super(scene, mineX, mineY, minesprite, cointimes);
+  constructor(scene, mineX, mineY, minesprite, cointimes) {
+    super(scene, mineX, mineY, minesprite, cointimes);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     this.scene = scene;
 <<<<<<< HEAD
@@ -112,5 +119,38 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
             setSound.playSE(17);
         }
         mine.destroy();
+=======
+    this.scene = scene;
+    this.mineSprite = minesprite;
+    this.coinTime = cointimes;
+
+    scene.add.existing(this);
+    scene.physics.add.existing(this);
+    scene.physics.add.overlap(this, player, this.overlapOpen);
+  }
+
+  scale_Circle() {
+    this.setScale(1);
+    let hw = this.body.halfWidth;
+    let hh = this.body.halfHeight;
+    this.setCircle(hw * 1, hh - hw * 1, hh - hw * 1);
+  }
+
+  overlapOpen(mine, player) {
+    var range = Phaser.Math.Distance.Between(mine.x, mine.y, 0, 0);
+
+    if (gameTimer % 7200 === 0) {
+      mine.coinTime = gameTimer / 7200;
     }
+    if (0 <= range && range < 500) {
+      player.coin += 1 + mine.coinTime;
+    } else if (500 <= range && range < 5000) {
+      player.coin += 2 + mine.coinTime;
+    } else {
+      player.coin += 3 + mine.coinTime;
+>>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
+    }
+    setSound.playSE(17);
+    mine.destroy();
+  }
 }

@@ -82,7 +82,6 @@ import ingameUi, { GameOver, updateExp, updateHP } from "../UI/ingame-ui.js";
 import ingameUi, {
   GameOver,
   updateExp,
-  updateHP,
   useSkill,
   canSkill,
   messageBoss,
@@ -105,6 +104,7 @@ import levelup from "../UI/levelup.js";
 import initUpgrade, { closeUpgrade } from "../UI/upgrade.js";
 
 import { Chunk, Tile } from "./entities.js";
+<<<<<<< HEAD
 import CatTower from "./GameObj/cat-tower.js";
 >>>>>>> f42389c (#1 #2 #3 :sparkles: 각종 코드 수정)
 import Boss from "./GameObj/boss.js";
@@ -161,6 +161,8 @@ import { Chunk, Tile } from "./entities.js";
 import {Chunk, Tile} from "./entities.js";
 >>>>>>> 8283fbf (#2 :bug: 슬라임킹 원형 처리)
 import CatTower from "./GameObj/cat-tower.js";
+=======
+>>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 import Boss from "./GameObj/boss.js";
 import Mine from "./GameObj/mine.js";
 
@@ -14227,7 +14229,6 @@ function update(time, delta) {
       }
     } else {
       if (fairySet[i].isSkill === true) {
-        console.log(1);
         fairySet[i].skillUse = false;
         canSkill(i);
       }
