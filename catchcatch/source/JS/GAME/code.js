@@ -656,7 +656,7 @@ this.scene.pause();
 
   switch (stageNum) {
     case 1:
-      maxMon = 5;
+      maxMon = 10;
       break;
     case 2:
       maxMon = 10;
@@ -666,21 +666,55 @@ this.scene.pause();
       break;
     case 4:
       maxMon = 10;
+      for (let i = 0; i < 5; i++) {
+        catSpawn();
+        let enemy = new Enemy(
+          this,
+          60,
+          monX,
+          monY,
+          "cat1",
+          "cat1",
+          0,
+          randomLocation
+        );
+
+        codeMonsterSet.add(enemy);
+      }
       break;
     case 5:
       maxMon = 10;
       for (let i = 0; i < 5; i++) {
         catSpawn();
-        let enemy = new Enemy(this, 60, monX, monY, "cat1", "cat1", 0);
+        let enemy = new Enemy(
+          this,
+          60,
+          monX,
+          monY,
+          "cat1",
+          "cat1",
+          0,
+          randomLocation
+        );
 
         codeMonsterSet.add(enemy);
       }
       break;
     case 6:
       maxMon = 10;
-      for (let i = 0; i < 5; i++) {
+      let randomNum = Math.floor(Math.random() * 3 + 5);
+      for (let i = 0; i < randomNum; i++) {
         catSpawn();
-        let enemy = new Enemy(this, 60, monX, monY, "cat1", "cat1", 0);
+        let enemy = new Enemy(
+          this,
+          60,
+          monX,
+          monY,
+          "cat1",
+          "cat1",
+          0,
+          randomLocation
+        );
         codeMonsterSet.add(enemy);
       }
       break;
@@ -746,7 +780,28 @@ function update(time, delta) {
       switch (stageNum) {
         case 1:
           if (monCount < maxMon) {
-            let enemy = new Enemy(this, 80, 400, -400, "alien", "alien", 1);
+            let enemy =
+              monCount % 2 === 0
+                ? new Enemy(
+                    this,
+                    80,
+                    400,
+                    -400,
+                    "alien",
+                    "alien",
+                    1,
+                    randomLocation
+                  )
+                : new Enemy(
+                    this,
+                    80,
+                    -400,
+                    -400,
+                    "alien",
+                    "alien",
+                    1,
+                    randomLocation
+                  );
             if (enemy.type === 1) {
               enemy.health = 1;
             }
@@ -758,10 +813,17 @@ function update(time, delta) {
           break;
         case 2:
           if (monCount < maxMon) {
-            let enemy =
-              monCount % 2 === 0
-                ? new Enemy(this, 80, 400, -400, "alien", "alien", 1)
-                : new Enemy(this, 80, -400, -400, "alien", "alien", 1);
+            enemySpawn();
+            let enemy = new Enemy(
+              this,
+              60,
+              monX,
+              monY,
+              "alien",
+              "alien",
+              1,
+              randomLocation
+            );
             if (enemy.type === 1) {
               enemy.health = 1;
             }
@@ -774,7 +836,17 @@ function update(time, delta) {
         case 3:
           if (monCount < maxMon) {
             enemySpawn();
-            let enemy = new Enemy(this, 60, monX, monY, "alien", "alien", 1);
+            let typeNum = Math.floor(Math.random() * 4 + 2);
+            let enemy = new Enemy(
+              this,
+              60,
+              monX,
+              monY,
+              "alien",
+              "alien",
+              typeNum,
+              randomLocation
+            );
             if (enemy.type === 1) {
               enemy.health = 1;
             }
@@ -787,28 +859,6 @@ function update(time, delta) {
         case 4:
           if (monCount < maxMon) {
             enemySpawn();
-            let typeNum = Math.floor(Math.random() * 4 + 2);
-            let enemy = new Enemy(
-              this,
-              60,
-              monX,
-              monY,
-              "alien",
-              "alien",
-              typeNum
-            );
-            if (enemy.type === 1) {
-              enemy.health = 1;
-            }
-            codeMonsterSet.add(enemy);
-            codeEnemySet.add(enemy);
-            this.physics.moveToObject(enemy, player, enemy.velo);
-            monCount++;
-          }
-          break;
-        case 5:
-          if (monCount < maxMon) {
-            enemySpawn();
             let typeNum = Math.floor(Math.random() * 5 + 1);
             let enemy = new Enemy(
               this,
@@ -817,7 +867,8 @@ function update(time, delta) {
               monY,
               "alien",
               "alien",
-              typeNum
+              typeNum,
+              randomLocation
             );
 
             // enemy.setScale(2);
@@ -831,19 +882,42 @@ function update(time, delta) {
           }
 
           break;
-        case 6:
+        case 5:
           if (monCount < maxMon) {
             enemySpawn();
             let typeNum = Math.floor(Math.random() * 5 + 1);
-            let randomVelo = Math.floor(Math.random() * 60 + 40);
             let enemy = new Enemy(
               this,
-              randomVelo,
+              40,
               monX,
               monY,
               "alien",
               "alien",
-              typeNum
+              typeNum,
+              randomLocation
+            );
+            if (enemy.type === 1) {
+              enemy.health = 1;
+            }
+            codeMonsterSet.add(enemy);
+            codeEnemySet.add(enemy);
+            this.physics.moveToObject(enemy, player, enemy.velo);
+            monCount++;
+          }
+          break;
+        case 6:
+          if (monCount < maxMon) {
+            enemySpawn();
+            let typeNum = Math.floor(Math.random() * 5 + 1);
+            let enemy = new Enemy(
+              this,
+              40,
+              monX,
+              monY,
+              "alien",
+              "alien",
+              typeNum,
+              randomLocation
             );
             if (enemy.type === 1) {
               enemy.health = 1;
@@ -912,10 +986,10 @@ function dataSend() {
       } else {
         console.log("Game End, Score : " + score);
         Data = {
-          action: "gameEnd",
+          action: "endGame",
           pinnumber: PinNumber,
         };
-        console.log(socket.send(JSON.stringify(Data)));
+        socket.send(JSON.stringify(Data));
         IsStarted = false;
       }
     }
@@ -1042,6 +1116,7 @@ function catSpawn() {
     monY = Phaser.Math.Between(player.y - 220, player.y + 220);
   }
 }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1061,6 +1136,8 @@ function debugModeChange(scene) {
 
 =======
 >>>>>>> b36e339 (#7 codemode collider 처리)
+=======
+>>>>>>> c6573a4 (#7 :sparkles: 코딩모드 업데이트)
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));

@@ -36,15 +36,6 @@ const _commonArr = ["health", "dmgMul", "heal", "speed"];
 
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 export default function levelup() {
-  if (ChoiceCat === 5) {
-    let rand = Math.floor(Math.random() * 20);
-    setSound.playSE(rand);
-  } else if (ChoiceCat === 2) {
-    setSound.playSE(21);
-  } else {
-    setSound.playSE(19);
-  }
-
   const property = {
     common: {
       name: "공통",
@@ -130,6 +121,15 @@ export default function levelup() {
       ],
     },
   };
+  if (ChoiceCat === 5) {
+    let rand = Math.floor(Math.random() * 20);
+    setSound.playSE(rand);
+  } else if (ChoiceCat === 2) {
+    setSound.playSE(21);
+  } else {
+    setSound.playSE(19);
+  }
+
   let randomIndexArray = [];
   const randomCommons = [0, 0, 0, 0];
   for (let i = 0; i < 3; i++) {
