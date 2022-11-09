@@ -13443,8 +13443,8 @@ function create() {
   global.wizard = fairySet[0] = new Fairy(
     this,
     100,
-    10,
-    1,
+    15,
+    3,
     1,
     60,
     20,
@@ -13459,7 +13459,7 @@ function create() {
     this,
     100,
     10,
-    1,
+    2,
     1,
     80,
     20,
@@ -13472,7 +13472,7 @@ function create() {
   global.ninja = fairySet[2] = new Fairy(
     this,
     100,
-    6,
+    5,
     1,
     3,
     60,
@@ -13488,7 +13488,7 @@ function create() {
     this,
     7200,
     10,
-    1,
+    2,
     10,
     60,
     10,
@@ -13973,17 +13973,6 @@ function create() {
 
   //map start
   //map end
-
-  // 공격 맞은 후 일시 무적에 사용
-  timer = this.time.addEvent({
-    delay: 2000,
-    callback: () => {
-      player.invincible = false;
-      player.body.checkCollision.none = false;
-      player.setVisible(true);
-    },
-    loop: true,
-  });
 
   // ============== 몬스터 스프라이트 애니메이션 목록 ==================
   this.anims.create({
@@ -19992,6 +19981,7 @@ function hithole(hole, monster) {
     }
 
     monster.invincible = true;
+    monster.unInvincible();
     monster.health -= magic.fairy.dmg * player.dmgMul;
 
     if (monster.health <= 0 && monster.type !== "boss") {
@@ -21110,33 +21100,35 @@ function bombHitPlayer() {
 }
 
 function bomb(bomb, target) {
-  target.health -= 50;
-  target.invincible = true;
-
-  if (target.health <= 0 && target.type !== "boss") {
-    if (target.monSpecie !== "slime") {
-      if (target.monSpecie === "worm") {
-        target.boomAnim();
-      } else {
-        target.dieAnim();
+  if (!target.invincible) {
+    target.invincible = true;
+    target.health -= 50;
+    target.unInvincible();
+    if (target.health <= 0 && target.type !== "boss") {
+      if (target.monSpecie !== "slime") {
+        if (target.monSpecie === "worm") {
+          target.boomAnim();
+        } else {
+          target.dieAnim();
+        }
+        target.destroy();
+        player.expUp();
+        monsterCount -= 1;
+      } else if (target.monSpecie === "slime") {
+        for (let i = 0; i < 2; i++) {
+          addMonster(
+            thisScene,
+            "babySlime",
+            "slime",
+            150 + difficulty_hp,
+            125,
+            target.x + i * 20,
+            target.y
+          );
+        }
+        target.destroy();
+        monsterCount -= 1;
       }
-      target.destroy();
-      player.expUp();
-      monsterCount -= 1;
-    } else if (target.monSpecie === "slime") {
-      for (let i = 0; i < 2; i++) {
-        addMonster(
-          thisScene,
-          "babySlime",
-          "slime",
-          150 + difficulty_hp,
-          125,
-          target.x + i * 20,
-          target.y
-        );
-      }
-      target.destroy();
-      monsterCount -= 1;
     }
   }
 }

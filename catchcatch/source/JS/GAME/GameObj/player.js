@@ -27,7 +27,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 >>>>>>> 9ea8632 (#3 :sparkles: 밸런스패치)
   speed = 100;
   speedLevel = 1;
+<<<<<<< HEAD
   maxExp = 3000000;
+=======
+  maxExp = 300000000000;
+>>>>>>> b8e8c56 (#3 :sparkles: 무적개선)
   exp = 0;
   level = 1;
 <<<<<<< HEAD
@@ -135,6 +139,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 >>>>>>> 9ea8632 (#3 :sparkles: 밸런스패치)
 =======
   type = "player";
+<<<<<<< HEAD
 >>>>>>> c428dc5 (#2 :sparkles: 폭탄 몹 추가)
 =======
 >>>>>>> f72d473 (Revert "#2 :sparkles: 폭탄 몹 추가")
@@ -142,6 +147,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   type = "player";
 >>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
 
+=======
+  myInvincibleEvent = undefined;
+>>>>>>> b8e8c56 (#3 :sparkles: 무적개선)
   constructor(scene, dmgMul, maxHealth, health, catName) {
     super(scene, 1024, 1024, catName);
     this.alpha = 1;
@@ -237,7 +245,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     switch (id) {
       case "dmgMul":
         this.dmgMulLevel++;
-        this.dmgMul += 0.1;
+        this.dmgMul += 0.2;
         break;
       case "health":
         this.healthLevel++;
@@ -250,7 +258,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         break;
       case "speed":
         this.speedLevel++;
-        this.speed += 10;
+        this.speed += 5;
         break;
     }
   }
@@ -427,6 +435,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         GameOver();
         $this.pause();
       }
+      // 공격 맞은 후 일시 무적에 사용
+      this.myInvincibleEvent = thisScene.time.addEvent({
+        delay: 1000,
+        callback: () => {
+          player.invincible = false;
+          player.body.checkCollision.none = false;
+          player.setVisible(true);
+          thisScene.time.removeEvent(this.myInvincibleEvent);
+          this.myInvincibleEvent = undefined;
+        },
+        loop: false,
+      });
     }
   }
 }
