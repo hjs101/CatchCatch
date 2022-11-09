@@ -15658,6 +15658,7 @@ function create() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         addMonster(this, "wormPlus", "wormPlus", 100 + difficulty_hp, 50, monX, monY, "siege");
       } else if (18000 < gameTimer) {
         addMonster(this, "wormPlus", "wormPlus", 160 + difficulty_hp, 60, monX, monY, "siege");
@@ -15671,8 +15672,11 @@ function create() {
 =======
         addMonster(this, "worm", "wormPlus", 150, 50, monX, monY);
 >>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
+=======
+        addMonster(this, "wormPlus", "wormPlus", 150, 50, monX, monY);
+>>>>>>> 4b3634f (#2 :bomb: 폭발 몬스터 단계별로 크기 변화)
       } else if (18000 < gameTimer) {
-        addMonster(this, "worm", "wormFinal", 200, 60, monX, monY);
+        addMonster(this, "wormFinal", "wormFinal", 200, 60, monX, monY);
       } else if (gameTimer <= 12000) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -19255,6 +19259,7 @@ function attack(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           monster.die_anim();
           monster.destroy();
           player.expUp();
@@ -19940,6 +19945,9 @@ function hithole(hole, monster) {
 =======
 >>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
           if (monster.monSpecie === "worm") {
+=======
+          if (monster.monSpecie === "worm" || monster.monSpecie === "wormPlus" || monster.monSpecie === "wormFinal") {
+>>>>>>> 4b3634f (#2 :bomb: 폭발 몬스터 단계별로 크기 변화)
             monster.boomAnim();
           } else {
             monster.dieAnim();
@@ -19982,7 +19990,7 @@ function hithole(hole, monster) {
 
     if (monster.health <= 0 && monster.type !== "boss") {
       if (monster.monSpecie !== "slime") {
-        if (monster.monSpecie === "worm") {
+        if (monster.monSpecie === "worm" || monster.monSpecie === "wormPlus" || monster.monSpecie === "wormFinal") {
           monster.boomAnim();
         } else {
           monster.dieAnim();
@@ -21082,7 +21090,7 @@ function bomb(bomb, target) {
     target.unInvincible();
     if (target.health <= 0 && target.type !== "boss") {
       if (target.monSpecie !== "slime") {
-        if (target.monSpecie === "worm") {
+        if (target.monSpecie === "worm" || target.monSpecie === "wormPlus" || target.monSpecie === "wormFinal") {
           target.boomAnim();
         } else {
           target.dieAnim();
