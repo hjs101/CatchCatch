@@ -39,6 +39,7 @@ import initUpgrade, {closeUpgrade} from "../UI/upgrade.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Chunk, Tile } from "./Entities.js";
 <<<<<<< HEAD
 =======
@@ -106,6 +107,8 @@ import initUpgrade, {closeUpgrade} from "../UI/upgrade.js";
 import { Chunk, Tile } from "./entities.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> e692a11 (:sparkles: map 적용)
 import CatTower from "./GameObj/cat-tower.js";
 >>>>>>> f42389c (#1 #2 #3 :sparkles: 각종 코드 수정)
 import Boss from "./GameObj/boss.js";
@@ -485,6 +488,7 @@ global.gameTimer = 0;
 >>>>>>> 7144909 (#2 :sparkle: 몬스터 생성 주기 수정)
 //map start
 <<<<<<< HEAD
+<<<<<<< HEAD
 var map;
 var chunks = [];
 export var mapSize = 16000;
@@ -510,7 +514,22 @@ export let camera;
 let controls;
 =======
 >>>>>>> 0d9d680 (#1 #2 #3 :sparkles: 각종 코드 수정)
+=======
+let map = "";
+let tileset_flower = "";
+let tileset_plant = "";
+let tileset_props = "";
+let tileset_basic = "";
+let flowersLayer = "";
+let treesLayer = "";
+let grassLayer = "";
+let propsLayer = "";
+let runeLayer = "";
+let fieldLayer = "";
+>>>>>>> e692a11 (:sparkles: map 적용)
 //map end
+export let camera;
+
 let frameTime = 0;
 //navi start
 //navi end
@@ -707,6 +726,7 @@ let hpBarBG;
 //hp bar end
 
 function preload() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -5709,6 +5729,15 @@ function update(time, delta) {
   this.load.image("sprSand", "images/map/sprSand.png");
   this.load.image("sprGrass", "images/map/sprGrass.png");
 >>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
+=======
+  //map start
+  this.load.image("flower", "images/map/First Asset pack.png"); //식물
+  this.load.image("plant", "images/map/TX Plant.png"); //나무
+  this.load.image("props", "images/map/TX Props.png"); //비석
+  this.load.image("basic", "images/map/TX Tileset Grass.png"); //타일
+  this.load.tilemapTiledJSON("map", "images/map/map.json");
+  //map end
+>>>>>>> e692a11 (:sparkles: map 적용)
 
   //tower start
 
@@ -13325,19 +13354,40 @@ function create() {
 
   thisScene = this;
   //map start
+<<<<<<< HEAD
   this.chunkSize = 8;
   this.tileSize = 300;
   this.cameraSpeed = 1;
+=======
+  map = this.make.tilemap({ key: "map" });
+
+  // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
+  // Phaser's cache (i.e. the name you used in preload)
+  tileset_flower = map.addTilesetImage("flower", "flower");
+  tileset_plant = map.addTilesetImage("plant", "plant");
+  tileset_props = map.addTilesetImage("props", "props");
+  tileset_basic = map.addTilesetImage("basic", "basic");
+
+  // Parameters: layer name (or index) from Tiled, tileset, x, y
+  fieldLayer = map.createLayer("field", tileset_basic, 0, 0);
+  grassLayer = map.createLayer("grass", tileset_plant, 0, 0);
+  flowersLayer = map.createLayer("flowers", tileset_flower, 0, 0);
+  propsLayer = map.createLayer("props", tileset_props, 0, 0);
+  treesLayer = map.createLayer("trees", tileset_plant, 0, 0);
+  runeLayer = map.createLayer("rune", tileset_props, 0, 0);
+
+  propsLayer.setCollisionByProperty({ collides: true });
+  treesLayer.setCollisionByProperty({ collides: true });
+  //map end
+
+>>>>>>> e692a11 (:sparkles: map 적용)
   UICam = this.cameras.add(
     player.x,
     player.y,
     this.cameras.main.worldView.width,
     this.cameras.main.worldView.height
   );
-  this.followPoint = new Phaser.Math.Vector2(
-    this.cameras.main.worldView.x + this.cameras.main.worldView.width * 0.5,
-    this.cameras.main.worldView.y + this.cameras.main.worldView.height * 0.5
-  );
+
   // this.cameras.main.setBounds(0, 0, mapSize, mapSize);
   // this.physics.world.setBounds(0, 0, mapSize, mapSize);
 
@@ -13353,7 +13403,7 @@ function create() {
     slot5: Phaser.Input.Keyboard.KeyCodes.FIVE,
     skill: Phaser.Input.Keyboard.KeyCodes.SPACE,
   });
-  // camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
+
   global.$this = this.scene;
   this.input.keyboard.on("keydown-" + "SHIFT", function (event) {
     initUpgrade();
@@ -13362,14 +13412,17 @@ function create() {
 
   //player start
   player = new Player(this, 1, 20, 20, "cat" + (ChoiceCat + 1));
+  this.physics.add.collider(player, propsLayer);
+  this.physics.add.collider(player, treesLayer);
   player.ability = ChoiceCat + 1;
   player.setScale(0.7);
-  player.setDepth(2);
+  // player.setDepth(2);
   let hw = player.body.halfWidth;
   let hh = player.body.halfHeight;
 
   player.setCircle(hw * 0.6, hh - hw * 0.6, hh - hw * 0.6);
   camera = this.cameras.main;
+  camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
   input = this.input;
   mouse = input.mousePointer;
   this.input.on(
@@ -13919,70 +13972,7 @@ function create() {
   thisScene.physics.add.overlap(bombDead, player, bombHitPlayer);
 
   //map start
-  let snappedChunkX =
-    this.chunkSize *
-    this.tileSize *
-    Math.round(this.followPoint.x / (this.chunkSize * this.tileSize));
-  let snappedChunkY =
-    this.chunkSize *
-    this.tileSize *
-    Math.round(this.followPoint.y / (this.chunkSize * this.tileSize));
-
-  snappedChunkX = snappedChunkX / this.chunkSize / this.tileSize;
-  snappedChunkY = snappedChunkY / this.chunkSize / this.tileSize;
-
-  for (let x = snappedChunkX - 2; x < snappedChunkX + 2; x++) {
-    for (let y = snappedChunkY - 2; y < snappedChunkY + 2; y++) {
-      let existingChunk = getChunk(x, y);
-
-      if (existingChunk == null) {
-        let newChunk = new Chunk(this, x, y);
-        chunks.push(newChunk);
-      }
-    }
-  }
-  for (let i = 0; i < chunks.length; i++) {
-    let chunk = chunks[i];
-    if (
-      Phaser.Math.Distance.Between(
-        snappedChunkX,
-        snappedChunkY,
-        chunk.x,
-        chunk.y
-      ) < 3
-    ) {
-      if (chunk !== null) {
-        chunk.load();
-      }
-    } else {
-      if (chunk !== null) {
-        chunk.unload();
-      }
-    }
-  }
-
-  for (let i = 0; i < chunks.length; i++) {
-    let chunk = chunks[i];
-
-    if (
-      Phaser.Math.Distance.Between(
-        snappedChunkX,
-        snappedChunkY,
-        chunk.x,
-        chunk.y
-      ) < 3
-    ) {
-      if (chunk !== null) {
-        chunk.load();
-      }
-    } else {
-      if (chunk !== null) {
-        chunk.unload();
-      }
-    }
-  }
-
-  this.cameras.main.centerOn(this.followPoint.x, this.followPoint.y);
+  //map end
 
   // 공격 맞은 후 일시 무적에 사용
   timer = this.time.addEvent({
@@ -14448,6 +14438,11 @@ function create() {
     difficulty_spawn = 20;
     difficulty_vel = 20;
   }
+
+  this.physics.add.collider(bossSet, propsLayer);
+  this.physics.add.collider(monsterSet, treesLayer);
+  this.physics.add.collider(monsterSet, propsLayer);
+  this.physics.add.collider(bossSet, treesLayer);
 }
 
 function update(time, delta) {
@@ -14504,6 +14499,7 @@ function update(time, delta) {
   if (frameTime > 16.5) {
     frameTime = 0;
 
+<<<<<<< HEAD
     let snappedChunkX =
       this.chunkSize *
       this.tileSize *
@@ -15494,6 +15490,9 @@ function create() {
             }
         }
 =======
+=======
+    //map start
+>>>>>>> e692a11 (:sparkles: map 적용)
     this.cameras.main.startFollow(player, false);
     UICam.startFollow(player, false);
     //map end
@@ -16806,6 +16805,13 @@ function create() {
     );
   } //exp bar end
   UICam.ignore([
+    map,
+    flowersLayer,
+    treesLayer,
+    grassLayer,
+    propsLayer,
+    runeLayer,
+    fieldLayer,
     player,
     bossSet,
     fairySet,
@@ -21084,30 +21090,30 @@ function slimePattern(scene, pt, x, y) {
 }
 
 function bombHitPlayer() {
-    if (ChoiceCat === 5) {
-        let rand = Math.floor(Math.random() * 20);
-        setSound.playSE(rand);
-    } else {
-        setSound.playSE(11);
+  if (ChoiceCat === 5) {
+    let rand = Math.floor(Math.random() * 20);
+    setSound.playSE(rand);
+  } else {
+    setSound.playSE(11);
+  }
+  if (player.invincible === false) {
+    player.invincible = true;
+    player.body.checkCollision.none = true;
+    player.health -= 5;
+    // 피해 1 줌
+    // stop_game -= 1;
+    if (player.health <= 0) {
+      GameOver();
+      $this.pause();
     }
-    if (player.invincible === false) {
-        player.invincible = true;
-        player.body.checkCollision.none = true;
-        player.health -= 5;
-        // 피해 1 줌
-        // stop_game -= 1;
-        if (player.health <= 0) {
-            GameOver();
-            $this.pause();
-        }
-    }
+  }
 }
 
 function bomb(bomb, target) {
-    target.health -= 50;
-    target.invincible = true;
+  target.health -= 50;
+  target.invincible = true;
 
-  if ((target.health <= 0) && (target.type !== "boss")) {
+  if (target.health <= 0 && target.type !== "boss") {
     if (target.monSpecie !== "slime") {
       if (target.monSpecie === "worm") {
         target.boomAnim();
@@ -21132,7 +21138,7 @@ function bomb(bomb, target) {
       target.destroy();
       monsterCount -= 1;
     }
-  } 
+  }
 }
 
 function slimePattern(scene, pt, x, y) {
@@ -21336,6 +21342,7 @@ function hit_anime(monster) {
 //enemy end
 
 //map start
+<<<<<<< HEAD
 function getChunk(x, y) {
     let chunk = null;
     for (let i = 0; i < chunks.length; i++) {
@@ -21345,5 +21352,7 @@ function getChunk(x, y) {
     }
     return chunk;
 }
+=======
+>>>>>>> e692a11 (:sparkles: map 적용)
 
 //map end

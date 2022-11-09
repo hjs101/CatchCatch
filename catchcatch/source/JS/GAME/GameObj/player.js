@@ -143,7 +143,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 >>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
 
   constructor(scene, dmgMul, maxHealth, health, catName) {
-    super(scene, 0, 0, catName);
+    super(scene, 1024, 1024, catName);
     this.alpha = 1;
     this.dmgMul = dmgMul;
     this.maxHealth = maxHealth;
