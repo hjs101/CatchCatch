@@ -3,11 +3,15 @@ import { Chunk, Tile } from "./entities.js";
 import { sockConnect } from "./CodeObj/Execlient.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import IncodeUI from "../UI/incode-ui.js";
 =======
 =======
 import IncodeUI, { makeranking } from "../UI/incode-ui.js";
 >>>>>>> d997832 (#2 #3 :sparkles: 폭발 범위 원형 변경 및 사이즈 조정)
+=======
+import IncodeUI, { makeranking, codegameclear } from "../UI/incode-ui.js";
+>>>>>>> e1abf85 (#7 코드모드 연습 결과창 업데이트)
 import Enemy from "./CodeObj/enemy.js";
 import Magic from "./CodeObj/magic.js";
 <<<<<<< HEAD
@@ -945,7 +949,11 @@ function dataSend() {
         };
         socket.send(JSON.stringify(Data));
         IsStarted = false;
-        makeranking();
+        if (stageNum === 6) {
+          makeranking();
+        } else {
+          codegameclear();
+        }
       }
     }
   }
