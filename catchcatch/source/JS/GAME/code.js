@@ -10,7 +10,11 @@ import IncodeUI, { makeranking } from "../UI/incode-ui.js";
 >>>>>>> d997832 (#2 #3 :sparkles: 폭발 범위 원형 변경 및 사이즈 조정)
 import Enemy from "./CodeObj/enemy.js";
 import Magic from "./CodeObj/magic.js";
+<<<<<<< HEAD
 >>>>>>> 8674ac1 (#7 :sparkles: 코드모드 공격 기능 구현)
+=======
+import { showscore } from "../UI/incode-ui.js";
+>>>>>>> af488ab (#1 :sparkles: UI score 추가)
 export const codeConfig = {
   type: Phaser.AUTO,
   width: 600,
@@ -677,6 +681,8 @@ function update(time, delta) {
   frameTime += delta;
 
   if (frameTime > 16.5) {
+    showscore.textContent = global.score + "score";
+    // 여기다가 UI 띄워라
     frameTime = 0;
     timer++;
     monTimer++;
