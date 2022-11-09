@@ -19260,6 +19260,7 @@ function attack(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           monster.die_anim();
           monster.destroy();
           player.expUp();
@@ -19948,6 +19949,13 @@ function hithole(hole, monster) {
 =======
           if (monster.monSpecie === "worm" || monster.monSpecie === "wormPlus" || monster.monSpecie === "wormFinal") {
 >>>>>>> 4b3634f (#2 :bomb: 폭발 몬스터 단계별로 크기 변화)
+=======
+          if (
+            monster.monSpecie === "worm" ||
+            monster.monSpecie === "wormPlus" ||
+            monster.monSpecie === "wormFinal"
+          ) {
+>>>>>>> d997832 (#2 #3 :sparkles: 폭발 범위 원형 변경 및 사이즈 조정)
             monster.boomAnim();
           } else {
             monster.dieAnim();
@@ -19990,7 +19998,11 @@ function hithole(hole, monster) {
 
     if (monster.health <= 0 && monster.type !== "boss") {
       if (monster.monSpecie !== "slime") {
-        if (monster.monSpecie === "worm" || monster.monSpecie === "wormPlus" || monster.monSpecie === "wormFinal") {
+        if (
+          monster.monSpecie === "worm" ||
+          monster.monSpecie === "wormPlus" ||
+          monster.monSpecie === "wormFinal"
+        ) {
           monster.boomAnim();
         } else {
           monster.dieAnim();
@@ -21090,7 +21102,11 @@ function bomb(bomb, target) {
     target.unInvincible();
     if (target.health <= 0 && target.type !== "boss") {
       if (target.monSpecie !== "slime") {
-        if (target.monSpecie === "worm" || target.monSpecie === "wormPlus" || target.monSpecie === "wormFinal") {
+        if (
+          target.monSpecie === "worm" ||
+          target.monSpecie === "wormPlus" ||
+          target.monSpecie === "wormFinal"
+        ) {
           target.boomAnim();
         } else {
           target.dieAnim();

@@ -2,8 +2,12 @@ import Player from "./CodeObj/player.js";
 import { Chunk, Tile } from "./entities.js";
 import { sockConnect } from "./CodeObj/Execlient.js";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import IncodeUI from "../UI/incode-ui.js";
 =======
+=======
+import IncodeUI, { makeranking } from "../UI/incode-ui.js";
+>>>>>>> d997832 (#2 #3 :sparkles: 폭발 범위 원형 변경 및 사이즈 조정)
 import Enemy from "./CodeObj/enemy.js";
 import Magic from "./CodeObj/magic.js";
 >>>>>>> 8674ac1 (#7 :sparkles: 코드모드 공격 기능 구현)
@@ -935,6 +939,7 @@ function dataSend() {
         };
         socket.send(JSON.stringify(Data));
         IsStarted = false;
+        makeranking();
       }
     }
   }
