@@ -31,6 +31,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   maxExp = 3000000;
 =======
   maxExp = 300000000000;
@@ -45,6 +46,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   maxExp = 3000000;
   maxExp = 30000;
 >>>>>>> 73f34e9 (Update player.js)
+=======
+  maxExp = 3;
+>>>>>>> b12c7f3 (:poop: 뭐가 바뀐지 모르겠다)
   exp = 0;
   level = 1;
 <<<<<<< HEAD
