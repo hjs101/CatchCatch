@@ -637,7 +637,7 @@ this.scene.pause();
       }
       break;
     case 6:
-      maxMon = 10;
+      maxMon = 15;
       let randomNum = Math.floor(Math.random() * 3 + 5);
       for (let i = 0; i < randomNum; i++) {
         catSpawn();
@@ -658,6 +658,7 @@ this.scene.pause();
 
   this.physics.add.overlap(magicSet, codeMonsterSet, monsterHit);
   this.physics.add.overlap(player, codeMonsterSet, playerHit);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -688,6 +689,9 @@ this.scene.pause();
 =======
   // this.scene.pause();
 >>>>>>> 2817eee (#3 :sparkles: 사신, 슬라임 스킬 변경)
+=======
+  this.scene.pause();
+>>>>>>> f3a73b3 (#7 :sparkles: 코딩모드 구조 완성)
 }
 
 function update(time, delta) {
@@ -967,6 +971,7 @@ export function attack(isAttack, angle, element) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     codeScene.physics.moveTo(
       magic,
       x,
@@ -983,6 +988,9 @@ export function attack(isAttack, angle, element) {
 =======
     codeScene.physics.moveTo(magic, x, y, 3000);
 >>>>>>> 2817eee (#3 :sparkles: 사신, 슬라임 스킬 변경)
+=======
+    codeScene.physics.moveTo(magic, x, y, 500);
+>>>>>>> f3a73b3 (#7 :sparkles: 코딩모드 구조 완성)
   }
 }
 
@@ -996,8 +1004,12 @@ function monsterHit(magic, monster) {
     console.log("GameOver!");
 =======
   if (monster.type === 0) {
+<<<<<<< HEAD
     score -= 200;
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
+=======
+    score -= 300;
+>>>>>>> f3a73b3 (#7 :sparkles: 코딩모드 구조 완성)
   }
 
   if (!monster.invincible) {
