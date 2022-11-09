@@ -90,7 +90,11 @@ function preload() {
 
   //player start
   // 플레이어 스프라이트
-  this.load.spritesheet("tower1", "images/cattower/towerFinal.png", {
+  this.load.spritesheet("tower1", "images/cattower/8_ssafy.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("tower2", "images/cattower/lucky_ssafy.png", {
     frameWidth: 38,
     frameHeight: 64,
   });
@@ -192,10 +196,6 @@ function preload() {
     frameHeight: 16,
   });
 
-  this.load.spritesheet("fly", "images/monster/fly.png", {
-    frameWidth: 48,
-    frameHeight: 48,
-  });
   //object sprite end
 }
 
@@ -208,14 +208,14 @@ function create() {
   codeStart = true;
   this.anims.create({
     key: "tower1_idle",
-    frames: this.anims.generateFrameNumbers("tower1", { start: 0, end: 2 }),
+    frames: this.anims.generateFrameNumbers("tower1", { start: 0, end: 1 }),
     frameRate: 8,
     repeat: -1,
   });
   this.anims.create({
-    key: "tower1_attack",
-    frames: this.anims.generateFrameNumbers("tower1", { start: 3, end: 8 }),
-    frameRate: 16,
+    key: "tower2_idle",
+    frames: this.anims.generateFrameNumbers("tower2", { start: 0, end: 1 }),
+    frameRate: 8,
     repeat: -1,
   });
   // ============== 몬스터 스프라이트 애니메이션 목록 ==================
@@ -229,20 +229,6 @@ function create() {
   this.anims.create({
     key: "worm",
     frames: this.anims.generateFrameNumbers("worm", { start: 0, end: 2 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-
-  this.anims.create({
-    key: "alienPlus",
-    frames: this.anims.generateFrameNumbers("alienPlus", { start: 9, end: 14 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-
-  this.anims.create({
-    key: "wormPlus",
-    frames: this.anims.generateFrameNumbers("wormPlus", { start: 0, end: 2 }),
     frameRate: 3,
     repeat: -1,
   });
@@ -264,56 +250,6 @@ function create() {
   this.anims.create({
     key: "slime",
     frames: this.anims.generateFrameNumbers("slime", { start: 7, end: 14 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-
-  this.anims.create({
-    key: "fly",
-    frames: this.anims.generateFrameNumbers("fly", { start: 0, end: 2 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-
-  this.anims.create({
-    key: "cat1",
-    frames: this.anims.generateFrameNumbers("cat1", { start: 0, end: 0 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "cat2",
-    frames: this.anims.generateFrameNumbers("cat2", { start: 0, end: 0 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "cat3",
-    frames: this.anims.generateFrameNumbers("cat3", { start: 0, end: 0 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "cat4",
-    frames: this.anims.generateFrameNumbers("cat4", { start: 0, end: 0 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "cat5",
-    frames: this.anims.generateFrameNumbers("cat5", { start: 0, end: 0 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "cat6",
-    frames: this.anims.generateFrameNumbers("cat6", { start: 0, end: 0 }),
-    frameRate: 3,
-    repeat: -1,
-  });
-  this.anims.create({
-    key: "cat7",
-    frames: this.anims.generateFrameNumbers("cat7", { start: 0, end: 0 }),
     frameRate: 3,
     repeat: -1,
   });
@@ -348,9 +284,193 @@ function create() {
     frameRate: 20,
     repeat: -1,
   });
+  this.anims.create({
+    key: "cat1_turn",
+    frames: this.anims.generateFrameNumbers("cat1", {
+      start: 0,
+      end: 0,
+    }),
+    frameRate: 10,
+  });
+  this.anims.create({
+    key: "cat1_left",
+    frames: this.anims.generateFrameNumbers("cat1", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat1_right",
+    frames: this.anims.generateFrameNumbers("cat1", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat2_turn",
+    frames: this.anims.generateFrameNumbers("cat2", {
+      start: 0,
+      end: 0,
+    }),
+    frameRate: 10,
+  });
+  this.anims.create({
+    key: "cat2_left",
+    frames: this.anims.generateFrameNumbers("cat2", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat2_right",
+    frames: this.anims.generateFrameNumbers("cat2", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat3_turn",
+    frames: this.anims.generateFrameNumbers("cat3", {
+      start: 0,
+      end: 0,
+    }),
+    frameRate: 10,
+  });
+  this.anims.create({
+    key: "cat3_left",
+    frames: this.anims.generateFrameNumbers("cat3", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat3_right",
+    frames: this.anims.generateFrameNumbers("cat3", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat4_turn",
+    frames: this.anims.generateFrameNumbers("cat4", {
+      start: 0,
+      end: 0,
+    }),
+    frameRate: 10,
+  });
+  this.anims.create({
+    key: "cat4_left",
+    frames: this.anims.generateFrameNumbers("cat4", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat4_right",
+    frames: this.anims.generateFrameNumbers("cat4", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat5_turn",
+    frames: this.anims.generateFrameNumbers("cat5", {
+      start: 0,
+      end: 0,
+    }),
+    frameRate: 10,
+  });
+  this.anims.create({
+    key: "cat5_left",
+    frames: this.anims.generateFrameNumbers("cat5", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat5_right",
+    frames: this.anims.generateFrameNumbers("cat5", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "cat6_turn",
+    frames: this.anims.generateFrameNumbers("cat6", {
+      start: 0,
+      end: 0,
+    }),
+    frameRate: 10,
+  });
+  this.anims.create({
+    key: "cat6_left",
+    frames: this.anims.generateFrameNumbers("cat6", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat6_right",
+    frames: this.anims.generateFrameNumbers("cat6", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat7_turn",
+    frames: this.anims.generateFrameNumbers("cat7", {
+      start: 0,
+      end: 0,
+    }),
+    frameRate: 10,
+  });
+  this.anims.create({
+    key: "cat7_left",
+    frames: this.anims.generateFrameNumbers("cat7", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "cat7_right",
+    frames: this.anims.generateFrameNumbers("cat7", {
+      start: 1,
+      end: 7,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
   // resource load end
 
   //player start
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   player = new Player(this, 10, 10, "tower1");
@@ -362,6 +482,11 @@ function create() {
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
   player.play("tower1_idle");
 >>>>>>> 8674ac1 (#7 :sparkles: 코드모드 공격 기능 구현)
+=======
+  player = new Player(this, 10, 10, "tower" + Math.floor(Math.random() * 2));
+  let playerRandom = Math.floor(Math.random() * 2 + 1);
+  player.play("tower" + playerRandom + "_idle");
+>>>>>>> 73a6d02 (#7 :sparkles: 고양이 이동 애니메이션 싸피 캐릭 적용)
   player.setScale(2);
   player.setDepth(3);
   //player end

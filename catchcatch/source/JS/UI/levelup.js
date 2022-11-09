@@ -14,16 +14,24 @@ import { setSound } from "../SOUND/sound";
 
 >>>>>>> 8283fbf (#2 :bug: 슬라임킹 원형 처리)
 const _propertyArr = [
+<<<<<<< HEAD
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
   "common",
+=======
+  "fire",
+  "normal",
+  "thunder",
+  "water",
+  "earth",
+  "god",
+>>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
   "wizard",
   "reaper",
   "ninja",
   "slime",
   "witch",
-  "common",
-  "common",
 ];
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
@@ -33,16 +41,65 @@ const _commonArr = ["health", "dmgmul", "heal", "speed"];
 =======
 const _commonArr = ["health", "dmgMul", "heal", "speed"];
 >>>>>>> 913d178 (#3 :sparkles: 공격력 코드 수정)
+=======
+>>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
 
 >>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 export default function levelup() {
   const property = {
-    common: {
-      name: "공통",
-      health: { level: player.healthLevel, text: "최대 체력 증가" },
-      dmgMul: { level: player.dmgMulLevel, text: "공격력 증가" },
-      heal: { level: player.healLevel, text: "회복력 증가" },
-      speed: { level: player.speedLevel, text: "이동속도 증가" },
+    fire: {
+      name: "불 고양이",
+      pet: petFire,
+      text: [
+        "불 고양이 생성",
+        "플레이어 주변 랜덤 위치 범위형 불 토네이도(개수 증가 -> 1/3/6개) (15/12/10초쿨 5초지속)",
+        "공격주기 감소(쿨타임 감소)",
+      ],
+    },
+    normal: {
+      name: "일반 고양이",
+      pet: petNormal,
+      text: [
+        "일반 고양이 생성",
+        "평타(랜덤방향으로)(개수증가 -> 1/2/3개)(3초쿨) + 플레이어의 일회용 보호막(부셔질 시 쿨타임 -> 3/2/1분)",
+        "공격주기 감소(쿨타임 감소)",
+      ],
+    },
+    thunder: {
+      name: "전기 고양이",
+      pet: petThunder,
+      text: [
+        "전기 고양이 생성",
+        "슬라임 탱탱볼 (개수 증가 -> 1/2/4개)(10/7/5초쿨)",
+        "공격주기 감소(쿨타임 감소)",
+      ],
+    },
+    water: {
+      name: "물 고양이",
+      pet: petWater,
+      text: [
+        "물 고양이 생성",
+        "해일<콜라이더>(넉백)(방향 랜덤)(해일 개수 증가 -> 1/2/4개)(30/20/10초쿨 5초지속)",
+        "공격주기 감소(쿨타임 감소)",
+      ],
+    },
+    earth: {
+      name: "땅 고양이",
+      pet: petEarth,
+      text: [
+        "땅 고양이 생성",
+        "평타(랜덤방향으로)(개수증가 -> 1/2/3개)(3초쿨) + 애니비아 벽 (맞으면 막히게)(장판 길이 증가 -> 1/2/4배수)(15/12/10초쿨 5초지속)",
+        "공격주기 감소(쿨타임 감소)",
+      ],
+    },
+    god: {
+      name: "갓 고양이",
+      pet: petGod,
+      text: [
+        "갓 고양이 생성",
+        "평타(랜덤방향으로)(개수 처음부터 3/6/9발)(1.5초쿨) + 카메라 화면 기준 적 삭제(1분쿨)",
+        "공격주기 감소(쿨타임 감소)",
+      ],
     },
     // 2 3 4 [5] 6 7 8 [9]
     wizard: {
@@ -133,18 +190,42 @@ export default function levelup() {
   let randomIndexArray = [];
   const randomCommons = [0, 0, 0, 0];
   for (let i = 0; i < 3; i++) {
-    const randomNum = Math.floor(Math.random() * 8);
+    const randomNum = Math.floor(Math.random() * 11);
+    console.log(randomNum);
     if (randomIndexArray.indexOf(randomNum) === -1) {
       if (
-        _propertyArr[randomNum] !== "common" &&
+        randomNum > 5 &&
         property[_propertyArr[randomNum]].fairy.level === 9
       ) {
         i--;
+<<<<<<< HEAD
 <<<<<<< HEAD
         console.log(i);
         console.log(123213, property[propertyArr[randomNum]].fairy.level);
 =======
 >>>>>>> da93aaa (#1 :sparkles: 무기 업그레이드 레벨 추가)
+=======
+      } else if (
+        randomNum < 5 &&
+        property[_propertyArr[randomNum]].pet.level === 3
+      ) {
+        i--;
+      } else if (randomNum === 5) {
+        let flag = false;
+        for (let j = 0; j < 5; j++) {
+          if (property[_propertyArr[j]].pet.level !== 3) {
+            flag = true;
+          }
+        }
+        if (property[_propertyArr[5]].pet.level === 3) {
+          flag = true;
+        }
+        if (flag === true) {
+          i--;
+        } else {
+          randomIndexArray.push(randomNum);
+        }
+>>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
       } else {
         randomIndexArray.push(randomNum);
       }
@@ -163,6 +244,9 @@ export default function levelup() {
   levelupContainer.style.backgroundRepeat = "no-repeat";
   levelupContainer.style.backgroundSize = "cotain";
   levelupContainer.setAttribute("class", "levelupContainer");
+  console.log(randomIndexArray);
+  console.log(property);
+  console.log(_propertyArr);
   for (let i = 0; i < 3; i++) {
     let randomCommon = Math.floor(Math.random() * 4);
     while (randomCommons[randomCommon - 1] === 1) {
@@ -180,7 +264,7 @@ export default function levelup() {
     const levelupName = document.createElement("div");
     levelupName.setAttribute("class", "levelupName");
 
-    if (_propertyArr[randomIndexArray[i]] !== "common") {
+    if (randomIndexArray[i] > 5) {
       levelupContent.setAttribute("id", `${_propertyArr[randomIndexArray[i]]}`);
       levelupText.innerText = `${
         property[_propertyArr[randomIndexArray[i]]].text[
@@ -199,12 +283,15 @@ export default function levelup() {
     } else {
       levelupContent.style.backgroundImage =
         'url("images/ui/levelup/commonupgrade_addName.png")';
-
-      levelupText.innerText = property.common[_commonArr[randomCommon]].text;
-      levelupContent.setAttribute("id", `${_commonArr[randomCommon]}`);
-      levelupName.innerHTML = `[공통] <br> Lv. ${
-        property.common[_commonArr[randomCommon]].level + 1
-      }`;
+      console.log(property[_propertyArr[randomIndexArray[i]]]);
+      levelupContent.setAttribute("id", `${_propertyArr[randomIndexArray[i]]}`);
+      levelupText.innerText =
+        property[_propertyArr[randomIndexArray[i]]].text[
+          property[_propertyArr[randomIndexArray[i]]].pet.level
+        ];
+      levelupName.innerHTML = `${
+        property[_propertyArr[randomIndexArray[i]]].name
+      } <br> Lv. ${property[_propertyArr[randomIndexArray[i]]].pet.level + 1}`;
       // levelupName.textContent += "Lv. 1";
     }
     levelupContent.style.backgroundRepeat = "no-repeat";
@@ -246,8 +333,18 @@ export default function levelup() {
       } else if (contents[i].id === "witch") {
         witch.levelUp();
         console.log(witch);
-      } else {
-        player.commonLevelUp(contents[i].id);
+      } else if (contents[i].id === "normal") {
+        petNormal.levelUp();
+      } else if (contents[i].id === "fire") {
+        petFire.levelUp();
+      } else if (contents[i].id === "thunder") {
+        petThunder.levelUp();
+      } else if (contents[i].id === "water") {
+        petWater.levelUp();
+      } else if (contents[i].id === "earth") {
+        petEarth.levelUp();
+      } else if (contents[i].id === "god") {
+        petGod.levelUp();
       }
       player.expUpdate();
       console.log(player.exp, player.maxExp);

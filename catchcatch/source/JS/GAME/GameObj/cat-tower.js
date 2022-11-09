@@ -119,6 +119,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   magicFire(game, tower, mouse, speed) {
     let magic = new TowerMagic(game, tower);
 
@@ -501,6 +502,12 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
 =======
 >>>>>>> b73dc87 (#6 :sparkles: 타워 삭제)
 =======
+=======
+  levelUp() {
+    this.level++;
+  }
+
+>>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
   overlaphit() {}
 >>>>>>> b8f5732 (#6 :sparkles: pet 추가)
 }
