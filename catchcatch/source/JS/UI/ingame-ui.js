@@ -248,6 +248,7 @@ export function GameOver() {
 
 export function UpdateTimer() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (global.gameTimer !== 0 && global.gameTimer % 60 === 0) {
         ++_second;
         if (_second === 60) {
@@ -256,6 +257,11 @@ export function UpdateTimer() {
         }
 >>>>>>> 84c8e4e (#1 :sparkles: 각종 코드 수정)
 =======
+=======
+  if (_minute < 1) {
+    _timerTxt.style.color = "red";
+  }
+>>>>>>> 72c4aa6 (#1 :sparkles: 시간초 1분대 빨간색 및 pin번호 복사시 modal 삭제)
   if (global.gameTimer !== 0 && global.gameTimer % 60 === 0) {
 <<<<<<< HEAD
     ++_second;
