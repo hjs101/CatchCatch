@@ -29,6 +29,7 @@ import Magic from "./CodeObj/magic.js";
 import {showscore} from "../UI/incode-ui.js";
 import {setSound} from "../SOUND/sound";
 
+<<<<<<< HEAD
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
 export const codeConfig = {
     type: Phaser.AUTO,
@@ -55,6 +56,32 @@ export const codeConfig = {
             debug: true,
             fixedStep: false,
         },
+=======
+export let codeConfig = {
+  type: Phaser.AUTO,
+  width: 600,
+  height: 600,
+  parent: "game-container",
+  backgroundColor: "black",
+  resolution: window.devicePixelRatio,
+  pixelArt: true,
+  roundPixels: true,
+  audio: {
+    disableWebAudio: true,
+  },
+  scene: {
+    //scene 제어에
+    preload: preload,
+    create: create,
+    update: update,
+  },
+  physics: {
+    default: "arcade",
+    arcade: {
+      fps: 60,
+      debug: debugmode,
+      fixedStep: false,
+>>>>>>> 494dd23 (#7 :sparkles: debug 모드 온오프 수정)
     },
 };
 
@@ -91,6 +118,36 @@ let monTimer = 30;
 var monster;
 global.codeMonsterSet = "";
 global.codeEnemySet = "";
+
+export function config() {
+  codeConfig = {
+    type: Phaser.AUTO,
+    width: 600,
+    height: 600,
+    parent: "game-container",
+    backgroundColor: "black",
+    resolution: window.devicePixelRatio,
+    pixelArt: true,
+    roundPixels: true,
+    audio: {
+      disableWebAudio: true,
+    },
+    scene: {
+      //scene 제어에
+      preload: preload,
+      create: create,
+      update: update,
+    },
+    physics: {
+      default: "arcade",
+      arcade: {
+        fps: 60,
+        debug: debugmode,
+        fixedStep: false,
+      },
+    },
+  };
+}
 
 function preload() {
     //map start
@@ -224,6 +281,7 @@ function preload() {
 
 function create() {
   // resource load start
+  console.log(debugmode);
   IncodeUI();
   monCount = 0;
   chunks = [];
@@ -1013,6 +1071,7 @@ this.scene.pause();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.scene.pause();
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 =======
@@ -1044,6 +1103,9 @@ this.scene.pause();
     this.physics.add.overlap(player, codeMonsterSet, playerHit);
     this.scene.pause();
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
+=======
+  // this.scene.pause();
+>>>>>>> 494dd23 (#7 :sparkles: debug 모드 온오프 수정)
 }
 
 function update(time, delta) {
