@@ -61,6 +61,7 @@ export default function ingameUi() {
   // const progress = document.createElement("progress");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const holeHp = document.createElement("div");
   holeHp.setAttribute("class", "holeHp");
   const hp = document.createElement("div");
@@ -101,9 +102,16 @@ export default function ingameUi() {
 
 =======
 >>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
+=======
+  const levelText = document.createElement("div");
+  levelText.setAttribute("class", "levelText");
+  levelText.innerText = `Lv.${player.level}`;
+  gameContainer.appendChild(levelText);
+
+>>>>>>> 830c984 (#1 :sparkles: 타이머 10분부터 줄게 변경)
   _timerTxt.setAttribute("class", "Timer");
   gameContainer.appendChild(_timerTxt);
-  _minute = 0;
+  _minute = 10;
   _second = 0;
 
   _timerTxt.textContent = `${_minute}:${_second}`;
@@ -166,11 +174,17 @@ export default function ingameUi() {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export function updateHP() {
   // console.log(hole.hp);
   const holeHp = document.querySelector(".holeHp");
   const hp = document.querySelector(".hp");
   hp.innerText = hole.hp;
+=======
+export function updateExp() {
+  const levelText = document.querySelector(".levelText");
+  levelText.innerText = `Lv.${player.level}`;
+>>>>>>> 830c984 (#1 :sparkles: 타이머 10분부터 줄게 변경)
 }
 
 <<<<<<< HEAD
@@ -243,11 +257,18 @@ export function UpdateTimer() {
 >>>>>>> 84c8e4e (#1 :sparkles: 각종 코드 수정)
 =======
   if (global.gameTimer !== 0 && global.gameTimer % 60 === 0) {
+<<<<<<< HEAD
     ++_second;
     if (_second === 60) {
       ++_minute;
       _second = 0;
 >>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
+=======
+    --_second;
+    if (_second === -1) {
+      --_minute;
+      _second = 59;
+>>>>>>> 830c984 (#1 :sparkles: 타이머 10분부터 줄게 변경)
     }
   }
   if (_second < 10) {
@@ -258,7 +279,7 @@ export function UpdateTimer() {
     else _timerTxt.textContent = `0${_minute}:${_second}`;
   } else _timerTxt.textContent = `w${_minute}:${_second}`;
 
-  if (_minute === 20) {
+  if (_minute === 0 && _second === 0) {
     $this.pause();
     GameClear();
     //게임클리어
