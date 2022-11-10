@@ -826,6 +826,7 @@ function create() {
     IsStarted = false;
     PinNumber = null;
 
+<<<<<<< HEAD
     var Data = {
       action: "exeClientInit",
     };
@@ -859,6 +860,28 @@ function create() {
   if (msg.action === "PinNumber") {
     PinNumber = msg.pinnumber;
     console.log(`당신의 Pin번호는 "${PinNumber}" 입니다.`);
+=======
+        codeMonsterSet.add(enemy);
+      }
+      break;
+    case 6:
+      maxMon = 15;
+      for (let i = 0; i < 8; i++) {
+        catSpawn();
+        let enemy = new Enemy(
+          this,
+          60,
+          monX,
+          monY,
+          "cat1",
+          "cat1",
+          0,
+          randomLocation
+        );
+        codeMonsterSet.add(enemy);
+      }
+      break;
+>>>>>>> d603061 (#7 :bug: 코딩모드 6라운드 난이도 업)
   }
   // 게임 시작시 1초 마다 서버에게 데이터를 보내는걸 시작한다.
   else if (msg.action === "StartGame") {
