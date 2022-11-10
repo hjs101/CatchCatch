@@ -24,8 +24,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   healthLevel = 1;
   dmgMul = 1;
   dmgMulLevel = 1;
+<<<<<<< HEAD
 >>>>>>> 9ea8632 (#3 :sparkles: 밸런스패치)
   speed = 100;
+=======
+  speed = 80;
+>>>>>>> 0022798 (#1 :sparkles: 치트모드 완성)
   speedLevel = 1;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -300,6 +304,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.maxExp += this.maxExpBonus;
         this.level++;
         isLevelup = true;
+        this.speed += 1;
         levelup();
       }
     }
