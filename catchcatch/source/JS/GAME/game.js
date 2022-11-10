@@ -11743,12 +11743,12 @@ function update(time, delta) {
         addMonster(this, "alien", "alien", 30, 50, monX, monY);
       }
     }
-    if (gameTimer > 5400 && gameTimer % 300 === 150) {
+    if (gameTimer > 1600 && gameTimer % 150 === 0) {
       // 2번 worm
       enemySpawn(randomLocation);
-      if (12000 < gameTimer && gameTimer <= 18000) {
+      if (12000 < gameTimer && gameTimer <= 25200) {
         addMonster(this, "wormPlus", "wormPlus", 30, 50, monX, monY);
-      } else if (18000 < gameTimer) {
+      } else if (25200 < gameTimer) {
         addMonster(this, "wormFinal", "wormFinal", 80, 60, monX, monY);
       } else if (gameTimer <= 12000) {
         addMonster(this, "worm", "worm", 10, 40, monX, monY);
@@ -11757,23 +11757,24 @@ function update(time, delta) {
     if (cheatMode && gameTimer > 0) {
       // 2번 worm
       enemySpawn(randomLocation);
-      if (12000 < gameTimer && gameTimer <= 18000) {
+      if (12000 < gameTimer && gameTimer <= 25200) {
         addMonster(this, "wormPlus", "wormPlus", 30, 50, monX, monY);
-      } else if (18000 < gameTimer) {
+      } else if (25200 < gameTimer) {
         addMonster(this, "wormFinal", "wormFinal", 80, 60, monX, monY);
       } else if (gameTimer <= 12000) {
         addMonster(this, "worm", "worm", 10, 40, monX, monY);
       }
     }
-    if (gameTimer > 15000 && gameTimer % 300 === 0) {
+    if (gameTimer > 12000 && gameTimer % 300 === 0) {
       enemySpawn(randomLocation);
       addMonster(this, "sonic", "sonic", 100, 85, monX, monY);
     }
-    if (gameTimer > 21000 && gameTimer % 600 === 0) {
+    if (gameTimer > 23000 && gameTimer % 600 === 0) {
       enemySpawn(randomLocation);
       addMonster(this, "turtle", "turtle", 200, 50, monX, monY);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
@@ -11964,6 +11965,9 @@ function update(time, delta) {
 =======
     if (gameTimer > 18000 && gameTimer % 600 === 0) {
 >>>>>>> 1287f9e (#2 :recycle: 난이도 조절)
+=======
+    if (gameTimer > 19000 && gameTimer % 600 === 0) {
+>>>>>>> 9638ab4 (#2 :recycle: 리스폰 타임)
       enemySpawn(randomLocation);
       addMonster(this, "slime", "slime", 150, 75, monX, monY);
     }
@@ -12489,7 +12493,7 @@ function update(time, delta) {
           bossSet.children.entries[i].velocity
         );
 
-        if (bossSet.children.entries[i].bossSpecie === "golem") {
+        if (bossSet.children.entries[i].monSpecie === "golem") {
           if (bossGolemActive && gameTimer % 240 === 0) {
             addMonster(
               this,
@@ -12503,7 +12507,7 @@ function update(time, delta) {
           }
         }
 
-        if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
+        if (bossSet.children.entries[i].monSpecie === "fireGiant") {
           if (bossFireGiantActive) {
             this.physics.moveToObject(
               bossMagicSet.children.entries[0],
@@ -12516,10 +12520,10 @@ function update(time, delta) {
           for (let i = 0; i < 5; i++) {
             player.expUp();
           }
-          if (bossSet.children.entries[i].bossSpecie !== "slimeKing") {
+          if (bossSet.children.entries[i].monSpecie !== "slimeKing") {
             global.coin += 10;
           } else global.coin += 2;
-          if (bossSet.children.entries[i].bossSpecie === "slimeKing") {
+          if (bossSet.children.entries[i].monSpecie === "slimeKing") {
             slimePattern(
               this,
               bossSet.children.entries[i].pt,
@@ -12528,10 +12532,11 @@ function update(time, delta) {
             );
           }
 
-          if (bossSet.children.entries[i].bossSpecie === "golem") {
+          if (bossSet.children.entries[i].monSpecie === "golem") {
             bossGolemActive = false;
           }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     this.anims.create({
         key: "fireGiantAura",
@@ -20230,6 +20235,9 @@ function update(time, delta) {
     });
 =======
           if (bossSet.children.entries[i].bossSpecie === "fireGiant") {
+=======
+          if (bossSet.children.entries[i].monSpecie === "fireGiant") {
+>>>>>>> 9638ab4 (#2 :recycle: 리스폰 타임)
             bossMagicSet.children.entries[0].destroy();
             bossFireGiantActive = false;
           }
@@ -25506,9 +25514,9 @@ function slimePattern(scene, pt, x, y) {
 }
 
 function bomb(bomb, target) {
-  if (!target.invincible) {
+  if (!target.invincible && target.monSpecie != "golem") {
     target.invincible = true;
-    target.health -= 50;
+    target.health -= bomb.dmg;
     target.unInvincible();
     if (target.health <= 0 && target.type !== "boss") {
       if (target.monSpecie !== "slime") {
