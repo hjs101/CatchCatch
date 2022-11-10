@@ -24040,7 +24040,13 @@ function attack(magic, monster) {
           }
 
           monster.destroy();
-          player.expUp();
+          if (gameTimer < 5000) {
+            player.expUp();
+            player.expUp();
+          } else {
+            player.expUp();
+          }
+
           monsterCount -= 1;
         } else if (monster.monSpecie === "slime") {
           for (let i = 0; i < 2; i++) {
@@ -24079,7 +24085,12 @@ function attack(magic, monster) {
           monster.dieAnim();
         }
         monster.destroy();
-        player.expUp();
+        if (gameTimer < 5000) {
+          player.expUp();
+          player.expUp();
+        } else {
+          player.expUp();
+        }
         if (magic.fairy.fairyNum === 2) {
           let vampireNum = Math.floor(Math.random() * 100 + 1);
           if (vampireNum < 5) {
@@ -25275,7 +25286,12 @@ function bomb(bomb, target) {
           target.dieAnim();
         }
         target.destroy();
-        player.expUp();
+        if (gameTimer < 5000) {
+          player.expUp();
+          player.expUp();
+        } else {
+          player.expUp();
+        }
         monsterCount -= 1;
       } else if (target.monSpecie === "slime") {
         for (let i = 0; i < 2; i++) {
@@ -25545,6 +25561,7 @@ function hit_anime(monster) {
 //map start
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function getChunk(x, y) {
     let chunk = null;
     for (let i = 0; i < chunks.length; i++) {
@@ -25561,6 +25578,50 @@ function getChunk(x, y) {
 function petAttackFunc(magic, enemy) {
   enemy.health -= magic.dmg;
   magic.destroy();
+=======
+function petAttackFunc(magic, monster) {
+  if (!monster.invincible) {
+    monster.invincible = true;
+    monster.unInvincible();
+    monster.health -= magic.dmg;
+    magic.destroy();
+    if (monster.health <= 0 && monster.type !== "boss") {
+      if (monster.monSpecie !== "slime") {
+        if (
+          monster.monSpecie === "worm" ||
+          monster.monSpecie === "wormPlus" ||
+          monster.monSpecie === "wormFinal"
+        ) {
+          monster.boomAnim();
+        } else {
+          monster.dieAnim();
+        }
+        monster.destroy();
+        if (gameTimer < 5000) {
+          player.expUp();
+          player.expUp();
+        } else {
+          player.expUp();
+        }
+        monsterCount -= 1;
+      } else if (monster.monSpecie === "slime") {
+        for (let i = 0; i < 2; i++) {
+          addMonster(
+            thisScene,
+            "babySlime",
+            "slime",
+            150 + difficulty_hp,
+            125,
+            monster.x + i * 20,
+            monster.y
+          );
+        }
+        monster.destroy();
+        monsterCount -= 1;
+      }
+    }
+  }
+>>>>>>> 8f54603 (#2 :sparkles: 펫 공격 방식 및 주기)
 }
 >>>>>>> 3a3a548 (:sparkles: 참치 추가 및 노멀 펫 총알 추가)
 //map end
