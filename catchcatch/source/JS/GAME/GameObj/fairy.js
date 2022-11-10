@@ -621,6 +621,14 @@ export default class Fairy extends Phaser.Physics.Arcade.Sprite {
     control = true;
   }
 
+  cheat() {
+    for (let i = 0; i < 8; i++) {
+      levelUp();
+    }
+    this.as = 1;
+    this.dmg = 10000;
+  }
+
   skillFire() {
     let skill;
     let shw;

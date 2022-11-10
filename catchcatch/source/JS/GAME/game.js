@@ -535,6 +535,7 @@ let scoreText;
 // 마우스 포인터 관련
 export let input;
 let mouse;
+global.cheatMode = false;
 //player end
 
 <<<<<<< HEAD
@@ -11536,6 +11537,12 @@ function create() {
   this.physics.add.collider(monsterSet, wallLayer);
   //   this.physics.add.collider(monsterSet, treesLayer);
   //   this.physics.add.collider(bossSet, treesLayer);
+
+  if (cheatMode) {
+    for (let i = 0; i < 5; i++) {
+      fairySet.children.entries[i].cheat();
+    }
+  }
 }
 
 function update(time, delta) {
@@ -11736,6 +11743,17 @@ function update(time, delta) {
       }
     }
     if (gameTimer > 5400 && gameTimer % 300 === 150) {
+      // 2번 worm
+      enemySpawn(randomLocation);
+      if (12000 < gameTimer && gameTimer <= 18000) {
+        addMonster(this, "wormPlus", "wormPlus", 150, 50, monX, monY);
+      } else if (18000 < gameTimer) {
+        addMonster(this, "wormFinal", "wormFinal", 200, 60, monX, monY);
+      } else if (gameTimer <= 12000) {
+        addMonster(this, "worm", "worm", 10, 40, monX, monY);
+      }
+    }
+    if (cheatMode && gameTimer > 0) {
       // 2번 worm
       enemySpawn(randomLocation);
       if (12000 < gameTimer && gameTimer <= 18000) {
