@@ -27,7 +27,7 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
 >>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
 
   constructor(scene, mineX, mineY, minesprite, cointimes) {
-    super(scene, mineX, mineY, minesprite, cointimes);
+    super(scene, mineX, mineY - 400, minesprite, cointimes);
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -168,6 +168,15 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
     this.coinTime = cointimes;
 
     scene.add.existing(this);
+
+    scene.tweens.add({
+      targets: this,
+      x: mineX,
+      y: mineY,
+      duration: 2000,
+      ease: "Bounce.Out",
+    });
+
     scene.physics.add.existing(this);
     scene.physics.add.overlap(this, player, this.overlapOpen);
   }
@@ -186,6 +195,7 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
     console.log("hi");
     var range = Phaser.Math.Distance.Between(mine.x, mine.y, 0, 0);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (gameTimer % 7200 === 0) {
       mine.coinTime = gameTimer / 7200;
@@ -213,6 +223,11 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
     if (player.health < 20) {
       player.health += 1;
 >>>>>>> 7ac9448 (#6 :sparkles: 펫 종류별 총알 추가)
+=======
+    player.health += 2;
+    if (player.health >= 20) {
+      player.health = 20;
+>>>>>>> 9dfe3b7 (:sparkles: 스킬 완성)
     }
 
     if (ChoiceCat === 5) {
