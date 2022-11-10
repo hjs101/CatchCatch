@@ -11,7 +11,11 @@
   justify-content: center;
 <<<<<<< HEAD
   position: relative;
+<<<<<<< HEAD
 =======
+=======
+  overflow: hidden;
+>>>>>>> 63605bb (#1 :sparkles: shift 튜토리얼 추가)
   cursor: url("../../../public/images/cursor/aimNone.png"), pointer;
 >>>>>>> 16e21b9 (:sparkles: cursor 적용 끝)
 }
@@ -24,4 +28,3 @@
   border-radius: 5px;
   z-index: 1;
 }
-
