@@ -11717,7 +11717,7 @@ function update(time, delta) {
       }
     }
 
-    gameTimer += 3;
+    gameTimer++;
     UpdateTimer();
 >>>>>>> ad73ae5 (:sparkles: map 이미지 추가)
 
