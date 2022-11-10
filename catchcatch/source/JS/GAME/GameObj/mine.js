@@ -184,9 +184,10 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
   }
 
   overlapOpen(mine, player) {
-    console.log(mine);
+    console.log("hi");
     var range = Phaser.Math.Distance.Between(mine.x, mine.y, 0, 0);
 
+<<<<<<< HEAD
     if (gameTimer % 7200 === 0) {
       mine.coinTime = gameTimer / 7200;
     }
@@ -209,7 +210,12 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
     mine.destroy();
 
 =======
+=======
+    if (player.health < 20) {
+      player.health += 1;
+>>>>>>> 7ac9448 (#6 :sparkles: 펫 종류별 총알 추가)
     }
+
     if (ChoiceCat === 5) {
       let rand = Math.floor(Math.random() * 20);
       setSound.playSE(rand);
