@@ -62,6 +62,20 @@ const StartPageInit = () => {
   _app.style.backgroundPosition = "center";
   _app.style.backgroundRepeat = "no-repeat";
   _app.style.backgroundSize = "cover";
+  // 치트 모드
+  const cheat = document.createElement("div");
+  let cheatNum = 0;
+  cheat.setAttribute("class", "cheat");
+  cheat.addEventListener("click", () => {
+    cheatNum += 1;
+    if (cheatNum === 5) {
+      cheatMode = true;
+    } else {
+      cheatMode = false;
+    }
+    console.log(cheatNum, cheatMode);
+  });
+  _app.appendChild(cheat);
   // 로고 생성=======================================
   const _Logo = document.createElement("div");
   _Logo.className = "Logo";
@@ -291,6 +305,7 @@ function GoSelectChar() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   StartBtnOff();
   CharSpaceOn();
 =======
@@ -311,6 +326,9 @@ function GoSelectChar() {
   setSound.setBGM(0);
 =======
   if(setSound.nowBGM() === null){
+=======
+  if (setSound.nowBGM() === null) {
+>>>>>>> f5d4da8 (#1 :sparkles: 치트 모드 버튼 구현)
     setSound.setBGM(0);
   }
   setSound.playSE(16);
