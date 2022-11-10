@@ -11616,7 +11616,7 @@ function update(time, delta) {
       }
     }
 
-    gameTimer++;
+    gameTimer += 3;
     UpdateTimer();
 >>>>>>> ad73ae5 (:sparkles: map 이미지 추가)
 
@@ -12186,7 +12186,7 @@ function update(time, delta) {
     }
 
     // 보스
-    let slimeSpawnTime = 18000;
+    let slimeSpawnTime = 10800;
     let golemSpawnTime = 21000;
     let fireGiantSpawnTime = 28000;
 
