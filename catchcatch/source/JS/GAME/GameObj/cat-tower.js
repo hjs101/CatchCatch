@@ -361,7 +361,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
           player.x,
           player.y,
           1,
-          40000,
+          2000,
           2
         );
 
