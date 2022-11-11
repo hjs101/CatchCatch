@@ -10086,6 +10086,12 @@ function update(time, delta) {
     frameWidth: 48,
     frameHeight: 48,
   });
+
+  this.load.spritesheet("wormFever", "images/monster/wormFever.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
   //   보스
   this.load.spritesheet("slimeKing", "images/boss/slimeKing.png", {
     frameWidth: 96,
@@ -10927,6 +10933,13 @@ function create() {
   this.anims.create({
     key: "wormFinal",
     frames: this.anims.generateFrameNumbers("wormFinal", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "wormFever",
+    frames: this.anims.generateFrameNumbers("wormFever", { start: 0, end: 2 }),
     frameRate: 3,
     repeat: -1,
   });
@@ -20280,20 +20293,15 @@ function update(time, delta) {
 =======
     // 피버 타임
     if (killCount != 0 && killCount % 10 === 0 && feverLock == false) {
-      feverTime = 1500;
+      feverTime = 300;
       feverLock = true;
     }
 
     if (feverTime != 0) {
       enemySpawn(randomLocation);
-      if (12000 < gameTimer && gameTimer <= 25200) {
-        addMonster(this, "wormPlus", "wormPlus", 30, 50, monX, monY);
-      } else if (25200 < gameTimer) {
-        addMonster(this, "wormFinal", "wormFinal", 80, 60, monX, monY);
-      } else if (gameTimer <= 12000) {
-        addMonster(this, "worm", "worm", 10, 40, monX, monY);
-      }
+      addMonster(this, "wormFever", "wormFever", 10, 40, monX, monY);
       feverTime--;
+      console.log(killCount);
     } else if (feverTime <= 0) {
       feverLock = false;
     }
@@ -24307,14 +24315,17 @@ function attack(magic, monster) {
           if (
             monster.monSpecie === "worm" ||
             monster.monSpecie === "wormPlus" ||
-            monster.monSpecie === "wormFinal"
+            monster.monSpecie === "wormFinal" ||
+            monster.monSpecie === "wormFever"
           ) {
             monster.boomAnim();
           } else {
             monster.dieAnim();
             Count;
           }
-
+          if (monster.monSpecie === "wormFever") {
+            killCount--;
+          }
           monster.destroy();
           if (gameTimer < 9000) {
             player.expUp(1);
@@ -24356,7 +24367,8 @@ function attack(magic, monster) {
         if (
           monster.monSpecie === "worm" ||
           monster.monSpecie === "wormPlus" ||
-          monster.monSpecie === "wormFinal"
+          monster.monSpecie === "wormFinal" ||
+          monster.monSpecie === "wormFever"
         ) {
           monster.boomAnim();
         } else {
@@ -25559,11 +25571,15 @@ function bomb(bomb, target) {
         if (
           target.monSpecie === "worm" ||
           target.monSpecie === "wormPlus" ||
-          target.monSpecie === "wormFinal"
+          target.monSpecie === "wormFinal" ||
+          target.monSpecie === "wormFever"
         ) {
           target.boomAnim();
         } else {
           target.dieAnim();
+        }
+        if (target.monSpecie === "wormFever") {
+          killCount--;
         }
         target.destroy();
         if (gameTimer < 9000) {
@@ -25872,11 +25888,15 @@ function petAttackFunc(magic, monster) {
         if (
           monster.monSpecie === "worm" ||
           monster.monSpecie === "wormPlus" ||
-          monster.monSpecie === "wormFinal"
+          monster.monSpecie === "wormFinal" ||
+          monster.monSpecie === "wormFever"
         ) {
           monster.boomAnim();
         } else {
           monster.dieAnim();
+        }
+        if (monster.monSpecie === "wormFever") {
+          killCount--;
         }
         monster.destroy();
         if (gameTimer < 9000) {
