@@ -404,6 +404,7 @@ function InitRanking() {
       areaspace.className = "areaspace_4";
     } else if (NewData[i][3] === "서울") {
       areaspace.textContent = "서울";
+      areaspace.className = "areaspace_5";
     }
 
     MyRanking.appendChild(areaspace);
