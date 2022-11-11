@@ -402,7 +402,7 @@ export const config = {
     default: "arcade",
     arcade: {
       fps: 60,
-      debug: false,
+      debug: true,
       fixedStep: false,
     },
 <<<<<<< HEAD
@@ -466,6 +466,7 @@ let difficulty_hp = 0;
 let cats;
 // 플레이어 객체
 global.player = "";
+global.shield = true;
 // 타워
 
 // 캐릭터 선택 시 변경될 변수
@@ -21502,7 +21503,7 @@ function update(time, delta) {
     expBarBG.fillStyle(0x000000);
     expBarBG.fillRect(0, 0, UICam.worldView.width, 16); // x y 가로길이, 세로길이
 
-    expBar.fillStyle(0xff0000);
+    expBar.fillStyle(0x1ca1db);
     expBar.fillRect(
       0,
       0,
@@ -25867,5 +25868,53 @@ function petAttackFunc(magic, monster) {
   }
 >>>>>>> 8f54603 (#2 :sparkles: 펫 공격 방식 및 주기)
 }
+<<<<<<< HEAD
 >>>>>>> 3a3a548 (:sparkles: 참치 추가 및 노멀 펫 총알 추가)
+=======
+
+export function petSkillAttackFunc(skill, monster) {
+  if (!monster.invincible) {
+    monster.invincible = true;
+    monster.unInvincible();
+    console.log(skill.dmg);
+    monster.health -= skill.dmg;
+    // skill.destroy();
+    if (monster.health <= 0 && monster.type !== "boss") {
+      if (monster.monSpecie !== "slime") {
+        if (
+          monster.monSpecie === "worm" ||
+          monster.monSpecie === "wormPlus" ||
+          monster.monSpecie === "wormFinal"
+        ) {
+          monster.boomAnim();
+        } else {
+          monster.dieAnim();
+        }
+        monster.destroy();
+        if (gameTimer < 9000) {
+          player.expUp();
+          player.expUp();
+        } else {
+          player.expUp();
+        }
+        monsterCount -= 1;
+      } else if (monster.monSpecie === "slime") {
+        for (let i = 0; i < 2; i++) {
+          addMonster(
+            thisScene,
+            "babySlime",
+            "slime",
+            50 + difficulty_hp,
+            100,
+            monster.x + i * 20,
+            monster.y
+          );
+        }
+        monster.destroy();
+        monsterCount -= 1;
+      }
+    }
+  }
+}
+>>>>>>> 3f55488 (merge)
 //map end
