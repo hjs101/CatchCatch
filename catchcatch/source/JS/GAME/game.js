@@ -20309,7 +20309,7 @@ function update(time, delta) {
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
 =======
     // 피버 타임
-    if (killCount != 0 && killCount % 10 === 0 && feverLock == false) {
+    if (killCount != 0 && killCount % 80 === 0 && feverLock == false) {
       feverTime = 600;
       feverLock = true;
     }
