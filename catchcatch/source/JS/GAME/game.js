@@ -736,6 +736,7 @@ global.monsterCount = 0;
 let randomLocation = 0;
 let feverTime = 0;
 let feverLock = false;
+let fever_late = 0;
 let randomMonster = 0;
 
 // 임시 구멍
@@ -20309,7 +20310,11 @@ function update(time, delta) {
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
 =======
     // 피버 타임
-    if (killCount != 0 && killCount % 80 === 0 && feverLock == false) {
+    if (
+      killCount != 0 &&
+      killCount % (80 + fever_late) === 0 &&
+      feverLock == false
+    ) {
       feverTime = 600;
       feverLock = true;
     }
@@ -20318,6 +20323,7 @@ function update(time, delta) {
       enemySpawn(randomLocation);
       addMonster(this, "wormFever", "wormFever", 10, 40, monX, monY);
       feverTime--;
+      fever_late += 20;
     } else if (feverTime <= 0) {
       feverLock = false;
     }
