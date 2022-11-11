@@ -213,6 +213,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     expUp() {
         this.exp++;
         this.expUpdate();
@@ -272,6 +273,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 =======
   expUp() {
     this.exp++;
+=======
+  expUp(i) {
+    this.exp += i;
+>>>>>>> ea29d1b (#3 :sparkles: 경험치 적용 방식 수정)
     this.expUpdate();
   }
 >>>>>>> 9ea8632 (#3 :sparkles: 밸런스패치)
