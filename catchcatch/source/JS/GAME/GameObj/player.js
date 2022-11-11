@@ -37,6 +37,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   maxExp = 3000000;
 =======
   maxExp = 300000000000;
@@ -159,6 +160,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 =======
   maxExpBonus = 3;
 >>>>>>> ff2d410 (#2 :recycle: 폭탄몹 닿으면 터짐)
+=======
+  maxExp = 1;
+  exp = 0;
+  level = 1;
+  maxExpBonus = 0;
+>>>>>>> 5f8ccc7 (영선 merge)
   coin = 100000;
   // 캐릭터 특수능력 일단 보류
   ability = 0;
