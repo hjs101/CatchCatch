@@ -11330,6 +11330,7 @@ function create() {
   petEarth.setVisible(false);
   petGod.setVisible(false);
 
+<<<<<<< HEAD
   //디버그용
   petNormal.setVisible(true);
   petThunder.setVisible(true);
@@ -11338,6 +11339,8 @@ function create() {
   petEarth.setVisible(true);
   petGod.setVisible(true);
 
+=======
+>>>>>>> f660f2b (개발자모드 해체)
   pets.add(petNormal);
   pets.add(petThunder);
   pets.add(petFire);
@@ -23043,6 +23046,7 @@ function attack(magic, alien) {
   }
 }
 
+<<<<<<< HEAD
 function attack(magic, monster) {
 =======
   if (
@@ -23082,6 +23086,11 @@ function attack(magic, monster) {
     nowFairy !== 0 &&
     /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
   ) {
+=======
+//player start
+function changeSlot() {
+  if (cursors.slot1.isDown && nowFairy !== 0) {
+>>>>>>> 044ec34 (#3 :sparkles: 요정 스왑 딜레이 제거)
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
     nowFairy = 0;
@@ -23090,12 +23099,16 @@ function attack(magic, monster) {
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
 
+<<<<<<< HEAD
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
   if (
     cursors.slot2.isDown &&
     nowFairy !== 1 &&
     /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
   ) {
+=======
+  if (cursors.slot2.isDown && nowFairy !== 1) {
+>>>>>>> 044ec34 (#3 :sparkles: 요정 스왑 딜레이 제거)
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
     nowFairy = 1;
@@ -23105,11 +23118,7 @@ function attack(magic, monster) {
   }
 <<<<<<< HEAD
 
-  if (
-    cursors.slot3.isDown &&
-    nowFairy !== 2 &&
-    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-  ) {
+  if (cursors.slot3.isDown && nowFairy !== 2) {
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
     nowFairy = 2;
@@ -23118,11 +23127,7 @@ function attack(magic, monster) {
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
 
-  if (
-    cursors.slot4.isDown &&
-    nowFairy !== 3 &&
-    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-  ) {
+  if (cursors.slot4.isDown && nowFairy !== 3) {
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
     nowFairy = 3;
@@ -23131,11 +23136,7 @@ function attack(magic, monster) {
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
 
-  if (
-    cursors.slot5.isDown &&
-    nowFairy !== 4 &&
-    /idle/.test(fairySet[nowFairy].anims.currentAnim.key)
-  ) {
+  if (cursors.slot5.isDown && nowFairy !== 4) {
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
     nowFairy = 4;
