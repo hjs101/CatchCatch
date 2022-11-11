@@ -10337,6 +10337,8 @@ function create() {
   player.setCircle(hw * 0.6, hh - hw * 0.6, hh - hw * 0.6);
   camera = this.cameras.main;
   camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
+  camera.fadeEffect.alpha = 0;
+  camera.flash(800, 1, 1, 1);
   input = this.input;
   mouse = input.mousePointer;
   this.input.on(
@@ -11351,12 +11353,12 @@ function create() {
 
 <<<<<<< HEAD
   //디버그용
-  petNormal.setVisible(true);
-  petThunder.setVisible(true);
-  petFire.setVisible(true);
-  petWater.setVisible(true);
-  petEarth.setVisible(true);
-  petGod.setVisible(true);
+  // petNormal.setVisible(true);
+  // petThunder.setVisible(true);
+  // petFire.setVisible(true);
+  // petWater.setVisible(true);
+  // petEarth.setVisible(true);
+  // petGod.setVisible(true);
 
 =======
 >>>>>>> f660f2b (개발자모드 해체)
@@ -11556,8 +11558,8 @@ function create() {
     difficulty_vel = 20;
   }
 
-  this.physics.add.collider(bossSet, wallLayer);
-  this.physics.add.collider(monsterSet, wallLayer);
+  // this.physics.add.collider(bossSet, wallLayer);
+  // this.physics.add.collider(monsterSet, wallLayer);
   //   this.physics.add.collider(monsterSet, treesLayer);
   //   this.physics.add.collider(bossSet, treesLayer);
 
@@ -25900,8 +25902,7 @@ function petAttackFunc(magic, monster) {
         }
         monster.destroy();
         if (gameTimer < 9000) {
-          player.expUp(1);
-          player.expUp(1);
+          player.expUp(2);
         } else {
           player.expUp(1);
         }
@@ -25935,7 +25936,6 @@ export function petSkillAttackFunc(skill, monster) {
   if (!monster.invincible) {
     monster.invincible = true;
     monster.unInvincible();
-    console.log(skill.dmg);
     monster.health -= skill.dmg;
     // skill.destroy();
     if (monster.health <= 0 && monster.type !== "boss") {
@@ -25951,10 +25951,9 @@ export function petSkillAttackFunc(skill, monster) {
         }
         monster.destroy();
         if (gameTimer < 9000) {
-          player.expUp();
-          player.expUp();
+          player.expUp(2);
         } else {
-          player.expUp();
+          player.expUp(1);
         }
         monsterCount -= 1;
       } else if (monster.monSpecie === "slime") {

@@ -1,4 +1,4 @@
-import { cursors, mapSize } from "../game.js";
+import { cursors, mapSize, camera } from "../game.js";
 import { GameOver, updateExp } from "../../UI/ingame-ui.js";
 import levelup from "../../UI/levelup.js";
 import { setSound } from "../../SOUND/sound";
@@ -31,6 +31,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   speed = 80;
 >>>>>>> 0022798 (#1 :sparkles: 치트모드 완성)
   speedLevel = 1;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -166,6 +167,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   level = 1;
   maxExpBonus = 0;
 >>>>>>> 5f8ccc7 (영선 merge)
+=======
+  maxExp = 3;
+  exp = 0;
+  level = 1;
+  maxExpBonus = 3;
+>>>>>>> eafeb9f (camera effect)
   coin = 100000;
   // 캐릭터 특수능력 일단 보류
   ability = 0;
@@ -476,6 +483,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     } else {
       setSound.playSE(11);
     }
+    camera.shake(100, 0.01); //camera
     if (player.invincible === false && monster.monSpecie === "worm") {
       monster.boomAnim();
       player.bombHitPlayer(player, monster);
@@ -488,8 +496,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       // stop_game -= 1;
       if (player.health <= 0) {
         player.health = 0;
-        GameOver();
-        $this.pause();
+        camera.fadeEffect.alpha = 0;
+        camera.fade(2000);
+
+        let over = () => {
+          GameOver();
+          $this.pause();
+        };
+        setTimeout(over, 2000);
       }
     }
     // 공격 맞은 후 일시 무적에 사용
