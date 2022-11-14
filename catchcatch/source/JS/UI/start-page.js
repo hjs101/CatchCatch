@@ -24,7 +24,12 @@ import { setSound } from "../SOUND/sound";
 import { attack } from "../GAME/code.js";
 >>>>>>> 295dd26 (#7 :sparkles: 랭킹 시스템 제작중)
 
+<<<<<<< HEAD
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
+=======
+let _Logo;
+
+>>>>>>> 2bd59ed (#1 :sparkles: UI로고 수정)
 let _mode = true;
 <<<<<<< HEAD
 
@@ -63,6 +68,10 @@ const StartPageInit = () => {
   _app.style.backgroundRepeat = "no-repeat";
   _app.style.backgroundSize = "cover";
   // 치트 모드
+
+  const cheatdiv = document.querySelector(".cheat");
+  if (cheatdiv != null) _app.removeChild(cheatdiv);
+
   const cheat = document.createElement("div");
   let cheatNum = 0;
   cheat.setAttribute("class", "cheat");
@@ -73,20 +82,13 @@ const StartPageInit = () => {
     } else {
       cheatMode = false;
     }
-    console.log(cheatNum, cheatMode);
   });
   _app.appendChild(cheat);
   // 로고 생성=======================================
-  const _Logo = document.createElement("div");
+  _Logo = document.createElement("div");
   _Logo.className = "Logo";
   _Logo.id = "Logo";
 
-  let LogoImg = document.createElement("img");
-  LogoImg.src = "images/ui/Logo.png";
-
-  LogoImg.width = 1000;
-  LogoImg.height = 300;
-  _Logo.appendChild(LogoImg);
   _Logo.addEventListener("click", () => {
     _mode = !_mode;
     StartPageInit();
@@ -167,10 +169,26 @@ const StartPageInit = () => {
 
   //이벤트 리스너 추가------------
   if (_mode === true) {
+    let LogoImg = document.createElement("img");
+    LogoImg.setAttribute("id", "logoimg");
+    // LogoImg.src = "images/ui/Logo2.gif";
+
+    LogoImg.width = 600;
+    LogoImg.height = 300;
+    _Logo.appendChild(LogoImg);
+    LogoImg.src = "images/ui/Logo2.gif";
     // BGM
     setSound.setBGM(0);
     Btn.addEventListener("click", GoSelectChar);
   } else {
+    let LogoImg = document.createElement("img");
+    LogoImg.setAttribute("id", "logoimg");
+    // LogoImg.src = "images/ui/Logo2.gif";
+
+    LogoImg.width = 600;
+    LogoImg.height = 300;
+    _Logo.appendChild(LogoImg);
+    LogoImg.src = "images/ui/codelogo.gif";
     setSound.setBGM(4);
     Btn.addEventListener("click", () => {
       console.log("코딩모드 시작");
