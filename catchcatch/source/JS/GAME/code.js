@@ -192,6 +192,7 @@ function preload() {
     // player end
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
 
+<<<<<<< HEAD
     //attack sprite start
     this.load.spritesheet(
         "magic1",
@@ -227,6 +228,35 @@ function preload() {
         endFrame: 5,
     });
     //attack sprite end
+=======
+  //attack sprite start
+  this.load.spritesheet("magic1", "images/attack/weapon/normalMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+    endFrame: 5,
+  });
+  this.load.spritesheet("magic2", "images/attack/weapon/thunderMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+    endFrame: 5,
+  });
+  this.load.spritesheet("magic3", "images/attack/weapon/fireMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+    endFrame: 5,
+  });
+  this.load.spritesheet("magic4", "images/attack/weapon/waterMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+    endFrame: 5,
+  });
+  this.load.spritesheet("magic5", "images/attack/weapon/earthMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+    endFrame: 5,
+  });
+  //attack sprite end
+>>>>>>> b698733 (#7 :sparkles: 코딩모드 업데이트)
 
 <<<<<<< HEAD
     //object sprite start
@@ -496,31 +526,31 @@ function create() {
 <<<<<<< HEAD
   this.anims.create({
     key: "magic1",
-    frames: this.anims.generateFrameNumbers("magic1", { start: 0, end: 5 }),
+    frames: this.anims.generateFrameNumbers("magic1", { start: 1, end: 1 }),
     frameRate: 20,
     repeat: -1,
   });
   this.anims.create({
     key: "magic2",
-    frames: this.anims.generateFrameNumbers("magic2", { start: 0, end: 5 }),
+    frames: this.anims.generateFrameNumbers("magic2", { start: 1, end: 1 }),
     frameRate: 20,
     repeat: -1,
   });
   this.anims.create({
     key: "magic3",
-    frames: this.anims.generateFrameNumbers("magic3", { start: 0, end: 5 }),
+    frames: this.anims.generateFrameNumbers("magic3", { start: 1, end: 1 }),
     frameRate: 20,
     repeat: -1,
   });
   this.anims.create({
     key: "magic4",
-    frames: this.anims.generateFrameNumbers("magic4", { start: 0, end: 5 }),
+    frames: this.anims.generateFrameNumbers("magic4", { start: 1, end: 1 }),
     frameRate: 20,
     repeat: -1,
   });
   this.anims.create({
     key: "magic5",
-    frames: this.anims.generateFrameNumbers("magic5", { start: 0, end: 5 }),
+    frames: this.anims.generateFrameNumbers("magic5", { start: 1, end: 1 }),
     frameRate: 20,
     repeat: -1,
   });
