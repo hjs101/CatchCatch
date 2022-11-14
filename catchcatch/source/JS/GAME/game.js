@@ -101,12 +101,19 @@ import ingameUi, { GameOver, updateExp, updateHP } from "../UI/ingame-ui.js";
 >>>>>>> 2d18cb4 (#3 #7 :sparkles: 코딩모드 및 아케이드모드 업데이트)
 =======
 import ingameUi, {
+<<<<<<< HEAD
     GameOver,
     updateExp,
     updateHP,
     useSkill,
     canSkill,
     messageBoss,
+=======
+  GameOver,
+  useSkill,
+  canSkill,
+  messageBoss,
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 } from "../UI/ingame-ui.js";
 >>>>>>> 89c00c0 (:bug: 파일덮어쓰기)
 import levelup from "../UI/levelup.js";
@@ -185,6 +192,7 @@ import CatTower from "./GameObj/cat-tower.js";
 import Boss from "./GameObj/boss.js";
 import Mine from "./GameObj/mine.js";
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -389,33 +397,37 @@ import { setSound } from "../SOUND/sound.js";
 import {UpdateTimer} from "../UI/ingame-ui.js";
 import {setSound} from "../SOUND/sound.js";
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
+=======
+import { UpdateTimer } from "../UI/ingame-ui.js";
+import { setSound } from "../SOUND/sound.js";
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
 export const config = {
-    type: Phaser.AUTO,
-    width: 600,
-    height: 600,
-    parent: "game-container",
-    backgroundColor: "black",
-    resolution: window.devicePixelRatio,
-    pixelArt: true,
-    roundPixels: true,
-    audio: {
-        disableWebAudio: true,
+  type: Phaser.AUTO,
+  width: 600,
+  height: 600,
+  parent: "game-container",
+  backgroundColor: "black",
+  resolution: window.devicePixelRatio,
+  pixelArt: true,
+  roundPixels: true,
+  audio: {
+    disableWebAudio: true,
+  },
+  scene: {
+    //scene 제어에
+    preload: preload,
+    create: create,
+    update: update,
+  },
+  physics: {
+    default: "arcade",
+    arcade: {
+      fps: 60,
+      debug: false,
+      fixedStep: false,
     },
-    scene: {
-        //scene 제어에
-        preload: preload,
-        create: create,
-        update: update,
-    },
-    physics: {
-        default: "arcade",
-        arcade: {
-            fps: 60,
-            debug: false,
-            fixedStep: false,
-        },
-    },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> ab7abba (#1 :fire: 불거인 수정)
@@ -470,6 +482,9 @@ export const config = {
 =======
   },
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+  },
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 };
 >>>>>>> b038195 (#1 :bug: 버그 수정)
 
@@ -857,6 +872,7 @@ function preload() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 2d18cb4 (#3 #7 :sparkles: 코딩모드 및 아케이드모드 업데이트)
 =======
@@ -879,6 +895,8 @@ function preload() {
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   //map start
   this.load.image("flower", "images/map/First Asset pack.png"); //식물
   this.load.image("plant", "images/map/TX Plant.png"); //나무
@@ -886,6 +904,7 @@ function preload() {
   this.load.image("basic", "images/map/TX Tileset Grass.png"); //타일
   this.load.tilemapTiledJSON("map", "images/map/map.json");
   //map end
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -19084,9 +19103,12 @@ function create() {
     this.load.image("basic", "images/map/TX Tileset Grass.png"); //타일
     this.load.tilemapTiledJSON("map", "images/map/map.json");
     //map end
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
-    //tower start
+  //tower start
 
+<<<<<<< HEAD
     this.load.spritesheet("catNone", "images/cattower/towerNone.png", {
         frameWidth: 38,
         frameHeight: 64,
@@ -19140,12 +19162,107 @@ function create() {
         frameHeight: 48,
     });
     //pet end
+=======
+  this.load.spritesheet("catNone", "images/cattower/towerNone.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catThunder", "images/cattower/towerThunder.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catFire", "images/cattower/towerFire.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catWater", "images/cattower/towerWater.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catEarth", "images/cattower/towerEarth.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catFinal", "images/cattower/towerFinal.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.image("skill", "images/cattower/skill.png");
 
-    //tower end
+  //pet start
+  this.load.spritesheet("petNormal", "images/pet/petNormal.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petThunder", "images/pet/petThunder.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petFire", "images/pet/petFire.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petWater", "images/pet/petWater.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petEarth", "images/pet/petEarth.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petGod", "images/pet/petGod.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  //petmagic
+  this.load.spritesheet("catNormalMagic", "images/pet/normalMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
 
-    //navi start
-    //navi end
+  this.load.spritesheet("catEarthMagic", "images/pet/earthMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
 
+  this.load.spritesheet("catGodMagic", "images/pet/godMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+  this.load.spritesheet("catNormalSkill", "images/pet/normalSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catThunderSkill", "images/pet/thunderSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catFireSkill", "images/pet/fireSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catWaterSkill", "images/pet/waterSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catEarthSkill", "images/pet/earthSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catGodSkill", "images/pet/godSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  //pet end
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+
+  //tower end
+
+  //navi start
+  //navi end
+
+<<<<<<< HEAD
     //mine start
     this.load.spritesheet("mineani", "images/mine/coin.png", {
         frameWidth: 32,
@@ -19184,212 +19301,259 @@ function create() {
         frameHeight: 100,
     });
 >>>>>>> 6f09438 (#2 :bomb: 폭발몹 스폰 주기 변경)
+=======
+  //mine start
+  this.load.spritesheet("mineani", "images/hole/new_hole.png", {
+    frameWidth: 100,
+    frameHeight: 100,
+  });
+  //mine end
 
-    // 공격 스프라이트
-    this.load.spritesheet("magic1", "images/attack/weapon/magic1.png", {
-        frameWidth: 138,
-        frameHeight: 138,
-        endFrame: 4,
-    });
+  //player start
+  // 플레이어 스프라이트
+  this.load.spritesheet("cat1", "images/cat/cat1.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat2", "images/cat/cat2.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat3", "images/cat/cat3.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat4", "images/cat/cat4.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat5", "images/cat/cat5.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat6", "images/cat/cat6.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat7", "images/cat/cat7.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
-    this.load.spritesheet("magic1_1", "images/attack/weapon/magic1_1.png", {
-        frameWidth: 362,
-        frameHeight: 362,
-        endFrame: 7,
-    });
-    this.load.spritesheet("magic1_1_1", "images/attack/weapon/magic1_1_1.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 24,
-    });
-    this.load.spritesheet("magic1_2", "images/attack/weapon/magic1_2.png", {
-        frameWidth: 138,
-        frameHeight: 138,
-        endFrame: 4,
-    });
-    this.load.spritesheet("magic1_2_1", "images/attack/weapon/magic1_2_1.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 24,
-    });
-    this.load.spritesheet("magic2", "images/attack/weapon/magic2.png", {
-        frameWidth: 192,
-        frameHeight: 108,
-    });
-    this.load.spritesheet("magic2_1", "images/attack/weapon/magic2_1.png", {
-        frameWidth: 192,
-        frameHeight: 108,
-    });
-    this.load.spritesheet("magic2_2", "images/attack/weapon/magic2_2.png", {
-        frameWidth: 192,
-        frameHeight: 108,
-    });
-    this.load.spritesheet("magic2_1_1", "images/attack/weapon/magic2_1_1.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-    });
-    this.load.spritesheet("magic2_2_1", "images/attack/weapon/magic2_2_1.png", {
-        frameWidth: 192,
-        frameHeight: 108,
-    });
+  // 공격 스프라이트
+  this.load.spritesheet("magic1", "images/attack/weapon/magic1.png", {
+    frameWidth: 138,
+    frameHeight: 138,
+    endFrame: 4,
+  });
 
-    this.load.spritesheet("magic3", "images/attack/weapon/magic3.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 7,
-    });
-    this.load.spritesheet("magic3_1", "images/attack/weapon/magic3_1.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 7,
-    });
-    this.load.spritesheet("magic3_2", "images/attack/weapon/magic3_2.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 7,
-    });
-    this.load.spritesheet(
-        "magic4",
-        "images/attack/weapon/slime_attack1_48x48.png",
-        {
-            frameWidth: 48,
-            frameHeight: 48,
-            endFrame: 2,
-        }
-    );
+  this.load.spritesheet("magic1_1", "images/attack/weapon/magic1_1.png", {
+    frameWidth: 362,
+    frameHeight: 362,
+    endFrame: 7,
+  });
+  this.load.spritesheet("magic1_1_1", "images/attack/weapon/magic1_1_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 24,
+  });
+  this.load.spritesheet("magic1_2", "images/attack/weapon/magic1_2.png", {
+    frameWidth: 138,
+    frameHeight: 138,
+    endFrame: 4,
+  });
+  this.load.spritesheet("magic1_2_1", "images/attack/weapon/magic1_2_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 24,
+  });
+  this.load.spritesheet("magic2", "images/attack/weapon/magic2.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
+  this.load.spritesheet("magic2_1", "images/attack/weapon/magic2_1.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
+  this.load.spritesheet("magic2_2", "images/attack/weapon/magic2_2.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
+  this.load.spritesheet("magic2_1_1", "images/attack/weapon/magic2_1_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+  });
+  this.load.spritesheet("magic2_2_1", "images/attack/weapon/magic2_2_1.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
 
-    this.load.spritesheet(
-        "magic4_1",
-        "images/attack/weapon/slime_attack2_48x48.png",
-        {
-            frameWidth: 48,
-            frameHeight: 48,
-            endFrame: 2,
-        }
-    );
+  this.load.spritesheet("magic3", "images/attack/weapon/magic3.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 7,
+  });
+  this.load.spritesheet("magic3_1", "images/attack/weapon/magic3_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 7,
+  });
+  this.load.spritesheet("magic3_2", "images/attack/weapon/magic3_2.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 7,
+  });
+  this.load.spritesheet(
+    "magic4",
+    "images/attack/weapon/slime_attack1_48x48.png",
+    {
+      frameWidth: 48,
+      frameHeight: 48,
+      endFrame: 2,
+    }
+  );
 
-    this.load.spritesheet(
-        "magic4_2",
-        "images/attack/weapon/slime_attack3_48x48.png",
-        {
-            frameWidth: 48,
-            frameHeight: 48,
-            endFrame: 2,
-        }
-    );
+  this.load.spritesheet(
+    "magic4_1",
+    "images/attack/weapon/slime_attack2_48x48.png",
+    {
+      frameWidth: 48,
+      frameHeight: 48,
+      endFrame: 2,
+    }
+  );
 
-    this.load.spritesheet(
-        "magic5",
-        "images/attack/weapon/8_protectioncircle_spritesheet.png",
-        {frameWidth: 100, frameHeight: 100, endFrame: 61}
-    );
+  this.load.spritesheet(
+    "magic4_2",
+    "images/attack/weapon/slime_attack3_48x48.png",
+    {
+      frameWidth: 48,
+      frameHeight: 48,
+      endFrame: 2,
+    }
+  );
 
-    this.load.spritesheet("magic5_1", "images/attack/weapon/magic5_1.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 8,
-    });
-    this.load.spritesheet("magic5_2", "images/attack/weapon/magic5_2.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 8,
-    });
-    this.load.spritesheet("magic5_3", "images/attack/weapon/magic5_3.png", {
-        frameWidth: 74,
-        frameHeight: 74,
-        endFrame: 8,
-    });
-    // 스킬 스프라이트
+  this.load.spritesheet(
+    "magic5",
+    "images/attack/weapon/8_protectioncircle_spritesheet.png",
+    { frameWidth: 100, frameHeight: 100, endFrame: 61 }
+  );
 
-    this.load.spritesheet(
-        "skill4",
-        "images/attack/weapon/10_weaponhit_spritesheet.png",
-        {
-            frameWidth: 100,
-            frameHeight: 100,
-            endFrame: 61,
-        }
-    );
-    // 요정 스프라이트
-    this.load.spritesheet("fairy1", "images/fairy/fairy1.png", {
-        frameWidth: 150,
-        frameHeight: 142,
-    });
+  this.load.spritesheet("magic5_1", "images/attack/weapon/magic5_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 8,
+  });
+  this.load.spritesheet("magic5_2", "images/attack/weapon/magic5_2.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 8,
+  });
+  this.load.spritesheet("magic5_3", "images/attack/weapon/magic5_3.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 8,
+  });
+  // 스킬 스프라이트
 
-    this.load.spritesheet("fairy1_1", "images/fairy/fairy1_yellow.png", {
-        frameWidth: 150,
-        frameHeight: 142,
-    });
+  this.load.spritesheet(
+    "skill4",
+    "images/attack/weapon/10_weaponhit_spritesheet.png",
+    {
+      frameWidth: 100,
+      frameHeight: 100,
+      endFrame: 61,
+    }
+  );
+  // 요정 스프라이트
+  this.load.spritesheet("fairy1", "images/fairy/fairy1.png", {
+    frameWidth: 150,
+    frameHeight: 142,
+  });
 
+  this.load.spritesheet("fairy1_1", "images/fairy/fairy1_yellow.png", {
+    frameWidth: 150,
+    frameHeight: 142,
+  });
+
+<<<<<<< HEAD
     this.load.spritesheet("fairy1_2", "images/fairy/fairy1_red.png", {
         frameWidth: 150,
         frameHeight: 142,
     });
+=======
+  this.load.spritesheet("fairy1_2", "images/fairy/fairy1_Red.png", {
+    frameWidth: 150,
+    frameHeight: 142,
+  });
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
-    this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
-        frameWidth: 230,
-        frameHeight: 210,
-    });
+  this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
+    frameWidth: 230,
+    frameHeight: 210,
+  });
 
-    this.load.spritesheet("fairy2_1", "images/fairy/fairy2_Red.png", {
-        frameWidth: 230,
-        frameHeight: 210,
-    });
+  this.load.spritesheet("fairy2_1", "images/fairy/fairy2_Red.png", {
+    frameWidth: 230,
+    frameHeight: 210,
+  });
 
-    this.load.spritesheet("fairy2_2", "images/fairy/fairy2_black.png", {
-        frameWidth: 230,
-        frameHeight: 210,
-    });
+  this.load.spritesheet("fairy2_2", "images/fairy/fairy2_black.png", {
+    frameWidth: 230,
+    frameHeight: 210,
+  });
 
-    this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
-        frameWidth: 140,
-        frameHeight: 140,
-    });
+  this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
+    frameWidth: 140,
+    frameHeight: 140,
+  });
 
-    this.load.spritesheet("fairy3_1", "images/fairy/fairy3_Red.png", {
-        frameWidth: 140,
-        frameHeight: 140,
-    });
+  this.load.spritesheet("fairy3_1", "images/fairy/fairy3_Red.png", {
+    frameWidth: 140,
+    frameHeight: 140,
+  });
 
-    this.load.spritesheet("fairy3_2", "images/fairy/fairy3_master.png", {
-        frameWidth: 140,
-        frameHeight: 140,
-    });
+  this.load.spritesheet("fairy3_2", "images/fairy/fairy3_master.png", {
+    frameWidth: 140,
+    frameHeight: 140,
+  });
 
-    this.load.spritesheet("fairy4", "images/fairy/fairy4.png", {
-        frameWidth: 136,
-        frameHeight: 170,
-    });
+  this.load.spritesheet("fairy4", "images/fairy/fairy4.png", {
+    frameWidth: 136,
+    frameHeight: 170,
+  });
 
-    this.load.spritesheet("fairy4_1", "images/fairy/fairy4_blue.png", {
-        frameWidth: 136,
-        frameHeight: 170,
-    });
+  this.load.spritesheet("fairy4_1", "images/fairy/fairy4_blue.png", {
+    frameWidth: 136,
+    frameHeight: 170,
+  });
 
-    this.load.spritesheet("fairy4_2", "images/fairy/fairy4_green.png", {
-        frameWidth: 136,
-        frameHeight: 170,
-    });
+  this.load.spritesheet("fairy4_2", "images/fairy/fairy4_green.png", {
+    frameWidth: 136,
+    frameHeight: 170,
+  });
 
-    this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
-        frameWidth: 160,
-        frameHeight: 190,
-    });
+  this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
+    frameWidth: 160,
+    frameHeight: 190,
+  });
 
-    this.load.spritesheet("fairy5_1", "images/fairy/fairy5_red.png", {
-        frameWidth: 160,
-        frameHeight: 190,
-    });
+  this.load.spritesheet("fairy5_1", "images/fairy/fairy5_red.png", {
+    frameWidth: 160,
+    frameHeight: 190,
+  });
 
-    this.load.spritesheet("fairy5_2", "images/fairy/fairy5_black.png", {
-        frameWidth: 160,
-        frameHeight: 190,
-    });
+  this.load.spritesheet("fairy5_2", "images/fairy/fairy5_black.png", {
+    frameWidth: 160,
+    frameHeight: 190,
+  });
 
-    //player end
+  //player end
 
-    //enemy start
+  //enemy start
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // 몬스터가 유저 따라가게함
     if (monsterCount !== 0) {
@@ -19635,6 +19799,9 @@ function create() {
 =======
   // 몬스터
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
+=======
+  // 몬스터
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
   this.load.spritesheet("monster_die", "images/monster/monster_die2.png", {
     frameWidth: 64,
@@ -19646,6 +19813,7 @@ function create() {
     frameHeight: 64,
   });
 
+<<<<<<< HEAD
   this.load.spritesheet("alien", "images/monster/alien.png", {
     frameWidth: 20,
     frameHeight: 20,
@@ -19662,10 +19830,29 @@ function create() {
   });
 
   this.load.spritesheet("turtle", "images/monster/turtle.png", {
+=======
+  this.load.spritesheet("monster_fever", "images/monster/monster_fever.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+  this.load.spritesheet("alien", "images/monster/alien.png", {
+    frameWidth: 20,
+    frameHeight: 20,
+  });
+
+  this.load.spritesheet("worm", "images/monster/worm.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("sonic", "images/monster/sonic.png", {
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     frameWidth: 32,
     frameHeight: 32,
   });
 
+<<<<<<< HEAD
   this.load.spritesheet("slime", "images/monster/slime.png", {
     frameWidth: 16,
     frameHeight: 16,
@@ -19682,10 +19869,29 @@ function create() {
   });
 
   this.load.spritesheet("alienFinal", "images/monster/alienFinal.png", {
+=======
+  this.load.spritesheet("turtle", "images/monster/turtle.png", {
+    frameWidth: 32,
+    frameHeight: 32,
+  });
+
+  this.load.spritesheet("slime", "images/monster/slime.png", {
+    frameWidth: 16,
+    frameHeight: 16,
+  });
+
+  this.load.spritesheet("fly", "images/monster/fly.png", {
+    frameWidth: 32,
+    frameHeight: 32,
+  });
+
+  this.load.spritesheet("alienPlus", "images/monster/alienPlus.png", {
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     frameWidth: 20,
     frameHeight: 20,
   });
 
+<<<<<<< HEAD
   this.load.spritesheet("wormPlus", "images/monster/wormPlus.png", {
     frameWidth: 48,
     frameHeight: 48,
@@ -19711,6 +19917,44 @@ function create() {
     frameHeight: 96,
   });
 
+=======
+  this.load.spritesheet("alienFinal", "images/monster/alienFinal.png", {
+    frameWidth: 20,
+    frameHeight: 20,
+  });
+
+  this.load.spritesheet("wormPlus", "images/monster/wormPlus.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("wormFinal", "images/monster/wormFinal.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("wormFever", "images/monster/wormFever.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  //   보스
+  this.load.spritesheet("slimeKing", "images/boss/slimeKing.png", {
+    frameWidth: 96,
+    frameHeight: 96,
+  });
+
+  this.load.spritesheet("golem", "images/boss/golem.png", {
+    frameWidth: 96,
+    frameHeight: 96,
+  });
+
+  this.load.spritesheet("fireGiant", "images/boss/fireGiant.png", {
+    frameWidth: 96,
+    frameHeight: 96,
+  });
+
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   this.load.spritesheet("fireGiantAura", "images/boss/fireGiantAura.png", {
     frameWidth: 64,
     frameHeight: 64,
@@ -19720,11 +19964,15 @@ function create() {
 
 function create() {
   this.input.setDefaultCursor("url(/images/cursor/aimNone.png), pointer");
+<<<<<<< HEAD
   if (ChoiceCat === 4) {
     setSound.setBGM(5);
   } else {
     setSound.setBGM(1);
   }
+=======
+  setSound.setBGM(1);
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
   thisScene = this;
   //map start
@@ -19741,12 +19989,22 @@ function create() {
   fieldLayer = map.createLayer("field", tileset_basic, 0, 0);
   grassLayer = map.createLayer("grass", tileset_plant, 0, 0);
   flowersLayer = map.createLayer("flowers", tileset_flower, 0, 0);
+<<<<<<< HEAD
   propsLayer = map.createLayer("props", tileset_props, 0, 0);
   treesLayer = map.createLayer("trees", tileset_plant, 0, 0);
   runeLayer = map.createLayer("rune", tileset_props, 0, 0);
 
   propsLayer.setCollisionByProperty({ collides: true });
   treesLayer.setCollisionByProperty({ collides: true });
+=======
+  //   propsLayer = map.createLayer("props", tileset_props, 0, 0);
+  //   treesLayer = map.createLayer("trees", tileset_plant, 0, 0);
+  runeLayer = map.createLayer("rune", tileset_props, 0, 0);
+  wallLayer = map.createLayer("wall", tileset_flower, 0, 0);
+
+  wallLayer.setCollisionByProperty({ collides: true });
+  //   treesLayer.setCollisionByProperty({ collides: true });
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   //map end
 
   UICam = this.cameras.add(
@@ -19780,8 +20038,13 @@ function create() {
 
   //player start
   player = new Player(this, 1, 20, 20, "cat" + (ChoiceCat + 1));
+<<<<<<< HEAD
   this.physics.add.collider(player, propsLayer);
   this.physics.add.collider(player, treesLayer);
+=======
+  this.physics.add.collider(player, wallLayer);
+  //   this.physics.add.collider(player, treesLayer);
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   player.ability = ChoiceCat + 1;
   player.setScale(0.7);
   // player.setDepth(2);
@@ -19791,6 +20054,11 @@ function create() {
   player.setCircle(hw * 0.6, hh - hw * 0.6, hh - hw * 0.6);
   camera = this.cameras.main;
   camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
+<<<<<<< HEAD
+=======
+  camera.fadeEffect.alpha = 0;
+  camera.flash(800, 1, 1, 1);
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   input = this.input;
   mouse = input.mousePointer;
   this.input.on(
@@ -19801,18 +20069,24 @@ function create() {
         player.x,
         player.y,
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.cameras.main.worldView.width,
         this.cameras.main.worldView.height
     );
 >>>>>>> 6f09438 (#2 :bomb: 폭발몹 스폰 주기 변경)
 =======
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
         cursor.x + this.cameras.main.scrollX,
         cursor.y + this.cameras.main.scrollY
       );
     },
     this
   );
+<<<<<<< HEAD
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
   // 플레이어, 요정 로딩
   global.wizard = fairySet[0] = new Fairy(
@@ -19874,6 +20148,7 @@ function create() {
     2
   );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // 슬라임
@@ -20077,6 +20352,8 @@ function create() {
         skill: Phaser.Input.Keyboard.KeyCodes.SPACE,
     });
 =======
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   global.witch = fairySet[4] = new Fairy(
     this,
     600,
@@ -20105,7 +20382,10 @@ function create() {
     frameRate: 8,
     repeat: -1,
   });
+<<<<<<< HEAD
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
   this.anims.create({
     key: "fairy1_attack",
@@ -20533,8 +20813,13 @@ function create() {
   bombDead = this.physics.add.group();
   monsterSet = this.physics.add.group();
   magics = this.physics.add.group();
+<<<<<<< HEAD
   towerAttacks = this.physics.add.group();
   towerSkillAttacks = this.physics.add.group();
+=======
+  petAttacks = this.physics.add.group();
+  petSkillAttacks = this.physics.add.group();
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   mines = this.physics.add.group();
 
   ingameUi();
@@ -20551,6 +20836,12 @@ function create() {
   thisScene.physics.add.overlap(bombDead, player, player.bombHitPlayer);
 
   //map start
+<<<<<<< HEAD
+=======
+  thisScene.physics.add.overlap(petAttacks, bossSet, petAttackFunc);
+  thisScene.physics.add.overlap(petAttacks, monsterSet, petAttackFunc);
+
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   //map end
 
   // ============== 몬스터 스프라이트 애니메이션 목록 ==================
@@ -20600,6 +20891,16 @@ function create() {
   });
 
   this.anims.create({
+<<<<<<< HEAD
+=======
+    key: "wormFever",
+    frames: this.anims.generateFrameNumbers("wormFever", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     key: "sonic",
     frames: this.anims.generateFrameNumbers("sonic", { start: 0, end: 1 }),
     frameRate: 4,
@@ -20670,6 +20971,19 @@ function create() {
   });
 
   this.anims.create({
+<<<<<<< HEAD
+=======
+    key: "monster_fever",
+    frames: this.anims.generateFrameNumbers("monster_fever", {
+      start: 0,
+      end: 7,
+    }),
+    frameRate: 12,
+    repeat: 0,
+  });
+
+  this.anims.create({
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     key: "fireGiantAura",
     frames: this.anims.generateFrameNumbers("fireGiantAura", {
       start: 0,
@@ -20737,10 +21051,193 @@ function create() {
     frameRate: 8,
     repeat: -1,
   });
+<<<<<<< HEAD
+=======
+
+  //petmagic
+  this.anims.create({
+    key: "0_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "0_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "1_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "1_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "2_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "2_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "3_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "3_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "4_idle_magic",
+    frames: this.anims.generateFrameNumbers("catEarthMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "4_destory_magic",
+    frames: this.anims.generateFrameNumbers("catEarthMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "5_idle_magic",
+    frames: this.anims.generateFrameNumbers("catGodMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "5_destory_magic",
+    frames: this.anims.generateFrameNumbers("catGodMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "0_idle_skill",
+    frames: this.anims.generateFrameNumbers("catNormalSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "1_idle_skill",
+    frames: this.anims.generateFrameNumbers("catThunderSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "2_idle_skill",
+    frames: this.anims.generateFrameNumbers("catFireSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "3_idle_skill",
+    frames: this.anims.generateFrameNumbers("catWaterSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "4_idle_skill",
+    frames: this.anims.generateFrameNumbers("catEarthSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+  this.anims.create({
+    key: "5_idle_skill",
+    frames: this.anims.generateFrameNumbers("catGodSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   //pet end
 
   global.pets = this.add.group();
 
+<<<<<<< HEAD
   global.petNormal = new CatTower(
     this,
     0,
@@ -20748,46 +21245,111 @@ function create() {
     player.y,
     "0_idle_pet",
     "can"
+=======
+  let px = player.x;
+  let py = player.y;
+
+  global.petNormal = new CatTower(
+    this,
+    0,
+    0,
+    px,
+    py,
+    "0_idle_pet",
+    "0_idle_magic",
+    "0_destory_magic",
+    "0_idle_skill"
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   );
   global.petThunder = new CatTower(
     this,
     1,
+<<<<<<< HEAD
     player.x,
     player.y,
     "1_idle_pet",
     "can"
+=======
+    0,
+    px,
+    py,
+    "1_idle_pet",
+    "1_idle_magic",
+    "1_destory_magic",
+    "1_idle_skill"
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   );
   global.petFire = new CatTower(
     this,
     2,
+<<<<<<< HEAD
     player.x,
     player.y,
     "2_idle_pet",
     "can"
+=======
+    0,
+    px,
+    py,
+    "2_idle_pet",
+    "2_idle_magic",
+    "2_destory_magic",
+    "2_idle_skill"
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   );
   global.petWater = new CatTower(
     this,
     3,
+<<<<<<< HEAD
     player.x,
     player.y,
     "3_idle_pet",
     "can"
+=======
+    0,
+    px,
+    py,
+    "3_idle_pet",
+    "3_idle_magic",
+    "3_destory_magic",
+    "3_idle_skill"
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   );
   global.petEarth = new CatTower(
     this,
     4,
+<<<<<<< HEAD
     player.x,
     player.y,
     "4_idle_pet",
     "can"
+=======
+    0,
+    px,
+    py,
+    "4_idle_pet",
+    "4_idle_magic",
+    "4_destory_magic",
+    "4_idle_skill"
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   );
   global.petGod = new CatTower(
     this,
     5,
+<<<<<<< HEAD
     player.x,
     player.y,
     "5_idle_pet",
     "can"
+=======
+    0,
+    px,
+    py,
+    "5_idle_pet",
+    "5_idle_magic",
+    "5_destory_magic",
+    "5_idle_skill"
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   );
 
   petNormal.setDepth(10);
@@ -20797,12 +21359,29 @@ function create() {
   petEarth.setDepth(10);
   petGod.setDepth(10);
 
+<<<<<<< HEAD
   petNormal.setVisible(true);
   petThunder.setVisible(true);
   petFire.setVisible(true);
   petWater.setVisible(true);
   petEarth.setVisible(true);
   petGod.setVisible(true);
+=======
+  petNormal.setVisible(false);
+  petThunder.setVisible(false);
+  petFire.setVisible(false);
+  petWater.setVisible(false);
+  petEarth.setVisible(false);
+  petGod.setVisible(false);
+
+  //디버그용
+  // petNormal.setVisible(true);
+  // petThunder.setVisible(true);
+  // petFire.setVisible(true);
+  // petWater.setVisible(true);
+  // petEarth.setVisible(true);
+  // petGod.setVisible(true);
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
   pets.add(petNormal);
   pets.add(petThunder);
@@ -20810,7 +21389,10 @@ function create() {
   pets.add(petWater);
   pets.add(petEarth);
   pets.add(petGod);
+<<<<<<< HEAD
   console.log(pets.getChildren());
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
   global.petscircle = new Phaser.Geom.Circle(player.x, player.y, 800);
 
@@ -20959,7 +21541,11 @@ function create() {
     key: "minecoin",
     frames: this.anims.generateFrameNumbers("mineani", {
       start: 0,
+<<<<<<< HEAD
       end: 3,
+=======
+      end: 7,
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     }),
     frameRate: 8,
     repeat: -1,
@@ -21001,10 +21587,24 @@ function create() {
     difficulty_vel = 20;
   }
 
+<<<<<<< HEAD
   this.physics.add.collider(bossSet, propsLayer);
   this.physics.add.collider(monsterSet, treesLayer);
   this.physics.add.collider(monsterSet, propsLayer);
   this.physics.add.collider(bossSet, treesLayer);
+=======
+  // this.physics.add.collider(bossSet, wallLayer);
+  // this.physics.add.collider(monsterSet, wallLayer);
+  //   this.physics.add.collider(monsterSet, treesLayer);
+  //   this.physics.add.collider(bossSet, treesLayer);
+
+  if (cheatMode) {
+    player.maxExp = 100000;
+    for (let i = 0; i < 5; i++) {
+      fairySet[i].cheat();
+    }
+  }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 }
 
 function update(time, delta) {
@@ -21063,6 +21663,7 @@ function update(time, delta) {
     //map end
 
     //player start
+<<<<<<< HEAD
 <<<<<<< HEAD
     player = new Player(this, 1, 20, 20, "cat" + (ChoiceCat + 1));
     this.physics.add.collider(player, propsLayer);
@@ -21181,6 +21782,8 @@ function update(time, delta) {
         fairySet[i].setDepth(2);
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     changeSlot();
     normalAttackAS = fairySet[nowFairy].as;
     if (normalAttackTimer > normalAttackAS) {
@@ -21204,6 +21807,7 @@ function update(time, delta) {
         this
       );
       fairySet[nowFairy].normalAttack(magic);
+<<<<<<< HEAD
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
     }
 
@@ -21313,17 +21917,11 @@ function update(time, delta) {
         }
 =======
 >>>>>>> 6f09438 (#2 :bomb: 폭발몹 스폰 주기 변경)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     }
-    player.changeFairy(fairySet[0]);
-    normalAttackAS = fairySet[0].as;
-    // animation
-    this.anims.create({
-        key: "fairy1_idle",
-        frames: this.anims.generateFrameNumbers("fairy1", {start: 12, end: 21}),
-        frameRate: 8,
-        repeat: -1,
-    });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     for (let i = 0; i < chunks.length; i++) {
         let chunk = chunks[i];
@@ -21366,28 +21964,35 @@ function update(time, delta) {
         frameRate: 12,
         repeat: 0,
     });
+=======
+    for (let i = 0; i < 5; i++) {
+      if (fairySet[i].timer < fairySet[i].skillCD) {
+        fairySet[i].timer++;
+      } else {
+        fairySet[i].skillUse = false;
+      }
+    }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
-    this.anims.create({
-        key: "fairy1_1_idle",
-        frames: this.anims.generateFrameNumbers("fairy1_1", {start: 12, end: 21}),
-        frameRate: 8,
-        repeat: -1,
-    });
+    if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
+      fairySet[nowFairy].skillFire();
+    }
 
-    this.anims.create({
-        key: "fairy1_1_attack",
-        frames: this.anims.generateFrameNumbers("fairy1_1", {start: 6, end: 10}),
-        frameRate: 12,
-        repeat: 0,
-    });
+    player.healCount++;
+    if (player.healCount > player.maxHealCount) {
+      player.healCount = 0;
+      player.health += player.heal;
+      if (player.health > player.maxHealth) {
+        player.health = player.maxHealth;
+      }
+    }
 
-    this.anims.create({
-        key: "fairy1_2_idle",
-        frames: this.anims.generateFrameNumbers("fairy1_2", {start: 12, end: 21}),
-        frameRate: 8,
-        repeat: -1,
-    });
+    if (player.invincible) {
+      hitTimer++;
+      if (hitTimer >= 15) {
+        hitTimer = 0;
 
+<<<<<<< HEAD
 =======
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
     this.anims.create({
@@ -22203,17 +22808,23 @@ function update(time, delta) {
         repeat: -1,
     });
     fairySet[nowFairy].play(fairySet[nowFairy].idleKey, true);
+=======
+        if (hitVisible) {
+          hitVisible = false;
+        } else {
+          hitVisible = true;
+        }
+
+        player.setVisible(hitVisible);
+      }
+    }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
     //player end
 
-    //cointext start
-    // cointext = this.add.text(500, 20, 'coin: 0', {font: 'Bold 15px Arial', fill: '#fff', fontStyle: "strong"}).setScrollFactor(0);
-    // cointext.setStroke('#000', 2);
-    // cointext.setDepth(2);
-    //cointext end
-
     //enemy start
 
+<<<<<<< HEAD
     bossSet = this.physics.add.group();
     bossMagicSet = this.physics.add.group();
     bombDead = this.physics.add.group();
@@ -22224,6 +22835,21 @@ function update(time, delta) {
     mines = this.physics.add.group();
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+    // 몬스터가 유저 따라가게함
+    if (monsterCount !== 0) {
+      for (let i = 0; i < monsterSet.children.entries.length; i++) {
+        if (monsterSet.children.entries[i].invincible) {
+          monsterSet.children.entries[i].setTint(0xff0000);
+        }
+        this.physics.moveToObject(
+          monsterSet.children.entries[i],
+          player,
+          monsterSet.children.entries[i].velocity
+        );
+      }
+    }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
     gameTimer++;
     UpdateTimer();
@@ -22234,12 +22860,21 @@ function update(time, delta) {
     if (gameTimer > 300 && gameTimer % monsterSpawn === 0) {
       // 1번 zombie
       enemySpawn(randomLocation);
+<<<<<<< HEAD
       if (10800 < gameTimer && gameTimer <= 21000) {
         addMonster(this, "alien", "alienPlus", 60, 65, monX, monY);
       } else if (21000 < gameTimer) {
         addMonster(this, "alien", "alienFinal", 100, 75, monX, monY);
       } else {
         addMonster(this, "alien", "alien", 40, 50, monX, monY);
+=======
+      if (10800 < gameTimer && gameTimer <= 18000) {
+        addMonster(this, "alien", "alienPlus", 60, 65, monX, monY);
+      } else if (18000 < gameTimer) {
+        addMonster(this, "alien", "alienFinal", 100, 75, monX, monY);
+      } else {
+        addMonster(this, "alien", "alien", 30, 50, monX, monY);
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
       }
     }
     if (gameTimer > 1200 && gameTimer % 120 === 0) {
@@ -22356,8 +22991,13 @@ function update(time, delta) {
       }
       golem = new Boss(
         this,
+<<<<<<< HEAD
         1000,
         50,
+=======
+        500,
+        30,
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
         player.x + 1500,
         player.y + 1500,
         "golem",
@@ -22389,8 +23029,13 @@ function update(time, delta) {
       }
       fireGiant = new Boss(
         this,
+<<<<<<< HEAD
         1500,
         30,
+=======
+        500,
+        10,
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
         player.x - 600,
         player.y - 600,
         "fireGiant",
@@ -22525,6 +23170,7 @@ function update(time, delta) {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.anims.create({
         key: "monster_boom",
         frames: this.anims.generateFrameNumbers("monster_boom", {
@@ -22534,17 +23180,29 @@ function update(time, delta) {
         frameRate: 12,
         repeat: 0,
     });
+=======
+    // 피버 타임
+    if (
+      killCount != 0 &&
+      killCount % (80 + fever_late) === 0 &&
+      feverLock == false
+    ) {
+      feverTime = 600;
+      feverLock = true;
+      messageBoss("피버");
+    }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 
-    this.anims.create({
-        key: "monster_fever",
-        frames: this.anims.generateFrameNumbers("monster_fever", {
-            start: 0,
-            end: 7,
-        }),
-        frameRate: 12,
-        repeat: 0,
-    });
+    if (feverTime != 0) {
+      enemySpawn(randomLocation);
+      addMonster(this, "wormFever", "wormFever", 10, 40, monX, monY);
+      feverTime--;
+      fever_late += 20;
+    } else if (feverTime <= 0) {
+      feverLock = false;
+    }
 
+<<<<<<< HEAD
     this.anims.create({
         key: "fireGiantAura",
         frames: this.anims.generateFrameNumbers("fireGiantAura", {
@@ -22574,10 +23232,13 @@ function update(time, delta) {
       feverLock = false;
     }
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     //enemy end
 
     //tower start
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -24078,6 +24739,8 @@ function update(time, delta) {
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     //tower end
 
     //exp bar start
@@ -24089,8 +24752,11 @@ function update(time, delta) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     expBar.fillStyle(0x1ca1db);
     expBar.fillRect(
       0,
@@ -24098,6 +24764,9 @@ function update(time, delta) {
       UICam.worldView.width * (player.exp / player.maxExp),
       16
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     );
   } //exp bar end
   UICam.ignore([
@@ -24123,12 +24792,17 @@ function update(time, delta) {
     petEarth,
     petGod,
 <<<<<<< HEAD
+<<<<<<< HEAD
     petAttacks,
     petSkillAttacks,
 =======
     towerAttacks,
     towerSkillAttacks,
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
+=======
+    petAttacks,
+    petSkillAttacks,
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     bossMagicSet,
   ]);
 
@@ -24143,6 +24817,7 @@ function update(time, delta) {
       mine.scale_Circle();
       mine.set_anime();
       mines.add(mine);
+<<<<<<< HEAD
 <<<<<<< HEAD
     }
 <<<<<<< HEAD
@@ -25206,7 +25881,10 @@ function attack(magic, monster) {
     if (!fairySet[nowFairy].anims.isPlaying) {
         fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
 >>>>>>> 2f19786 (#2 :sparkle: 불거인)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     }
+  }
 }
 
 function attack(magic, monster) {
@@ -25773,11 +26451,15 @@ function attack(magic, monster) {
 function changeSlot() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (cursors.slot1.isDown && nowFairy !== 0) {
 >>>>>>> 044ec34 (#3 :sparkles: 요정 스왑 딜레이 제거)
 =======
   if (cursors.slot1.isDown && nowFairy !== 0) {
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+  if (cursors.slot1.isDown && nowFairy !== 0) {
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
     nowFairy = 0;
@@ -25785,6 +26467,7 @@ function changeSlot() {
     normalAttackAS = fairySet[nowFairy].as;
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <<<<<<< HEAD
@@ -25836,6 +26519,18 @@ function changeSlot() {
   }
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 
+=======
+
+  if (cursors.slot2.isDown && nowFairy !== 1) {
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
+    nowFairy = 1;
+    player.changeFairy(fairySet[nowFairy]);
+    normalAttackAS = fairySet[nowFairy].as;
+    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+  }
+
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   if (cursors.slot3.isDown && nowFairy !== 2) {
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
@@ -25862,6 +26557,7 @@ function changeSlot() {
     normalAttackAS = fairySet[nowFairy].as;
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
+<<<<<<< HEAD
 
   if (!fairySet[nowFairy].anims.isPlaying) {
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
@@ -26440,12 +27136,22 @@ function hithole(hole, monster) {
 >>>>>>> ad73ae5 (:sparkles: map 이미지 추가)
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+
+  if (!fairySet[nowFairy].anims.isPlaying) {
+    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+  }
+}
+
+function attack(magic, monster) {
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   if (!monster.invincible) {
     if (ChoiceCat === 5) {
       let rand = Math.floor(Math.random() * 20);
       setSound.playSE(rand);
     } else {
       setSound.playSE(12);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -27133,6 +27839,9 @@ function attack(magic, monster) {
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
 =======
     }
+=======
+    }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
     if (magic.pierceCount > 0) {
       magic.pierceCount--;
     } else {
@@ -27291,7 +28000,10 @@ function attack(magic, monster) {
       }
     }
   }
+<<<<<<< HEAD
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 }
 
 <<<<<<< HEAD
@@ -27623,6 +28335,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime).setInteractive(
     { cursor: "url(images/cursor/aimHover.png), pointer" }
   );
@@ -27642,10 +28355,16 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
     { cursor: "url(images/cursor/aimHover.png), pointer" }
   );
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+  monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime).setInteractive(
+    { cursor: "url(images/cursor/aimHover.png), pointer" }
+  );
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   if (monster.monSpecie === "babySlime") {
     monster.scale = 2;
   } else if (
     monster.monSpecie === "alien" ||
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -27676,6 +28395,11 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
     monster.monSpecie === "alienFinal" ||
     monster.monSpecie === "fly"
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+    monster.monSpecie === "alienPlus" ||
+    monster.monSpecie === "alienFinal" ||
+    monster.monSpecie === "fly"
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   ) {
     monster.scale = 2.5;
   } else if (
@@ -27689,6 +28413,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
   monsterCount += 1;
   let mw = monster.body.halfWidth;
   let mh = monster.body.halfHeight;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -27910,10 +28635,14 @@ function destroyHole(hole, golem) {
 =======
 
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   monster.setCircle(mh / 2, mw - mh / 2, mw);
   monsterSet.add(monster);
   scene.physics.add.collider(monsterSet, monster);
   monster.anime(player);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> ad73ae5 (:sparkles: map 이미지 추가)
@@ -27923,6 +28652,8 @@ function destroyHole(hole, golem) {
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 }
 
 function siegeSpawn() {
@@ -27945,6 +28676,7 @@ function siegeSpawn() {
 =======
 >>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
 function enemySpawn(scene) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -28556,6 +29288,75 @@ function slimePattern(scene, pt, x, y) {
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+  randomLocation = Math.floor(Math.random() * 4) + 1;
+  if (randomLocation === 1) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y + 500, player.y + 510);
+  } else if (randomLocation === 2) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y - 510);
+  } else if (randomLocation === 3) {
+    monX = Phaser.Math.Between(player.x - 500, player.x - 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  } else if (randomLocation === 4) {
+    monX = Phaser.Math.Between(player.x + 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  }
+}
+
+function bomb(bomb, target) {
+  if (!target.invincible && target.monSpecie != "golem") {
+    target.invincible = true;
+    target.health -= bomb.dmg;
+    target.unInvincible();
+    if (target.health <= 0 && target.type !== "boss") {
+      if (target.monSpecie !== "slime") {
+        if (
+          target.monSpecie === "worm" ||
+          target.monSpecie === "wormPlus" ||
+          target.monSpecie === "wormFinal" ||
+          target.monSpecie === "wormFever"
+        ) {
+          target.boomAnim();
+        } else {
+          target.dieAnim();
+        }
+        if (target.monSpecie === "wormFever") {
+          killCount--;
+          player.expUp(0.1);
+        } else {
+          if (gameTimer < 9000) {
+            player.expUp(2);
+          } else {
+            player.expUp(1);
+          }
+        }
+        target.destroy();
+        monsterCount -= 1;
+        killCount += 1;
+      } else if (target.monSpecie === "slime") {
+        for (let i = 0; i < 2; i++) {
+          addMonster(
+            thisScene,
+            "babySlime",
+            "slime",
+            50 + difficulty_hp,
+            100,
+            target.x + i * 20,
+            target.y
+          );
+        }
+        target.destroy();
+        monsterCount -= 1;
+        killCount += 1;
+      }
+    }
+  }
+}
+
+function slimePattern(scene, pt, x, y) {
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   if (pt !== 16) {
     pt *= 2;
     for (let i = 0; i < 2; i++) {
@@ -28606,6 +29407,7 @@ function slimePattern(scene, pt, x, y) {
       let mh = slimeKing.body.halfHeight;
       slimeKing.setCircle(mh / 2, mw - mh / 2, mw);
       bossSet.add(slimeKing);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -28680,6 +29482,10 @@ function slimePattern(scene, pt, x, y) {
 =======
     }
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
+=======
+    }
+  }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 }
 
 function slimePattern(scene, pt, x, y) {
@@ -28834,8 +29640,11 @@ function petAttackFunc(magic, enemy) {
 function petAttackFunc(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
   if (!monster.invincible) {
     monster.invincible = true;
     monster.unInvincible();
@@ -28852,6 +29661,7 @@ function petAttackFunc(magic, monster) {
           monster.boomAnim();
         } else {
           monster.dieAnim();
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
         if (monster.monSpecie === "wormFever") {
@@ -28945,6 +29755,8 @@ function petAttackFunc(magic, monster) {
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
         }
         if (monster.monSpecie === "wormFever") {
           killCount--;
@@ -28986,6 +29798,7 @@ function petAttackFunc(magic, monster) {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   }
 >>>>>>> 8f54603 (#2 :sparkles: 펫 공격 방식 및 주기)
 =======
@@ -28993,6 +29806,9 @@ function petAttackFunc(magic, monster) {
 =======
   }
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
+=======
+  }
+>>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
 }
 <<<<<<< HEAD
 >>>>>>> 3a3a548 (:sparkles: 참치 추가 및 노멀 펫 총알 추가)
