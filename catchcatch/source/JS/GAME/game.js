@@ -14157,7 +14157,7 @@ function update(time, delta) {
   //map end
 
   //player start
-  player = new Player(this, 1, 20, 20, "cat" + (ChoiceCat + 1));
+  player = new Player(this, 1, 10, 10, "cat" + (ChoiceCat + 1));
   this.physics.add.collider(player, wallLayer);
   //   this.physics.add.collider(player, treesLayer);
   player.ability = ChoiceCat + 1;
