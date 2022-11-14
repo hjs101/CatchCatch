@@ -30,6 +30,8 @@ const _propertyArr = [
   "ninja",
   "slime",
   "witch",
+  "heal",
+  "coin",
 ];
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -153,6 +155,8 @@ export default function levelup() {
         "요정 강화 \n이제 마우스 커서에\n폭탄을 설치합니다.",
       ],
     },
+    heal: { name: "회복", text: "체력 5 회복" },
+    coin: { name: "캔", text: "캔 10개 획득" },
   };
   if (ChoiceCat === 5) {
     let rand = Math.floor(Math.random() * 20);
@@ -165,6 +169,7 @@ export default function levelup() {
 
   let randomIndexArray = [];
   const randomCommons = [0, 0, 0, 0];
+<<<<<<< HEAD
   for (let i = 0; i < 3; i++) {
     const randomNum = Math.floor(Math.random() * 11);
     console.log(randomNum);
@@ -190,23 +195,52 @@ export default function levelup() {
         let flag = false;
         for (let j = 0; j < 5; j++) {
           if (property[_propertyArr[j]].pet.level !== 3) {
+=======
+  if (levelCount === 11) {
+    randomIndexArray = [11, 12];
+  } else {
+    for (let i = 0; i < 3; i++) {
+      let randomNum;
+      if (levelCount >= 8) {
+        randomNum = Math.floor(Math.random() * 13);
+      } else {
+        randomNum = Math.floor(Math.random() * 11);
+      }
+      if (randomIndexArray.indexOf(randomNum) === -1) {
+        if (
+          randomNum > 5 &&
+          randomNum < 11 &&
+          property[_propertyArr[randomNum]].fairy.level === 9
+        ) {
+          i--;
+        } else if (
+          randomNum < 5 &&
+          property[_propertyArr[randomNum]].pet.level === 3
+        ) {
+          i--;
+        } else if (randomNum === 5) {
+          let flag = false;
+          for (let j = 0; j < 5; j++) {
+            if (property[_propertyArr[j]].pet.level !== 3) {
+              flag = true;
+            }
+          }
+          if (property[_propertyArr[5]].pet.level === 3) {
+>>>>>>> ac28b12 (#1 :sparkles: 레벨업 회복 코인 추가)
             flag = true;
           }
-        }
-        if (property[_propertyArr[5]].pet.level === 3) {
-          flag = true;
-        }
-        if (flag === true) {
-          i--;
+          if (flag === true) {
+            i--;
+          } else {
+            randomIndexArray.push(randomNum);
+          }
         } else {
           randomIndexArray.push(randomNum);
         }
 >>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
       } else {
-        randomIndexArray.push(randomNum);
+        i--;
       }
-    } else {
-      i--;
     }
   }
   const gameContainer = document.querySelector("#game-container");
@@ -220,15 +254,7 @@ export default function levelup() {
   levelupContainer.style.backgroundRepeat = "no-repeat";
   levelupContainer.style.backgroundSize = "cotain";
   levelupContainer.setAttribute("class", "levelupContainer");
-  console.log(randomIndexArray);
-  console.log(property);
-  console.log(_propertyArr);
-  for (let i = 0; i < 3; i++) {
-    let randomCommon = Math.floor(Math.random() * 4);
-    while (randomCommons[randomCommon - 1] === 1) {
-      randomCommon = Math.floor(Math.random() * 4);
-    }
-    randomCommons[randomCommon - 1] = 1;
+  for (let i = 0; i < randomIndexArray.length; i++) {
     const levelupContent = document.createElement("div");
     const levelupImg = document.createElement("div");
     const levelupText = document.createElement("div");
@@ -242,7 +268,7 @@ export default function levelup() {
     const level = document.createElement("div");
     level.setAttribute("class", "level");
 
-    if (randomIndexArray[i] > 5) {
+    if (randomIndexArray[i] > 5 && randomIndexArray[i] < 11) {
       levelupContent.setAttribute("id", `${_propertyArr[randomIndexArray[i]]}`);
       levelupText.innerText = `${
         property[_propertyArr[randomIndexArray[i]]].text[
@@ -259,9 +285,23 @@ export default function levelup() {
         property[_propertyArr[randomIndexArray[i]]].name
       }]`;
       // levelupName.textContent += "Lv. 1";
+    } else if (randomIndexArray[i] >= 11) {
+      levelupContent.setAttribute("id", `${_propertyArr[randomIndexArray[i]]}`);
+      levelupText.innerText = `${
+        property[_propertyArr[randomIndexArray[i]]].text
+      }`;
+      // level.innerText = `Lv.${
+      //   property[_propertyArr[randomIndexArray[i]]].fairy.level + 1
+      // }`;
+      levelupContent.style.backgroundImage =
+        'url("images/ui/levelup/fairyupgrade_addName.png")';
+      // 설명인데..
+      levelupName.innerHTML = `[${
+        property[_propertyArr[randomIndexArray[i]]].name
+      }]`;
     } else {
       levelupContent.style.backgroundImage =
-        'url("images/ui/levelup/commonupgrade_addName.png")';
+        'url("images/ui/levelup/petupgrade_addName.png")';
       console.log(property[_propertyArr[randomIndexArray[i]]]);
       levelupContent.setAttribute("id", `${_propertyArr[randomIndexArray[i]]}`);
       levelupText.innerText =
@@ -299,7 +339,7 @@ export default function levelup() {
   const contents = document.querySelectorAll(".levelupContent");
   // const levelupContainer = document.querySelector(".levelupContainer");
   const removeContainer = document.querySelector(".levelupContainer");
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < randomIndexArray.length; i++) {
     setTimeout(() => {
       contents[i].addEventListener("click", () => {
         if (contents[i].id === "wizard") {
