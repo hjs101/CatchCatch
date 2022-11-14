@@ -31,11 +31,11 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
     [1, 1, 1],
   ]; //스킬 소환 개수
   towerSkilldelay = [
-    [6000, 6000, 6000],
+    [3000, 4000, 5000],
+    [3000, 4000, 5000],
+    [3000, 4000, 5000],
     [6000, 11000, 15000],
-    [6000, 11000, 15000],
-    [6000, 11000, 15000],
-    [6000, 11000, 15000],
+    [3000, 4000, 5000],
     [1000, 1000, 1000],
   ];
   circleSize = 0.8;
@@ -328,7 +328,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x + x,
             player.y + y,
             1,
-            4000,
+            this.towerSkilldelay[this.stone][this.level - 1],
             2
           );
           UICam.ignore(skill);
@@ -359,7 +359,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x + x,
             player.y + y,
             1,
-            4000,
+            this.towerSkilldelay[this.stone][this.level - 1],
             2
           );
           UICam.ignore(skill);
@@ -387,7 +387,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x,
             player.y,
             1,
-            10000,
+            this.towerSkilldelay[this.stone][this.level - 1],
             2
           );
           UICam.ignore(skill);
@@ -419,7 +419,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x + i * 30,
             player.y,
             1,
-            10000,
+            this.towerSkilldelay[this.stone][this.level - 1],
             2
           );
           UICam.ignore(skill);
@@ -440,7 +440,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
           player.x,
           player.y,
           1,
-          1000,
+          this.towerSkilldelay[this.stone][this.level - 1],
           2
         );
 
