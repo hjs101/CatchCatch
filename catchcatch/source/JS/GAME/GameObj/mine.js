@@ -225,9 +225,14 @@ export default class Mine extends Phaser.Physics.Arcade.Sprite {
 >>>>>>> 7ac9448 (#6 :sparkles: 펫 종류별 총알 추가)
 =======
     player.health += 2;
+<<<<<<< HEAD
     if (player.health >= 20) {
       player.health = 20;
 >>>>>>> 9dfe3b7 (:sparkles: 스킬 완성)
+=======
+    if (player.health >= 10) {
+      player.health = 10;
+>>>>>>> b01e839 (#1 :sparkles: 레벨업 코인 증가)
     }
 
     if (ChoiceCat === 5) {
