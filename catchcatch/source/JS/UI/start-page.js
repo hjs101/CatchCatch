@@ -306,6 +306,7 @@ function GoSelectChar() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   StartBtnOff();
   CharSpaceOn();
 =======
@@ -331,6 +332,9 @@ function GoSelectChar() {
 >>>>>>> f5d4da8 (#1 :sparkles: 치트 모드 버튼 구현)
     setSound.setBGM(0);
   }
+=======
+  setSound.setBGM(0);
+>>>>>>> 0e83705 (#3 :sparkles: 진냥이 업데이트)
   setSound.playSE(16);
 >>>>>>> bf30274 (#1 #2 #3 :sparkling_heart: BGM 수정)
   StartBtnOff();
