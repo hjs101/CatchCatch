@@ -13,7 +13,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
   towerSkillAttackTimer = 0; //스킬 시간
   towerAS = [180, 0, 0, 0, 360, 90]; //총알 연사속도
   towerSkillAS = [
-    [600, 600, 600],
+    [1800, 1800, 1800],
     [1800, 1200, 600],
     [1800, 1200, 600],
     [1800, 1200, 600],
@@ -858,9 +858,6 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
 =======
   levelUp() {
     this.level++;
-    if (this.level === 3) {
-      levelCount += 1;
-    }
   }
 
 >>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
