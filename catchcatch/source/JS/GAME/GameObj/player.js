@@ -233,7 +233,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if (catName === "cat5") {
       this.rainbow = scene.add.sprite(this.x - 10, this.y, "rainbow");
       UICam.ignore(this.rainbow);
-      this.rainbow.setScale(0.4, 0.7);
+      this.rainbow.setScale(0.4, 0.45);
       this.rainbow.setDepth(1);
       this.rainbow.anims.play("rainbow");
     }
@@ -483,19 +483,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.body.setVelocityX(-speedDiag);
       this.body.setVelocityY(speedDiag);
     }
+
+    console.log(this);
+
     if (this.catName === "cat5") {
       this.rainbow.setVisible(true);
-      if (this.body.velocity.x > 0) {
-        this.rainbow.x = this.x - 20;
-        this.rainbow.y = this.y - 5;
-      } else if (this.body.velocity.x < 0) {
-        this.rainbow.x = this.x + 20;
-        this.rainbow.y = this.y - 5;
-      } else if (this.body.velocity.y !== 0) {
-        this.rainbow.x = this.x - 20;
-        this.rainbow.y = this.y - 5;
-      } else {
+      if (this.anims.currentAnim.key === "turn") {
         this.rainbow.setVisible(false);
+      } else if (this.flipX === true) {
+        this.rainbow.x = this.x + 20;
+        this.rainbow.y = this.y + 2;
+      } else if (this.flipX === false) {
+        this.rainbow.x = this.x - 20;
+        this.rainbow.y = this.y + 2;
       }
     }
 
