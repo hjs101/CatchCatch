@@ -164,7 +164,9 @@ const StartPageInit = () => {
   const _GoSelectChar = document.createElement("div");
   _GoSelectChar.className = "GoSelectCharId";
   let Btn = document.createElement("button");
-  Btn.className = "StartBtn";
+  if (_mode) Btn.className = "StartBtn";
+  else Btn.className = "CodeStartBtn";
+
   Btn.textContent = "GameStart";
 
   //이벤트 리스너 추가------------
@@ -268,7 +270,7 @@ const StartPageInit = () => {
     const _Ranked = document.createElement("div");
     _Ranked.className = "RankedId";
     let Btn = document.createElement("button");
-    Btn.className = "StartBtn";
+    Btn.className = "CodeStartBtn";
     Btn.textContent = "Ranking";
     Btn.addEventListener("click", RankingListOn);
     _Ranked.appendChild(Btn);
