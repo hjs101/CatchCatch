@@ -328,7 +328,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x + x,
             player.y + y,
             1,
-            6000,
+            4000,
             2
           );
           UICam.ignore(skill);
@@ -359,7 +359,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x + x,
             player.y + y,
             1,
-            6000,
+            4000,
             2
           );
           UICam.ignore(skill);
@@ -387,7 +387,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x,
             player.y,
             1,
-            15000,
+            10000,
             2
           );
           UICam.ignore(skill);
@@ -419,7 +419,7 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
             player.x + i * 30,
             player.y,
             1,
-            15000,
+            10000,
             2
           );
           UICam.ignore(skill);

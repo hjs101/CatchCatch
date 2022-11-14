@@ -439,7 +439,7 @@ function create() {
       start: 1,
       end: 7,
     }),
-    frameRate: 10,
+    frameRate: 17,
     repeat: -1,
   });
   this.anims.create({
@@ -448,7 +448,7 @@ function create() {
       start: 1,
       end: 7,
     }),
-    frameRate: 10,
+    frameRate: 17,
     repeat: -1,
   });
   this.anims.create({
@@ -1075,6 +1075,7 @@ this.scene.pause();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.scene.pause();
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 =======
@@ -1115,6 +1116,9 @@ this.scene.pause();
 =======
   // this.scene.pause();
 >>>>>>> e353187 (#3 :sparkles: 보호막 및 기타 변경사항 적용)
+=======
+  this.scene.pause();
+>>>>>>> 86e602a (#3 #7 :sparkles: 코딩모드 및 펫 수정)
 }
 
 function update(time, delta) {
