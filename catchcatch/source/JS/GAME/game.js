@@ -816,6 +816,7 @@ global.petSkillAttacks = "";
 //mine start
 let mine;
 <<<<<<< HEAD
+<<<<<<< HEAD
 let mineShowTime = 0;
 let mineCount = [3, 15, 60, 120, 400, 500, 500, 550, 800, 1000];
 let StartMineRangeX = [
@@ -867,6 +868,9 @@ let EndMineRangeY = [
 ];
 =======
 let mineCount = 5;
+=======
+let mineCount = 2;
+>>>>>>> b230cdc (#6 :sparkles: 펫 버그 수정 및 밸런스 패치)
 let StartMineRangeX = -3000;
 let StartMineRangeY = -3000;
 let EndMineRangeX = 3000;
