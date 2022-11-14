@@ -144,6 +144,7 @@ export function config() {
       arcade: {
         fps: 60,
         debug: debugmode,
+        debugShowVelocity: false,
         fixedStep: false,
       },
     },
@@ -151,12 +152,22 @@ export function config() {
 }
 
 function preload() {
+<<<<<<< HEAD
     //map start
     this.load.image("sprWater", "images/map/sprWater.png");
     this.load.image("sprSand", "images/map/sprSand.png");
     this.load.image("sprGrass", "images/map/sprGrass.png");
     //map end
     let frameTime = 0;
+=======
+  //map start
+  this.load.image("sprWater", "images/map/sprWater.png");
+  this.load.image("sprSand", "images/map/sprSand.png");
+  this.load.image("sprGrass", "images/map/sprGrass.png");
+  this.load.image("ssafy", "images/map/ssafy.png");
+  //map end
+  let frameTime = 0;
+>>>>>>> d1b5041 (#7 :sparkles: 코딩모드 싸피 입히기)
 
 <<<<<<< HEAD
   //player start
@@ -165,6 +176,7 @@ function preload() {
     frameWidth: 38,
     frameHeight: 64,
   });
+
   this.load.spritesheet("tower2", "images/cattower/lucky_ssafy.png", {
     frameWidth: 38,
     frameHeight: 64,
@@ -216,6 +228,7 @@ function preload() {
     });
     //attack sprite end
 
+<<<<<<< HEAD
     //object sprite start
     this.load.spritesheet("cat1", "images/cat/cat1.png", {
         frameWidth: 96,
@@ -275,6 +288,67 @@ function preload() {
         frameWidth: 16,
         frameHeight: 16,
     });
+=======
+  //object sprite start
+  this.load.spritesheet("cat1", "images/cat/cat8.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat2", "images/cat/cat2.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat3", "images/cat/cat3.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat4", "images/cat/cat4.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat5", "images/cat/cat5.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat6", "images/cat/cat6.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat7", "images/cat/cat7.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  // 몬스터
+  this.load.spritesheet("monster_die", "images/monster/monster_die2.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+  this.load.spritesheet("alien", "images/monster/normalSlime.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("worm", "images/monster/thunderSlime.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("sonic", "images/monster/fireSlime.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("turtle", "images/monster/waterSlime.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("slime", "images/monster/earthSlime.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+>>>>>>> d1b5041 (#7 :sparkles: 코딩모드 싸피 입히기)
 
 <<<<<<< HEAD
   //object sprite end
@@ -303,8 +377,8 @@ function create() {
   // ============== 몬스터 스프라이트 애니메이션 목록 ==================
   this.anims.create({
     key: "alien",
-    frames: this.anims.generateFrameNumbers("alien", { start: 9, end: 14 }),
-    frameRate: 3,
+    frames: this.anims.generateFrameNumbers("alien", { start: 0, end: 6 }),
+    frameRate: 7,
     repeat: -1, // -1은 무한 반복 의미
   });
 =======
@@ -315,6 +389,7 @@ function create() {
     //object sprite end
 }
 
+<<<<<<< HEAD
 function create() {
     // resource load start
     IncodeUI();
@@ -342,6 +417,14 @@ function create() {
         repeat: -1, // -1은 무한 반복 의미
     });
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
+=======
+  this.anims.create({
+    key: "worm",
+    frames: this.anims.generateFrameNumbers("worm", { start: 0, end: 6 }),
+    frameRate: 7,
+    repeat: -1,
+  });
+>>>>>>> d1b5041 (#7 :sparkles: 코딩모드 싸피 입히기)
 
     this.anims.create({
         key: "worm",
@@ -353,8 +436,8 @@ function create() {
 <<<<<<< HEAD
   this.anims.create({
     key: "sonic",
-    frames: this.anims.generateFrameNumbers("sonic", { start: 0, end: 1 }),
-    frameRate: 4,
+    frames: this.anims.generateFrameNumbers("sonic", { start: 0, end: 6 }),
+    frameRate: 7,
     repeat: -1,
   });
 =======
@@ -365,6 +448,7 @@ function create() {
         repeat: -1,
     });
 
+<<<<<<< HEAD
     this.anims.create({
         key: "wormPlus",
         frames: this.anims.generateFrameNumbers("wormPlus", {start: 0, end: 2}),
@@ -379,6 +463,21 @@ function create() {
         repeat: -1,
     });
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
+=======
+  this.anims.create({
+    key: "turtle",
+    frames: this.anims.generateFrameNumbers("turtle", { start: 0, end: 6 }),
+    frameRate: 7,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "slime",
+    frames: this.anims.generateFrameNumbers("slime", { start: 0, end: 6 }),
+    frameRate: 7,
+    repeat: -1,
+  });
+>>>>>>> d1b5041 (#7 :sparkles: 코딩모드 싸피 입히기)
 
     this.anims.create({
         key: "turtle",
@@ -439,7 +538,7 @@ function create() {
       start: 1,
       end: 7,
     }),
-    frameRate: 17,
+    frameRate: 14,
     repeat: -1,
   });
   this.anims.create({
@@ -448,7 +547,7 @@ function create() {
       start: 1,
       end: 7,
     }),
-    frameRate: 17,
+    frameRate: 14,
     repeat: -1,
   });
   this.anims.create({
@@ -609,7 +708,9 @@ function create() {
     repeat: -1,
   });
   // resource load end
-
+  var ssafy = this.add.image(0, 0, "ssafy");
+  ssafy.setDepth(2);
+  ssafy.setAlpha(0.5);
   //player start
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -630,6 +731,7 @@ function create() {
 >>>>>>> 73a6d02 (#7 :sparkles: 고양이 이동 애니메이션 싸피 캐릭 적용)
   player.setScale(2);
   player.setDepth(3);
+  player.body.debugBodyColor = 0x7f921b;
   //player end
   codeScene = this;
   //map start
