@@ -170,6 +170,8 @@ export default function ingameUi() {
     }, 10000);
   }
   gameContainer.appendChild(coolContainer);
+
+  // GameOver();
 }
 
 <<<<<<< HEAD
@@ -232,6 +234,19 @@ export function GameOver() {
   // ClearText.textContent = "GameClear!";
 
   GameClearSpace.appendChild(FailText);
+
+  const resultspace = document.createElement("div");
+  resultspace.setAttribute("class", "resultspace");
+  GameClearSpace.appendChild(resultspace);
+
+  const canimg = document.createElement("div");
+  canimg.setAttribute("class", "canimg");
+  resultspace.appendChild(canimg);
+
+  const cantxt = document.createElement("div");
+  cantxt.setAttribute("class", "cantxt");
+  resultspace.appendChild(cantxt);
+  cantxt.textContent = "x" + global.killCount;
 
   const GoHomeBtn = document.createElement("button");
   GoHomeBtn.setAttribute("class", "GoHomeBtn");
@@ -302,6 +317,19 @@ function GameClear() {
   // ClearText.textContent = "GameClear!";
 
   GameClearSpace.appendChild(ClearText);
+
+  const resultspace = document.createElement("div");
+  resultspace.setAttribute("class", "resultspace");
+  GameClearSpace.appendChild(resultspace);
+
+  const canimg = document.createElement("div");
+  canimg.setAttribute("class", "canimg");
+  resultspace.appendChild(canimg);
+
+  const cantxt = document.createElement("div");
+  cantxt.setAttribute("class", "cantxt");
+  resultspace.appendChild(cantxt);
+  cantxt.textContent = global.killCount;
 
   const GoHomeBtn = document.createElement("button");
   GoHomeBtn.setAttribute("class", "GoHomeBtn");

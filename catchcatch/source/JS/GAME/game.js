@@ -36,6 +36,7 @@ import ingameUi, {
   useSkill,
   canSkill,
   messageBoss,
+<<<<<<< HEAD
 } from "../UI/ingame-ui.js";
 >>>>>>> 6f09438 (#2 :bomb: 폭발몹 스폰 주기 변경)
 import levelup from "../UI/levelup.js";
@@ -114,6 +115,8 @@ import ingameUi, {
   canSkill,
   messageBoss,
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 } from "../UI/ingame-ui.js";
 >>>>>>> 89c00c0 (:bug: 파일덮어쓰기)
 import levelup from "../UI/levelup.js";
@@ -139,6 +142,7 @@ import CatTower from "./GameObj/cat-tower.js";
 >>>>>>> b8f5732 (#6 :sparkles: pet 추가)
 
 import { UpdateTimer } from "../UI/ingame-ui.js";
+<<<<<<< HEAD
 
 export const config = {
 <<<<<<< HEAD
@@ -214,17 +218,31 @@ import { setSound } from "../SOUND/sound.js";
 export const config = {
 <<<<<<< HEAD
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
+=======
+import { setSound } from "../SOUND/sound.js";
+
+export const config = {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   type: Phaser.AUTO,
   width: 600,
   height: 600,
   parent: "game-container",
   backgroundColor: "black",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   resolution: window.devicePixelRatio,
 >>>>>>> 075b39a (#1 :sparkles: 무기 업그레이드 완성)
   pixelArt: true,
   roundPixels: true,
+=======
+  resolution: window.devicePixelRatio,
+  pixelArt: true,
+  roundPixels: true,
+  audio: {
+    disableWebAudio: true,
+  },
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   scene: {
     //scene 제어에
     preload: preload,
@@ -234,6 +252,7 @@ export const config = {
   physics: {
     default: "arcade",
     arcade: {
+<<<<<<< HEAD
 <<<<<<< HEAD
       fps: 60,
       debug: false,
@@ -485,6 +504,13 @@ export const config = {
 =======
   },
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+      fps: 60,
+      debug: false,
+      fixedStep: false,
+    },
+  },
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 };
 >>>>>>> b038195 (#1 :bug: 버그 수정)
 
@@ -712,6 +738,7 @@ let monsterSpawn = 300;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // 1번 몬스터: alien
 <<<<<<< HEAD
 var alien;
@@ -748,6 +775,9 @@ let wormPlus;
 >>>>>>> 62febc3 (Revert "Revert "#2 :sparkles: 폭탄 몹 추가"")
 =======
 let killCount = 0;
+=======
+global.killCount = 0;
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 
 >>>>>>> 8b2dfe0 (#2 :sparkles:  피버타임 초기구현)
 // 보스
@@ -873,6 +903,7 @@ function preload() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 2d18cb4 (#3 #7 :sparkles: 코딩모드 및 아케이드모드 업데이트)
 =======
@@ -911,6 +942,18 @@ function preload() {
   //tower start
 
 >>>>>>> ad73ae5 (:sparkles: map 이미지 추가)
+=======
+  //map start
+  this.load.image("flower", "images/map/First Asset pack.png"); //식물
+  this.load.image("plant", "images/map/TX Plant.png"); //나무
+  this.load.image("props", "images/map/TX Props.png"); //비석
+  this.load.image("basic", "images/map/TX Tileset Grass.png"); //타일
+  this.load.tilemapTiledJSON("map", "images/map/map.json");
+  //map end
+
+  //tower start
+
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   this.load.spritesheet("catNone", "images/cattower/towerNone.png", {
     frameWidth: 38,
     frameHeight: 64,
@@ -931,6 +974,7 @@ function preload() {
     frameWidth: 38,
     frameHeight: 64,
   });
+<<<<<<< HEAD
 <<<<<<< HEAD
   this.load.image("can", "images/cattower/can.png");
   this.load.image("skill", "images/cattower/skill.png");
@@ -6265,12 +6309,131 @@ function update(time, delta) {
     frameHeight: 100,
   });
 
+=======
+  this.load.spritesheet("catFinal", "images/cattower/towerFinal.png", {
+    frameWidth: 38,
+    frameHeight: 64,
+  });
+  this.load.image("skill", "images/cattower/skill.png");
+
+  //pet start
+  this.load.spritesheet("petNormal", "images/pet/petNormal.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petThunder", "images/pet/petThunder.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petFire", "images/pet/petFire.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petWater", "images/pet/petWater.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petEarth", "images/pet/petEarth.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  this.load.spritesheet("petGod", "images/pet/petGod.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+  //petmagic
+  this.load.spritesheet("catNormalMagic", "images/pet/normalMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+  this.load.spritesheet("catEarthMagic", "images/pet/earthMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+  this.load.spritesheet("catGodMagic", "images/pet/godMagic.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+  this.load.spritesheet("catNormalSkill", "images/pet/normalSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catThunderSkill", "images/pet/thunderSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catFireSkill", "images/pet/fireSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catWaterSkill", "images/pet/waterSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catEarthSkill", "images/pet/earthSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  this.load.spritesheet("catGodSkill", "images/pet/godSkill.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+  //pet end
+
+  //tower end
+
+  //navi start
+  //navi end
+
+  //mine start
+  this.load.spritesheet("mineani", "images/hole/new_hole.png", {
+    frameWidth: 100,
+    frameHeight: 100,
+  });
+  //mine end
+
+  //player start
+  // 플레이어 스프라이트
+  this.load.spritesheet("cat1", "images/cat/cat1.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat2", "images/cat/cat2.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat3", "images/cat/cat3.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat4", "images/cat/cat4.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat5", "images/cat/cat5.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+  this.load.spritesheet("cat6", "images/cat/cat6.png", {
+    frameWidth: 116,
+    frameHeight: 112,
+  });
+  this.load.spritesheet("cat7", "images/cat/cat7.png", {
+    frameWidth: 96,
+    frameHeight: 100,
+  });
+
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   // 공격 스프라이트
   this.load.spritesheet("magic1", "images/attack/weapon/magic1.png", {
     frameWidth: 138,
     frameHeight: 138,
     endFrame: 4,
   });
+<<<<<<< HEAD
 
   this.load.spritesheet("magic1_1", "images/attack/weapon/magic1_1.png", {
     frameWidth: 362,
@@ -9844,10 +10007,25 @@ function update(time, delta) {
 =======
   // 공격 스프라이트
   this.load.spritesheet("magic1", "images/attack/weapon/magic1.png", {
+=======
+
+  this.load.spritesheet("magic1_1", "images/attack/weapon/magic1_1.png", {
+    frameWidth: 362,
+    frameHeight: 362,
+    endFrame: 7,
+  });
+  this.load.spritesheet("magic1_1_1", "images/attack/weapon/magic1_1_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 24,
+  });
+  this.load.spritesheet("magic1_2", "images/attack/weapon/magic1_2.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     frameWidth: 138,
     frameHeight: 138,
     endFrame: 4,
   });
+<<<<<<< HEAD
 
   this.load.spritesheet("magic1_1", "images/attack/weapon/magic1_1.png", {
     frameWidth: 362,
@@ -9909,6 +10087,51 @@ function update(time, delta) {
   this.load.spritesheet(
     "magic4",
     "images/attack/weapon/slime_attack1_48x48.png",
+=======
+  this.load.spritesheet("magic1_2_1", "images/attack/weapon/magic1_2_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 24,
+  });
+  this.load.spritesheet("magic2", "images/attack/weapon/magic2.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
+  this.load.spritesheet("magic2_1", "images/attack/weapon/magic2_1.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
+  this.load.spritesheet("magic2_2", "images/attack/weapon/magic2_2.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
+  this.load.spritesheet("magic2_1_1", "images/attack/weapon/magic2_1_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+  });
+  this.load.spritesheet("magic2_2_1", "images/attack/weapon/magic2_2_1.png", {
+    frameWidth: 192,
+    frameHeight: 108,
+  });
+
+  this.load.spritesheet("magic3", "images/attack/weapon/magic3.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 7,
+  });
+  this.load.spritesheet("magic3_1", "images/attack/weapon/magic3_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 7,
+  });
+  this.load.spritesheet("magic3_2", "images/attack/weapon/magic3_2.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 7,
+  });
+  this.load.spritesheet(
+    "magic4",
+    "images/attack/weapon/slime_attack1_48x48.png",
     {
       frameWidth: 48,
       frameHeight: 48,
@@ -9919,6 +10142,7 @@ function update(time, delta) {
   this.load.spritesheet(
     "magic4_1",
     "images/attack/weapon/slime_attack2_48x48.png",
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     {
       frameWidth: 48,
       frameHeight: 48,
@@ -9927,6 +10151,22 @@ function update(time, delta) {
   );
 
   this.load.spritesheet(
+<<<<<<< HEAD
+    "magic4_1",
+    "images/attack/weapon/slime_attack2_48x48.png",
+=======
+    "magic4_2",
+    "images/attack/weapon/slime_attack3_48x48.png",
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    {
+      frameWidth: 48,
+      frameHeight: 48,
+      endFrame: 2,
+    }
+  );
+
+  this.load.spritesheet(
+<<<<<<< HEAD
     "magic4_2",
     "images/attack/weapon/slime_attack3_48x48.png",
     {
@@ -9970,75 +10210,172 @@ function update(time, delta) {
   );
   // 요정 스프라이트
   this.load.spritesheet("fairy1", "images/fairy/fairy1.png", {
+=======
+    "magic5",
+    "images/attack/weapon/8_protectioncircle_spritesheet.png",
+    { frameWidth: 100, frameHeight: 100, endFrame: 61 }
+  );
+
+  this.load.spritesheet("magic5_1", "images/attack/weapon/magic5_1.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 8,
+  });
+  this.load.spritesheet("magic5_2", "images/attack/weapon/magic5_2.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 8,
+  });
+  this.load.spritesheet("magic5_3", "images/attack/weapon/magic5_3.png", {
+    frameWidth: 74,
+    frameHeight: 74,
+    endFrame: 8,
+  });
+  // 스킬 스프라이트
+
+  this.load.spritesheet(
+    "skill4",
+    "images/attack/weapon/10_weaponhit_spritesheet.png",
+    {
+      frameWidth: 100,
+      frameHeight: 100,
+      endFrame: 61,
+    }
+  );
+  // 요정 스프라이트
+  this.load.spritesheet("fairy1", "images/fairy/fairy1.png", {
     frameWidth: 150,
     frameHeight: 142,
   });
 
   this.load.spritesheet("fairy1_1", "images/fairy/fairy1_yellow.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     frameWidth: 150,
     frameHeight: 142,
   });
 
+<<<<<<< HEAD
+  this.load.spritesheet("fairy1_1", "images/fairy/fairy1_yellow.png", {
+=======
+  this.load.spritesheet("fairy1_2", "images/fairy/fairy1_Red.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    frameWidth: 150,
+    frameHeight: 142,
+  });
+
+<<<<<<< HEAD
   this.load.spritesheet("fairy1_2", "images/fairy/fairy1_Red.png", {
     frameWidth: 150,
     frameHeight: 142,
   });
 
   this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
+=======
+  this.load.spritesheet("fairy2", "images/fairy/fairy2.png", {
     frameWidth: 230,
     frameHeight: 210,
   });
 
   this.load.spritesheet("fairy2_1", "images/fairy/fairy2_Red.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     frameWidth: 230,
     frameHeight: 210,
   });
 
+<<<<<<< HEAD
+  this.load.spritesheet("fairy2_1", "images/fairy/fairy2_Red.png", {
+=======
+  this.load.spritesheet("fairy2_2", "images/fairy/fairy2_black.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    frameWidth: 230,
+    frameHeight: 210,
+  });
+
+<<<<<<< HEAD
   this.load.spritesheet("fairy2_2", "images/fairy/fairy2_black.png", {
     frameWidth: 230,
     frameHeight: 210,
   });
 
   this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
+=======
+  this.load.spritesheet("fairy3", "images/fairy/fairy3.png", {
     frameWidth: 140,
     frameHeight: 140,
   });
 
   this.load.spritesheet("fairy3_1", "images/fairy/fairy3_Red.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     frameWidth: 140,
     frameHeight: 140,
   });
 
+<<<<<<< HEAD
+  this.load.spritesheet("fairy3_1", "images/fairy/fairy3_Red.png", {
+=======
+  this.load.spritesheet("fairy3_2", "images/fairy/fairy3_master.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    frameWidth: 140,
+    frameHeight: 140,
+  });
+
+<<<<<<< HEAD
   this.load.spritesheet("fairy3_2", "images/fairy/fairy3_master.png", {
     frameWidth: 140,
     frameHeight: 140,
   });
 
   this.load.spritesheet("fairy4", "images/fairy/fairy4.png", {
+=======
+  this.load.spritesheet("fairy4", "images/fairy/fairy4.png", {
     frameWidth: 136,
     frameHeight: 170,
   });
 
   this.load.spritesheet("fairy4_1", "images/fairy/fairy4_blue.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     frameWidth: 136,
     frameHeight: 170,
   });
 
+<<<<<<< HEAD
+  this.load.spritesheet("fairy4_1", "images/fairy/fairy4_blue.png", {
+=======
+  this.load.spritesheet("fairy4_2", "images/fairy/fairy4_green.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    frameWidth: 136,
+    frameHeight: 170,
+  });
+
+<<<<<<< HEAD
   this.load.spritesheet("fairy4_2", "images/fairy/fairy4_green.png", {
     frameWidth: 136,
     frameHeight: 170,
   });
 
   this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
+=======
+  this.load.spritesheet("fairy5", "images/fairy/fairy5.png", {
     frameWidth: 160,
     frameHeight: 190,
   });
 
   this.load.spritesheet("fairy5_1", "images/fairy/fairy5_red.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     frameWidth: 160,
     frameHeight: 190,
   });
 
+<<<<<<< HEAD
+  this.load.spritesheet("fairy5_1", "images/fairy/fairy5_red.png", {
+=======
+  this.load.spritesheet("fairy5_2", "images/fairy/fairy5_black.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    frameWidth: 160,
+    frameHeight: 190,
+  });
+
+<<<<<<< HEAD
   this.load.spritesheet("fairy5_2", "images/fairy/fairy5_black.png", {
     frameWidth: 160,
     frameHeight: 190,
@@ -10051,10 +10388,30 @@ function update(time, delta) {
   // 몬스터
 
   this.load.spritesheet("monster_die", "images/monster/monster_die2.png", {
+=======
+  //player end
+
+  //enemy start
+
+  // 몬스터
+
+  this.load.spritesheet("monster_die", "images/monster/monster_die2.png", {
     frameWidth: 64,
     frameHeight: 64,
   });
 
+  this.load.spritesheet("monster_boom", "images/monster/monster_die.png", {
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+  this.load.spritesheet("monster_fever", "images/monster/monster_fever.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    frameWidth: 64,
+    frameHeight: 64,
+  });
+
+<<<<<<< HEAD
 <<<<<<< HEAD
     this.load.spritesheet("alien", "images/monster/alien.png", {
         frameWidth: 20,
@@ -10088,10 +10445,39 @@ function update(time, delta) {
   });
 
   this.load.spritesheet("turtle", "images/monster/turtle.png", {
+=======
+  this.load.spritesheet("alien", "images/monster/alien.png", {
+    frameWidth: 20,
+    frameHeight: 20,
+  });
+
+  this.load.spritesheet("worm", "images/monster/worm.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("sonic", "images/monster/sonic.png", {
     frameWidth: 32,
     frameHeight: 32,
   });
 
+  this.load.spritesheet("turtle", "images/monster/turtle.png", {
+    frameWidth: 32,
+    frameHeight: 32,
+  });
+
+  this.load.spritesheet("slime", "images/monster/slime.png", {
+    frameWidth: 16,
+    frameHeight: 16,
+  });
+
+  this.load.spritesheet("fly", "images/monster/fly.png", {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
+    frameWidth: 32,
+    frameHeight: 32,
+  });
+
+<<<<<<< HEAD
   this.load.spritesheet("slime", "images/monster/slime.png", {
     frameWidth: 16,
     frameHeight: 16,
@@ -10156,6 +10542,49 @@ function update(time, delta) {
     frameHeight: 96,
   });
 
+=======
+  this.load.spritesheet("alienPlus", "images/monster/alienPlus.png", {
+    frameWidth: 20,
+    frameHeight: 20,
+  });
+
+  this.load.spritesheet("alienFinal", "images/monster/alienFinal.png", {
+    frameWidth: 20,
+    frameHeight: 20,
+  });
+
+  this.load.spritesheet("wormPlus", "images/monster/wormPlus.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("wormFinal", "images/monster/wormFinal.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  this.load.spritesheet("wormFever", "images/monster/wormFever.png", {
+    frameWidth: 48,
+    frameHeight: 48,
+  });
+
+  //   보스
+  this.load.spritesheet("slimeKing", "images/boss/slimeKing.png", {
+    frameWidth: 96,
+    frameHeight: 96,
+  });
+
+  this.load.spritesheet("golem", "images/boss/golem.png", {
+    frameWidth: 96,
+    frameHeight: 96,
+  });
+
+  this.load.spritesheet("fireGiant", "images/boss/fireGiant.png", {
+    frameWidth: 96,
+    frameHeight: 96,
+  });
+
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   this.load.spritesheet("fireGiantAura", "images/boss/fireGiantAura.png", {
     frameWidth: 64,
     frameHeight: 64,
@@ -10165,6 +10594,7 @@ function update(time, delta) {
 
 function create() {
   this.input.setDefaultCursor("url(/images/cursor/aimNone.png), pointer");
+<<<<<<< HEAD
   if (ChoiceCat === 4) {
     setSound.setBGM(5);
   } else {
@@ -11800,6 +12230,1373 @@ function update(time, delta) {
 <<<<<<< HEAD
     //player start
 <<<<<<< HEAD
+=======
+  setSound.setBGM(1);
+
+  thisScene = this;
+  //map start
+  map = this.make.tilemap({ key: "map" });
+
+  // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
+  // Phaser's cache (i.e. the name you used in preload)
+  tileset_flower = map.addTilesetImage("flower", "flower");
+  tileset_plant = map.addTilesetImage("plant", "plant");
+  tileset_props = map.addTilesetImage("props", "props");
+  tileset_basic = map.addTilesetImage("basic", "basic");
+
+  // Parameters: layer name (or index) from Tiled, tileset, x, y
+  fieldLayer = map.createLayer("field", tileset_basic, 0, 0);
+  grassLayer = map.createLayer("grass", tileset_plant, 0, 0);
+  flowersLayer = map.createLayer("flowers", tileset_flower, 0, 0);
+  //   propsLayer = map.createLayer("props", tileset_props, 0, 0);
+  //   treesLayer = map.createLayer("trees", tileset_plant, 0, 0);
+  runeLayer = map.createLayer("rune", tileset_props, 0, 0);
+  wallLayer = map.createLayer("wall", tileset_flower, 0, 0);
+
+  wallLayer.setCollisionByProperty({ collides: true });
+  //   treesLayer.setCollisionByProperty({ collides: true });
+  //map end
+
+  UICam = this.cameras.add(
+    player.x,
+    player.y,
+    this.cameras.main.worldView.width,
+    this.cameras.main.worldView.height
+  );
+
+  // this.cameras.main.setBounds(0, 0, mapSize, mapSize);
+  // this.physics.world.setBounds(0, 0, mapSize, mapSize);
+
+  cursors = this.input.keyboard.addKeys({
+    up: Phaser.Input.Keyboard.KeyCodes.W,
+    down: Phaser.Input.Keyboard.KeyCodes.S,
+    left: Phaser.Input.Keyboard.KeyCodes.A,
+    right: Phaser.Input.Keyboard.KeyCodes.D,
+    slot1: Phaser.Input.Keyboard.KeyCodes.ONE,
+    slot2: Phaser.Input.Keyboard.KeyCodes.TWO,
+    slot3: Phaser.Input.Keyboard.KeyCodes.THREE,
+    slot4: Phaser.Input.Keyboard.KeyCodes.FOUR,
+    slot5: Phaser.Input.Keyboard.KeyCodes.FIVE,
+    skill: Phaser.Input.Keyboard.KeyCodes.SPACE,
+  });
+
+  global.$this = this.scene;
+  this.input.keyboard.on("keydown-" + "SHIFT", function (event) {
+    initUpgrade();
+  });
+  //map end
+
+  //player start
+  player = new Player(this, 1, 20, 20, "cat" + (ChoiceCat + 1));
+  this.physics.add.collider(player, wallLayer);
+  //   this.physics.add.collider(player, treesLayer);
+  player.ability = ChoiceCat + 1;
+  player.setScale(0.7);
+  // player.setDepth(2);
+  let hw = player.body.halfWidth;
+  let hh = player.body.halfHeight;
+
+  player.setCircle(hw * 0.6, hh - hw * 0.6, hh - hw * 0.6);
+  camera = this.cameras.main;
+  camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true);
+  camera.fadeEffect.alpha = 0;
+  camera.flash(800, 1, 1, 1);
+  input = this.input;
+  mouse = input.mousePointer;
+  this.input.on(
+    "pointermove",
+    function (pointer) {
+      let cursor = pointer;
+      let angle = Phaser.Math.Angle.Between(
+        player.x,
+        player.y,
+        cursor.x + this.cameras.main.scrollX,
+        cursor.y + this.cameras.main.scrollY
+      );
+    },
+    this
+  );
+
+  // 플레이어, 요정 로딩
+  global.wizard = fairySet[0] = new Fairy(
+    this,
+    100,
+    15,
+    3,
+    1,
+    60,
+    20,
+    500,
+    1,
+    player,
+    0.5,
+    1
+  );
+  fairySet[0].initFairy1(0, 0);
+  global.reaper = fairySet[1] = new Fairy(
+    this,
+    100,
+    10,
+    2,
+    1,
+    80,
+    20,
+    160,
+    2,
+    player,
+    0.5,
+    1
+  );
+  global.ninja = fairySet[2] = new Fairy(
+    this,
+    100,
+    5,
+    1,
+    3,
+    60,
+    10,
+    300,
+    3,
+    player,
+    0.5,
+    1
+  );
+  fairySet[2].initFairy3(0, 0);
+  global.slime = fairySet[3] = new Fairy(
+    this,
+    7200,
+    10,
+    2,
+    10,
+    60,
+    10,
+    400,
+    4,
+    player,
+    0.5,
+    2
+  );
+
+  global.witch = fairySet[4] = new Fairy(
+    this,
+    600,
+    5,
+    1,
+    3,
+    40,
+    10,
+    500,
+    5,
+    player,
+    0.5,
+    1
+  );
+  global.bombs = this.physics.add.group();
+  fairySet[4].initFairy5(0.5, 1);
+  for (let i = 0; i < 5; i++) {
+    fairySet[i].setDepth(2);
+  }
+  player.changeFairy(fairySet[0]);
+  normalAttackAS = fairySet[0].as;
+  // animation
+  this.anims.create({
+    key: "fairy1_idle",
+    frames: this.anims.generateFrameNumbers("fairy1", { start: 12, end: 21 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy1_attack",
+    frames: this.anims.generateFrameNumbers("fairy1", { start: 6, end: 10 }),
+    frameRate: 12,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy1_1_idle",
+    frames: this.anims.generateFrameNumbers("fairy1_1", { start: 12, end: 21 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy1_1_attack",
+    frames: this.anims.generateFrameNumbers("fairy1_1", { start: 6, end: 10 }),
+    frameRate: 12,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy1_2_idle",
+    frames: this.anims.generateFrameNumbers("fairy1_2", { start: 12, end: 21 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy1_2_attack",
+    frames: this.anims.generateFrameNumbers("fairy1_2", { start: 6, end: 10 }),
+    frameRate: 12,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy2_idle",
+    frames: this.anims.generateFrameNumbers("fairy2", { start: 10, end: 19 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy2_attack",
+    frames: this.anims.generateFrameNumbers("fairy2", { start: 0, end: 8 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy2_1_idle",
+    frames: this.anims.generateFrameNumbers("fairy2_1", { start: 10, end: 19 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy2_1_attack",
+    frames: this.anims.generateFrameNumbers("fairy2_1", { start: 0, end: 8 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy2_2_idle",
+    frames: this.anims.generateFrameNumbers("fairy2_2", { start: 10, end: 19 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy2_2_attack",
+    frames: this.anims.generateFrameNumbers("fairy2_2", { start: 0, end: 8 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy3_idle",
+    frames: this.anims.generateFrameNumbers("fairy3", { start: 9, end: 18 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy3_attack",
+    frames: this.anims.generateFrameNumbers("fairy3", { start: 0, end: 7 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy3_1_idle",
+    frames: this.anims.generateFrameNumbers("fairy3_1", { start: 9, end: 18 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy3_1_attack",
+    frames: this.anims.generateFrameNumbers("fairy3_1", { start: 0, end: 7 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy3_2_idle",
+    frames: this.anims.generateFrameNumbers("fairy3_2", { start: 9, end: 18 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy3_2_attack",
+    frames: this.anims.generateFrameNumbers("fairy3_2", { start: 0, end: 7 }),
+    frameRate: 14,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy4_idle",
+    frames: this.anims.generateFrameNumbers("fairy4", { start: 7, end: 14 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy4_attack",
+    frames: this.anims.generateFrameNumbers("fairy4", { start: 0, end: 5 }),
+    frameRate: 10,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy4_1_idle",
+    frames: this.anims.generateFrameNumbers("fairy4_1", { start: 7, end: 14 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy4_1_attack",
+    frames: this.anims.generateFrameNumbers("fairy4_1", { start: 0, end: 5 }),
+    frameRate: 10,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy4_2_idle",
+    frames: this.anims.generateFrameNumbers("fairy4_2", { start: 7, end: 14 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy4_2_attack",
+    frames: this.anims.generateFrameNumbers("fairy4_2", { start: 0, end: 5 }),
+    frameRate: 10,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy5_idle",
+    frames: this.anims.generateFrameNumbers("fairy5", { start: 15, end: 24 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy5_attack",
+    frames: this.anims.generateFrameNumbers("fairy5", { start: 0, end: 13 }),
+    frameRate: 17,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy5_1_idle",
+    frames: this.anims.generateFrameNumbers("fairy5_1", { start: 15, end: 24 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy5_1_attack",
+    frames: this.anims.generateFrameNumbers("fairy5_1", { start: 0, end: 13 }),
+    frameRate: 17,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fairy5_2_idle",
+    frames: this.anims.generateFrameNumbers("fairy5_2", { start: 15, end: 24 }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fairy5_2_attack",
+    frames: this.anims.generateFrameNumbers("fairy5_2", { start: 0, end: 13 }),
+    frameRate: 17,
+    repeat: 0,
+  });
+
+  // 공격 애니메이션
+  this.anims.create({
+    key: "magic1",
+    frames: this.anims.generateFrameNumbers("magic1", {
+      start: 0,
+      end: 3,
+      first: 0,
+    }),
+    frameRate: 20,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic1_1",
+    frames: this.anims.generateFrameNumbers("magic1_1", {
+      start: 0,
+      end: 6,
+      first: 0,
+    }),
+    frameRate: 20,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic1_1_1",
+    frames: this.anims.generateFrameNumbers("magic1_1_1", {
+      start: 0,
+      end: 24,
+      first: 0,
+    }),
+    frameRate: 70,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic1_2_1",
+    frames: this.anims.generateFrameNumbers("magic1_2_1", {
+      start: 0,
+      end: 24,
+      first: 0,
+    }),
+    frameRate: 70,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic1_2",
+    frames: this.anims.generateFrameNumbers("magic1_2", {
+      start: 0,
+      end: 3,
+      first: 0,
+    }),
+    frameRate: 20,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic2",
+    frames: this.anims.generateFrameNumbers("magic2", {
+      start: 0,
+      end: 15,
+    }),
+    frameRate: 16,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic2_1",
+    frames: this.anims.generateFrameNumbers("magic2_1", {
+      start: 0,
+      end: 15,
+    }),
+    frameRate: 16,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic2_1_1",
+    frames: this.anims.generateFrameNumbers("magic2_1_1", {
+      start: 0,
+      end: 15,
+    }),
+    frameRate: 16,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic2_2",
+    frames: this.anims.generateFrameNumbers("magic2_2", {
+      start: 0,
+      end: 15,
+    }),
+    frameRate: 16,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic2_2_1",
+    frames: this.anims.generateFrameNumbers("magic2_2_1", {
+      start: 3,
+      end: 3,
+      first: 0,
+    }),
+    frameRate: 1,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic3",
+    frames: this.anims.generateFrameNumbers("magic3", {
+      start: 0,
+      end: 7,
+      first: 0,
+    }),
+    frameRate: 20,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic3_1",
+    frames: this.anims.generateFrameNumbers("magic3_1", {
+      start: 0,
+      end: 7,
+      first: 0,
+    }),
+    frameRate: 20,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic3_2",
+    frames: this.anims.generateFrameNumbers("magic3_2", {
+      start: 0,
+      end: 7,
+      first: 0,
+    }),
+    frameRate: 20,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic4",
+    frames: this.anims.generateFrameNumbers("magic4", {
+      start: 0,
+      end: 2,
+      first: 0,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic4_1",
+    frames: this.anims.generateFrameNumbers("magic4_1", {
+      start: 0,
+      end: 2,
+      first: 0,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic4_2",
+    frames: this.anims.generateFrameNumbers("magic4_2", {
+      start: 0,
+      end: 2,
+      first: 0,
+    }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic5",
+    frames: this.anims.generateFrameNumbers("magic5", {
+      start: 0,
+      end: 60,
+      first: 0,
+    }),
+    frameRate: 200,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "magic5_1",
+    frames: this.anims.generateFrameNumbers("magic5_1", {
+      start: 0,
+      end: 7,
+      first: 0,
+    }),
+    frameRate: 50,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic5_2",
+    frames: this.anims.generateFrameNumbers("magic5_2", {
+      start: 0,
+      end: 7,
+      first: 0,
+    }),
+    frameRate: 50,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "magic5_3",
+    frames: this.anims.generateFrameNumbers("magic5_3", {
+      start: 0,
+      end: 7,
+      first: 0,
+    }),
+    frameRate: 50,
+    repeat: -1,
+  });
+  fairySet[nowFairy].play(fairySet[nowFairy].idleKey, true);
+
+  //player end
+
+  //cointext start
+  // cointext = this.add.text(500, 20, 'coin: 0', {font: 'Bold 15px Arial', fill: '#fff', fontStyle: "strong"}).setScrollFactor(0);
+  // cointext.setStroke('#000', 2);
+  // cointext.setDepth(2);
+  //cointext end
+
+  //enemy start
+
+  bossSet = this.physics.add.group();
+  bossMagicSet = this.physics.add.group();
+  bombDead = this.physics.add.group();
+  monsterSet = this.physics.add.group();
+  magics = this.physics.add.group();
+  petAttacks = this.physics.add.group();
+  petSkillAttacks = this.physics.add.group();
+  mines = this.physics.add.group();
+
+  ingameUi();
+
+  this.physics.add.collider(player, bossSet, player.hitPlayer);
+  this.physics.add.collider(bossSet, monsterSet);
+  thisScene.physics.add.overlap(magics, bossSet, attack);
+  thisScene.physics.add.overlap(bossMagicSet, player, player.hitPlayer);
+
+  // 만약 유저와 몬스터가 닿았다면 (hitplayer 함수 실행)
+  this.physics.add.collider(player, monsterSet, player.hitPlayer);
+  thisScene.physics.add.overlap(magics, monsterSet, attack);
+  thisScene.physics.add.overlap(bombDead, monsterSet, bomb);
+  thisScene.physics.add.overlap(bombDead, player, player.bombHitPlayer);
+
+  //map start
+  thisScene.physics.add.overlap(petAttacks, bossSet, petAttackFunc);
+  thisScene.physics.add.overlap(petAttacks, monsterSet, petAttackFunc);
+
+  //map end
+
+  // ============== 몬스터 스프라이트 애니메이션 목록 ==================
+  this.anims.create({
+    key: "alien",
+    frames: this.anims.generateFrameNumbers("alien", { start: 9, end: 14 }),
+    frameRate: 3,
+    repeat: -1, // -1은 무한 반복 의미
+  });
+
+  this.anims.create({
+    key: "worm",
+    frames: this.anims.generateFrameNumbers("worm", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "alienPlus",
+    frames: this.anims.generateFrameNumbers("alienPlus", { start: 9, end: 14 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "alienFinal",
+    frames: this.anims.generateFrameNumbers("alienFinal", {
+      start: 9,
+      end: 14,
+    }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "wormPlus",
+    frames: this.anims.generateFrameNumbers("wormPlus", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "wormFinal",
+    frames: this.anims.generateFrameNumbers("wormFinal", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "wormFever",
+    frames: this.anims.generateFrameNumbers("wormFever", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "sonic",
+    frames: this.anims.generateFrameNumbers("sonic", { start: 0, end: 1 }),
+    frameRate: 4,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "turtle",
+    frames: this.anims.generateFrameNumbers("turtle", { start: 0, end: 1 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "slime",
+    frames: this.anims.generateFrameNumbers("slime", { start: 7, end: 14 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fly",
+    frames: this.anims.generateFrameNumbers("fly", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+  // boss
+
+  this.anims.create({
+    key: "slimeKing",
+    frames: this.anims.generateFrameNumbers("slimeKing", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "golem",
+    frames: this.anims.generateFrameNumbers("golem", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "fireGiant",
+    frames: this.anims.generateFrameNumbers("fireGiant", { start: 0, end: 2 }),
+    frameRate: 3,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "monster_die",
+    frames: this.anims.generateFrameNumbers("monster_die", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 12,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "monster_boom",
+    frames: this.anims.generateFrameNumbers("monster_boom", {
+      start: 0,
+      end: 7,
+    }),
+    frameRate: 12,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "monster_fever",
+    frames: this.anims.generateFrameNumbers("monster_fever", {
+      start: 0,
+      end: 7,
+    }),
+    frameRate: 12,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "fireGiantAura",
+    frames: this.anims.generateFrameNumbers("fireGiantAura", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 12,
+    repeat: -1,
+  });
+  //enemy end
+
+  //tower start
+
+  //pet start
+  this.anims.create({
+    key: "0_idle_pet",
+    frames: this.anims.generateFrameNumbers("petNormal", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "1_idle_pet",
+    frames: this.anims.generateFrameNumbers("petThunder", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "2_idle_pet",
+    frames: this.anims.generateFrameNumbers("petFire", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "3_idle_pet",
+    frames: this.anims.generateFrameNumbers("petWater", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "4_idle_pet",
+    frames: this.anims.generateFrameNumbers("petEarth", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "5_idle_pet",
+    frames: this.anims.generateFrameNumbers("petGod", {
+      start: 0,
+      end: 4,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  //petmagic
+  this.anims.create({
+    key: "0_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "0_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "1_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "1_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "2_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "2_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "3_idle_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "3_destory_magic",
+    frames: this.anims.generateFrameNumbers("catNormalMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "4_idle_magic",
+    frames: this.anims.generateFrameNumbers("catEarthMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "4_destory_magic",
+    frames: this.anims.generateFrameNumbers("catEarthMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "5_idle_magic",
+    frames: this.anims.generateFrameNumbers("catGodMagic", {
+      start: 0,
+      end: 1,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "5_destory_magic",
+    frames: this.anims.generateFrameNumbers("catGodMagic", {
+      start: 2,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "0_idle_skill",
+    frames: this.anims.generateFrameNumbers("catNormalSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  this.anims.create({
+    key: "1_idle_skill",
+    frames: this.anims.generateFrameNumbers("catThunderSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "2_idle_skill",
+    frames: this.anims.generateFrameNumbers("catFireSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "3_idle_skill",
+    frames: this.anims.generateFrameNumbers("catWaterSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "4_idle_skill",
+    frames: this.anims.generateFrameNumbers("catEarthSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+  this.anims.create({
+    key: "5_idle_skill",
+    frames: this.anims.generateFrameNumbers("catGodSkill", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+  //pet end
+
+  global.pets = this.add.group();
+
+  let px = player.x;
+  let py = player.y;
+
+  global.petNormal = new CatTower(
+    this,
+    0,
+    0,
+    px,
+    py,
+    "0_idle_pet",
+    "0_idle_magic",
+    "0_destory_magic",
+    "0_idle_skill"
+  );
+  global.petThunder = new CatTower(
+    this,
+    1,
+    0,
+    px,
+    py,
+    "1_idle_pet",
+    "1_idle_magic",
+    "1_destory_magic",
+    "1_idle_skill"
+  );
+  global.petFire = new CatTower(
+    this,
+    2,
+    0,
+    px,
+    py,
+    "2_idle_pet",
+    "2_idle_magic",
+    "2_destory_magic",
+    "2_idle_skill"
+  );
+  global.petWater = new CatTower(
+    this,
+    3,
+    0,
+    px,
+    py,
+    "3_idle_pet",
+    "3_idle_magic",
+    "3_destory_magic",
+    "3_idle_skill"
+  );
+  global.petEarth = new CatTower(
+    this,
+    4,
+    0,
+    px,
+    py,
+    "4_idle_pet",
+    "4_idle_magic",
+    "4_destory_magic",
+    "4_idle_skill"
+  );
+  global.petGod = new CatTower(
+    this,
+    5,
+    0,
+    px,
+    py,
+    "5_idle_pet",
+    "5_idle_magic",
+    "5_destory_magic",
+    "5_idle_skill"
+  );
+
+  petNormal.setDepth(10);
+  petThunder.setDepth(10);
+  petFire.setDepth(10);
+  petWater.setDepth(10);
+  petEarth.setDepth(10);
+  petGod.setDepth(10);
+
+  petNormal.setVisible(false);
+  petThunder.setVisible(false);
+  petFire.setVisible(false);
+  petWater.setVisible(false);
+  petEarth.setVisible(false);
+  petGod.setVisible(false);
+
+  //디버그용
+  // petNormal.setVisible(true);
+  // petThunder.setVisible(true);
+  // petFire.setVisible(true);
+  // petWater.setVisible(true);
+  // petEarth.setVisible(true);
+  // petGod.setVisible(true);
+
+  pets.add(petNormal);
+  pets.add(petThunder);
+  pets.add(petFire);
+  pets.add(petWater);
+  pets.add(petEarth);
+  pets.add(petGod);
+
+  global.petscircle = new Phaser.Geom.Circle(player.x, player.y, 800);
+
+  global.startAngle = this.tweens.addCounter({
+    from: 50,
+    to: 100,
+    duration: 100000,
+    ease: "Linear",
+    repeat: -1,
+  });
+
+  global.endAngle = this.tweens.addCounter({
+    from: 100,
+    to: 50,
+    duration: 100000,
+    ease: "Linear",
+    repeat: -1,
+  });
+
+  //cattower animation start
+  this.anims.create({
+    key: "0_idle",
+    frames: this.anims.generateFrameNumbers("catNone", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 4,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "0_attack",
+    frames: this.anims.generateFrameNumbers("catNone", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "1_idle",
+    frames: this.anims.generateFrameNumbers("catThunder", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 4,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "1_attack",
+    frames: this.anims.generateFrameNumbers("catThunder", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "2_idle",
+    frames: this.anims.generateFrameNumbers("catFire", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 4,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "2_attack",
+    frames: this.anims.generateFrameNumbers("catFire", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "3_idle",
+    frames: this.anims.generateFrameNumbers("catWater", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 4,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "3_attack",
+    frames: this.anims.generateFrameNumbers("catWater", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "4_idle",
+    frames: this.anims.generateFrameNumbers("catEarth", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 4,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "4_attack",
+    frames: this.anims.generateFrameNumbers("catEarth", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+
+  this.anims.create({
+    key: "5_idle",
+    frames: this.anims.generateFrameNumbers("catFinal", {
+      start: 0,
+      end: 2,
+    }),
+    frameRate: 4,
+    repeat: -1,
+  });
+
+  this.anims.create({
+    key: "5_attack",
+    frames: this.anims.generateFrameNumbers("catFinal", {
+      start: 3,
+      end: 8,
+    }),
+    frameRate: 8,
+    repeat: 0,
+  });
+  //cattower animation end
+
+  //tower end
+
+  //mine start
+  this.anims.create({
+    key: "minecoin",
+    frames: this.anims.generateFrameNumbers("mineani", {
+      start: 0,
+      end: 7,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  });
+  // ##보스 생성, 나중에 타이머 조건 넣고 업데이트에 넣기 ##
+
+  //navi start
+  //navi end
+
+  //exp bar start
+  expBar = this.add.graphics().setScrollFactor(0);
+  expBarBG = this.add.graphics().setScrollFactor(0);
+  expBar.setDepth(4);
+  expBarBG.setDepth(3);
+
+  this.cameras.main.ignore([expBar, expBarBG]);
+
+  //exp bar end
+  // hp bar start
+  hpBar = this.add.graphics();
+  hpBarBG = this.add.graphics();
+  hpBar.setDepth(5);
+  hpBarBG.setDepth(4);
+  // hp bar end
+
+  this.cameras.main.setZoom(0.8);
+  UICam.setZoom(1);
+
+  // 난이도
+  if (global.ChoiceLevel === 1) {
+    difficulty_hp = 10;
+    difficulty_spawn = 10;
+    difficulty_vel = 10;
+  }
+
+  if (global.ChoiceLevel === 2) {
+    difficulty_hp = 20;
+    difficulty_spawn = 20;
+    difficulty_vel = 20;
+  }
+
+  // this.physics.add.collider(bossSet, wallLayer);
+  // this.physics.add.collider(monsterSet, wallLayer);
+  //   this.physics.add.collider(monsterSet, treesLayer);
+  //   this.physics.add.collider(bossSet, treesLayer);
+
+  if (cheatMode) {
+    player.maxExp = 100000;
+    for (let i = 0; i < 5; i++) {
+      fairySet[i].cheat();
+    }
+  }
+}
+
+function update(time, delta) {
+  petscircle.x = player.x;
+  petscircle.y = player.y;
+  Phaser.Actions.SetXY(petscircle, player.x, player.y);
+  Phaser.Actions.PlaceOnCircle(pets.getChildren(), petscircle);
+  Phaser.Actions.RotateAroundDistance(
+    pets.getChildren(),
+    petscircle,
+    startAngle.getValue(),
+    endAngle.getValue()
+  );
+
+  for (let i = 0; i < 5; i++) {
+    if (fairySet[i].timer < fairySet[i].skillCD) {
+      fairySet[i].timer++;
+      if (fairySet[i].skillUse === true) {
+        useSkill(i);
+      }
+    } else {
+      if (fairySet[i].skillUse === true) {
+        fairySet[i].skillUse = false;
+        canSkill(i);
+      }
+    }
+  }
+
+  if (
+    cursors.skill.isDown &&
+    fairySet[nowFairy].isSkill &&
+    !fairySet[nowFairy].skillUse
+  ) {
+    fairySet[nowFairy].skillFire();
+    // fairySet[nowFairy].skillUse = true;
+  }
+
+  frameTime += delta;
+  //  Health bar start
+  hpBar.clear();
+  hpBarBG.clear();
+  hpBarBG.fillStyle(0xff0000);
+  hpBarBG.fillRect(0, 0, 60, 10);
+
+  hpBar.fillStyle(0x2ff40a);
+  hpBar.fillRect(0, 0, 60 * (player.health / player.maxHealth), 10);
+  // Health bar end
+  player.move(hpBar, hpBarBG);
+
+  if (frameTime > 16.5) {
+    frameTime = 0;
+
+    //map start
+    this.cameras.main.startFollow(player, false);
+    UICam.startFollow(player, false);
+    //map end
+
+    //player start
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     changeSlot();
     normalAttackAS = fairySet[nowFairy].as;
     if (normalAttackTimer > normalAttackAS) {
@@ -11823,6 +13620,7 @@ function update(time, delta) {
         this
       );
       fairySet[nowFairy].normalAttack(magic);
+<<<<<<< HEAD
 >>>>>>> ad73ae5 (:sparkles: map 이미지 추가)
     }
 =======
@@ -21811,6 +23609,10 @@ function update(time, delta) {
 >>>>>>> a295648 (#2 :sparkles: 우클릭 방지 추가)
     }
 
+=======
+    }
+
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     for (let i = 0; i < 5; i++) {
       if (fairySet[i].timer < fairySet[i].skillCD) {
         fairySet[i].timer++;
@@ -21818,6 +23620,7 @@ function update(time, delta) {
         fairySet[i].skillUse = false;
       }
     }
+<<<<<<< HEAD
 
     if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
       fairySet[nowFairy].skillFire();
@@ -21973,6 +23776,8 @@ function update(time, delta) {
       }
     }
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 
     if (cursors.skill.isDown && !fairySet[nowFairy].skillUse) {
       fairySet[nowFairy].skillFire();
@@ -21992,6 +23797,7 @@ function update(time, delta) {
       if (hitTimer >= 15) {
         hitTimer = 0;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> c65fef8 (:musical_note: 진냥이 BGM 롤백)
@@ -22819,11 +24625,23 @@ function update(time, delta) {
       }
     }
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+        if (hitVisible) {
+          hitVisible = false;
+        } else {
+          hitVisible = true;
+        }
+
+        player.setVisible(hitVisible);
+      }
+    }
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 
     //player end
 
     //enemy start
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     bossSet = this.physics.add.group();
     bossMagicSet = this.physics.add.group();
@@ -22836,6 +24654,8 @@ function update(time, delta) {
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     // 몬스터가 유저 따라가게함
     if (monsterCount !== 0) {
       for (let i = 0; i < monsterSet.children.entries.length; i++) {
@@ -22849,7 +24669,10 @@ function update(time, delta) {
         );
       }
     }
+<<<<<<< HEAD
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 
     gameTimer++;
     UpdateTimer();
@@ -22861,6 +24684,7 @@ function update(time, delta) {
       // 1번 zombie
       enemySpawn(randomLocation);
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (10800 < gameTimer && gameTimer <= 21000) {
         addMonster(this, "alien", "alienPlus", 60, 65, monX, monY);
       } else if (21000 < gameTimer) {
@@ -22868,13 +24692,18 @@ function update(time, delta) {
       } else {
         addMonster(this, "alien", "alien", 40, 50, monX, monY);
 =======
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
       if (10800 < gameTimer && gameTimer <= 18000) {
         addMonster(this, "alien", "alienPlus", 60, 65, monX, monY);
       } else if (18000 < gameTimer) {
         addMonster(this, "alien", "alienFinal", 100, 75, monX, monY);
       } else {
         addMonster(this, "alien", "alien", 30, 50, monX, monY);
+<<<<<<< HEAD
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
       }
     }
     if (gameTimer > 1200 && gameTimer % 120 === 0) {
@@ -22992,12 +24821,17 @@ function update(time, delta) {
       golem = new Boss(
         this,
 <<<<<<< HEAD
+<<<<<<< HEAD
         1000,
         50,
 =======
         500,
         30,
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+        500,
+        30,
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
         player.x + 1500,
         player.y + 1500,
         "golem",
@@ -23030,12 +24864,17 @@ function update(time, delta) {
       fireGiant = new Boss(
         this,
 <<<<<<< HEAD
+<<<<<<< HEAD
         1500,
         30,
 =======
         500,
         10,
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+        500,
+        10,
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
         player.x - 600,
         player.y - 600,
         "fireGiant",
@@ -23171,6 +25010,7 @@ function update(time, delta) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.anims.create({
         key: "monster_boom",
         frames: this.anims.generateFrameNumbers("monster_boom", {
@@ -23181,6 +25021,8 @@ function update(time, delta) {
         repeat: 0,
     });
 =======
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     // 피버 타임
     if (
       killCount != 0 &&
@@ -23189,9 +25031,13 @@ function update(time, delta) {
     ) {
       feverTime = 600;
       feverLock = true;
+<<<<<<< HEAD
       messageBoss("피버");
     }
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+    }
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 
     if (feverTime != 0) {
       enemySpawn(randomLocation);
@@ -23202,6 +25048,7 @@ function update(time, delta) {
       feverLock = false;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     this.anims.create({
         key: "fireGiantAura",
@@ -23234,10 +25081,13 @@ function update(time, delta) {
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     //enemy end
 
     //tower start
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -24741,6 +26591,8 @@ function update(time, delta) {
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     //tower end
 
     //exp bar start
@@ -24753,10 +26605,13 @@ function update(time, delta) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     expBar.fillStyle(0x1ca1db);
     expBar.fillRect(
       0,
@@ -24765,8 +26620,11 @@ function update(time, delta) {
       16
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     );
   } //exp bar end
   UICam.ignore([
@@ -24793,6 +26651,7 @@ function update(time, delta) {
     petGod,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     petAttacks,
     petSkillAttacks,
 =======
@@ -24803,6 +26662,10 @@ function update(time, delta) {
     petAttacks,
     petSkillAttacks,
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+    petAttacks,
+    petSkillAttacks,
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     bossMagicSet,
   ]);
 
@@ -24817,6 +26680,7 @@ function update(time, delta) {
       mine.scale_Circle();
       mine.set_anime();
       mines.add(mine);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     }
@@ -26343,7 +28207,10 @@ function attack(magic, alien) {
         for (let i = 0; i < 5; i++) {
             fairySet[i].cheat();
         }
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     }
+  }
 }
 
 function update(time, delta) {
@@ -26452,6 +28319,7 @@ function changeSlot() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (cursors.slot1.isDown && nowFairy !== 0) {
 >>>>>>> 044ec34 (#3 :sparkles: 요정 스왑 딜레이 제거)
 =======
@@ -26460,6 +28328,9 @@ function changeSlot() {
 =======
   if (cursors.slot1.isDown && nowFairy !== 0) {
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+  if (cursors.slot1.isDown && nowFairy !== 0) {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
     nowFairy = 0;
@@ -26467,6 +28338,7 @@ function changeSlot() {
     normalAttackAS = fairySet[nowFairy].as;
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -26531,6 +28403,18 @@ function changeSlot() {
   }
 
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+
+  if (cursors.slot2.isDown && nowFairy !== 1) {
+    fairySet[nowFairy].x = -10000;
+    fairySet[nowFairy].y = -10000;
+    nowFairy = 1;
+    player.changeFairy(fairySet[nowFairy]);
+    normalAttackAS = fairySet[nowFairy].as;
+    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+  }
+
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   if (cursors.slot3.isDown && nowFairy !== 2) {
     fairySet[nowFairy].x = -10000;
     fairySet[nowFairy].y = -10000;
@@ -26557,6 +28441,7 @@ function changeSlot() {
     normalAttackAS = fairySet[nowFairy].as;
     fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   if (!fairySet[nowFairy].anims.isPlaying) {
@@ -27145,12 +29030,22 @@ function hithole(hole, monster) {
 
 function attack(magic, monster) {
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+
+  if (!fairySet[nowFairy].anims.isPlaying) {
+    fairySet[nowFairy].anims.play(fairySet[nowFairy].idleKey, true);
+  }
+}
+
+function attack(magic, monster) {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   if (!monster.invincible) {
     if (ChoiceCat === 5) {
       let rand = Math.floor(Math.random() * 20);
       setSound.playSE(rand);
     } else {
       setSound.playSE(12);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -27842,6 +29737,9 @@ function attack(magic, monster) {
 =======
     }
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+    }
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
     if (magic.pierceCount > 0) {
       magic.pierceCount--;
     } else {
@@ -28001,9 +29899,12 @@ function attack(magic, monster) {
     }
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 }
 
 <<<<<<< HEAD
@@ -28336,6 +30237,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime).setInteractive(
     { cursor: "url(images/cursor/aimHover.png), pointer" }
   );
@@ -28360,10 +30262,16 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
     { cursor: "url(images/cursor/aimHover.png), pointer" }
   );
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+  monster = new Enemy(scene, hp, velo, x, y, mon_name, monAnime).setInteractive(
+    { cursor: "url(images/cursor/aimHover.png), pointer" }
+  );
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   if (monster.monSpecie === "babySlime") {
     monster.scale = 2;
   } else if (
     monster.monSpecie === "alien" ||
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -28400,6 +30308,11 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
     monster.monSpecie === "alienFinal" ||
     monster.monSpecie === "fly"
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+    monster.monSpecie === "alienPlus" ||
+    monster.monSpecie === "alienFinal" ||
+    monster.monSpecie === "fly"
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   ) {
     monster.scale = 2.5;
   } else if (
@@ -28413,6 +30326,7 @@ function addMonster(scene, mon_name, monAnime, hp, velo, x, y) {
   monsterCount += 1;
   let mw = monster.body.halfWidth;
   let mh = monster.body.halfHeight;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -28638,10 +30552,14 @@ function destroyHole(hole, golem) {
 =======
 
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   monster.setCircle(mh / 2, mw - mh / 2, mw);
   monsterSet.add(monster);
   scene.physics.add.collider(monsterSet, monster);
   monster.anime(player);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -28654,6 +30572,8 @@ function destroyHole(hole, golem) {
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 }
 
 function siegeSpawn() {
@@ -28676,6 +30596,7 @@ function siegeSpawn() {
 =======
 >>>>>>> 4c2f366 (#2 :sparkles: 몬스터 구조 변경)
 function enemySpawn(scene) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -29357,6 +31278,75 @@ function bomb(bomb, target) {
 
 function slimePattern(scene, pt, x, y) {
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+  randomLocation = Math.floor(Math.random() * 4) + 1;
+  if (randomLocation === 1) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y + 500, player.y + 510);
+  } else if (randomLocation === 2) {
+    monX = Phaser.Math.Between(player.x - 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y - 510);
+  } else if (randomLocation === 3) {
+    monX = Phaser.Math.Between(player.x - 500, player.x - 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  } else if (randomLocation === 4) {
+    monX = Phaser.Math.Between(player.x + 500, player.x + 500);
+    monY = Phaser.Math.Between(player.y - 500, player.y + 500);
+  }
+}
+
+function bomb(bomb, target) {
+  if (!target.invincible && target.monSpecie != "golem") {
+    target.invincible = true;
+    target.health -= bomb.dmg;
+    target.unInvincible();
+    if (target.health <= 0 && target.type !== "boss") {
+      if (target.monSpecie !== "slime") {
+        if (
+          target.monSpecie === "worm" ||
+          target.monSpecie === "wormPlus" ||
+          target.monSpecie === "wormFinal" ||
+          target.monSpecie === "wormFever"
+        ) {
+          target.boomAnim();
+        } else {
+          target.dieAnim();
+        }
+        if (target.monSpecie === "wormFever") {
+          killCount--;
+          player.expUp(0.1);
+        } else {
+          if (gameTimer < 9000) {
+            player.expUp(2);
+          } else {
+            player.expUp(1);
+          }
+        }
+        target.destroy();
+        monsterCount -= 1;
+        killCount += 1;
+      } else if (target.monSpecie === "slime") {
+        for (let i = 0; i < 2; i++) {
+          addMonster(
+            thisScene,
+            "babySlime",
+            "slime",
+            50 + difficulty_hp,
+            100,
+            target.x + i * 20,
+            target.y
+          );
+        }
+        target.destroy();
+        monsterCount -= 1;
+        killCount += 1;
+      }
+    }
+  }
+}
+
+function slimePattern(scene, pt, x, y) {
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   if (pt !== 16) {
     pt *= 2;
     for (let i = 0; i < 2; i++) {
@@ -29407,6 +31397,7 @@ function slimePattern(scene, pt, x, y) {
       let mh = slimeKing.body.halfHeight;
       slimeKing.setCircle(mh / 2, mw - mh / 2, mw);
       bossSet.add(slimeKing);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -29486,6 +31477,10 @@ function slimePattern(scene, pt, x, y) {
     }
   }
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+    }
+  }
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 }
 
 function slimePattern(scene, pt, x, y) {
@@ -29641,10 +31636,13 @@ function petAttackFunc(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
   if (!monster.invincible) {
     monster.invincible = true;
     monster.unInvincible();
@@ -29661,6 +31659,7 @@ function petAttackFunc(magic, monster) {
           monster.boomAnim();
         } else {
           monster.dieAnim();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         }
@@ -29757,6 +31756,8 @@ function petAttackFunc(magic, monster) {
 >>>>>>> 1ee0600 (#2 :recycle: 밸런싱)
 =======
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
         }
         if (monster.monSpecie === "wormFever") {
           killCount--;
@@ -29799,6 +31800,7 @@ function petAttackFunc(magic, monster) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   }
 >>>>>>> 8f54603 (#2 :sparkles: 펫 공격 방식 및 주기)
 =======
@@ -29809,6 +31811,9 @@ function petAttackFunc(magic, monster) {
 =======
   }
 >>>>>>> f9a993b (#1 :sparkles: 피버 글씨 무지개 적용)
+=======
+  }
+>>>>>>> 0732510 (#1 :sparkles: 캔 갯수 보이기)
 }
 <<<<<<< HEAD
 >>>>>>> 3a3a548 (:sparkles: 참치 추가 및 노멀 펫 총알 추가)
