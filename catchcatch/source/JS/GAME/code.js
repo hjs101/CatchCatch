@@ -80,6 +80,7 @@ export let codeConfig = {
     arcade: {
       fps: 60,
       debug: debugmode,
+      debugShowVelocity: true,
       fixedStep: false,
 >>>>>>> 494dd23 (#7 :sparkles: debug 모드 온오프 수정)
     },
@@ -1073,6 +1074,7 @@ this.scene.pause();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.scene.pause();
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 =======
@@ -1110,6 +1112,9 @@ this.scene.pause();
 =======
   this.scene.pause();
 >>>>>>> f0ef009 (#1 :sparkles: UI 핀번호 복사)
+=======
+  // this.scene.pause();
+>>>>>>> e353187 (#3 :sparkles: 보호막 및 기타 변경사항 적용)
 }
 
 function update(time, delta) {

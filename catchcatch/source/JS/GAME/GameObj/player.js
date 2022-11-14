@@ -520,7 +520,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     } else if (player.invincible === false) {
       player.invincible = true;
       player.body.checkCollision.none = true;
-      player.health -= 1;
+      if (!shield) {
+        player.health -= 1;
+      } else {
+        shield = false;
+      }
       // 피해 1 줌
       // stop_game -= 1;
       if (player.health <= 0) {
@@ -549,7 +553,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if (!player.invincible && bombDead.monSpecie != "wormFever") {
       player.invincible = true;
       player.body.checkCollision.none = true;
-      player.health -= 1;
+      if (!shield) {
+        player.health -= 1;
+      } else {
+        shield = false;
+      }
       player.unInvincible();
       // 피해 1 줌
       // stop_game -= 1;
