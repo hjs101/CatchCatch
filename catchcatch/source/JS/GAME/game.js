@@ -14141,8 +14141,11 @@ function update(time, delta) {
     };
     socket.send(JSON.stringify(Data));
   };
+<<<<<<< HEAD
   console.log(socket);
 >>>>>>> 8253c5b (:sparkles: 소켓통신으로 유저 접속 카운트)
+=======
+>>>>>>> 4d97143 (:bug: 콘솔 삭제)
   // mineCount = 2;
   // StartMineRangeX = -3000;
   // StartMineRangeY = -3000;
