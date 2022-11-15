@@ -29500,7 +29500,7 @@ function update(time, delta) {
       let bossY = dxy[bossRand][1] * 500;
       slimeKing = new Boss(
         this,
-        300 + difficulty_hp * 10,
+        300 + difficulty_hp * 5,
         70,
         player.x + bossX,
         player.y + bossY,
@@ -29536,7 +29536,7 @@ function update(time, delta) {
       let bossY = dxy[bossRand][1] * 1500;
       golem = new Boss(
         this,
-        1500 + difficulty_hp * 10,
+        1500 + difficulty_hp * 5,
         100,
         player.x + bossX,
         player.y + bossY,
@@ -29574,7 +29574,7 @@ function update(time, delta) {
 
       fireGiant = new Boss(
         this,
-        2000 + difficulty_hp * 10,
+        2000 + difficulty_hp * 5,
         35,
         player.x + bossX,
         player.y + bossY,
