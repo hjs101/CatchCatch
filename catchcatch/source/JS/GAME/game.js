@@ -29454,6 +29454,8 @@ function update(time, delta) {
     let golemSpawnTime = 21000;
     let fireGiantSpawnTime = 28000;
 
+    let dxy = [[1,1],[-1,-1],[1,-1],[-1,1]];
+
     // 슬라임
     if (gameTimer === slimeSpawnTime - 600) {
       messageBoss("슬라임 킹");
@@ -29466,12 +29468,16 @@ function update(time, delta) {
       } else {
         setSound.playSE(13);
       }
+
+      let bossRand = Math.floor(Math.random() * 4);
+      let bossX = dxy[bossRand][0] * 500;
+      let bossY = dxy[bossRand][1] * 500;
       slimeKing = new Boss(
         this,
         300,
         70,
-        player.x + 500,
-        player.y + 500,
+        player.x + bossX,
+        player.y + bossY,
         "slimeKing",
         "slimeKing",
         3,
@@ -29499,12 +29505,15 @@ function update(time, delta) {
       } else {
         setSound.playSE(14);
       }
+      let bossRand = Math.floor(Math.random() * 4);
+      let bossX = dxy[bossRand][0] * 1500;
+      let bossY = dxy[bossRand][1] * 1500;
       golem = new Boss(
         this,
         1500,
         80,
-        player.x + 1500,
-        player.y + 1500,
+        player.x + bossX,
+        player.y + bossY,
         "golem",
         "golem",
         3,
@@ -29532,12 +29541,17 @@ function update(time, delta) {
       } else {
         setSound.playSE(15);
       }
+
+      let bossRand = Math.floor(Math.random() * 4);
+      let bossX = dxy[bossRand][0] * 600;
+      let bossY = dxy[bossRand][1] * 600;
+
       fireGiant = new Boss(
         this,
         2000,
         35,
-        player.x - 600,
-        player.y - 600,
+        player.x + bossX,
+        player.y + bossY,
         "fireGiant",
         "fireGiant",
         3,
