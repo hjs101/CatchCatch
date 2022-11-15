@@ -953,6 +953,7 @@ function preload() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 2d18cb4 (#3 #7 :sparkles: 코딩모드 및 아케이드모드 업데이트)
 =======
@@ -982,6 +983,8 @@ function preload() {
 =======
 
 >>>>>>> 064a5f5 (#3 #2 :sparkles: 스킬 버그 수정, 스킬 밸런스 조정 및 킬 카운트 조정)
+=======
+>>>>>>> f614bf1 (#2 오버랩 해제)
   //map start
   this.load.image("flower", "images/map/First Asset pack.png"); //식물
   this.load.image("plant", "images/map/TX Plant.png"); //나무
@@ -14143,8 +14146,11 @@ function update(time, delta) {
   // difficulty_spawn = 0;
   // difficulty_vel = 0;
   // difficulty_hp = 0;
+<<<<<<< HEAD
   console.log(fever_late);
 >>>>>>> 064a5f5 (#3 #2 :sparkles: 스킬 버그 수정, 스킬 밸런스 조정 및 킬 카운트 조정)
+=======
+>>>>>>> f614bf1 (#2 오버랩 해제)
   this.anims.create({
     key: "rainbow",
     frames: this.anims.generateFrameNumbers("rainbow", { start: 0, end: 1 }),
@@ -18190,8 +18196,6 @@ function update(time, delta) {
     startAngle.getValue(),
     endAngle.getValue()
   );
-
-
 
   if (
     cursors.skill.isDown &&
@@ -29667,7 +29671,7 @@ function update(time, delta) {
       feverTime = 600;
       feverLock = true;
       messageBoss("피버");
-      fever_late += 20;
+      fever_late += 25;
     }
 
     if (feverTime != 0) {
@@ -35705,14 +35709,13 @@ function destroyHole(hole, golem) {
   } else if (player.ability === 5 && monster.monSpecie === "alien") {
     monster.setScale(1);
     monster.setCircle(mw * 1.5, 0, mh - mw);
-    console.log(monster);
     monster.body.offset.x += 10;
     monster.body.offset.y += 10;
   } else {
     monster.setCircle(mh / 2, mw - mh / 2, mw);
   }
   monsterSet.add(monster);
-  scene.physics.add.collider(monsterSet, monster);
+  // scene.physics.add.collider(monsterSet, monster);
   monster.anime(player);
 <<<<<<< HEAD
 <<<<<<< HEAD
