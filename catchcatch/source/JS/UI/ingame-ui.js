@@ -126,11 +126,11 @@ export default function ingameUi() {
     const div = document.createElement("div");
     div.setAttribute("class", "fairy");
     const img = document.createElement("img");
-    img.src = `images/ui/Icon/char/fairy${idx + 1}.png`;
+    img.src = `images/ui/Icon/cool/fairy${idx + 1}.png`;
     div.classList.add(`${fairyName[idx]}`);
     img.classList.add(`${fairyActive[idx]}`);
     img.innerText = "요정";
-    div.appendChild(img);
+    div.appendChildf(img);
     const back = document.createElement("div");
     back.setAttribute("class", `${fairyBack[idx]}`);
     back.classList.add(`back`);
@@ -248,7 +248,7 @@ export function GameOver() {
   cantxt.setAttribute("class", "cantxt");
   resultspace.appendChild(cantxt);
 
-  let cancount = parseInt(global.killCount / 50);
+  let cancount = parseInt(global.killCount / 30);
   cancount += inGameCoin;
   cantxt.textContent = "x" + cancount;
 
@@ -338,7 +338,7 @@ function GameClear() {
   cantxt.setAttribute("class", "cantxt");
   resultspace.appendChild(cantxt);
 
-  let cancount = parseInt(global.killCount / 50);
+  let cancount = parseInt(global.killCount / 30);
   cantxt.textContent = "x" + cancount;
   // cantxt.textContent = "x20";
   global.LocalData.Coin += cancount;
