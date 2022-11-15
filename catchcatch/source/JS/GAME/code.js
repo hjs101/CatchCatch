@@ -1719,8 +1719,14 @@ export function attack(isAttack, angle, element) {
   if (isAttack) {
     let x = Math.cos(angle * (Math.PI / 180));
     let y = Math.sin(angle * (Math.PI / 180));
+<<<<<<< HEAD
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 
+=======
+    if (element < 1 || element > 5) {
+      element = 1;
+    }
+>>>>>>> c0018ab (#7 :bug: 코드모드 수정)
     let magic = new Magic(codeScene, element);
     magic.anims.play("magic" + element);
     magicSet.add(magic);
@@ -1830,8 +1836,14 @@ function monsterHit(magic, monster) {
 =======
 
 function playerHit(player, monster) {
+<<<<<<< HEAD
     monster.destroy();
     score -= 50;
+=======
+  camera.shake(100, 0.01); //camera
+  monster.destroy();
+  score -= 50;
+>>>>>>> c0018ab (#7 :bug: 코드모드 수정)
 }
 
 // sock end
