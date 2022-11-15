@@ -858,6 +858,9 @@ export default class CatTower extends Phaser.Physics.Arcade.Sprite {
 =======
   levelUp() {
     this.level++;
+    if (this.level === 3) {
+      levelCount += 1;
+    }
   }
 
 >>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
