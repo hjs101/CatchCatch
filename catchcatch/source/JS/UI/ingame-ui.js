@@ -288,6 +288,8 @@ export function UpdateTimer() {
 =======
   if (_minute < 1) {
     _timerTxt.style.color = "red";
+    _timerTxt.style.textShadow =
+      "-2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000";
   }
 >>>>>>> 72c4aa6 (#1 :sparkles: 시간초 1분대 빨간색 및 pin번호 복사시 modal 삭제)
   if (global.gameTimer !== 0 && global.gameTimer % 60 === 0) {
