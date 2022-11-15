@@ -43,6 +43,7 @@ global.inGameCoin = 0;
 // 튜토리얼
 global.isTutorial = true;
 
+<<<<<<< HEAD
 // 1. ws 모듈 취득
 // 2. WebSocket 서버 생성/구동
 <<<<<<< HEAD
@@ -59,6 +60,8 @@ global.isTutorial = true;
 // });
 >>>>>>> 0d9d680 (#1 #2 #3 :sparkles: 각종 코드 수정)
 
+=======
+>>>>>>> 6e70ce0 (:recycle: console.log 제거)
 function Init() {
   StartPageInit(); //스타트 페이지 init
 }

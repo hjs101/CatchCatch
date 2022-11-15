@@ -243,7 +243,6 @@ export default function levelup() {
       }
     }
   }
-  console.log(levelCount, randomIndexArray);
   const gameContainer = document.querySelector("#game-container");
 
   // const levelupContainer = document.createElement("div");
@@ -303,7 +302,6 @@ export default function levelup() {
     } else {
       levelupContent.style.backgroundImage =
         'url("images/ui/levelup/petupgrade_addName.png")';
-      console.log(property[_propertyArr[randomIndexArray[i]]]);
       levelupContent.setAttribute("id", `${_propertyArr[randomIndexArray[i]]}`);
       levelupText.innerText =
         property[_propertyArr[randomIndexArray[i]]].text[
@@ -358,19 +356,14 @@ export default function levelup() {
       contents[i].addEventListener("click", () => {
         if (contents[i].id === "wizard") {
           wizard.levelUp();
-          console.log(wizard);
         } else if (contents[i].id === "reaper") {
           reaper.levelUp();
-          console.log(reaper);
         } else if (contents[i].id === "ninja") {
           ninja.levelUp();
-          console.log(ninja);
         } else if (contents[i].id === "slime") {
           slime.levelUp();
-          console.log(slime);
         } else if (contents[i].id === "witch") {
           witch.levelUp();
-          console.log(witch);
         } else if (contents[i].id === "normal") {
           petNormal.levelUp();
         } else if (contents[i].id === "fire") {
@@ -392,7 +385,6 @@ export default function levelup() {
           inGameCoin += 1;
         }
         player.expUpdate();
-        console.log(player.exp, player.maxExp);
         isLevelup = false;
         $this.resume();
         gameContainer.removeChild(removeContainer);

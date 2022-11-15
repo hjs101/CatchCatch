@@ -386,7 +386,6 @@ function preload() {
 
 function create() {
   // resource load start
-  console.log(debugmode);
   IncodeUI();
   monCount = 0;
   chunks = [];
@@ -1642,6 +1641,7 @@ function dataSend() {
 
                 shuffle(objList);
 
+<<<<<<< HEAD
                 var Data = {
                     action: "exeData",
                     pinnumber: PinNumber,
@@ -1665,6 +1665,28 @@ function dataSend() {
                     codegameclear();
                 }
             }
+=======
+        var Data = {
+          action: "exeData",
+          pinnumber: PinNumber,
+          catchobj: objList,
+        };
+        codeStart = false;
+        IsRunning = true;
+        socket.send(JSON.stringify(Data));
+      } else if (!codeStart) {
+        setSound.playSE(26);
+        Data = {
+          action: "endGame",
+          pinnumber: PinNumber,
+        };
+        socket.send(JSON.stringify(Data));
+        IsStarted = false;
+        if (stageNum === 6) {
+          makeranking();
+        } else {
+          codegameclear();
+>>>>>>> 6e70ce0 (:recycle: console.log 제거)
         }
     }
 }
@@ -1771,6 +1793,7 @@ function monsterHit(magic, monster) {
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
     }
 
+<<<<<<< HEAD
     if (!monster.invincible) {
         if (monster.weak === magic.element) {
             monster.health -= 3;
@@ -1790,6 +1813,16 @@ function monsterHit(magic, monster) {
             monster.destroy();
             console.log(score);
         }
+=======
+    if (monster.health <= 0) {
+      if (monster.type !== 0) {
+        setSound.playSE(23);
+      } else {
+        setSound.playSE(27);
+      }
+      score += 100;
+      monster.destroy();
+>>>>>>> 6e70ce0 (:recycle: console.log 제거)
     }
 }
 <<<<<<< HEAD

@@ -125,7 +125,6 @@ const StartPageInit = () => {
           RankingData = RankingData.map((el, idx) => {
             return [idx + 1, ...el];
           });
-          console.log(`당신의 Pin번호는 "${PinNumber}" 입니다.`);
           NewData = RankingData;
           InitRanking();
           // UpdateRanking();
@@ -142,7 +141,6 @@ const StartPageInit = () => {
           attack(msg.attack, msg.angle, msg.type);
           IsRunning = false;
         } else if (msg.action === "RankingUpdate") {
-          console.log(msg.ranking);
           RankingData = JSON.parse(JSON.stringify(msg.ranking));
           RankingData = RankingData.map((el, idx) => {
             return [idx + 1, ...el];
@@ -204,7 +202,6 @@ const StartPageInit = () => {
     LogoImg.src = "images/ui/codelogo.gif";
     setSound.setBGM(4);
     Btn.addEventListener("click", () => {
-      console.log("코딩모드 시작");
       //   CodeStart();
       setSound.playSE(16);
       GoStage();
@@ -273,7 +270,6 @@ const StartPageInit = () => {
     // RankingListTxt.push([GradeSpace, NameSpace, ScoreSpace]);
 
     // MySpace.appendChild(MyRanking);
-    console.log(RankingData);
     _RankingList.appendChild(InputSpace);
 
     //-----------------------------------------------
@@ -394,7 +390,6 @@ function RankingListOff() {
 
 function SearchResult(e) {
   setSound.playSE(16);
-  // console.log(InputArea.value);
   if (e.target.value) {
     NewData = RankingData.filter((el) => el.includes(e.target.value));
   } else {
