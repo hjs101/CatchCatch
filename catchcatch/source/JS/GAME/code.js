@@ -16,8 +16,12 @@ import IncodeUI, { makeranking, codegameclear } from "../UI/incode-ui.js";
 import Enemy from "./CodeObj/enemy.js";
 import Magic from "./CodeObj/magic.js";
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 8674ac1 (#7 :sparkles: 코드모드 공격 기능 구현)
 =======
+=======
+
+>>>>>>> 2965cee (#2 :sparkles: 코드캐치 피격 이펙트)
 import { showscore } from "../UI/incode-ui.js";
 >>>>>>> af488ab (#1 :sparkles: UI score 추가)
 =======
@@ -523,6 +527,16 @@ function create() {
     });
 
 <<<<<<< HEAD
+  this.anims.create({
+    key: "monster_die",
+    frames: this.anims.generateFrameNumbers("monster_die", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 12,
+    repeat: -1,
+  });
+
   this.anims.create({
     key: "magic1",
     frames: this.anims.generateFrameNumbers("magic1", { start: 1, end: 1 }),
@@ -1793,10 +1807,14 @@ function monsterHit(magic, monster) {
     } else {
       monster.invincible = true;
       monster.health -= 1;
+<<<<<<< HEAD
 =======
     if (monster.type === 0) {
         score -= 300;
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
+=======
+      monster.setTint(0xff0000);
+>>>>>>> 2965cee (#2 :sparkles: 코드캐치 피격 이펙트)
     }
 
 <<<<<<< HEAD
@@ -1827,6 +1845,7 @@ function monsterHit(magic, monster) {
         setSound.playSE(27);
       }
       score += 100;
+      monster.die_anim();
       monster.destroy();
 >>>>>>> 6e70ce0 (:recycle: console.log 제거)
     }
