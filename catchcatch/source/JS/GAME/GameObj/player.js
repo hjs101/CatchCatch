@@ -171,8 +171,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   maxExp = 3;
   exp = 0;
   level = 1;
+<<<<<<< HEAD
   maxExpBonus = 3;
 >>>>>>> eafeb9f (camera effect)
+=======
+  maxExpBonus = 4;
+>>>>>>> ea49b2c (#3 :sparkles: 밸런스조정)
   coin = 100000;
   // 캐릭터 특수능력 일단 보류
   ability = 0;
