@@ -74,6 +74,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     } else if (player.ability === 2) {
       if (this.monSpecie === "alien") {
         this.setTint(Phaser.Display.Color.RandomRGB().color).play(this.anim);
+      } else {
+        this.clearTint().play(this.anim);
       }
 >>>>>>> 9d001f7 (#2 :sparkles: 용냥이 능력 구현)
     }
