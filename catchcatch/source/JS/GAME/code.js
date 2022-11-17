@@ -17,6 +17,7 @@ import Enemy from "./CodeObj/enemy.js";
 import Magic from "./CodeObj/magic.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 8674ac1 (#7 :sparkles: 코드모드 공격 기능 구현)
 =======
 =======
@@ -32,6 +33,10 @@ import Enemy from "./CodeObj/enemy.js";
 import Magic from "./CodeObj/magic.js";
 import {showscore} from "../UI/incode-ui.js";
 import {setSound} from "../SOUND/sound";
+=======
+import { showscore, LoseLife } from "../UI/incode-ui.js";
+import { setSound } from "../SOUND/sound";
+>>>>>>> 997419e (#7 ㅋㅗㄷㅡㅋㅐㅊㅣ ㄱㅐㅅㅓㄴ)
 
 <<<<<<< HEAD
 >>>>>>> a5a8bb0 (#7 :star: 코딩 모드 사운드)
@@ -119,6 +124,11 @@ export var camera;
 let frameTime = 0;
 let timer = 0;
 let monTimer = 30;
+let spawnTimer = 0;
+let monSpawn = 0;
+// 목숨제
+global.health = 3;
+
 // 몬스터 변수 선언
 var monster;
 global.codeMonsterSet = "";
@@ -394,6 +404,9 @@ function create() {
   monCount = 0;
   chunks = [];
   score = 0;
+  health = 3;
+  spawnTimer = 0;
+  monSpawn = 30;
   codeStart = true;
   this.anims.create({
     key: "tower1_idle",
@@ -1446,10 +1459,13 @@ function update(time, delta) {
     frameTime = 0;
     timer++;
     monTimer++;
+    spawnTimer++;
     if (timer > 30) {
       timer = 0;
-      if (IsStarted) {
+      if (IsStarted && stageNum != 6) {
         dataSend();
+      } else {
+        ranking_dataSend();
       }
 >>>>>>> 2613b3b (#7 :recycle: 코딩모드 2배수)
     }
@@ -1457,6 +1473,7 @@ function update(time, delta) {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1470,6 +1487,17 @@ function update(time, delta) {
 =======
     if (monTimer > 30) {
 >>>>>>> 2613b3b (#7 :recycle: 코딩모드 2배수)
+=======
+    if (spawnTimer < 1500) {
+      monSpawn = 30;
+    } else if (spawnTimer > 1500 && spawnTimer < 3000) {
+      monSpawn = 20;
+    } else if (spawnTimer > 3000) {
+      monSpawn = 10;
+    }
+
+    if (monTimer > monSpawn) {
+>>>>>>> 997419e (#7 ㅋㅗㄷㅡㅋㅐㅊㅣ ㄱㅐㅅㅓㄴ)
       monTimer = 0;
 
       switch (stageNum) {
@@ -1601,7 +1629,7 @@ function update(time, delta) {
           }
           break;
         case 6:
-          if (monCount < maxMon) {
+          if (health > 0) {
             enemySpawn();
             let typeNum = Math.floor(Math.random() * 5 + 1);
             let enemy = new Enemy(
@@ -1726,6 +1754,7 @@ function dataSend() {
 <<<<<<< HEAD
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function testshow() {
   monster[0] = false;
   for (let i = 0; i < monster.length; ++i) {
@@ -1740,6 +1769,60 @@ function testshow() {
 >>>>>>> 1d21851 (#7 :sparkles: 코드모드 업데이트)
 function attack(isAttack, angle, element) {
 =======
+=======
+function ranking_dataSend() {
+  if (socket.bufferedAmount == 0) {
+    if (IsStarted != false && IsRunning != true) {
+      if (health > 0) {
+        let objList = [[]];
+        let obj = codeMonsterSet.children.entries;
+
+        for (let i = 0; i < codeMonsterSet.children.entries.length; i++) {
+          objList.push([
+            obj[i].x,
+            obj[i].y,
+            obj[i].type,
+            obj[i].body.halfWidth,
+          ]);
+        }
+        for (let i = 0; i < objList.length; i++) {
+          if (objList[i] == 0) {
+            objList.splice(i, 1);
+            i--;
+          }
+        }
+
+        shuffle(objList);
+
+        var Data = {
+          action: "exeData",
+          pinnumber: PinNumber,
+          catchobj: objList,
+        };
+        codeStart = false;
+        IsRunning = true;
+        socket.send(JSON.stringify(Data));
+      } else if (!codeStart) {
+        setSound.playSE(26);
+        Data = {
+          action: "endGame",
+          pinnumber: PinNumber,
+        };
+        socket.send(JSON.stringify(Data));
+        IsStarted = false;
+        if (stageNum === 6) {
+          makeranking();
+        } else {
+          codegameclear();
+        }
+      }
+    }
+  }
+}
+
+// sock end
+
+>>>>>>> 997419e (#7 ㅋㅗㄷㅡㅋㅐㅊㅣ ㄱㅐㅅㅓㄴ)
 export function attack(isAttack, angle, element) {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1816,11 +1899,15 @@ function monsterHit(magic, monster) {
 =======
   if (monster.type === 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     score -= 200;
 >>>>>>> 6834f63 (#7 :sparkles: 몬스터 생성 로직 구현)
 =======
     score -= 300;
 >>>>>>> f3a73b3 (#7 :sparkles: 코딩모드 구조 완성)
+=======
+    LoseLife();
+>>>>>>> 997419e (#7 ㅋㅗㄷㅡㅋㅐㅊㅣ ㄱㅐㅅㅓㄴ)
   }
 
   if (!monster.invincible) {
@@ -1883,8 +1970,12 @@ function playerHit(player, monster) {
 =======
   camera.shake(100, 0.01); //camera
   monster.destroy();
+<<<<<<< HEAD
   score -= 50;
 >>>>>>> c0018ab (#7 :bug: 코드모드 수정)
+=======
+  LoseLife();
+>>>>>>> 997419e (#7 ㅋㅗㄷㅡㅋㅐㅊㅣ ㄱㅐㅅㅓㄴ)
 }
 
 // sock end

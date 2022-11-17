@@ -9,8 +9,12 @@ export let showscore;
 
 export default function IncodeUI() {
   const gameContainer = document.querySelector("#game-container");
-
+  const oldLifeContainer = document.querySelector(".lifeContainer");
   const pin = document.createElement("div");
+
+  if (oldLifeContainer) {
+    gameContainer.removeChild(oldLifeContainer);
+  }
 
   pin.setAttribute("class", "pin");
   pin.innerText = global.PinNumber;
@@ -63,10 +67,15 @@ export default function IncodeUI() {
 
 let removeToast;
 
-function LoseLife() {
-  const lifeContainer = document.querySelector(".lifeContainer");
-  const life = document.querySelector(".lifeImg");
-  lifeContainer.removeChild(life);
+export function LoseLife() {
+  health -= 1;
+  if (health < 0) {
+    null;
+  } else {
+    const lifeContainer = document.querySelector(".lifeContainer");
+    const life = document.querySelector(".lifeImg");
+    lifeContainer.removeChild(life);
+  }
 }
 
 function toast(string) {
