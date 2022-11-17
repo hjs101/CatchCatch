@@ -23,10 +23,14 @@ let _RankingList;
 import { setSound } from "../SOUND/sound";
 import { attack } from "../GAME/code.js";
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 295dd26 (#7 :sparkles: 랭킹 시스템 제작중)
 =======
 import { action } from "../GAME/code2";
 >>>>>>> ee11066 (#7 코드캐치2 업데이트)
+=======
+import Mode from "./mode.js";
+>>>>>>> b55faf6 (#1 :sparkles: 게임 모드 변경 UI 추가)
 
 <<<<<<< HEAD
 >>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
@@ -238,7 +242,8 @@ const StartPageInit = () => {
       //   CodeStart();
       setSound.playSE(16);
       GoStage();
-      Stage();
+      Mode();
+      // Stage();
     });
   }
   //-------------------------
