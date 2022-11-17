@@ -1069,12 +1069,12 @@ function create() {
       }
       break;
     case 6:
-      maxMon = 15;
+      maxMon = 30;
       for (let i = 0; i < 8; i++) {
         catSpawn();
         let enemy = new Enemy(
           this,
-          60,
+          120,
           monX,
           monY,
           "cat1",
@@ -1269,6 +1269,7 @@ this.scene.pause();
 function update(time, delta) {
     frameTime += delta;
 
+<<<<<<< HEAD
     if (frameTime > 16.5) {
         showscore.textContent = global.score + " score";
         // 여기다가 UI 띄워라
@@ -1438,11 +1439,25 @@ function update(time, delta) {
                     break;
             }
         }
+=======
+  if (frameTime > 16.5) {
+    showscore.textContent = global.score + " score";
+    // 여기다가 UI 띄워라
+    frameTime = 0;
+    timer++;
+    monTimer++;
+    if (timer > 30) {
+      timer = 0;
+      if (IsStarted) {
+        dataSend();
+      }
+>>>>>>> 2613b3b (#7 :recycle: 코딩모드 2배수)
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   
@@ -1452,6 +1467,9 @@ function update(time, delta) {
 =======
     if (monTimer > 40) {
 >>>>>>> edba596 (#7 :sparkles: 코딩모드 난이도 조절중)
+=======
+    if (monTimer > 30) {
+>>>>>>> 2613b3b (#7 :recycle: 코딩모드 2배수)
       monTimer = 0;
 
       switch (stageNum) {
@@ -1588,7 +1606,7 @@ function update(time, delta) {
             let typeNum = Math.floor(Math.random() * 5 + 1);
             let enemy = new Enemy(
               this,
-              40,
+              80,
               monX,
               monY,
               "alien",
@@ -1748,6 +1766,7 @@ export function attack(isAttack, angle, element) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     codeScene.physics.moveTo(
       magic,
       x,
@@ -1767,6 +1786,9 @@ export function attack(isAttack, angle, element) {
 =======
     codeScene.physics.moveTo(magic, x, y, 500);
 >>>>>>> f3a73b3 (#7 :sparkles: 코딩모드 구조 완성)
+=======
+    codeScene.physics.moveTo(magic, x, y, 1000);
+>>>>>>> 2613b3b (#7 :recycle: 코딩모드 2배수)
   }
 =======
     if (isAttack) {
