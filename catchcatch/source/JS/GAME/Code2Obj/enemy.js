@@ -1,22 +1,19 @@
-import ingameUi from "../../UI/ingame-ui";
-import { monsterSet } from "../game";
+import { camera } from "../code2.js";
 
 export default class Enemy extends Phaser.Physics.Arcade.Sprite {
-  maxHealth = 3;
-  health = 3;
-  velo;
+  maxHealth = 1;
+  health = 1;
   invincible = false;
   type;
   monSpiece;
   dx;
   dy;
-  location;
   velo = 100;
   constructor(scene, i, j, x, y, type) {
     let monSpiece;
     switch (type) {
       case 0:
-        monSpiece = "wall";
+        monSpiece = "tower1";
         break;
       case 1:
         monSpiece = "slime";
@@ -29,6 +26,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.alpha = 1;
     switch (type) {
       case 0:
+        camera
         this.anim = this.monSpiece + "_idle";
         this.health = 1;
         this.weak = 0;
@@ -48,7 +46,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     scene.events.on("update", () => {
       this.update();
     });
-    this.setScale(1);
+    this.setScale(2);
     if (this.type !== 0) {
       this.setScale(1.2);
     }
@@ -66,6 +64,150 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {}
+
+  move(direction) {
+    switch (direction) {
+      // 오른쪽
+      case 1:
+        if (this.dx < 6) {
+          if(objmap[this.dy][this.dx+1] === 0 || objmap[this.dy][this.dx+1].type === -1){
+              sendmap[this.dy][this.dx] = 0;
+              objmap[this.dy][this.dx] = 0;
+            this.dx++;
+            if (objmap[this.dy][this.dx].type !== -1) {
+              sendmap[this.dy][this.dx] = 3;
+              objmap[this.dy][this.dx] = this;
+            }
+              codeScene2.tweens.add({
+                targets: this,
+                x: map[this.dy][this.dx][0],
+                y: map[this.dy][this.dx][1],
+                delay: 100,
+                ease: 'Linear'
+            });
+            this.anims.play("slime_move");
+            codeScene2.time.addEvent({
+              delay: 1200,
+              callback: () => {
+                this.anims.play("slime_idle");
+                if (objmap[this.dy][this.dx].type===-1&&this.dx === objmap[this.dy][this.dx].dx && this.dy === objmap[this.dy][this.dx].dy) {
+                  this.destroy();
+                  camera.shake(100, 0.01); //camera
+                  objmap[this.dy][this.dx].health--;
+                }
+              },
+              loop: false,
+            });
+          }
+        }
+        break;
+      // 왼쪽
+      case 2:
+        if (this.dx > 0) {
+          this.flipX = true;
+          if (objmap[this.dy][this.dx - 1] === 0 || objmap[this.dy][this.dx - 1].type === -1) {
+            sendmap[this.dy][this.dx] = 0;
+            objmap[this.dy][this.dx] = 0;
+            this.dx--;
+            if (objmap[this.dy][this.dx].type !== -1) {
+              sendmap[this.dy][this.dx] = 3;
+              objmap[this.dy][this.dx] = this;
+            }
+            codeScene2.tweens.add({
+              targets: this,
+              x: map[this.dy][this.dx][0],
+              y: map[this.dy][this.dx][1],
+              delay: 100,
+              ease: 'Linear'
+          });
+          this.anims.play("slime_move");
+          codeScene2.time.addEvent({
+            delay: 1200,
+            callback: () => {
+              this.anims.play("slime_idle");
+              if (objmap[this.dy][this.dx].type===-1&&this.dx === objmap[this.dy][this.dx].dx && this.dy === objmap[this.dy][this.dx].dy) {
+                this.destroy();
+                camera.shake(100, 0.01); //camera
+                objmap[this.dy][this.dx].health--;
+              }
+            },
+            loop: false,
+          });
+          }
+        }
+        break;
+      // 위쪽
+      case 3:
+        if (this.dy > 0) {
+          if (objmap[this.dy - 1][this.dx] === 0 || objmap[this.dy - 1][this.dx].type === -1) {
+            sendmap[this.dy][this.dx] = 0;
+            objmap[this.dy][this.dx] = 0;
+            this.dy--;
+            if (objmap[this.dy][this.dx].type !== -1) {
+              sendmap[this.dy][this.dx] = 3;
+              objmap[this.dy][this.dx] = this;
+            }
+            codeScene2.tweens.add({
+              targets: this,
+              x: map[this.dy][this.dx][0],
+              y: map[this.dy][this.dx][1],
+              delay: 100,
+              ease: 'Linear'
+            });
+            this.flipX = true;
+            this.anims.play("slime_move");
+            codeScene2.time.addEvent({
+              delay: 1200,
+              callback: () => {
+                this.anims.play("slime_idle");
+                if (objmap[this.dy][this.dx].type===-1&&this.dx === objmap[this.dy][this.dx].dx && this.dy === objmap[this.dy][this.dx].dy) {
+                  this.destroy();
+                  camera.shake(100, 0.01); //camera
+                  objmap[this.dy][this.dx].health--;
+                }
+              },
+              loop: false,
+            });
+          }
+        }
+        break;
+      // 아래쪽
+      case 4:
+        if (this.dy < 6) {
+          if (objmap[this.dy + 1][this.dx] === 0 || objmap[this.dy + 1][this.dx].type === -1) {
+            sendmap[this.dy][this.dx] = 0;
+            objmap[this.dy][this.dx] = 0;
+            this.dy++;
+            if (objmap[this.dy][this.dx].type !== -1) {
+              sendmap[this.dy][this.dx] = 3;
+              objmap[this.dy][this.dx] = this;
+            }
+            codeScene2.tweens.add({
+              targets: this,
+              x: map[this.dy][this.dx][0],
+              y: map[this.dy][this.dx][1],
+              delay: 100,
+              ease: 'Linear'
+            });
+            this.flipX = true;
+            this.anims.play("slime_move");
+            codeScene2.time.addEvent({
+              delay: 1200,
+              callback: () => {
+                this.anims.play("slime_idle");
+                if (objmap[this.dy][this.dx].type===-1&&this.dx === objmap[this.dy][this.dx].dx && this.dy === objmap[this.dy][this.dx].dy) {
+                  this.destroy();
+                  camera.shake(100, 0.01); //camera
+                  objmap[this.dy][this.dx].health--;
+                }
+              },
+              loop: false,
+            });
+          }
+        }
+        break; 
+    }
+  }
 
   anime() {
     this.clearTint().play(this.anim);
