@@ -143,7 +143,7 @@ const StartPageInit = () => {
       else if (msg.action === "StartGame") {
         IsStarted = true;
         IsRunning = false;
-        codeScene2.scene.resume();
+        codeScene.scene.resume();
       }
       // 1번의 cycle이 끝나면 보낸다.
       else if (msg.action === "codeData") {
@@ -391,7 +391,7 @@ const StartPageInit = () => {
         else if (msg.action === "StartGame") {
           IsStarted = true;
           IsRunning = false;
-          codeScene2.scene.resume();
+          codeScene.scene.resume();
         }
         // 1번의 cycle이 끝나면 보낸다.
         else if (msg.action === "codeData") {
