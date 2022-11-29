@@ -2,52 +2,18 @@
 
 import "../../CSS/UI/StartPage.css";
 import "./char-space.js";
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import CharPageInit, { CharSpaceOn, CodeStart, GoStage } from "./char-space.js";
 import Stage from "./stage.js";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import CharPageInit, {CharSpaceOn} from "./char-space.js";
-=======
-import CharPageInit, {CharSpaceOn, CodeStart} from "./char-space.js";
->>>>>>> 3e8e776 (#7 :bug: 코딩모드 병합과정에서의 버그 수정)
-import {setSound} from "../SOUND/sound";
-import {attack} from "../GAME/code.js";
-=======
-import { setSound } from "../SOUND/sound";
->>>>>>> 5f102b8 (#1 :sparkles: UI 랭킹 시스템 구현)
-=======
 let _RankingList;
 import { setSound } from "../SOUND/sound";
 import { attack } from "../GAME/code.js";
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 295dd26 (#7 :sparkles: 랭킹 시스템 제작중)
-=======
 import { action } from "../GAME/code2";
->>>>>>> ee11066 (#7 코드캐치2 업데이트)
-=======
 import Mode from "./mode.js";
->>>>>>> b55faf6 (#1 :sparkles: 게임 모드 변경 UI 추가)
 
-<<<<<<< HEAD
->>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
-=======
 let _Logo;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 2bd59ed (#1 :sparkles: UI로고 수정)
 let _mode = true;
-<<<<<<< HEAD
-=======
-let _mode = false;
->>>>>>> 6612fe1 (#1 :sparkles: 화면 순서 변경)
-=======
-let _mode = true;
->>>>>>> 8f7b2c3 (#1 홈페이지 순서 변경)
 
 let RankingListTxt = [];
 let RankingData = [];
@@ -58,17 +24,11 @@ global.PinNumber = "";
 global.socket = "";
 global.IsRunning = false;
 
-<<<<<<< HEAD
-=======
-let _RankingList;
->>>>>>> 5f102b8 (#1 :sparkles: UI 랭킹 시스템 구현)
-=======
 let InputArea;
 let S_GradeSpace;
 let S_NameSpace;
 let S_ScoreSpace;
 
->>>>>>> c1843b7 (#1 :sparkles: 이미지 추가 및 랭크 시스템 추가)
 const _StartPage = document.createElement("div");
 const _app = document.getElementById("app");
 _StartPage.className = "StartPage";
@@ -88,7 +48,7 @@ const StartPageInit = () => {
   // 치트 모드
   const download = document.createElement("a");
   download.href =
-    "https://drive.google.com/file/d/1km1ftM_wlinaU3I514XrvCbC-xKGTvkl/view?usp=share_link";
+    "https://drive.google.com/file/d/1xWOmEkLiRuFsr70Bg3x5XmNYLDCqpSbM/view?usp=share_link";
   download.target = "_blank";
   download.setAttribute("class", "download");
   const downImg = document.createElement("img");
@@ -404,44 +364,8 @@ export const StartPageOff = () => {
 
 // 캐릭터 선택 버튼 클릭 이벤트 리스너
 function GoSelectChar() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  StartBtnOff();
-  CharSpaceOn();
-=======
-=======
-    setSound.playSE(1);
->>>>>>> 3337d21 (#1 :sparkles: 공격 시 사운드)
-    setSound.setBGM(0);
-    StartBtnOff();
-    CharSpaceOn();
->>>>>>> a218e28 (#1 #2 #3 :rocket: 소리 추가 1)
-=======
-  setSound.playSE(1);
-=======
->>>>>>> 3891840 (#2 :bee: 몬스터 피격음)
-=======
-  // BGM
->>>>>>> e555d6e (#2 :cow2: BGM 세부 조정)
   setSound.setBGM(0);
-=======
-  if(setSound.nowBGM() === null){
-=======
-  if (setSound.nowBGM() === null) {
->>>>>>> f5d4da8 (#1 :sparkles: 치트 모드 버튼 구현)
-    setSound.setBGM(0);
-  }
-=======
-  setSound.setBGM(0);
->>>>>>> 0e83705 (#3 :sparkles: 진냥이 업데이트)
   setSound.playSE(16);
->>>>>>> bf30274 (#1 #2 #3 :sparkling_heart: BGM 수정)
   StartBtnOff();
   CharSpaceOn();
 }
@@ -457,13 +381,9 @@ function RankingListOff() {
   let logo = document.getElementById("Logo");
   logo.style.display = "block";
   _RankingList.style.display = "none";
-<<<<<<< HEAD
->>>>>>> 5f102b8 (#1 :sparkles: UI 랭킹 시스템 구현)
-=======
   S_GradeSpace.textContent = "";
   S_NameSpace.textContent = "";
   S_ScoreSpace.textContent = "";
->>>>>>> c1843b7 (#1 :sparkles: 이미지 추가 및 랭크 시스템 추가)
 }
 
 function SearchResult(e) {

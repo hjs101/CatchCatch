@@ -111,12 +111,7 @@
   top: 4px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.holeHP {
-=======
 .holeHp {
->>>>>>> 84c8e4e (#1 :sparkles: 각종 코드 수정)
   display: flex;
   position: absolute;
   top: 2%;
@@ -159,7 +154,7 @@
 .again {
   width: 50%;
   height: 50%;
-=======
+}
 .Timer {
   position: absolute;
   top: 50px;
@@ -218,16 +213,12 @@
 .GoHomeBtn {
   width: 150px;
   height: 50px;
-<<<<<<< HEAD
->>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
-=======
   background: url("../../../public/images/ui/homeicon.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   border: none;
   cursor: url("../../../public/images/cursor/mouseSelect.png"), pointer;
->>>>>>> 9a6bb6e (#5 UI)
 }
 
 .coolContainer {

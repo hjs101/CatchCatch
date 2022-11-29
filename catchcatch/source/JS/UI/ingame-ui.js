@@ -6,41 +6,6 @@ let _timerTxt = document.createElement("div");
 let _minute = 0;
 let _second = 0;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export let _catcoin;
-
-export default function inGameUI() {
-  const gameContainer = document.querySelector("#game-container");
-  // const progress = document.createElement("progress");
-<<<<<<< HEAD
-  const holeHP = document.createElement("div");
-  holeHP.setAttribute("class", "holeHP");
-  const hp = document.createElement("div");
-  hp.setAttribute("class", "hp");
-  hp.innerText = hole.hp;
-  holeHP.appendChild(hp);
-  gameContainer.appendChild(holeHP);
-<<<<<<< HEAD
-  const _catcoin = document.createElement("div");
-=======
-=======
->>>>>>> 719d19d (#1 :bug: 체력 갱신)
-
-  _catcoin = document.createElement("div");
->>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
-  _catcoin.setAttribute("class", "catcoin");
-  _catcoin.setAttribute("id", "catcoin");
-  _catcoin.textContent = global.coin + " Coin";
-=======
-let catCoin;
-=======
-let _catCoin;
->>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
-
-=======
->>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 export default function ingameUi() {
   const fairy = [wizard, reaper, ninja, slime, witch];
   const fairyName = ["wizard", "reaper", "ninja", "slime", "witch"];
@@ -61,55 +26,11 @@ export default function ingameUi() {
   const gameContainer = document.querySelector("#game-container");
   // const progress = document.createElement("progress");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  const holeHp = document.createElement("div");
-  holeHp.setAttribute("class", "holeHp");
-  const hp = document.createElement("div");
-  hp.setAttribute("class", "hp");
-  hp.innerText = hole.hp;
-  holeHp.appendChild(hp);
-  gameContainer.appendChild(holeHp);
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-    catCoin = document.createElement("div");
-    catCoin.setAttribute("class", "catCoin");
-    catCoin.setAttribute("id", "catCoin");
-    catCoin.textContent = global.coin + " Coin";
->>>>>>> 84c8e4e (#1 :sparkles: 각종 코드 수정)
-=======
-    _catCoin = document.createElement("div");
-    _catCoin.setAttribute("class", "catCoin");
-    _catCoin.setAttribute("id", "catCoin");
-    _catCoin.textContent = global.coin + " Coin";
->>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
-=======
-  _catCoin = document.createElement("div");
-  _catCoin.setAttribute("class", "catCoin");
-  _catCoin.setAttribute("id", "catCoin");
-  _catCoin.textContent = player.coin + " Coin";
->>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
-
-  const stats = document.createElement("div");
-  const heal = document.createElement("div");
-  const healTxt = document.createElement("div");
-
-  const dmgMul = document.createElement("div");
-  const dmgMulTxt = document.createElement("div");
-
-  const speed = document.createElement("div");
-  const speedTxt = document.createElement("div");
-
-=======
->>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
-=======
   const levelText = document.createElement("div");
   levelText.setAttribute("class", "levelText");
   levelText.innerText = `Lv.${player.level}`;
   gameContainer.appendChild(levelText);
 
->>>>>>> 830c984 (#1 :sparkles: 타이머 10분부터 줄게 변경)
   _timerTxt.setAttribute("class", "Timer");
   gameContainer.appendChild(_timerTxt);
   _minute = 10;
@@ -175,55 +96,11 @@ export default function ingameUi() {
   // GameOver();
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export function updateHP() {
-  // console.log(hole.hp);
-  const holeHp = document.querySelector(".holeHp");
-  const hp = document.querySelector(".hp");
-  hp.innerText = hole.hp;
-=======
 export function updateExp() {
   const levelText = document.querySelector(".levelText");
   levelText.innerText = `Lv.${player.level}`;
->>>>>>> 830c984 (#1 :sparkles: 타이머 10분부터 줄게 변경)
 }
 
-<<<<<<< HEAD
-export function gameover() {
-  const gameContainer = document.querySelector("#game-container");
-  const gameoverContainer = document.createElement("div");
-  gameoverContainer.setAttribute("class", "gameoverContainer");
-  const gameover = document.createElement("div");
-  gameover.setAttribute("class", "gameover");
-  gameover.innerText = "GAME OVER";
-  const again = document.createElement("div");
-  again.innerText = "다시하기";
-  again.setAttribute("class", "again");
-  again.addEventListener("click", () => {
-    // gameContainer.innerHTML = "";
-    // gameContainer.style.display = "none";
-    // const startPage = document.querySelector(".StartPage");
-    // startPage.style.display = "flex";
-    // gameContainer.removeChild(gameoverContainer);
-    // CharSpaceOn();
-    // $this.restart();
-    window.location.reload();
-  });
-  gameoverContainer.appendChild(gameover);
-  gameoverContainer.appendChild(again);
-  gameContainer.appendChild(gameoverContainer);
-=======
-export function Updatetimer() {
-  if (global.gameTimer != 0 && global.gameTimer % 60 === 0) {
-    ++Second;
-    if (Second === 60) {
-      ++Minute;
-      Second = 0;
-=======
-=======
->>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 export function GameOver() {
   const gameContainer = document.querySelector("#game-container");
 
@@ -275,36 +152,16 @@ export function GameOver() {
 }
 
 export function UpdateTimer() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (global.gameTimer !== 0 && global.gameTimer % 60 === 0) {
-        ++_second;
-        if (_second === 60) {
-            ++_minute;
-            _second = 0;
-        }
->>>>>>> 84c8e4e (#1 :sparkles: 각종 코드 수정)
-=======
-=======
   if (_minute < 1) {
     _timerTxt.style.color = "red";
     _timerTxt.style.textShadow =
       "-2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000";
   }
->>>>>>> 72c4aa6 (#1 :sparkles: 시간초 1분대 빨간색 및 pin번호 복사시 modal 삭제)
   if (global.gameTimer !== 0 && global.gameTimer % 60 === 0) {
-<<<<<<< HEAD
-    ++_second;
-    if (_second === 60) {
-      ++_minute;
-      _second = 0;
->>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
-=======
     --_second;
     if (_second === -1) {
       --_minute;
       _second = 59;
->>>>>>> 830c984 (#1 :sparkles: 타이머 10분부터 줄게 변경)
     }
   }
   if (_second < 10) {
@@ -375,26 +232,6 @@ export function GoHome() {
   window.location.reload();
 }
 
-<<<<<<< HEAD
-export function UpdateCatCoin() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  _catcoin.textContent = global.coin + " Coin";
->>>>>>> ae21595 (#1 :sparkles: 클리어, 인게임 UI 수정)
-=======
-    catCoin.textContent = global.coin + " Coin";
->>>>>>> 84c8e4e (#1 :sparkles: 각종 코드 수정)
-=======
-    _catCoin.textContent = global.coin + " Coin";
->>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
-=======
-  _catCoin.textContent = player.coin + " Coin";
->>>>>>> d16b408 (#1 :sparkles: 타워 업그레이드 코인 소모)
-}
-
-=======
->>>>>>> 785eea8 (#1 :sparkles: 튜토리얼 중간 완료 및 쿨타임 UI 수정)
 export function useSkill(num) {
   const fairy = [wizard, reaper, ninja, slime, witch];
   const fairyName = ["wizard", "reaper", "ninja", "slime", "witch"];

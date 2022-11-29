@@ -1,30 +1,12 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-const propertyArr = ["common", "wizard", "reaper", "ninja", "slime", "witch", "common","common"];
-=======
-const propertyArr = [
-=======
-=======
-import {setSound} from "../SOUND/sound";
-=======
 import { setSound } from "../SOUND/sound";
->>>>>>> a37e11d (#1 :sparkles: levelup 개편)
 
->>>>>>> 8283fbf (#2 :bug: 슬라임킹 원형 처리)
 const _propertyArr = [
-<<<<<<< HEAD
->>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
-  "common",
-=======
   "fire",
   "normal",
   "thunder",
   "water",
   "earth",
   "god",
->>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
   "wizard",
   "reaper",
   "ninja",
@@ -33,20 +15,7 @@ const _propertyArr = [
   "heal",
   "coin",
 ];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 89832b9 (#1 :sparkles: 레벨업 버그 고침)
-const commonArr = ["health", "dmgmul", "heal", "speed"];
-=======
-const _commonArr = ["health", "dmgmul", "heal", "speed"];
-=======
-const _commonArr = ["health", "dmgMul", "heal", "speed"];
->>>>>>> 913d178 (#3 :sparkles: 공격력 코드 수정)
-=======
->>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
 
->>>>>>> e17e0a1 (#6 :bug: UI 코드 수정)
 export default function levelup() {
   const property = {
     fire: {
@@ -169,33 +138,6 @@ export default function levelup() {
 
   let randomIndexArray = [];
   const randomCommons = [0, 0, 0, 0];
-<<<<<<< HEAD
-  for (let i = 0; i < 3; i++) {
-    const randomNum = Math.floor(Math.random() * 11);
-    console.log(randomNum);
-    if (randomIndexArray.indexOf(randomNum) === -1) {
-      if (
-        randomNum > 5 &&
-        property[_propertyArr[randomNum]].fairy.level === 9
-      ) {
-        i--;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        console.log(i);
-        console.log(123213, property[propertyArr[randomNum]].fairy.level);
-=======
->>>>>>> da93aaa (#1 :sparkles: 무기 업그레이드 레벨 추가)
-=======
-      } else if (
-        randomNum < 5 &&
-        property[_propertyArr[randomNum]].pet.level === 3
-      ) {
-        i--;
-      } else if (randomNum === 5) {
-        let flag = false;
-        for (let j = 0; j < 5; j++) {
-          if (property[_propertyArr[j]].pet.level !== 3) {
-=======
   if (levelCount === 11) {
     randomIndexArray = [11, 12];
   } else {
@@ -226,7 +168,6 @@ export default function levelup() {
             }
           }
           if (property[_propertyArr[5]].pet.level === 3) {
->>>>>>> ac28b12 (#1 :sparkles: 레벨업 회복 코인 추가)
             flag = true;
           }
           if (flag === true) {
@@ -237,7 +178,6 @@ export default function levelup() {
         } else {
           randomIndexArray.push(randomNum);
         }
->>>>>>> 87451fe (#1 :sparkles: 레벨업에 common대신 pet 구현)
       } else {
         i--;
       }

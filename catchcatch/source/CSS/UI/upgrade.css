@@ -17,14 +17,8 @@ body {
   transform: translateX(-50%) translateY(-50%);
   width: 120vmin;
   height: 80vmin;
-<<<<<<< HEAD
   /* border: 6px solid black; */
   justify-content: center;
-=======
-  border: 6px solid black;
-  background: white;
-  justify-content: space-between;
->>>>>>> 3b1904d (#1 :sparkles: tower Ui)
   z-index: 101;
 }
 
