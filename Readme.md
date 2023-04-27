@@ -2,9 +2,9 @@
 
 ![Logo2](https://user-images.githubusercontent.com/52388470/202899769-831e69d1-8fbf-4417-abfa-a4f66284f7cd.gif)
 
-### UCC1 (게임) : [Link](https://youtu.be/Akt0OQiLO38)
+### UCC1 (게임) : [Link](https://youtu.be/fBhQ9Gd-YMU)
 
-### UCC2 (코딩) : [Link](https://youtu.be/fBhQ9Gd-YMU)
+### UCC2 (코딩) : [Link](https://youtu.be/Akt0OQiLO38)
 
 ### 시연 시나리오 : [Link](https://drive.google.com/file/d/1qfPGl3_dDk73lSG3AATmMey8rE3C1M2t/view?usp=sharing)
 
