@@ -2,7 +2,9 @@
 
 ![Logo2](https://user-images.githubusercontent.com/52388470/202899769-831e69d1-8fbf-4417-abfa-a4f66284f7cd.gif)
 
-### UCC : [Link](https://drive.google.com/file/d/1-FeOOLFria1NnWZ3JuNyF8lZp3i6uGit/view?usp=sharing)
+### UCC1 (게임) : [Link](https://youtu.be/Akt0OQiLO38)
+
+### UCC2 (코딩) : [Link](https://youtu.be/fBhQ9Gd-YMU)
 
 ### 시연 시나리오 : [Link](https://drive.google.com/file/d/1qfPGl3_dDk73lSG3AATmMey8rE3C1M2t/view?usp=sharing)
 
@@ -19,12 +21,16 @@
 
 ### 마우스와 키보드로 몬스터를 물리치는 아케이드 모드
 
+![image](/README.assets/게임소개.gif)
+
 - 세부 내용
   - 10분동안 진행되는 아케이드 모드는 5가지의 무기인 요정과 레벨업시 선택 할 수 있는 특성중 6마리의 펫으로 <br>몬스터를 물리칩니다.
   - 게임을 진행할수록 몬스터의 개체수와 능력치가 증가하며 특성 시간마다 3마리의 보스가 등장합니다.
   - 레벨업시 무기 업그레이드, 펫 중 랜덤으로 3개의 특성중 한가지를 선택하며 성장할 수 있습니다.
 
 ### 자신이 작성한 코딩으로 몬스터를 물리치는 게이미피케이션 코딩 모드
+
+![image](/README.assets/코드캐치소개.gif)
 
 - 세부 내용
   - 코딩 모드에는 디펜스 모드와 베타버전인 턴제 모드가 있습니다.
